@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    internal class Normatization
+    public class Normatization
     {
         public string NormatizeName(string nome)
         {

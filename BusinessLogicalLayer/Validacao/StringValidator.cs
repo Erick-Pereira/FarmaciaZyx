@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    internal class StringValidator
+    public class StringValidator
     {
+
         //private const int MAXIMO_CARACTERES_NOME = 100;
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace BusinessLogicalLayer
                 return "Email não pode conter mais que 100 caracteres.";
             }
 
-            string pattern = @"^([\w\.\-] +)@([\w\-] +)((\.(\w){ 2,3})+)$";
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             if (!Regex.IsMatch(email, pattern))
             {
                 return "Email inválido.";
@@ -198,6 +199,35 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+        /// <summary>
+        /// Verifica algumas regras para o nome, como:
+        /// 1)Apenas alfabeto romano
+        /// 2)Apenas um espaço entre nome e sobrenome
+        /// 3)Mínimo de 3 caracteres
+        /// 4)Mínimo de 2 entre nome e sobrenome
+        /// </summary>
+        /// <param name="nome">Nome a ser validado</param>
+        /// <returns>Retorna vazio "" caso o nome esteja correto</returns>
+        public string ValidateSenha(string senha)
+        {
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                return "Senha deve ser informado.";
+            }
+            //Trim -> Remove espaços em branco do começo e do fim da string (mas não do meio)
+            senha = senha.Trim();
+            //Alfabeto romano e acentos gráficos
+            if (senha.Length < 8)
+            {
+                return "Senha deve conter no mínimo 8 caracteres.";
+            }
+            if (senha.Length > 20)
+            {
+                return "senha não pode conter mais que 20 caracteres.";
+            }
 
+            //Se chegou aqui, o nome ta certinho e retornamos "";
+            return "";
+        }
     }
 }

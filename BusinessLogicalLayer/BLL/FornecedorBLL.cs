@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogicalLayer.BLL
+namespace BusinessLogicalLayer
 {
     public class FornecedorBLL : ICRUD<Fornecedor>
     {

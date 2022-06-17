@@ -21,10 +21,10 @@ namespace Entities
             BairroID = bairroID;
         }
 
-        public int ID { get;  set; }
-        public string CEP { get;  set; }
-        public string Logradouro { get;  set; }
-        public string NumeroCasa { get;  set; }
-        public int BairroID { get;  set; }
+        public int ID { get; set; }
+        public string CEP { get; set; }
+        public string Logradouro { get; set; }
+        public string NumeroCasa { get; set; }
+        public int BairroID { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Entities
         {
         }
 
-        public Funcionario(int iD, string nome, string cPF, string rG, string telefone, string email, string senha, Endereco endereco, int tipoFuncionarioId)
+        public Funcionario(int iD, string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId)
         {
             ID = iD;
             Nome = nome;
@@ -21,7 +21,7 @@ namespace Entities
             Telefone = telefone;
             Email = email;
             Senha = senha;
-            Endereco = endereco;
+            EnderecoId = enderecoId;
             TipoFuncionarioId = tipoFuncionarioId;
         }
 
@@ -32,7 +32,7 @@ namespace Entities
         public string Telefone { get;  set; }
         public string Email { get;  set; }
         public string Senha { get;  set; }
-        public Endereco Endereco { get;  set; }
+        public int EnderecoId { get;  set; }
         public int TipoFuncionarioId { get;  set; }
     }
 }

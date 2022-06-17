@@ -16,7 +16,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,EMAIL,TELEFONE) VALUES (@NOME,@CPF,@EMAIL,@TELEFONE)";
+            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID) VALUES (@NOME,@CPF,@TELEFONE,@EMAIL,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID)";
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
 
@@ -26,9 +26,11 @@ namespace DataAccessLayer
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", funcionario.Nome);
             command.Parameters.AddWithValue("@CPF", funcionario.CPF);
-            command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
-
+            command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
+            command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
+            command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
+            command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
             //Estamos conectados na base de dados
             //try catch
             //try catch finally
@@ -67,7 +69,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE FUNCIONARIO SET NOME = @NOME, EMAIL = @EMAIL, TELEFONE = @TELEFONE WHERE ID = @ID";
+            string sql = $"UPDATE FUNCIONARIO SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, SENHA = @SENHA, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
 
@@ -76,8 +78,11 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", funcionario.Nome);
-            command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
+            command.Parameters.AddWithValue("@CPF", funcionario.CPF);
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
+            command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
+            command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
+            command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
             command.Parameters.AddWithValue("@ID", funcionario.ID);
 
             //Estamos conectados na base de dados
@@ -96,6 +101,11 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("UQ_FUNCIONARIO_CPF"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("CPF já existe.", false);
+                }
                 if (ex.Message.Contains("UQ_FUNCIONARIO_EMAIL"))
                 {
                     //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
@@ -139,16 +149,6 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("UQ_FUNCIONARIO_EMAIL"))
-                {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
-                    return new Response("Email já está em uso.", false);
-                }
-                if (ex.Message.Contains("UQ_FUNCIONARIO_CPF"))
-                {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
-                    return new Response("CPF já está em uso.", false);
-                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
@@ -165,7 +165,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE FROM FUNCIONARIOS";
+            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS";
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
@@ -184,6 +184,8 @@ namespace DataAccessLayer
                     funcionario.CPF = Convert.ToString(reader["CPF"]);
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
+                    funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
+                    funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
                     funcionarios.Add(funcionario);
                 }
                 return new DataResponse<Funcionario>("Fornecedor selecionados com sucesso!", true, funcionarios);
@@ -199,47 +201,47 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-    public SingleResponse<Funcionario> GetByID(int id)
-    {
-        //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-        //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-        //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-        string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE FROM FUNCIONARIOS WHERE ID = @ID";
-
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\entra21\Documents\AdultMovieLocatorDb.mdf;Integrated Security=True;Connect Timeout=3";
-
-        //ADO.NET 
-        SqlConnection connection = new SqlConnection(connectionString);
-
-        SqlCommand command = new SqlCommand(sql, connection);
-        command.Parameters.AddWithValue("@ID", id);
-        try
+        public SingleResponse<Funcionario> GetByID(int id)
         {
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            //Enquanto houver registros, o loop será executado!
-            if (reader.Read())
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE FROM FUNCIONARIOS WHERE ID = @ID";
+
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\entra21\Documents\AdultMovieLocatorDb.mdf;Integrated Security=True;Connect Timeout=3";
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@ID", id);
+            try
             {
-                Funcionario funcionario = new Funcionario();
-                funcionario.ID = Convert.ToInt32(reader["ID"]);
-                funcionario.Nome = Convert.ToString(reader["NOME"]);
-                funcionario.CPF = Convert.ToString(reader["CPF"]);
-                funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
-                funcionario.Email = Convert.ToString(reader["EMAIL"]);
-                return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Funcionario funcionario = new Funcionario();
+                    funcionario.ID = Convert.ToInt32(reader["ID"]);
+                    funcionario.Nome = Convert.ToString(reader["NOME"]);
+                    funcionario.CPF = Convert.ToString(reader["CPF"]);
+                    funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
+                    funcionario.Email = Convert.ToString(reader["EMAIL"]);
+                    return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
+                }
+                return new SingleResponse<Funcionario>("Funcionario não encontrado!", false, null);
             }
-            return new SingleResponse<Funcionario>("Funcionario não encontrado!", false, null);
-        }
-        catch (Exception ex)
-        {
-            return new SingleResponse<Funcionario>("Erro no banco de dados, contate o administrador.", false, null);
-        }
-        //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
-        finally
-        {
-            //Fecha a conexão
-            connection.Dispose();
+            catch (Exception ex)
+            {
+                return new SingleResponse<Funcionario>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
         }
     }
-}
 }

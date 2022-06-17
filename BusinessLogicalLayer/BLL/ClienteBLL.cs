@@ -30,7 +30,6 @@ namespace BusinessLogicalLayer
             //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
             return clienteDAL.Insert(item);
         }
-
         public Response Update(Cliente item)
         {
             return clienteDAL.Update(item);

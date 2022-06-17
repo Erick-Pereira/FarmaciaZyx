@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    internal class DateTimeValidator
+    public class DateTimeValidator
     {
     }
 }

@@ -26,11 +26,11 @@ namespace BusinessLogicalLayer
             erros += stringValidator.ValidateTelefone(funcionario.Telefone);
             //Sintaxe cliente.Endereco?.CEP verifica e só passaria o CEP informado caso a propriedade
             //Endereco de dentro do Cliente não seja nula, caso contrário, passará o valor padrão do CEP (que é uma string e vale null!)
-            erros += stringValidator.ValidateCEP(funcionario.Endereco.CEP);
+            //erros += stringValidator.ValidateCEP(funcionario.);
 
 
             //CPF do cliente deve ser único
-           // if (funcionarioDAL.Exists(funcionario.CPF).HasSuccess)
+            // if (funcionarioDAL.Exists(funcionario.CPF).HasSuccess)
             {
                 erros += "CPF já cadastrado.";
             }
