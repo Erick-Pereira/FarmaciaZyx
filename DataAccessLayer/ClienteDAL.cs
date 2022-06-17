@@ -172,7 +172,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS FROM CLIENTES";
+            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID FROM CLIENTES";
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
 
@@ -195,6 +195,7 @@ namespace DataAccessLayer
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID "]);
                     clientes.Add(cliente);
                 }
                 return new DataResponse<Cliente>("Clientes selecionados com sucesso!", true, clientes);
