@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DataAccessLayer;
+using Entities;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,34 @@ namespace BusinessLogicalLayer.BLL
 {
     public class FornecedorBLL : ICRUD<Fornecedor>
     {
+        private FornecedorDAL fornecedorDAL = new FornecedorDAL();
+
         public Response Delete(int id)
         {
-            throw new NotImplementedException();
+            return fornecedorDAL.Delete(id);
         }
 
         public DataResponse<Fornecedor> GetAll()
         {
-            throw new NotImplementedException();
+            return fornecedorDAL.GetAll();
         }
 
         public SingleResponse<Fornecedor> GetByID(int id)
         {
-            throw new NotImplementedException();
+            return fornecedorDAL.GetByID(id);
         }
 
         public Response Insert(Fornecedor item)
         {
-            throw new NotImplementedException();
+            //NAO ESQUEÇAM DAS VALIDAÇÕES!
+            //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
+            //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
+            return fornecedorDAL.Insert(item);
         }
 
         public Response Update(Fornecedor item)
         {
-            throw new NotImplementedException();
+            return fornecedorDAL.Update(item);
         }
     }
 }
