@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroFuncionario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFuncionario = new System.Windows.Forms.TabPage();
+            this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbTipoFuncionario = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnProximo = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
@@ -51,16 +58,12 @@
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbTipoFuncionario = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -81,6 +84,10 @@
             // tabFuncionario
             // 
             this.tabFuncionario.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabFuncionario.Controls.Add(this.mtxtRg);
+            this.tabFuncionario.Controls.Add(this.label16);
+            this.tabFuncionario.Controls.Add(this.txtSenha);
+            this.tabFuncionario.Controls.Add(this.label12);
             this.tabFuncionario.Controls.Add(this.cmbTipoFuncionario);
             this.tabFuncionario.Controls.Add(this.label7);
             this.tabFuncionario.Controls.Add(this.btnProximo);
@@ -104,10 +111,60 @@
             this.tabFuncionario.TabIndex = 0;
             this.tabFuncionario.Text = "Funcionario";
             // 
+            // mtxtRg
+            // 
+            this.mtxtRg.Location = new System.Drawing.Point(337, 116);
+            this.mtxtRg.Mask = "000.000.000-00";
+            this.mtxtRg.Name = "mtxtRg";
+            this.mtxtRg.Size = new System.Drawing.Size(100, 23);
+            this.mtxtRg.TabIndex = 40;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(337, 96);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 15);
+            this.label16.TabIndex = 39;
+            this.label16.Text = "RG";
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(197, 279);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(100, 23);
+            this.txtSenha.TabIndex = 38;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(198, 256);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 15);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Senha";
+            // 
+            // cmbTipoFuncionario
+            // 
+            this.cmbTipoFuncionario.FormattingEnabled = true;
+            this.cmbTipoFuncionario.Location = new System.Drawing.Point(50, 219);
+            this.cmbTipoFuncionario.Name = "cmbTipoFuncionario";
+            this.cmbTipoFuncionario.Size = new System.Drawing.Size(121, 23);
+            this.cmbTipoFuncionario.TabIndex = 36;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(50, 201);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 15);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "Tipo de Funcionario";
+            // 
             // btnProximo
             // 
             this.btnProximo.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProximo.Location = new System.Drawing.Point(50, 285);
+            this.btnProximo.Location = new System.Drawing.Point(50, 317);
             this.btnProximo.Name = "btnProximo";
             this.btnProximo.Size = new System.Drawing.Size(461, 46);
             this.btnProximo.TabIndex = 34;
@@ -140,7 +197,7 @@
             // mtxtTelefone
             // 
             this.mtxtTelefone.BackColor = System.Drawing.Color.White;
-            this.mtxtTelefone.Location = new System.Drawing.Point(333, 171);
+            this.mtxtTelefone.Location = new System.Drawing.Point(333, 231);
             this.mtxtTelefone.Mask = "+99 (99) 90000-0000";
             this.mtxtTelefone.Name = "mtxtTelefone";
             this.mtxtTelefone.Size = new System.Drawing.Size(114, 23);
@@ -149,7 +206,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(339, 153);
+            this.label5.Location = new System.Drawing.Point(339, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 15);
             this.label5.TabIndex = 10;
@@ -175,7 +232,7 @@
             // mtxtDataNascimento
             // 
             this.mtxtDataNascimento.BackColor = System.Drawing.Color.White;
-            this.mtxtDataNascimento.Location = new System.Drawing.Point(333, 111);
+            this.mtxtDataNascimento.Location = new System.Drawing.Point(333, 171);
             this.mtxtDataNascimento.Mask = "00/00/0000";
             this.mtxtDataNascimento.Name = "mtxtDataNascimento";
             this.mtxtDataNascimento.Size = new System.Drawing.Size(90, 23);
@@ -185,7 +242,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(339, 97);
+            this.label3.Location = new System.Drawing.Point(339, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 6;
@@ -236,8 +293,6 @@
             this.tabEndereço.Controls.Add(this.txtEstado);
             this.tabEndereço.Controls.Add(this.label13);
             this.tabEndereço.Controls.Add(this.txtCidade);
-            this.tabEndereço.Controls.Add(this.label11);
-            this.tabEndereço.Controls.Add(this.txtComplemento);
             this.tabEndereço.Controls.Add(this.label10);
             this.tabEndereço.Controls.Add(this.txtBairro);
             this.tabEndereço.Controls.Add(this.label9);
@@ -265,7 +320,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(333, 211);
+            this.label15.Location = new System.Drawing.Point(50, 149);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(51, 15);
             this.label15.TabIndex = 32;
@@ -274,7 +329,7 @@
             // mtxtNumero
             // 
             this.mtxtNumero.BackColor = System.Drawing.Color.White;
-            this.mtxtNumero.Location = new System.Drawing.Point(333, 228);
+            this.mtxtNumero.Location = new System.Drawing.Point(50, 166);
             this.mtxtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mtxtNumero.Mask = "0999";
             this.mtxtNumero.Name = "mtxtNumero";
@@ -314,23 +369,6 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(178, 23);
             this.txtCidade.TabIndex = 27;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(56, 152);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 15);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Complemento";
-            // 
-            // txtComplemento
-            // 
-            this.txtComplemento.BackColor = System.Drawing.Color.White;
-            this.txtComplemento.Location = new System.Drawing.Point(50, 166);
-            this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(178, 23);
-            this.txtComplemento.TabIndex = 23;
             // 
             // label10
             // 
@@ -385,30 +423,14 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 201);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 15);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "Tipo de Funcionario";
-            // 
-            // cmbTipoFuncionario
-            // 
-            this.cmbTipoFuncionario.FormattingEnabled = true;
-            this.cmbTipoFuncionario.Location = new System.Drawing.Point(50, 219);
-            this.cmbTipoFuncionario.Name = "cmbTipoFuncionario";
-            this.cmbTipoFuncionario.Size = new System.Drawing.Size(121, 23);
-            this.cmbTipoFuncionario.TabIndex = 36;
-            // 
-            // FormCadastroCliente
+            // FormCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
-            this.Name = "FormCadastroCliente";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormCadastroFuncionario";
             this.Text = "Cadastro de Funcionario";
             this.tabControl1.ResumeLayout(false);
             this.tabFuncionario.ResumeLayout(false);
@@ -444,8 +466,6 @@
         private TextBox txtEstado;
         private Label label13;
         private TextBox txtCidade;
-        private Label label11;
-        private TextBox txtComplemento;
         private Label label10;
         private TextBox txtBairro;
         private Label label9;
@@ -454,5 +474,9 @@
         private MaskedTextBox mtxtCep;
         private ComboBox cmbTipoFuncionario;
         private Label label7;
+        private MaskedTextBox mtxtRg;
+        private Label label16;
+        private TextBox txtSenha;
+        private Label label12;
     }
 }

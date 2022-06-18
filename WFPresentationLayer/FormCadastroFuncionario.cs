@@ -27,13 +27,13 @@ namespace WFPresentationLayer
             
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
-            string rg = "";
+            string rg = mtxtRg.Text;
             int tipoFuncionarioId = cmbTipoFuncionario.SelectedIndex;
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
             string telefone = mtxtTelefone.Text;
             int enderecoId = 0;
-            string senha = "";
+            string senha = txtSenha.Text;
             //string nomeresponsavel = txtNomeResponsavel.Text;
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
             string cep = mtxtCep.Text;
