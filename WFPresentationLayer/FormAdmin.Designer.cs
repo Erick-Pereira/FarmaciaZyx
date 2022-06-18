@@ -29,35 +29,94 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnCadastrarCliente = new System.Windows.Forms.Button();
+            this.btnCadastrarFuncionario = new System.Windows.Forms.Button();
+            this.btnCadastrarProduto = new System.Windows.Forms.Button();
+            this.btnRegistrarEntrada = new System.Windows.Forms.Button();
+            this.btnRegistrarSaida = new System.Windows.Forms.Button();
+            this.btnRegistrarFornecedor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // btnCadastrarCliente
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 70F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(-11, -16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(853, 125);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Você é um ADEMIR";
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(12, 29);
+            this.btnCadastrarCliente.Name = "btnCadastrarCliente";
+            this.btnCadastrarCliente.Size = new System.Drawing.Size(117, 23);
+            this.btnCadastrarCliente.TabIndex = 0;
+            this.btnCadastrarCliente.Text = "Cadastrar Cliente";
+            this.btnCadastrarCliente.UseVisualStyleBackColor = true;
+            this.btnCadastrarCliente.Click += new System.EventHandler(this.btnCadastrarCliente_Click);
+            // 
+            // btnCadastrarFuncionario
+            // 
+            this.btnCadastrarFuncionario.Location = new System.Drawing.Point(12, 58);
+            this.btnCadastrarFuncionario.Name = "btnCadastrarFuncionario";
+            this.btnCadastrarFuncionario.Size = new System.Drawing.Size(134, 23);
+            this.btnCadastrarFuncionario.TabIndex = 1;
+            this.btnCadastrarFuncionario.Text = "Cadastrar Funcionario";
+            this.btnCadastrarFuncionario.UseVisualStyleBackColor = true;
+            // 
+            // btnCadastrarProduto
+            // 
+            this.btnCadastrarProduto.Location = new System.Drawing.Point(12, 87);
+            this.btnCadastrarProduto.Name = "btnCadastrarProduto";
+            this.btnCadastrarProduto.Size = new System.Drawing.Size(117, 23);
+            this.btnCadastrarProduto.TabIndex = 2;
+            this.btnCadastrarProduto.Text = "Cadastrar Produto";
+            this.btnCadastrarProduto.UseVisualStyleBackColor = true;
+            // 
+            // btnRegistrarEntrada
+            // 
+            this.btnRegistrarEntrada.Location = new System.Drawing.Point(12, 116);
+            this.btnRegistrarEntrada.Name = "btnRegistrarEntrada";
+            this.btnRegistrarEntrada.Size = new System.Drawing.Size(117, 23);
+            this.btnRegistrarEntrada.TabIndex = 3;
+            this.btnRegistrarEntrada.Text = "Registrar Entrada";
+            this.btnRegistrarEntrada.UseVisualStyleBackColor = true;
+            // 
+            // btnRegistrarSaida
+            // 
+            this.btnRegistrarSaida.Location = new System.Drawing.Point(12, 145);
+            this.btnRegistrarSaida.Name = "btnRegistrarSaida";
+            this.btnRegistrarSaida.Size = new System.Drawing.Size(117, 23);
+            this.btnRegistrarSaida.TabIndex = 4;
+            this.btnRegistrarSaida.Text = "Registrar Saida";
+            this.btnRegistrarSaida.UseVisualStyleBackColor = true;
+            // 
+            // btnRegistrarFornecedor
+            // 
+            this.btnRegistrarFornecedor.Location = new System.Drawing.Point(12, 174);
+            this.btnRegistrarFornecedor.Name = "btnRegistrarFornecedor";
+            this.btnRegistrarFornecedor.Size = new System.Drawing.Size(134, 23);
+            this.btnRegistrarFornecedor.TabIndex = 5;
+            this.btnRegistrarFornecedor.Text = "Cadastrar Fornecedor";
+            this.btnRegistrarFornecedor.UseVisualStyleBackColor = true;
             // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 107);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(327, 300);
+            this.Controls.Add(this.btnRegistrarFornecedor);
+            this.Controls.Add(this.btnRegistrarSaida);
+            this.Controls.Add(this.btnRegistrarEntrada);
+            this.Controls.Add(this.btnCadastrarProduto);
+            this.Controls.Add(this.btnCadastrarFuncionario);
+            this.Controls.Add(this.btnCadastrarCliente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAdmin";
             this.Text = "Admin";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Label label1;
+        private Button btnCadastrarCliente;
+        private Button btnCadastrarFuncionario;
+        private Button btnCadastrarProduto;
+        private Button btnRegistrarEntrada;
+        private Button btnRegistrarSaida;
+        private Button btnRegistrarFornecedor;
     }
 }

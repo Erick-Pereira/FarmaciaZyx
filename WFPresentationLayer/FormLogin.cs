@@ -38,6 +38,7 @@ namespace WfPresentationLayer
                     {
                         FormAdmin formAdmin = new FormAdmin();
                         formAdmin.ShowDialog();
+                        this.Close();
                     }
                 }
             }
