@@ -9,7 +9,6 @@ namespace BusinessLogicalLayer
 
         public SingleResponse<Funcionario> Logar(Login login)
         {
-
             LoginDAL loginDAL = new LoginDAL();
             SingleResponse<Funcionario> singleResponse = loginDAL.GetByEmail(login.Email);
             if (singleResponse.HasSuccess)

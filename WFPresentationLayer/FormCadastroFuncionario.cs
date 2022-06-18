@@ -52,7 +52,5 @@ namespace WFPresentationLayer
             Response response = validator.Validate(funcionario);
             MessageBox.Show(response.Message);
         }
-
-
     }
 }
