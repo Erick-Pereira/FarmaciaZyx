@@ -9,7 +9,12 @@
 
         private void btnCadastrarCliente_Click(object sender, EventArgs e)
         {
-            FormCadastroCliente formCadastroCliente = new FormCadastroCliente();
+            
+        }
+
+        private void btnCadastrarFuncionario_Click(object sender, EventArgs e)
+        {
+            FormCadastroFuncionario formCadastroCliente = new FormCadastroFuncionario();
             formCadastroCliente.ShowDialog();
         }
     }
