@@ -83,7 +83,7 @@
             // 
             // tabFuncionario
             // 
-            this.tabFuncionario.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabFuncionario.BackColor = System.Drawing.Color.White;
             this.tabFuncionario.Controls.Add(this.mtxtRg);
             this.tabFuncionario.Controls.Add(this.label16);
             this.tabFuncionario.Controls.Add(this.txtSenha);
@@ -132,6 +132,7 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(197, 279);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
             this.txtSenha.TabIndex = 38;
             // 

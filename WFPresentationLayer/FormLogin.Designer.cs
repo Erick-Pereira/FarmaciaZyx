@@ -75,10 +75,11 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(75, 109);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
             this.txtSenha.TabIndex = 4;
             // 
-            // Form1
+            // FormLogin
             // 
             this.ClientSize = new System.Drawing.Size(265, 225);
             this.Controls.Add(this.txtSenha);
@@ -87,7 +88,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "FormLogin";
             this.Text = "Zyx";
             this.ResumeLayout(false);
             this.PerformLayout();
