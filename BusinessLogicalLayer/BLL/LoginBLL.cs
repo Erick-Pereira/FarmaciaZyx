@@ -1,12 +1,20 @@
 ﻿using DataAccessLayer;
 using Entities;
 using Shared;
+using System.Text;
 
 namespace BusinessLogicalLayer
 {
     public class LoginBLL
     {
-
+        public string Validate(string email, string senha)
+        {
+            StringBuilder erros = new StringBuilder();
+            StringValidator stringValidator = new StringValidator();
+            erros.AppendLine(stringValidator.ValidateEmail(email));
+            erros.AppendLine(stringValidator.ValidateSenha(senha));
+            return erros.ToString();
+        }
         public SingleResponse<Funcionario> Logar(Login login)
         {
             LoginDAL loginDAL = new LoginDAL();

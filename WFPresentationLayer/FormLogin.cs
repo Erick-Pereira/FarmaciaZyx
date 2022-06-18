@@ -15,20 +15,18 @@ namespace WfPresentationLayer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            StringBuilder erros = new StringBuilder();
+           
             string email = txtEmail.Text;
             string senha = txtSenha.Text;
-            StringValidator stringValidator = new StringValidator();
-            erros.AppendLine(stringValidator.ValidateEmail(email));
-            erros.AppendLine(stringValidator.ValidateSenha(senha));
+            Login login = new Login(email, senha);
+            LoginBLL loginBLL = new LoginBLL();
+            string erros = loginBLL.Validate(email, senha);
             if (!string.IsNullOrWhiteSpace(erros.ToString()))
             {
                 MessageBox.Show(erros.ToString());
             }
             else
             {
-                Login login = new Login(email, senha);
-                LoginBLL loginBLL = new LoginBLL();
                 SingleResponse<Funcionario> response = loginBLL.Logar(login);
                 MessageBox.Show(response.Message);
                 if (response.HasSuccess)

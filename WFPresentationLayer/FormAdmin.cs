@@ -17,5 +17,11 @@
             FormCadastroFuncionario formCadastroCliente = new FormCadastroFuncionario();
             formCadastroCliente.ShowDialog();
         }
+
+        private void btnCadastrarProduto_Click(object sender, EventArgs e)
+        {
+            FormCadastroProduto formCadastroProduto = new FormCadastroProduto();
+            formCadastroProduto.ShowDialog();
+        }
     }
 }
