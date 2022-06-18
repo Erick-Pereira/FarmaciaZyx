@@ -12,7 +12,7 @@ namespace BusinessLogicalLayer
     public class LoginBLL
     {
         
-        public Response Logar(Login login)
+        public SingleResponse<Funcionario> Logar(Login login)
         {
            
             LoginDAL loginDAL = new LoginDAL();
@@ -21,13 +21,13 @@ namespace BusinessLogicalLayer
             {
                if(login.Senha == singleResponse.Item.Senha)
                 {
-                    return new Response("Login efetuado com sucesso", true);
+                    return new SingleResponse<Funcionario>("Login efetuado com sucesso", true, singleResponse.Item);
                 }
-               return new Response("Email ou senha esta incorreto",true);
+               return new SingleResponse<Funcionario>("Email ou senha esta incorreto",true, singleResponse.Item);
             }
            else
             {
-                return new Response(singleResponse.Message, singleResponse.HasSuccess);
+                return new SingleResponse<Funcionario>(singleResponse.Message, singleResponse.HasSuccess,null);
             }
         }
 

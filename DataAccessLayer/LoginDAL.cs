@@ -16,7 +16,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,EMAIL,SENHA FROM FUNCIONARIOS WHERE EMAIL = @EMAIL";
+            string sql = $"SELECT ID,EMAIL,SENHA,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE EMAIL = @EMAIL";
 
             string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf; Integrated Security = True; Connect Timeout = 3";
 
@@ -36,7 +36,7 @@ namespace DataAccessLayer
                     funcionario.ID = Convert.ToInt32(reader["ID"]);
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.Senha = Convert.ToString(reader["SENHA"]);
-
+                    funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
                     return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
                 }
                 return new SingleResponse<Funcionario>("Funcionario não encontrado!", false, null);
