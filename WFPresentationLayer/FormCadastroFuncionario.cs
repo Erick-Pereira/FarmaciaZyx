@@ -1,4 +1,6 @@
 ﻿using BusinessLogicalLayer;
+using Entities;
+using Shared;
 
 namespace WFPresentationLayer
 {
@@ -7,6 +9,7 @@ namespace WFPresentationLayer
         public FormCadastroFuncionario()
         {
             InitializeComponent();
+
             TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
             cmbTipoFuncionario.DataSource = tipoFuncionario.GetAll().Dados;
             cmbTipoFuncionario.DisplayMember = "Nome";
@@ -21,11 +24,16 @@ namespace WFPresentationLayer
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
+            string rg = "";
+            int tipoFuncionarioId = cmbTipoFuncionario.SelectedIndex;
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
             string telefone = mtxtTelefone.Text;
+            int enderecoId = 0;
+            string senha = "";
             //string nomeresponsavel = txtNomeResponsavel.Text;
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
             string cep = mtxtCep.Text;
@@ -33,16 +41,16 @@ namespace WFPresentationLayer
             string bairro = txtBairro.Text;
             string estado = txtEstado.Text;
             string cidade = txtCidade.Text;
-            string complemento = txtComplemento.Text;
             string numero = mtxtNumero.Text;
+            Funcionario funcionario = new Funcionario(nome,cpf, rg, telefone,email, senha, enderecoId, tipoFuncionarioId);
             //string pontoReferencia = txtPontoDeReferencia.Text;
             //Endereco endereco = new Endereco(rua, bairro, cep, numero, cidade, estado);
             //endereco.Complemento = txtComplemento.Text;
             //endereco.PontoReferencia = txtPontoDeReferencia.Text;
             //Cliente cli = new Cliente(0, nome, cpf, dataNascimento, email, endereco, telefone, genero, nomeresponsavel, true);
-            //ClienteValidator validator = new ClienteValidator();
-            //Response response = validator.Validate(cli);
-            //MessageBox.Show(response.Message);
+            FuncionarioValidator validator = new FuncionarioValidator();
+            Response response = validator.Validate(funcionario);
+            MessageBox.Show(response.Message);
         }
 
 

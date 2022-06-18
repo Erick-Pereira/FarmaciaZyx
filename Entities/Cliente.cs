@@ -6,6 +6,18 @@
         {
         }
 
+        public Cliente(string nome, string rG, string cPF, string telefone1, string telefone2, string email, int pontos, int tipoClienteId)
+        {
+            Nome = nome;
+            RG = rG;
+            CPF = cPF;
+            Telefone1 = telefone1;
+            Telefone2 = telefone2;
+            Email = email;
+            Pontos = pontos;
+            TipoClienteId = tipoClienteId;
+        }
+
         public Cliente(int iD, string nome, string rG, string cPF, string telefone1, string telefone2, string email, int pontos, int tipoClienteId)
         {
             ID = iD;

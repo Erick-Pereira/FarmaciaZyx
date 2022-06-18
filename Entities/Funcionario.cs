@@ -6,6 +6,18 @@
         {
         }
 
+        public Funcionario(string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId)
+        {
+            Nome = nome;
+            CPF = cPF;
+            RG = rG;
+            Telefone = telefone;
+            Email = email;
+            Senha = senha;
+            EnderecoId = enderecoId;
+            TipoFuncionarioId = tipoFuncionarioId;
+        }
+
         public Funcionario(int iD, string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId)
         {
             ID = iD;
