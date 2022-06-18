@@ -31,9 +31,6 @@ namespace WfPresentationLayer
                 Response response = loginBLL.Logar(login);
                 MessageBox.Show(response.Message);
             }
-            //LoginValidator validator = new LoginValidator();
-            //Response response = validator.Validate(login);
-            //MessageBox.Show(Response.Message);
         }
     }
 }
