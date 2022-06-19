@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroProduto));
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nudQtdEstoque = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
@@ -51,12 +51,12 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtNome.Location = new System.Drawing.Point(78, 71);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(100, 23);
+            this.txtNome.TabIndex = 1;
             // 
             // label1
             // 
@@ -76,12 +76,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Descrição";
             // 
-            // textBox2
+            // txtDescricao
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 117);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 3;
+            this.txtDescricao.Location = new System.Drawing.Point(78, 117);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(100, 23);
+            this.txtDescricao.TabIndex = 3;
             // 
             // label3
             // 
@@ -92,12 +92,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Laboratorio";
             // 
-            // textBox3
+            // txtLaboratorio
             // 
-            this.textBox3.Location = new System.Drawing.Point(78, 161);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 5;
+            this.txtLaboratorio.Location = new System.Drawing.Point(78, 161);
+            this.txtLaboratorio.Name = "txtLaboratorio";
+            this.txtLaboratorio.Size = new System.Drawing.Size(100, 23);
+            this.txtLaboratorio.TabIndex = 5;
             // 
             // label4
             // 
@@ -129,11 +129,11 @@
             this.Controls.Add(this.nudQtdEstoque);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtLaboratorio);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnCadastrar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCadastroProduto";
@@ -147,12 +147,12 @@
         #endregion
 
         private Button btnCadastrar;
-        private TextBox textBox1;
+        private TextBox txtNome;
         private Label label1;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtDescricao;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox txtLaboratorio;
         private Label label4;
         private NumericUpDown nudQtdEstoque;
     }

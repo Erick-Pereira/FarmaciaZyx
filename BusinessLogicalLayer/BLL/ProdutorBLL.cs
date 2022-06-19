@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogicalLayer.BLL
+namespace BusinessLogicalLayer
 {
     public class ProdutorBLL : ICRUD<Produto>
     {
         ProdutoDAL produtoDAL = new ProdutoDAL();
+        
         public Response Delete(int id)
         {
             return produtoDAL.Delete(id);
@@ -35,6 +36,17 @@ namespace BusinessLogicalLayer.BLL
         public Response Update(Produto item)
         {
             return produtoDAL.Update(item);
+        }
+
+        public Response CreateProduto(Produto item)
+        {
+            ProdutoValidator produtoValidator = new ProdutoValidator();
+            string erros = produtoValidator.Validate(item.Nome,item.Descricao,item.Laboratorio);
+            if (string.IsNullOrWhiteSpace(erros))
+            {
+                return Insert(item);
+            }
+            return new Response(erros, false);
         }
     }
 }

@@ -7,17 +7,17 @@ namespace BusinessLogicalLayer
 {
     public class LoginBLL
     {
-        public string Validate(string email, string senha)
-        {
-            StringBuilder erros = new StringBuilder();
-            StringValidator stringValidator = new StringValidator();
-            erros.AppendLine(stringValidator.ValidateEmail(email));
-            erros.AppendLine(stringValidator.ValidateSenha(senha));
-            return erros.ToString();
-        }
+        /// <summary>
+        /// Faz as validações do login, se email existir no banco de dados, verifica se a senha é a mesma.
+        /// Se for, o login é efetuado.
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>SingleResponse<Funcionario></returns>
         public SingleResponse<Funcionario> Logar(Login login)
         {
             LoginDAL loginDAL = new LoginDAL();
+            LoginValidator loginValidator = new LoginValidator();
+            string erros = loginValidator.Validate(login.Email, login.Senha);
             SingleResponse<Funcionario> singleResponse = loginDAL.GetByEmail(login.Email);
             if (singleResponse.HasSuccess)
             {

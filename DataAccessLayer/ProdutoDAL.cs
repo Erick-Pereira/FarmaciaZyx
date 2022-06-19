@@ -163,7 +163,7 @@ namespace DataAccessLayer
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
                     produto.Laboratorio = Convert.ToString(reader["LABORATORIO"]);
-                    produto.QtdEstoque = Convert.ToString(reader["QTD_ESTOQUE"]);
+                    produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     produtos.Add(produto);
                 }
                 return new DataResponse<Produto>("Produto selecionados com sucesso!", true, produtos);
@@ -205,7 +205,7 @@ namespace DataAccessLayer
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
                     produto.Laboratorio = Convert.ToString(reader["LABORATORIO"]);
-                    produto.QtdEstoque = Convert.ToString(reader["QTD_ESTOQUE"]);
+                    produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
                 }
                 return new SingleResponse<Produto>("Produto não encontrado!", false, null);

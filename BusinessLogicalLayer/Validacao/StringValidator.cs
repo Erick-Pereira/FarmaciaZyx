@@ -113,6 +113,11 @@ namespace BusinessLogicalLayer
             return "";
         }
 
+        /// <summary>
+        /// Verifica se o Email esta dentro dos padrões
+        /// </summary>
+        /// <param name="email">Senha a ser validada</param>
+        /// <returns>Retorna vazio "" caso o Email esteja correto</returns>
         public string ValidateEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -140,6 +145,11 @@ namespace BusinessLogicalLayer
             return "";
         }
 
+        /// <summary>
+        /// Verifica se o CEP esta dentro dos padrões
+        /// </summary>
+        /// <param name="cep">Senha a ser validada</param>
+        /// <returns>Retorna vazio "" caso o CEP esteja correto</returns>
         public string ValidateCEP(string cep)
         {
             if (string.IsNullOrWhiteSpace(cep))
@@ -165,7 +175,11 @@ namespace BusinessLogicalLayer
 
             return "";
         }
-
+        /// <summary>
+        /// Verifica se o telefone esta dentro dos padrões
+        /// </summary>
+        /// <param name="telefone">Senha a ser validada</param>
+        /// <returns>Retorna vazio "" caso o telefone esteja correto</returns>
         public string ValidateTelefone(string telefone)
         {
             if (string.IsNullOrWhiteSpace(telefone))
@@ -195,22 +209,22 @@ namespace BusinessLogicalLayer
             return "";
         }
         /// <summary>
-        /// Verifica algumas regras para o nome, como:
-        /// 1)Apenas alfabeto romano
-        /// 2)Apenas um espaço entre nome e sobrenome
-        /// 3)Mínimo de 3 caracteres
-        /// 4)Mínimo de 2 entre nome e sobrenome
+        /// Verifica se a senha esta dentro dos padrões
         /// </summary>
-        /// <param name="nome">Nome a ser validado</param>
-        /// <returns>Retorna vazio "" caso o nome esteja correto</returns>
+        /// <param name="senha">Senha a ser validada</param>
+        /// <returns>Retorna vazio "" caso a senha esteja correta</returns>
         public string ValidateSenha(string senha)
         {
             if (string.IsNullOrWhiteSpace(senha))
             {
                 return "Senha deve ser informado.";
             }
-            //Trim -> Remove espaços em branco do começo e do fim da string (mas não do meio)
-            senha = senha.Trim();
+
+            if(senha.Contains(" "))
+            {
+                return "Senha não deve conter espaço.";
+            }
+
             //Alfabeto romano e acentos gráficos
             if (senha.Length < 8)
             {

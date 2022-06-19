@@ -5,6 +5,11 @@ namespace BusinessLogicalLayer
 {
     public class Normatization
     {
+        /// <summary>
+        /// Normatiza o nome
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns>Retorna uma string com o nome nomatizado</returns>
         public string NormatizeName(string nome)
         {
             string nomeNormatizado = new CultureInfo("pt-br").TextInfo.ToTitleCase(nome);
