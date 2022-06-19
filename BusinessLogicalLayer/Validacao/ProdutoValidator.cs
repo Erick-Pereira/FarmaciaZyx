@@ -61,7 +61,7 @@ namespace BusinessLogicalLayer
             StringBuilder erros = new StringBuilder();
             erros.AppendLine(ValidateNome(produto.Nome));
             erros.AppendLine(ValidateDescricao(produto.Descricao));
-            erros.AppendLine(ValidateLaboratorio(produto.Laboratorio));
+            //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
             if (string.IsNullOrWhiteSpace(erros.ToString()))
             {
                 return new Response(erros.ToString(), true);

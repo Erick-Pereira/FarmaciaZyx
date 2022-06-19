@@ -18,7 +18,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE) VALUES (@NOME,@DESCRICAO,@LABORATORIO,@QTD_ESTOQUE)";
+            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE)";
 
             
 
@@ -28,7 +28,7 @@ namespace DataAccessLayer
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", produto.Nome);
             command.Parameters.AddWithValue("@DESCRICAO", produto.Descricao);
-            command.Parameters.AddWithValue("@LABORATORIO", produto.Laboratorio);
+            command.Parameters.AddWithValue("@LABORATORIO_ID", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
 
 
@@ -71,7 +71,7 @@ namespace DataAccessLayer
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", produto.Nome);
             command.Parameters.AddWithValue("@DESCRICAO", produto.Descricao);
-            command.Parameters.AddWithValue("@LABORATORIO", produto.Laboratorio);
+            command.Parameters.AddWithValue("@LABORATORIO", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
 
             //Estamos conectados na base de dados
@@ -164,7 +164,7 @@ namespace DataAccessLayer
                     produto.ID = Convert.ToInt32(reader["ID"]);
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
-                    produto.Laboratorio = Convert.ToString(reader["LABORATORIO"]);
+                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     produtos.Add(produto);
                 }
@@ -206,7 +206,7 @@ namespace DataAccessLayer
                     produto.ID = Convert.ToInt32(reader["ID"]);
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
-                    produto.Laboratorio = Convert.ToString(reader["LABORATORIO"]);
+                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
                 }

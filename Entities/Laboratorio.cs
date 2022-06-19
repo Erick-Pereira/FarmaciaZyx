@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class TipoCliente
+    public class Laboratorio
     {
-        public TipoCliente()
+        public Laboratorio()
         {
         }
 
-        public TipoCliente(int iD, string nome)
+        public Laboratorio(int iD, string nome)
         {
             ID = iD;
             Nome = nome;

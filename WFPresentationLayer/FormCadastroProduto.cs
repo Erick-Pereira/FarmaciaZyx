@@ -15,9 +15,13 @@ namespace WFPresentationLayer
 {
     public partial class FormCadastroProduto : Form
     {
+        LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         public FormCadastroProduto()
         {
             InitializeComponent();
+            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
+            cmbLaboratorio.DisplayMember = "Nome";
+            cmbLaboratorio.ValueMember = "ID";
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -26,7 +30,7 @@ namespace WFPresentationLayer
             ProdutorBLL produtorBLL = new ProdutorBLL();
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
-            string laboratorio = txtLaboratorio.Text;
+            int laboratorio = (cmbLaboratorio.SelectedIndex)+1;
             double qtdEstoque = (double)nudQtdEstoque.Value;
             Produto produto = new Produto(nome, descricao, laboratorio, qtdEstoque);
             Response response = produtorBLL.CreateProduto(produto);

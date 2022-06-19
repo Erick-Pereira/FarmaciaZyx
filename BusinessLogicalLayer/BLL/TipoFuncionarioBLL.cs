@@ -17,13 +17,12 @@ namespace BusinessLogicalLayer
             DataResponse<TipoFuncionario> dataResponse = tipoFuncionarioDal.GetAll();
             if (dataResponse.HasSuccess)
             {
-                    return new DataResponse<TipoFuncionario>("Login efetuado com sucesso", true, dataResponse.Dados);
+                    return new DataResponse<TipoFuncionario>(dataResponse.Message, true, dataResponse.Dados);
             }
             else
             {
                 return new DataResponse<TipoFuncionario>(dataResponse.Message, dataResponse.HasSuccess, null);
             }
         }
-
     }
 }

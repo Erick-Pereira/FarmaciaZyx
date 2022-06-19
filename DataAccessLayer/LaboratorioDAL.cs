@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class TipoClienteDAL
+    public class LaboratorioDAL
     {
         string connectionString = ConnectionString._connectionString;
-        public DataResponse<TipoFuncionario> GetAll()
+        public DataResponse<Laboratorio> GetAll()
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM TIPO_CLIENTE";
+            string sql = $"SELECT ID,NOME FROM LABORATORIOS";
 
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
@@ -26,20 +26,20 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                List<TipoFuncionario> tipoClientes = new List<TipoFuncionario>();
+                List<Laboratorio> tipoClientes = new List<Laboratorio>();
                 //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
-                    TipoFuncionario tipoCliente = new TipoFuncionario();
+                    Laboratorio tipoCliente = new Laboratorio();
                     tipoCliente.ID = Convert.ToInt32(reader["ID"]);
                     tipoCliente.Nome = Convert.ToString(reader["NOME"]);
                     tipoClientes.Add(tipoCliente);
                 }
-                return new DataResponse<TipoFuncionario>("Tipos de Funcionarios selecionados com sucesso!", true, tipoClientes);
+                return new DataResponse<Laboratorio>("Laboratorios selecionados com sucesso!", true, tipoClientes);
             }
             catch (Exception ex)
             {
-                return new DataResponse<TipoFuncionario>("Erro no banco de dados, contate o administrador.", false, null);
+                return new DataResponse<Laboratorio>("Erro no banco de dados, contate o administrador.", false, null);
             }
             //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally

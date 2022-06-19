@@ -30,7 +30,7 @@ namespace DataAccessLayer
                 //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
-                    TipoFuncionario tipoFuncionario= new TipoFuncionario();
+                    TipoFuncionario tipoFuncionario = new TipoFuncionario();
                     tipoFuncionario.ID = Convert.ToInt32(reader["ID"]);
                     tipoFuncionario.Nome = Convert.ToString(reader["NOME"]);
                     tipoFuncionarios.Add(tipoFuncionario);

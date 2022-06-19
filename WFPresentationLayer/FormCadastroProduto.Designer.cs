@@ -35,9 +35,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nudQtdEstoque = new System.Windows.Forms.NumericUpDown();
+            this.cmbLaboratorio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,13 +92,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Laboratorio";
             // 
-            // txtLaboratorio
-            // 
-            this.txtLaboratorio.Location = new System.Drawing.Point(78, 161);
-            this.txtLaboratorio.Name = "txtLaboratorio";
-            this.txtLaboratorio.Size = new System.Drawing.Size(100, 23);
-            this.txtLaboratorio.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -121,15 +114,23 @@
             this.nudQtdEstoque.Size = new System.Drawing.Size(100, 23);
             this.nudQtdEstoque.TabIndex = 8;
             // 
+            // cmbLaboratorio
+            // 
+            this.cmbLaboratorio.FormattingEnabled = true;
+            this.cmbLaboratorio.Location = new System.Drawing.Point(78, 161);
+            this.cmbLaboratorio.Name = "cmbLaboratorio";
+            this.cmbLaboratorio.Size = new System.Drawing.Size(100, 23);
+            this.cmbLaboratorio.TabIndex = 9;
+            // 
             // FormCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 312);
+            this.Controls.Add(this.cmbLaboratorio);
             this.Controls.Add(this.nudQtdEstoque);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtLaboratorio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label1);
@@ -152,8 +153,8 @@
         private Label label2;
         private TextBox txtDescricao;
         private Label label3;
-        private TextBox txtLaboratorio;
         private Label label4;
         private NumericUpDown nudQtdEstoque;
+        private ComboBox cmbLaboratorio;
     }
 }
