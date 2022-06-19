@@ -30,16 +30,6 @@ namespace BusinessLogicalLayer
 
         public Response Insert(Produto item)
         {
-            return produtoDAL.Insert(item);
-        }
-
-        public Response Update(Produto item)
-        {
-            return produtoDAL.Update(item);
-        }
-
-        public Response CreateProduto(Produto item)
-        {
             ProdutoValidator produtoValidator = new ProdutoValidator();
             Response response = produtoValidator.Validate(item);
             if (response.HasSuccess)
@@ -47,6 +37,11 @@ namespace BusinessLogicalLayer
                 return Insert(item);
             }
             return new Response(response.Message, false);
+        }
+
+        public Response Update(Produto item)
+        {
+            return produtoDAL.Update(item);
         }
     }
 }

@@ -28,7 +28,14 @@ namespace BusinessLogicalLayer
             //NAO ESQUEÇAM DAS VALIDAÇÕES!
             //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
             //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
-            return fornecedorDAL.Insert(item);
+            FornecedorValidator produtoValidator = new FornecedorValidator();
+            Response response = produtoValidator.Validate(item);
+            if (response.HasSuccess)
+            {
+                return fornecedorDAL.Insert(item);
+            }
+            return new Response(response.Message, false);
+            
         }
 
         public Response Update(Fornecedor item)

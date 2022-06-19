@@ -28,14 +28,6 @@ namespace BusinessLogicalLayer
             //NAO ESQUEÇAM DAS VALIDAÇÕES!
             //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
             //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
-            return clienteDAL.Insert(item);
-        }
-        public Response Update(Cliente item)
-        {
-            return clienteDAL.Update(item);
-        }
-        public Response CreateCliente(Cliente item)
-        {
             ClienteValidator clienteValidator = new ClienteValidator();
             Response response = clienteValidator.Validate(item);
             if (response.HasSuccess)
@@ -43,6 +35,10 @@ namespace BusinessLogicalLayer
                 return Insert(item);
             }
             return new Response(response.Message, false);
+        }
+        public Response Update(Cliente item)
+        {
+            return clienteDAL.Update(item);
         }
     }
 }

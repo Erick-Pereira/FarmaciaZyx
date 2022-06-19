@@ -33,7 +33,7 @@ namespace WFPresentationLayer
             int laboratorio = (cmbLaboratorio.SelectedIndex)+1;
             double qtdEstoque = (double)nudQtdEstoque.Value;
             Produto produto = new Produto(nome, descricao, laboratorio, qtdEstoque);
-            Response response = produtorBLL.CreateProduto(produto);
+            Response response = produtorBLL.Insert(produto);
             MessageBox.Show(response.Message);
         }
     }

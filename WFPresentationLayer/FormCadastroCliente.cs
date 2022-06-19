@@ -35,7 +35,7 @@ namespace WFPresentationLayer
             int tipoCliente = (cmbTipoCliente.SelectedIndex)+1;
             Cliente cliente = new Cliente(nome,rg,cpf,telefone1,telefone2,email, tipoCliente);
             ClienteBLL clienteBLL = new ClienteBLL();
-            Response response = clienteBLL.CreateCliente(cliente);
+            Response response = clienteBLL.Insert(cliente);
             MessageBox.Show(response.Message);
         }
     }

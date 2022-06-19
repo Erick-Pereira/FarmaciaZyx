@@ -24,5 +24,11 @@
             FormCadastroProduto formCadastroProduto = new FormCadastroProduto();
             formCadastroProduto.ShowDialog();
         }
+
+        private void btnRegistrarFornecedor_Click(object sender, EventArgs e)
+        {
+            FormCadastroFornecedor formCadastroFornecedor = new FormCadastroFornecedor();
+            formCadastroFornecedor.ShowDialog();
+        }
     }
 }

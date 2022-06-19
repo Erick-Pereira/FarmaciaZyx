@@ -93,6 +93,7 @@
             this.btnRegistrarFornecedor.TabIndex = 5;
             this.btnRegistrarFornecedor.Text = "Cadastrar Fornecedor";
             this.btnRegistrarFornecedor.UseVisualStyleBackColor = true;
+            this.btnRegistrarFornecedor.Click += new System.EventHandler(this.btnRegistrarFornecedor_Click);
             // 
             // FormAdmin
             // 

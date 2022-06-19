@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.mtxtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.btnCadastrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +76,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(12, 139);
+            this.txtEmail.Location = new System.Drawing.Point(74, 144);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 23);
             this.txtEmail.TabIndex = 5;
@@ -83,7 +84,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 121);
+            this.label3.Location = new System.Drawing.Point(74, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 15);
             this.label3.TabIndex = 4;
@@ -123,11 +124,22 @@
             this.mtxtTelefone.Size = new System.Drawing.Size(100, 23);
             this.mtxtTelefone.TabIndex = 8;
             // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Location = new System.Drawing.Point(74, 192);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(95, 30);
+            this.btnCadastrar.TabIndex = 10;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
             // FormCadastroFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 255);
+            this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.mtxtTelefone);
             this.Controls.Add(this.label4);
@@ -158,5 +170,6 @@
         private Label label4;
         private Label label5;
         private MaskedTextBox mtxtTelefone;
+        private Button btnCadastrar;
     }
 }
