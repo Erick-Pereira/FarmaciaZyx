@@ -18,19 +18,19 @@ namespace BusinessLogicalLayer
             LoginDAL loginDAL = new LoginDAL();
             LoginValidator loginValidator = new LoginValidator();
             string erros = loginValidator.Validate(login.Email, login.Senha);
-            SingleResponse<Funcionario> singleResponse = loginDAL.GetByEmail(login.Email);
-            if (singleResponse.HasSuccess)
+            if (string.IsNullOrWhiteSpace(erros))
             {
-                if (login.Senha == singleResponse.Item.Senha)
+                SingleResponse<Funcionario> singleResponse = loginDAL.GetByEmail(login.Email);
+                if (singleResponse.HasSuccess)
                 {
-                    return new SingleResponse<Funcionario>("Login efetuado com sucesso", true, singleResponse.Item);
+                    if (login.Senha == singleResponse.Item.Senha)
+                    {
+                        return new SingleResponse<Funcionario>("Login efetuado com sucesso", true, singleResponse.Item);
+                    }
+                    return new SingleResponse<Funcionario>("Email ou senha esta incorreto", false, singleResponse.Item);
                 }
-                return new SingleResponse<Funcionario>("Email ou senha esta incorreto", true, singleResponse.Item);
             }
-            else
-            {
-                return new SingleResponse<Funcionario>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+                return new SingleResponse<Funcionario>(erros, false, null);
         }
 
     }
