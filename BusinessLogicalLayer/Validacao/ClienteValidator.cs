@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using Entities;
 using Shared;
+using System.Text;
 
 namespace BusinessLogicalLayer
 {
@@ -15,31 +16,20 @@ namespace BusinessLogicalLayer
 
         public Response Validate(Cliente cliente)
         {
-            string erros = "";
-
-            erros += stringValidator.ValidateNome(cliente.Nome);
-            erros += stringValidator.ValidateCPF(cliente.CPF);
-            erros += stringValidator.ValidateEmail(cliente.Email);
-            erros += stringValidator.ValidateTelefone(cliente.Telefone1);
-            erros += stringValidator.ValidateTelefone(cliente.Telefone2);
+            StringBuilder erros = new StringBuilder();
+            erros.AppendLine(stringValidator.ValidateNome(cliente.Nome));
+            erros.AppendLine(stringValidator.ValidateCPF(cliente.CPF));
+            erros.AppendLine(stringValidator.ValidateEmail(cliente.Email));
+            erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone1));
+            erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone2));
+            //cliente.Nome = (normatization.NormatizeName(cliente.Nome));
             //Sintaxe cliente.Endereco?.CEP verifica e só passaria o CEP informado caso a propriedade
             //Endereco de dentro do Cliente não seja nula, caso contrário, passará o valor padrão do CEP (que é uma string e vale null!)
-
-            //CPF do cliente deve ser único
-            // if (clienteDAL.(cliente.CPF).HasSuccess)
+            if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
             {
-                erros += "CPF já cadastrado.";
+                return new Response(erros.ToString(), true);
             }
-
-            //Se encontramos erro
-            if (erros.Length != 0)
-            {
-                return new Response(erros, false);
-            }
-
-            //Se chegou aqui, validamos com sucesso!
-            cliente.Nome = (normatization.NormatizeName(cliente.Nome));
-            return clienteDAL.Insert(cliente);
+            return new Response(erros.ToString().Trim(), false);
         }
 
     }

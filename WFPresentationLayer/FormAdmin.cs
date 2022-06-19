@@ -9,13 +9,14 @@
 
         private void btnCadastrarCliente_Click(object sender, EventArgs e)
         {
-            
+            FormCadastroCliente formCadastroCliente = new FormCadastroCliente();
+            formCadastroCliente.ShowDialog();
         }
 
         private void btnCadastrarFuncionario_Click(object sender, EventArgs e)
         {
-            FormCadastroFuncionario formCadastroCliente = new FormCadastroFuncionario();
-            formCadastroCliente.ShowDialog();
+            FormCadastroFuncionario formCadastroFuncionario = new FormCadastroFuncionario();
+            formCadastroFuncionario.ShowDialog();
         }
 
         private void btnCadastrarProduto_Click(object sender, EventArgs e)

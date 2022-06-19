@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroCliente));
             this.cmbTipoCliente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@
             this.mtxtTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnCadastrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbTipoCliente
@@ -62,19 +63,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome";
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(33, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 2;
+            this.txtNome.Location = new System.Drawing.Point(33, 46);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(100, 23);
+            this.txtNome.TabIndex = 2;
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(33, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 4;
+            this.txtEmail.Location = new System.Drawing.Point(33, 90);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 23);
+            this.txtEmail.TabIndex = 4;
             // 
             // label2
             // 
@@ -106,7 +107,7 @@
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
             this.mtxtCpf.Location = new System.Drawing.Point(33, 131);
-            this.mtxtCpf.Mask = "000,000,000-00";
+            this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";
             this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
             this.mtxtCpf.TabIndex = 42;
@@ -165,11 +166,22 @@
             this.label6.TabIndex = 49;
             this.label6.Text = "Tipo de Cliente";
             // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Location = new System.Drawing.Point(79, 216);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(144, 23);
+            this.btnCadastrar.TabIndex = 50;
+            this.btnCadastrar.Text = "Cadastrar Cliente";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
             // FormCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(378, 272);
+            this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.mtxtTelefone2);
             this.Controls.Add(this.label4);
@@ -179,9 +191,9 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.mtxtCpf);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbTipoCliente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -196,8 +208,8 @@
 
         private ComboBox cmbTipoCliente;
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtNome;
+        private TextBox txtEmail;
         private Label label2;
         private MaskedTextBox mtxtRg;
         private Label label16;
@@ -208,5 +220,6 @@
         private MaskedTextBox mtxtTelefone2;
         private Label label4;
         private Label label6;
+        private Button btnCadastrar;
     }
 }

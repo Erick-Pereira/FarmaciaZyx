@@ -34,5 +34,15 @@ namespace BusinessLogicalLayer
         {
             return clienteDAL.Update(item);
         }
+        public Response CreateCliente(Cliente item)
+        {
+            ClienteValidator clienteValidator = new ClienteValidator();
+            Response response = clienteValidator.Validate(item);
+            if (response.HasSuccess)
+            {
+                return Insert(item);
+            }
+            return new Response(response.Message, false);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities;
+using Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,13 +56,17 @@ namespace BusinessLogicalLayer
         /// <param name="descricao"></param>
         /// <param name="laboratorio"></param>
         /// <returns>Retorna uma string contendo os erros, "" se não houver erros</returns>
-        public string Validate(string nome, string descricao, string laboratorio)
+        public Response Validate(Produto produto)
         {
             StringBuilder erros = new StringBuilder();
-            erros.AppendLine(ValidateNome(nome));
-            erros.AppendLine(ValidateDescricao(descricao));
-            erros.AppendLine(ValidateLaboratorio(laboratorio));
-            return erros.ToString();
+            erros.AppendLine(ValidateNome(produto.Nome));
+            erros.AppendLine(ValidateDescricao(produto.Descricao));
+            erros.AppendLine(ValidateLaboratorio(produto.Laboratorio));
+            if (string.IsNullOrWhiteSpace(erros.ToString()))
+            {
+                return new Response(erros.ToString(), true);
+            }
+            return new Response(erros.ToString(), false);
         }
     }
 }

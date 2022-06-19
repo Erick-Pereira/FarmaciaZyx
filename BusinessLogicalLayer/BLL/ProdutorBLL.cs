@@ -41,12 +41,12 @@ namespace BusinessLogicalLayer
         public Response CreateProduto(Produto item)
         {
             ProdutoValidator produtoValidator = new ProdutoValidator();
-            string erros = produtoValidator.Validate(item.Nome,item.Descricao,item.Laboratorio);
-            if (string.IsNullOrWhiteSpace(erros))
+            Response response = produtoValidator.Validate(item);
+            if (response.HasSuccess)
             {
                 return Insert(item);
             }
-            return new Response(erros, false);
+            return new Response(response.Message, false);
         }
     }
 }
