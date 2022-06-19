@@ -4,7 +4,6 @@ namespace BusinessLogicalLayer
 {
     public class StringValidator
     {
-
         //private const int MAXIMO_CARACTERES_NOME = 100;
 
         /// <summary>
