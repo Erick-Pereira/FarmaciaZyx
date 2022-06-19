@@ -6,6 +6,8 @@ namespace DataAccessLayer
 {
     public class LoginDAL
     {
+        string connectionString = ConnectionString._connectionString;
+
         public SingleResponse<Funcionario> GetByEmail(string email)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
@@ -13,7 +15,7 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,EMAIL,SENHA,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE EMAIL = @EMAIL";
 
-            string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf; Integrated Security = True; Connect Timeout = 3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);

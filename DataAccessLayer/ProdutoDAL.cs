@@ -11,6 +11,8 @@ namespace DataAccessLayer
 {
     public class ProdutoDAL:ICRUD<Produto>
     {
+        string connectionString = ConnectionString._connectionString;
+
         public Response Insert(Produto produto)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
@@ -18,7 +20,7 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE) VALUES (@NOME,@DESCRICAO,@LABORATORIO,@QTD_ESTOQUE)";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -61,7 +63,7 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO = @LABORATORIO, QTD_ESTOQUE = @QTD_ESTOQUE WHERE ID = @ID";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -103,7 +105,7 @@ namespace DataAccessLayer
         {
             string sql = "DELETE FROM PRODUTOS WHERE ID = @ID";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -144,7 +146,7 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE FROM PRODUTOS";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -186,7 +188,7 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE FROM PRODUTOS WHERE ID = @ID";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);

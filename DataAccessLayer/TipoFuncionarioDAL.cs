@@ -11,13 +11,14 @@ namespace DataAccessLayer
 {
     public class TipoFuncionarioDAL
     {
+        string connectionString = ConnectionString._connectionString;
         public DataResponse<TipoFuncionario> GetAll()
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME FROM TIPO_FUNCIONARIO";
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+            
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
             SqlCommand command = new SqlCommand(sql, connection);
