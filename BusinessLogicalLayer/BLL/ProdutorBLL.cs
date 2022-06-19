@@ -38,7 +38,10 @@ namespace BusinessLogicalLayer
             }
             return new Response(response.Message, false);
         }
-
+        public SingleResponse<Produto> GetByNome(string nome)
+        {
+            return produtoDAL.GetByName(nome);
+        }
         public Response Update(Produto item)
         {
             return produtoDAL.Update(item);

@@ -38,12 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.nudQtdEstoque = new System.Windows.Forms.NumericUpDown();
             this.cmbLaboratorio = new System.Windows.Forms.ComboBox();
+            this.cmbUnidade = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(78, 248);
+            this.btnCadastrar.Location = new System.Drawing.Point(78, 299);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(100, 23);
             this.btnCadastrar.TabIndex = 0;
@@ -95,7 +97,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 187);
+            this.label4.Location = new System.Drawing.Point(78, 238);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 15);
             this.label4.TabIndex = 7;
@@ -109,7 +111,7 @@
             0,
             0,
             65536});
-            this.nudQtdEstoque.Location = new System.Drawing.Point(78, 205);
+            this.nudQtdEstoque.Location = new System.Drawing.Point(78, 256);
             this.nudQtdEstoque.Name = "nudQtdEstoque";
             this.nudQtdEstoque.Size = new System.Drawing.Size(100, 23);
             this.nudQtdEstoque.TabIndex = 8;
@@ -122,11 +124,30 @@
             this.cmbLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.cmbLaboratorio.TabIndex = 9;
             // 
+            // cmbUnidade
+            // 
+            this.cmbUnidade.FormattingEnabled = true;
+            this.cmbUnidade.Location = new System.Drawing.Point(78, 212);
+            this.cmbUnidade.Name = "cmbUnidade";
+            this.cmbUnidade.Size = new System.Drawing.Size(100, 23);
+            this.cmbUnidade.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(78, 194);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Un";
+            // 
             // FormCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 312);
+            this.ClientSize = new System.Drawing.Size(304, 345);
+            this.Controls.Add(this.cmbUnidade);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbLaboratorio);
             this.Controls.Add(this.nudQtdEstoque);
             this.Controls.Add(this.label4);
@@ -156,5 +177,7 @@
         private Label label4;
         private NumericUpDown nudQtdEstoque;
         private ComboBox cmbLaboratorio;
+        private ComboBox cmbUnidade;
+        private Label label5;
     }
 }

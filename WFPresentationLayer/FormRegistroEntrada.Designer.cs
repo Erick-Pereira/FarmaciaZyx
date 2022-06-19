@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistroEntrada));
-            this.cbmFornecedor = new System.Windows.Forms.ComboBox();
+            this.cmbFornecedor = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCadastrarNovoFornecedor = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -40,17 +40,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbUnidade = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbmFornecedor
+            // cmbFornecedor
             // 
-            this.cbmFornecedor.FormattingEnabled = true;
-            this.cbmFornecedor.Location = new System.Drawing.Point(353, 47);
-            this.cbmFornecedor.Name = "cbmFornecedor";
-            this.cbmFornecedor.Size = new System.Drawing.Size(121, 23);
-            this.cbmFornecedor.TabIndex = 0;
+            this.cmbFornecedor.FormattingEnabled = true;
+            this.cmbFornecedor.Location = new System.Drawing.Point(353, 47);
+            this.cmbFornecedor.Name = "cmbFornecedor";
+            this.cmbFornecedor.Size = new System.Drawing.Size(121, 23);
+            this.cmbFornecedor.TabIndex = 0;
             // 
             // label1
             // 
@@ -69,6 +76,7 @@
             this.btnCadastrarNovoFornecedor.TabIndex = 2;
             this.btnCadastrarNovoFornecedor.Text = "Cadastrar novo Fornecedor";
             this.btnCadastrarNovoFornecedor.UseVisualStyleBackColor = true;
+            this.btnCadastrarNovoFornecedor.Click += new System.EventHandler(this.btnCadastrarNovoFornecedor_Click);
             // 
             // dateTimePicker1
             // 
@@ -103,19 +111,21 @@
             this.btnCadastroNovoProduto.TabIndex = 6;
             this.btnCadastroNovoProduto.Text = "Cadastrar novo Produto";
             this.btnCadastroNovoProduto.UseVisualStyleBackColor = true;
+            this.btnCadastroNovoProduto.Click += new System.EventHandler(this.btnCadastroNovoProduto_Click);
             // 
             // cmbProduto
             // 
             this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(251, 149);
+            this.cmbProduto.Location = new System.Drawing.Point(279, 148);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 23);
             this.cmbProduto.TabIndex = 7;
+            this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 131);
+            this.label3.Location = new System.Drawing.Point(279, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 8;
@@ -123,9 +133,9 @@
             // 
             // nudQtde
             // 
-            this.nudQtde.Location = new System.Drawing.Point(154, 149);
+            this.nudQtde.Location = new System.Drawing.Point(152, 149);
             this.nudQtde.Name = "nudQtde";
-            this.nudQtde.Size = new System.Drawing.Size(72, 23);
+            this.nudQtde.Size = new System.Drawing.Size(74, 23);
             this.nudQtde.TabIndex = 9;
             // 
             // label4
@@ -137,11 +147,80 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Qtde.";
             // 
+            // cmbUnidade
+            // 
+            this.cmbUnidade.FormattingEnabled = true;
+            this.cmbUnidade.Location = new System.Drawing.Point(232, 148);
+            this.cmbUnidade.Name = "cmbUnidade";
+            this.cmbUnidade.Size = new System.Drawing.Size(41, 23);
+            this.cmbUnidade.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(232, 130);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Un";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(664, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 15);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Valor";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(664, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Desconto(%)";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(661, 103);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 15);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Desconto(R$)";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(664, 157);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 15);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "n itens";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(664, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 15);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Total Pago";
+            // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.label3);
@@ -152,7 +231,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCadastrarNovoFornecedor);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbmFornecedor);
+            this.Controls.Add(this.cmbFornecedor);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegistroEntrada";
             this.Text = "Registro Entrada";
@@ -165,7 +244,7 @@
 
         #endregion
 
-        private ComboBox cbmFornecedor;
+        private ComboBox cmbFornecedor;
         private Label label1;
         private Button btnCadastrarNovoFornecedor;
         private DateTimePicker dateTimePicker1;
@@ -176,5 +255,12 @@
         private Label label3;
         private NumericUpDown nudQtde;
         private Label label4;
+        private ComboBox cmbUnidade;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
     }
 }

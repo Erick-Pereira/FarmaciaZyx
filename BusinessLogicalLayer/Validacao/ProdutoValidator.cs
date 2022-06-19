@@ -23,6 +23,23 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+
+        private string ValidateUnidade(Produto produto)
+        {
+            int conversao = 0;
+            if(produto.TipoUnidadeId == 1)
+            {
+                if(int.TryParse(produto.QtdEstoque.ToString(), out conversao))
+                {
+                    return "";
+                }
+                return "Quantidade em estoque não compativel com Unidade";
+            }
+            return "";
+        }
+
+
+
         /// <summary>
         /// Verifica se a descrição esta vazia ou se é apenas espaços em branco
         /// </summary>
@@ -61,6 +78,7 @@ namespace BusinessLogicalLayer
             StringBuilder erros = new StringBuilder();
             erros.AppendLine(ValidateNome(produto.Nome));
             erros.AppendLine(ValidateDescricao(produto.Descricao));
+            erros.AppendLine(ValidateUnidade(produto));
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
             if (string.IsNullOrWhiteSpace(erros.ToString()))
             {

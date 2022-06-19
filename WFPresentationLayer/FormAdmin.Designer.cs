@@ -75,6 +75,7 @@
             this.btnRegistrarEntrada.TabIndex = 3;
             this.btnRegistrarEntrada.Text = "Registrar Entrada";
             this.btnRegistrarEntrada.UseVisualStyleBackColor = true;
+            this.btnRegistrarEntrada.Click += new System.EventHandler(this.btnRegistrarEntrada_Click);
             // 
             // btnRegistrarSaida
             // 
@@ -84,6 +85,7 @@
             this.btnRegistrarSaida.TabIndex = 4;
             this.btnRegistrarSaida.Text = "Registrar Saida";
             this.btnRegistrarSaida.UseVisualStyleBackColor = true;
+            this.btnRegistrarSaida.Click += new System.EventHandler(this.btnRegistrarSaida_Click);
             // 
             // btnRegistrarFornecedor
             // 

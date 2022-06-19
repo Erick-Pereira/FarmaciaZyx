@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class ProdutoDAL:ICRUD<Produto>
+    public class ProdutoDAL : ICRUD<Produto>
     {
         string connectionString = ConnectionString._connectionString;
 
@@ -18,9 +18,9 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE)";
+            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE,@TIPO_UNIDADE_ID)";
 
-            
+
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -30,6 +30,7 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@DESCRICAO", produto.Descricao);
             command.Parameters.AddWithValue("@LABORATORIO_ID", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
+            command.Parameters.AddWithValue("@TIPO_UNIDADE_ID", produto.TipoUnidadeId);
 
 
 
@@ -61,9 +62,9 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO = @LABORATORIO, QTD_ESTOQUE = @QTD_ESTOQUE WHERE ID = @ID";
+            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID WHERE ID = @ID";
 
-            
+
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -71,8 +72,9 @@ namespace DataAccessLayer
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", produto.Nome);
             command.Parameters.AddWithValue("@DESCRICAO", produto.Descricao);
-            command.Parameters.AddWithValue("@LABORATORIO", produto.LaboratorioId);
+            command.Parameters.AddWithValue("@LABORATORIO_ID", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
+            command.Parameters.AddWithValue("@TIPO_UNIDADE_ID", produto.TipoUnidadeId);
 
             //Estamos conectados na base de dados
             //try catch
@@ -105,7 +107,7 @@ namespace DataAccessLayer
         {
             string sql = "DELETE FROM PRODUTOS WHERE ID = @ID";
 
-            
+
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -144,9 +146,9 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE FROM PRODUTOS";
+            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS";
 
-            
+
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -164,8 +166,9 @@ namespace DataAccessLayer
                     produto.ID = Convert.ToInt32(reader["ID"]);
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
-                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO"]);
+                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
+                    produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
                     produtos.Add(produto);
                 }
                 return new DataResponse<Produto>("Produto selecionados com sucesso!", true, produtos);
@@ -186,9 +189,9 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT NOME,DESCRICAO,LABORATORIO,QTD_ESTOQUE FROM PRODUTOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS WHERE ID = @ID";
 
-            
+
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -206,8 +209,52 @@ namespace DataAccessLayer
                     produto.ID = Convert.ToInt32(reader["ID"]);
                     produto.Nome = Convert.ToString(reader["NOME"]);
                     produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
-                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO"]);
+                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
+                    produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
+                    return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
+                }
+                return new SingleResponse<Produto>("Produto não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Produto>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public SingleResponse<Produto> GetByName(string nome)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS WHERE NOME = @NOME";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@NOME", nome);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Produto produto = new Produto();
+                    produto.ID = Convert.ToInt32(reader["ID"]);
+                    produto.Nome = Convert.ToString(reader["NOME"]);
+                    produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
+                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
+                    produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
+                    produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
                     return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
                 }
                 return new SingleResponse<Produto>("Produto não encontrado!", false, null);

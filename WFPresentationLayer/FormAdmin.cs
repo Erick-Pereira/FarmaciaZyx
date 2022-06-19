@@ -30,5 +30,17 @@
             FormCadastroFornecedor formCadastroFornecedor = new FormCadastroFornecedor();
             formCadastroFornecedor.ShowDialog();
         }
+
+        private void btnRegistrarEntrada_Click(object sender, EventArgs e)
+        {
+            FormRegistroEntrada formRegistroEntrada = new FormRegistroEntrada();
+            formRegistroEntrada.ShowDialog();
+        }
+
+        private void btnRegistrarSaida_Click(object sender, EventArgs e)
+        {
+            FormRegistroSaida formRegistroSaida = new FormRegistroSaida();
+            formRegistroSaida.ShowDialog();
+        }
     }
 }
