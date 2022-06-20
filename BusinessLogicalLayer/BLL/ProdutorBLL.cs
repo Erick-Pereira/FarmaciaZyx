@@ -34,7 +34,7 @@ namespace BusinessLogicalLayer
             Response response = produtoValidator.Validate(item);
             if (response.HasSuccess)
             {
-                return Insert(item);
+                return produtoDAL.Insert(item);
             }
             return new Response(response.Message, false);
         }

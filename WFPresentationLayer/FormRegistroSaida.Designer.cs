@@ -35,7 +35,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbUnidade = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -103,14 +103,6 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Un";
             // 
-            // cmbUnidade
-            // 
-            this.cmbUnidade.FormattingEnabled = true;
-            this.cmbUnidade.Location = new System.Drawing.Point(257, 145);
-            this.cmbUnidade.Name = "cmbUnidade";
-            this.cmbUnidade.Size = new System.Drawing.Size(41, 23);
-            this.cmbUnidade.TabIndex = 29;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -143,6 +135,7 @@
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 23);
             this.cmbProduto.TabIndex = 25;
+            this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -186,18 +179,26 @@
             this.cmbCliente.Size = new System.Drawing.Size(121, 23);
             this.cmbCliente.TabIndex = 18;
             // 
+            // txtUnidade
+            // 
+            this.txtUnidade.Location = new System.Drawing.Point(254, 146);
+            this.txtUnidade.Name = "txtUnidade";
+            this.txtUnidade.ReadOnly = true;
+            this.txtUnidade.Size = new System.Drawing.Size(44, 23);
+            this.txtUnidade.TabIndex = 36;
+            // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtUnidade);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.label3);
@@ -210,6 +211,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegistroSaida";
             this.Text = "Registro Saida";
+            this.Load += new System.EventHandler(this.FormRegistroSaida_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -225,7 +227,6 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private ComboBox cmbUnidade;
         private Label label4;
         private NumericUpDown nudQtde;
         private Label label3;
@@ -235,5 +236,6 @@
         private DateTimePicker dateTimePicker1;
         private Label label1;
         private ComboBox cmbCliente;
+        private TextBox txtUnidade;
     }
 }

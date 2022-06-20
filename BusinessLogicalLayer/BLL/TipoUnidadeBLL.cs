@@ -24,5 +24,18 @@ namespace BusinessLogicalLayer
                 return new DataResponse<TipoUnidade>(dataResponse.Message, dataResponse.HasSuccess, null);
             }
         }
+        public SingleResponse<TipoUnidade> GetById(int id)
+        {
+            TipoUnidadeDAL tipoUnidadeDAL = new TipoUnidadeDAL();
+            SingleResponse<TipoUnidade> singleResponse = tipoUnidadeDAL.GetByID(id);
+            if (singleResponse.HasSuccess)
+            {
+                return new SingleResponse<TipoUnidade>(singleResponse.Message, true, singleResponse.Item);
+            }
+            else
+            {
+                return new SingleResponse<TipoUnidade>(singleResponse.Message, singleResponse.HasSuccess, null);
+            }
+        }
     }
 }
