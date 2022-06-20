@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    internal class ConnectionString
+    internal static class ConnectionString
     {
-       public const string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyx.mdf;Integrated Security=True;Connect Timeout=3";
+       public const string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\The_Shelow\Documents\FarmaciaZyxDb.mdf;Integrated Security=True;Connect Timeout=3";
     }
 }

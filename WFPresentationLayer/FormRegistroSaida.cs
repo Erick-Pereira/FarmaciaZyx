@@ -21,22 +21,14 @@ namespace WFPresentationLayer
         public FormRegistroSaida()
         {
             InitializeComponent();
-            cmbCliente.DataSource = clienteBLL.GetAll().Dados;
-            cmbCliente.DisplayMember = "RazaoSocial";
-            cmbCliente.ValueMember = "ID";
-            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
-            cmbProduto.DisplayMember = "Nome";
-            cmbProduto.ValueMember = "ID";
+
             //cmbUnidade.DataSource = TipoUnidadeBLL.GetAll().Dados;
             //cmbUnidade.DisplayMember = "Nome";
             //cmbUnidade.ValueMember = "ID";
         }
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Produto> displayedValues = new List<Produto>();
-            foreach (Produto ci in cmbProduto.Items)
-            displayedValues.Add(ci);
-            txtUnidade.Text = TipoUnidadeBLL.GetById(displayedValues[cmbProduto.SelectedIndex].TipoUnidadeId).Item.Nome;
+            txtUnidade.Text = TipoUnidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
             if (txtUnidade.Text == "UN")
             {
                 nudQtde.DecimalPlaces = 0;
@@ -49,10 +41,13 @@ namespace WFPresentationLayer
 
         private void FormRegistroSaida_Load(object sender, EventArgs e)
         {
-            List<Produto> displayedValues = new List<Produto>();
-            foreach (Produto ci in cmbProduto.Items)
-                displayedValues.Add(ci);
-            txtUnidade.Text = TipoUnidadeBLL.GetById(displayedValues[cmbProduto.SelectedIndex].TipoUnidadeId).Item.Nome;
+            cmbCliente.DataSource = clienteBLL.GetAll().Dados;
+            cmbCliente.DisplayMember = "RazaoSocial";
+            cmbCliente.ValueMember = "ID";
+            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
+            cmbProduto.DisplayMember = "Nome";
+            cmbProduto.ValueMember = "ID";
+            txtUnidade.Text = TipoUnidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
             if (txtUnidade.Text == "UN")
             {
                 nudQtde.DecimalPlaces = 0;

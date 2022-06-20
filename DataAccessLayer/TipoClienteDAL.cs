@@ -17,7 +17,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM TIPO_CLIENTE";
+            string sql = $"SELECT ID,NOME FROM TIPOS_CLIENTES";
 
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 

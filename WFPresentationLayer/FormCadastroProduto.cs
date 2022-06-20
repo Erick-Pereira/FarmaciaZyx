@@ -34,9 +34,9 @@ namespace WFPresentationLayer
             ProdutorBLL produtorBLL = new ProdutorBLL();
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
-            int laboratorio = (cmbLaboratorio.SelectedIndex)+1;
+            int laboratorio = Convert.ToInt32(cmbLaboratorio.SelectedValue);
             double qtdEstoque = (double)nudQtdEstoque.Value;
-            int unidade = (cmbUnidade.SelectedIndex)+1;
+            int unidade = Convert.ToInt32(cmbUnidade.SelectedValue);
             Produto produto = new Produto(nome, descricao, laboratorio, qtdEstoque, unidade);
             Response response = produtorBLL.Insert(produto);
             MessageBox.Show(response.Message);

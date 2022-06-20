@@ -13,7 +13,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO CIDADE (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID)";
+            string sql = $"INSERT INTO CIDADES (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID)";
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -49,7 +49,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE CIDADE SET NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID WHERE ID = @ID";
+            string sql = $"UPDATE CIDADES SET NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID WHERE ID = @ID";
 
             
 
@@ -90,7 +90,7 @@ namespace DataAccessLayer
 
         public Response Delete(int id)
         {
-            string sql = "DELETE FROM CIDADE WHERE ID = @ID";
+            string sql = "DELETE FROM CIDADES WHERE ID = @ID";
 
             
 
@@ -131,7 +131,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADE";
+            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES";
 
             
 
@@ -171,7 +171,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADE WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE ID = @ID";
 
             
 

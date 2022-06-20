@@ -28,7 +28,7 @@ namespace WFPresentationLayer
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
             string rg = mtxtRg.Text;
-            int tipoFuncionarioId = cmbTipoFuncionario.SelectedIndex;
+            int tipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
             string telefone = mtxtTelefone.Text;

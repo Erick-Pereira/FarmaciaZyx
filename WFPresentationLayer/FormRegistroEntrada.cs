@@ -14,6 +14,7 @@ namespace WFPresentationLayer
 {
     public partial class FormRegistroEntrada : Form
     {
+        List<Produto> produtos = new List<Produto>();
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
         ProdutorBLL produtorBLL = new ProdutorBLL();
         TipoUnidadeBLL unidadeBLL = new TipoUnidadeBLL();
@@ -21,12 +22,7 @@ namespace WFPresentationLayer
         public FormRegistroEntrada()
         {
             InitializeComponent();
-            cmbFornecedor.DataSource = fornecedorBLL.GetAll().Dados;
-            cmbFornecedor.DisplayMember = "RazaoSocial";
-            cmbFornecedor.ValueMember = "ID";
-            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
-            cmbProduto.DisplayMember = "Nome";
-            cmbProduto.ValueMember = "ID";           
+          
         }
 
         private void btnCadastrarNovoFornecedor_Click(object sender, EventArgs e)
@@ -50,10 +46,13 @@ namespace WFPresentationLayer
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
-            List<Produto> displayedValues = new List<Produto>();
-            foreach (Produto ci in cmbProduto.Items)
-                displayedValues.Add(ci);
-            txtUnidade.Text = unidadeBLL.GetById(displayedValues[cmbProduto.SelectedIndex].TipoUnidadeId).Item.Nome;
+            cmbFornecedor.DataSource = fornecedorBLL.GetAll().Dados;
+            cmbFornecedor.DisplayMember = "RazaoSocial";
+            cmbFornecedor.ValueMember = "ID";
+            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
+            cmbProduto.DisplayMember = "Nome";
+            cmbProduto.ValueMember = "ID";
+            txtUnidade.Text = unidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
             if (txtUnidade.Text == "UN")
             {
                 nudQtde.DecimalPlaces = 0;
@@ -69,7 +68,7 @@ namespace WFPresentationLayer
             List<Produto> displayedValues = new List<Produto>();
             foreach (Produto ci in cmbProduto.Items)
                 displayedValues.Add(ci);
-            txtUnidade.Text = unidadeBLL.GetById(displayedValues[cmbProduto.SelectedIndex].TipoUnidadeId).Item.Nome;
+            txtUnidade.Text = unidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
             if(txtUnidade.Text == "UN")
             {
                 nudQtde.DecimalPlaces = 0;
@@ -82,22 +81,20 @@ namespace WFPresentationLayer
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            List<Produto> displayedValues = new List<Produto>();
-            foreach (Produto ci in cmbProduto.Items)
-            displayedValues.Add(ci);
-            Produto produto = produtorBLL.GetByID(displayedValues[cmbProduto.SelectedIndex].ID).Item;
-            produtosEntrada.Add(produto);
+            
+            Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
+            produtos.Add(produto);
             //produto.QtdEstoque -= (double)nudQtde.Value;
             //produtorBLL.Update(produto);
             //DataTable dt = new DataTable();
             //dt = produto;
             dgvProdutos.Rows.Add();
-            int cont = produtosEntrada.Count-1;
-                dgvProdutos.Rows[cont].Cells["Column1"].Value = produto.ID;
-                 dgvProdutos.Rows[cont].Cells["Column2"].Value = produto.Nome;
-                dgvProdutos.Rows[cont].Cells["Column3"].Value = unidadeBLL.GetById(produto.TipoUnidadeId).Item.Nome;
-                dgvProdutos.Rows[cont].Cells["Column4"].Value = (double)nudQtde.Value;
-                dgvProdutos.Rows[cont].Cells["Column5"].Value = 0;
+           
+                dgvProdutos.Rows[produtos.Count].Cells["Column1"].Value = produto.ID;
+                 dgvProdutos.Rows[produtos.Count].Cells["Column2"].Value = produto.Nome;
+                dgvProdutos.Rows[produtos.Count].Cells["Column3"].Value = unidadeBLL.GetById(produto.TipoUnidadeId).Item.Nome;
+                dgvProdutos.Rows[produtos.Count].Cells["Column4"].Value = (double)nudQtde.Value;
+                dgvProdutos.Rows[produtos.Count].Cells["Column5"].Value = 0;
 
         }
     }

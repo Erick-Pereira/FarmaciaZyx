@@ -32,7 +32,7 @@ namespace WFPresentationLayer
             string rg = mtxtRg.Text;
             string telefone1 = mtxtTelefone1.Text;
             string telefone2 = mtxtTelefone2.Text;
-            int tipoCliente = (cmbTipoCliente.SelectedIndex)+1;
+            int tipoCliente = Convert.ToInt32(cmbTipoCliente.SelectedValue);
             Cliente cliente = new Cliente(nome,rg,cpf,telefone1,telefone2,email, tipoCliente);
             ClienteBLL clienteBLL = new ClienteBLL();
             Response response = clienteBLL.Insert(cliente);
