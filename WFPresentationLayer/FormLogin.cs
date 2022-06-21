@@ -30,8 +30,13 @@ namespace WfPresentationLayer
                     formAdmin.ShowDialog();
                     this.Close();
                 }
+                if (singleResponse.Item.TipoFuncionarioId == 2)
+                {
+                    FormFuncionario formFuncionario = new FormFuncionario();
+                    formFuncionario.ShowDialog();
+                    this.Close();
+                }
             }
-
         }
     }
 }

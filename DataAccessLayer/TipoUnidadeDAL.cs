@@ -17,7 +17,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM TIPOS_UNIDADES";
+            string sql = $"SELECT ID,NOME,CASAS_DECIMAIS FROM TIPOS_UNIDADES";
 
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
@@ -33,6 +33,7 @@ namespace DataAccessLayer
                     TipoUnidade tipoUnidade = new TipoUnidade();
                     tipoUnidade.ID = Convert.ToInt32(reader["ID"]);
                     tipoUnidade.Nome = Convert.ToString(reader["NOME"]);
+                    tipoUnidade.CasasDecimais = Convert.ToInt32(reader["CASAS_DECIMAIS"]);
                     tipoUnidades.Add(tipoUnidade);
                 }
                 return new DataResponse<TipoUnidade>("Tipos de Unidade selecionados com sucesso!", true, tipoUnidades);
@@ -53,7 +54,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM TIPOS_UNIDADES WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,CASAS_DECIMAIS FROM TIPOS_UNIDADES WHERE ID = @ID";
 
 
 
@@ -72,6 +73,7 @@ namespace DataAccessLayer
                     TipoUnidade tipoUnidade = new TipoUnidade();
                     tipoUnidade.ID = Convert.ToInt32(reader["ID"]);
                     tipoUnidade.Nome = Convert.ToString(reader["NOME"]);
+                    tipoUnidade.CasasDecimais = Convert.ToInt32(reader["CASAS_DECIMAIS"]);
                     return new SingleResponse<TipoUnidade>("Tipo de Unidade selecionado com sucesso!", true, tipoUnidade);
                 }
                 return new SingleResponse<TipoUnidade>("Tipo de Unidade não encontrado!", false, null);

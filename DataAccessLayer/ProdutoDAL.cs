@@ -18,7 +18,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE,@TIPO_UNIDADE_ID)";
+            string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE,@TIPO_UNIDADE_ID,@VALOR)";
 
 
 
@@ -31,6 +31,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@LABORATORIO_ID", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
             command.Parameters.AddWithValue("@TIPO_UNIDADE_ID", produto.TipoUnidadeId);
+            command.Parameters.AddWithValue("@VALOR", produto.Valor);
+
 
 
 
@@ -62,7 +64,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID WHERE ID = @ID";
+            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID VALOR = @VALOR WHERE ID = @ID";
 
 
 
@@ -75,6 +77,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@LABORATORIO_ID", produto.LaboratorioId);
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
             command.Parameters.AddWithValue("@TIPO_UNIDADE_ID", produto.TipoUnidadeId);
+            command.Parameters.AddWithValue("@VALOR", produto.Valor);
+
 
             //Estamos conectados na base de dados
             //try catch
@@ -146,7 +150,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS";
+            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR FROM PRODUTOS";
 
 
 
@@ -169,6 +173,8 @@ namespace DataAccessLayer
                     produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
+                    produto.Valor = Convert.ToDouble(reader["VALOR"]);
+
                     produtos.Add(produto);
                 }
                 return new DataResponse<Produto>("Produto selecionados com sucesso!", true, produtos);
@@ -189,7 +195,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR FROM PRODUTOS WHERE ID = @ID";
 
 
 
@@ -212,6 +218,8 @@ namespace DataAccessLayer
                     produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
                     produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
                     produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
+                    produto.Valor = Convert.ToDouble(reader["VALOR"]);
+
                     return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
                 }
                 return new SingleResponse<Produto>("Produto não encontrado!", false, null);

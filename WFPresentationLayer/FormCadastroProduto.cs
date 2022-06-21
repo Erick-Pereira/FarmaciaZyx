@@ -20,12 +20,6 @@ namespace WFPresentationLayer
         public FormCadastroProduto()
         {
             InitializeComponent();
-            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
-            cmbLaboratorio.DisplayMember = "Nome";
-            cmbLaboratorio.ValueMember = "ID";
-            cmbUnidade.DataSource = tipoUnidadeBLL.GetAll().Dados;
-            cmbUnidade.DisplayMember = "Nome";
-            cmbUnidade.ValueMember = "ID";
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -35,11 +29,31 @@ namespace WFPresentationLayer
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
             int laboratorio = Convert.ToInt32(cmbLaboratorio.SelectedValue);
-            double qtdEstoque = (double)nudQtdEstoque.Value;
+            double Valor = (double)nudValor.Value;
             int unidade = Convert.ToInt32(cmbUnidade.SelectedValue);
-            Produto produto = new Produto(nome, descricao, laboratorio, qtdEstoque, unidade);
+            Produto produto = new Produto(nome, descricao, laboratorio, unidade, Valor);
             Response response = produtorBLL.Insert(produto);
             MessageBox.Show(response.Message);
         }
+
+        private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
+        {
+            FormCadastroLaboratorio formCadastroLaboratorio = new FormCadastroLaboratorio();
+            formCadastroLaboratorio.ShowDialog();
+            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
+            cmbLaboratorio.DisplayMember = "Nome";
+            cmbLaboratorio.ValueMember = "ID";
+        }
+
+        private void FormCadastroProduto_Load(object sender, EventArgs e)
+        {
+            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
+            cmbLaboratorio.DisplayMember = "Nome";
+            cmbLaboratorio.ValueMember = "ID";
+            cmbUnidade.DataSource = tipoUnidadeBLL.GetAll().Dados;
+            cmbUnidade.DisplayMember = "Nome";
+            cmbUnidade.ValueMember = "ID";
+        }
+
     }
 }

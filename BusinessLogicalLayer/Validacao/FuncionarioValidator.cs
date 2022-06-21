@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using Entities;
 using Shared;
+using System.Text;
 
 namespace BusinessLogicalLayer
 {
@@ -13,32 +14,25 @@ namespace BusinessLogicalLayer
 
         public Response Validate(Funcionario funcionario)
         {
-            string erros = "";
+            StringBuilder erros = new StringBuilder();
 
-            erros += stringValidator.ValidateNome(funcionario.Nome);
-            erros += stringValidator.ValidateCPF(funcionario.CPF);
-            erros += stringValidator.ValidateEmail(funcionario.Email);
-            erros += stringValidator.ValidateTelefone(funcionario.Telefone);
+            erros.AppendLine(stringValidator.ValidateNome(funcionario.Nome));
+            erros.AppendLine(stringValidator.ValidateCPF(funcionario.CPF));
+            erros.AppendLine(stringValidator.ValidateEmail(funcionario.Email));
+            erros.AppendLine(stringValidator.ValidateTelefone(funcionario.Telefone));
             //Sintaxe cliente.Endereco?.CEP verifica e só passaria o CEP informado caso a propriedade
             //Endereco de dentro do Cliente não seja nula, caso contrário, passará o valor padrão do CEP (que é uma string e vale null!)
             //erros += stringValidator.ValidateCEP(funcionario.);
-
-
-            //CPF do cliente deve ser único
-            // if (funcionarioDAL.Exists(funcionario.CPF).HasSuccess)
-            {
-                erros += "CPF já cadastrado.";
-            }
-
-            //Se encontramos erro
-            if (erros.Length != 0)
-            {
-                return new Response(erros, false);
-            }
-
-            //Se chegou aqui, validamos com sucesso!
             funcionario.Nome = (normatization.NormatizeName(funcionario.Nome));
-            return funcionarioDAL.Insert(funcionario);
+            if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
+            {
+                
+                return funcionarioDAL.Insert(funcionario);
+            }
+            return new Response(erros.ToString().Trim(), false);
+            //Se chegou aqui, validamos com sucesso!
+            
+            
         }
 
     }

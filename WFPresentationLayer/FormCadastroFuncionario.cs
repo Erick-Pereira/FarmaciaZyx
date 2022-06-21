@@ -9,12 +9,6 @@ namespace WFPresentationLayer
         public FormCadastroFuncionario()
         {
             InitializeComponent();
-
-            TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
-            cmbTipoFuncionario.DataSource = tipoFuncionario.GetAll().Dados;
-            cmbTipoFuncionario.DisplayMember = "Nome";
-            cmbTipoFuncionario.ValueMember = "ID";
-            ((Control)this.tabEndereço).Enabled = false;
         }
 
         private void btnProximo_Click(object sender, EventArgs e)
@@ -24,7 +18,6 @@ namespace WFPresentationLayer
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
             string rg = mtxtRg.Text;
@@ -51,6 +44,15 @@ namespace WFPresentationLayer
             FuncionarioValidator validator = new FuncionarioValidator();
             Response response = validator.Validate(funcionario);
             MessageBox.Show(response.Message);
+        }
+
+        private void FormCadastroFuncionario_Load(object sender, EventArgs e)
+        {
+            TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
+            cmbTipoFuncionario.DataSource = tipoFuncionario.GetAll().Dados;
+            cmbTipoFuncionario.DisplayMember = "Nome";
+            cmbTipoFuncionario.ValueMember = "ID";
+            ((Control)this.tabEndereço).Enabled = false;
         }
     }
 }

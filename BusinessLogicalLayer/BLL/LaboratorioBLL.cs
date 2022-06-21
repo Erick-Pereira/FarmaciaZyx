@@ -11,9 +11,20 @@ namespace BusinessLogicalLayer
 {
     public class LaboratorioBLL
     {
+        LaboratorioDAL laboratorioDAL = new LaboratorioDAL();
+        public Response Insert(Laboratorio item)
+        {
+            LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
+            Response response = laboratorioValidator.Validate(item);
+            if (response.HasSuccess)
+            {
+                return laboratorioDAL.Insert(item);
+            }
+            return new Response(response.Message, false);
+        }
         public DataResponse<Laboratorio> GetAll()
         {
-            LaboratorioDAL laboratorioDAL = new LaboratorioDAL();
+           
             DataResponse<Laboratorio> dataResponse = laboratorioDAL.GetAll();
             if (dataResponse.HasSuccess)
             {

@@ -19,9 +19,6 @@ namespace WFPresentationLayer
         public FormCadastroCliente()
         {
             InitializeComponent();
-            cmbTipoCliente.DataSource = tipoClienteBLL.GetAll().Dados;
-            cmbTipoCliente.DisplayMember = "Nome";
-            cmbTipoCliente.ValueMember = "ID";
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -37,6 +34,13 @@ namespace WFPresentationLayer
             ClienteBLL clienteBLL = new ClienteBLL();
             Response response = clienteBLL.Insert(cliente);
             MessageBox.Show(response.Message);
+        }
+
+        private void FormCadastroCliente_Load(object sender, EventArgs e)
+        {
+            cmbTipoCliente.DataSource = tipoClienteBLL.GetAll().Dados;
+            cmbTipoCliente.DisplayMember = "Nome";
+            cmbTipoCliente.ValueMember = "ID";
         }
     }
 }

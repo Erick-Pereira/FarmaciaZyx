@@ -199,6 +199,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCadastroCliente";
             this.Text = "Cadastro Cliente";
+            this.Load += new System.EventHandler(this.FormCadastroCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

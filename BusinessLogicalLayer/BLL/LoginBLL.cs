@@ -17,8 +17,8 @@ namespace BusinessLogicalLayer
         {
             LoginDAL loginDAL = new LoginDAL();
             LoginValidator loginValidator = new LoginValidator();
-            string erros = loginValidator.Validate(login.Email, login.Senha);
-            if (string.IsNullOrWhiteSpace(erros))
+            Response response = loginValidator.Validate(login);
+            if (response.HasSuccess)
             {
                 SingleResponse<Funcionario> singleResponse = loginDAL.GetByEmail(login.Email);
                 if (singleResponse.HasSuccess)
@@ -29,8 +29,9 @@ namespace BusinessLogicalLayer
                     }
                     return new SingleResponse<Funcionario>("Email ou senha esta incorreto", false, singleResponse.Item);
                 }
+                return new SingleResponse<Funcionario>("Email ou senha esta incorreto", false, singleResponse.Item);
             }
-                return new SingleResponse<Funcionario>(erros, false, null);
+                return new SingleResponse<Funcionario>(response.Message, false, null);
         }
 
     }

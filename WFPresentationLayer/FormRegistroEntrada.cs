@@ -22,7 +22,6 @@ namespace WFPresentationLayer
         public FormRegistroEntrada()
         {
             InitializeComponent();
-          
         }
 
         private void btnCadastrarNovoFornecedor_Click(object sender, EventArgs e)
@@ -41,8 +40,8 @@ namespace WFPresentationLayer
             cmbProduto.DataSource = produtorBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
-        }            
-            //cmbUnidade.SelectedIndex = produtorBLL.GetByNome(cmbProduto.SelectedText).Item.TipoUnidadeId;
+        }
+        //cmbUnidade.SelectedIndex = produtorBLL.GetByNome(cmbProduto.SelectedText).Item.TipoUnidadeId;
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
@@ -52,36 +51,30 @@ namespace WFPresentationLayer
             cmbProduto.DataSource = produtorBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
-            txtUnidade.Text = unidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
-            if (txtUnidade.Text == "UN")
+            Produto produto = (Produto)cmbProduto.SelectedItem;
+            TipoUnidade tipoUnidade = unidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            if (tipoUnidade != null)
             {
-                nudQtde.DecimalPlaces = 0;
+                txtUnidade.Text = tipoUnidade.Nome;
+                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
             }
-            if (txtUnidade.Text == "KG")
-            {
-                nudQtde.DecimalPlaces = 2;
-            }
+           
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Produto> displayedValues = new List<Produto>();
-            foreach (Produto ci in cmbProduto.Items)
-                displayedValues.Add(ci);
-            txtUnidade.Text = unidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
-            if(txtUnidade.Text == "UN")
+            Produto produto = (Produto)cmbProduto.SelectedItem;
+            TipoUnidade tipoUnidade = unidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            if (tipoUnidade != null)
             {
-                nudQtde.DecimalPlaces = 0;
-            }
-            if (txtUnidade.Text == "KG")
-            {
-                nudQtde.DecimalPlaces = 2;
+                txtUnidade.Text = tipoUnidade.Nome;
+                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
             }
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            
+
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             produtos.Add(produto);
             //produto.QtdEstoque -= (double)nudQtde.Value;
@@ -89,13 +82,17 @@ namespace WFPresentationLayer
             //DataTable dt = new DataTable();
             //dt = produto;
             dgvProdutos.Rows.Add();
-           
-                dgvProdutos.Rows[produtos.Count].Cells["Column1"].Value = produto.ID;
-                 dgvProdutos.Rows[produtos.Count].Cells["Column2"].Value = produto.Nome;
-                dgvProdutos.Rows[produtos.Count].Cells["Column3"].Value = unidadeBLL.GetById(produto.TipoUnidadeId).Item.Nome;
-                dgvProdutos.Rows[produtos.Count].Cells["Column4"].Value = (double)nudQtde.Value;
-                dgvProdutos.Rows[produtos.Count].Cells["Column5"].Value = 0;
+            dgvProdutos.Rows[produtos.Count].Cells["Column1"].Value = produto.ID;
+            dgvProdutos.Rows[produtos.Count].Cells["Column2"].Value = produto.Nome;
+            dgvProdutos.Rows[produtos.Count].Cells["Column3"].Value = unidadeBLL.GetById(produto.TipoUnidadeId).Item.Nome;
+            dgvProdutos.Rows[produtos.Count].Cells["Column4"].Value = (double)nudQtde.Value;
+            dgvProdutos.Rows[produtos.Count].Cells["Column5"].Value = 0;
 
+        }
+
+        private void btnRetirarProduto_Click(object sender, EventArgs e)
+        {
+            produtos.RemoveAt(Convert.ToInt32(dgvProdutos.SelectedRows)); ;
         }
     }
 }

@@ -53,6 +53,7 @@
             this.txtUnidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
+            this.btnRetirarProduto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +112,7 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvProdutos.Location = new System.Drawing.Point(26, 178);
+            this.dgvProdutos.Location = new System.Drawing.Point(26, 177);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowTemplate.Height = 25;
@@ -264,11 +265,22 @@
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
             this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
             // 
+            // btnRetirarProduto
+            // 
+            this.btnRetirarProduto.Location = new System.Drawing.Point(406, 120);
+            this.btnRetirarProduto.Name = "btnRetirarProduto";
+            this.btnRetirarProduto.Size = new System.Drawing.Size(122, 24);
+            this.btnRetirarProduto.TabIndex = 40;
+            this.btnRetirarProduto.Text = "Retirar Produto";
+            this.btnRetirarProduto.UseVisualStyleBackColor = true;
+            this.btnRetirarProduto.Click += new System.EventHandler(this.btnRetirarProduto_Click);
+            // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
             this.Controls.Add(this.label5);
@@ -325,5 +337,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private Button btnRetirarProduto;
     }
 }

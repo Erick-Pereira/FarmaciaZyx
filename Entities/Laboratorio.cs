@@ -12,6 +12,11 @@ namespace Entities
         {
         }
 
+        public Laboratorio(string nome)
+        {
+            Nome = nome;
+        }
+
         public Laboratorio(int iD, string nome)
         {
             ID = iD;

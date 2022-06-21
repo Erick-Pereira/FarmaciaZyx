@@ -433,6 +433,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCadastroFuncionario";
             this.Text = "Cadastro de Funcionario";
+            this.Load += new System.EventHandler(this.FormCadastroFuncionario_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabFuncionario.ResumeLayout(false);
             this.tabFuncionario.PerformLayout();
