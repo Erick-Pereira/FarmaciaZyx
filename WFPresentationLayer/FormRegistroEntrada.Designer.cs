@@ -77,9 +77,9 @@
             // 
             // btnCadastrarNovoFornecedor
             // 
-            this.btnCadastrarNovoFornecedor.Location = new System.Drawing.Point(353, 76);
+            this.btnCadastrarNovoFornecedor.Location = new System.Drawing.Point(478, 46);
             this.btnCadastrarNovoFornecedor.Name = "btnCadastrarNovoFornecedor";
-            this.btnCadastrarNovoFornecedor.Size = new System.Drawing.Size(121, 42);
+            this.btnCadastrarNovoFornecedor.Size = new System.Drawing.Size(161, 23);
             this.btnCadastrarNovoFornecedor.TabIndex = 2;
             this.btnCadastrarNovoFornecedor.Text = "Cadastrar novo Fornecedor";
             this.btnCadastrarNovoFornecedor.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
             // 
             // nudQtde
             // 
-            this.nudQtde.Location = new System.Drawing.Point(152, 149);
+            this.nudQtde.Location = new System.Drawing.Point(155, 148);
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(74, 23);
             this.nudQtde.TabIndex = 9;
@@ -240,7 +240,7 @@
             // 
             // txtUnidade
             // 
-            this.txtUnidade.Location = new System.Drawing.Point(229, 148);
+            this.txtUnidade.Location = new System.Drawing.Point(232, 148);
             this.txtUnidade.Name = "txtUnidade";
             this.txtUnidade.ReadOnly = true;
             this.txtUnidade.Size = new System.Drawing.Size(44, 23);

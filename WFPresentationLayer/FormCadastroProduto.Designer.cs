@@ -46,7 +46,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(12, 299);
+            this.btnCadastrar.Location = new System.Drawing.Point(211, 306);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(124, 34);
             this.btnCadastrar.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(78, 71);
+            this.txtNome.Location = new System.Drawing.Point(277, 78);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
             this.txtNome.TabIndex = 1;
@@ -64,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 53);
+            this.label1.Location = new System.Drawing.Point(277, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 15);
             this.label1.TabIndex = 2;
@@ -73,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 99);
+            this.label2.Location = new System.Drawing.Point(277, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(78, 117);
+            this.txtDescricao.Location = new System.Drawing.Point(277, 124);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(100, 23);
             this.txtDescricao.TabIndex = 3;
@@ -89,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(78, 143);
+            this.label3.Location = new System.Drawing.Point(277, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 6;
@@ -98,7 +98,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 238);
+            this.label4.Location = new System.Drawing.Point(277, 245);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 15);
             this.label4.TabIndex = 7;
@@ -112,7 +112,7 @@
             0,
             0,
             65536});
-            this.nudValor.Location = new System.Drawing.Point(78, 256);
+            this.nudValor.Location = new System.Drawing.Point(277, 263);
             this.nudValor.Name = "nudValor";
             this.nudValor.Size = new System.Drawing.Size(100, 23);
             this.nudValor.TabIndex = 8;
@@ -120,7 +120,7 @@
             // cmbLaboratorio
             // 
             this.cmbLaboratorio.FormattingEnabled = true;
-            this.cmbLaboratorio.Location = new System.Drawing.Point(78, 161);
+            this.cmbLaboratorio.Location = new System.Drawing.Point(277, 168);
             this.cmbLaboratorio.Name = "cmbLaboratorio";
             this.cmbLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.cmbLaboratorio.TabIndex = 9;
@@ -128,7 +128,7 @@
             // cmbUnidade
             // 
             this.cmbUnidade.FormattingEnabled = true;
-            this.cmbUnidade.Location = new System.Drawing.Point(78, 212);
+            this.cmbUnidade.Location = new System.Drawing.Point(277, 219);
             this.cmbUnidade.Name = "cmbUnidade";
             this.cmbUnidade.Size = new System.Drawing.Size(100, 23);
             this.cmbUnidade.TabIndex = 11;
@@ -136,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(78, 194);
+            this.label5.Location = new System.Drawing.Point(277, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(22, 15);
             this.label5.TabIndex = 10;
@@ -144,7 +144,7 @@
             // 
             // btnCadastrarLaboratorio
             // 
-            this.btnCadastrarLaboratorio.Location = new System.Drawing.Point(145, 299);
+            this.btnCadastrarLaboratorio.Location = new System.Drawing.Point(344, 306);
             this.btnCadastrarLaboratorio.Name = "btnCadastrarLaboratorio";
             this.btnCadastrarLaboratorio.Size = new System.Drawing.Size(130, 34);
             this.btnCadastrarLaboratorio.TabIndex = 12;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 345);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCadastrarLaboratorio);
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label5);
