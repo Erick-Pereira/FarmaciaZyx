@@ -39,8 +39,6 @@ namespace WfPresentationLayer
                 this.Hide();
                 if (singleResponse.Item.TipoFuncionarioId == 1)
                 {
-                    FormAdmin formAdmin = new FormAdmin();
-                    formAdmin.ShowDialog();
                     this.Close();
                 }
                 if (singleResponse.Item.TipoFuncionarioId == 2)
