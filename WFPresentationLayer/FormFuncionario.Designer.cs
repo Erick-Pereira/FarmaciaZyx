@@ -110,7 +110,7 @@
             this.btnPerfilFuncionario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPerfilFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPerfilFuncionario.ForeColor = System.Drawing.Color.White;
-            this.btnPerfilFuncionario.Location = new System.Drawing.Point(42, 132);
+            this.btnPerfilFuncionario.Location = new System.Drawing.Point(42, 106);
             this.btnPerfilFuncionario.Name = "btnPerfilFuncionario";
             this.btnPerfilFuncionario.Size = new System.Drawing.Size(140, 36);
             this.btnPerfilFuncionario.TabIndex = 17;
