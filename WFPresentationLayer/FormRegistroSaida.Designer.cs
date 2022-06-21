@@ -34,19 +34,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbCliente = new System.Windows.Forms.ComboBox();
+            this.btnRetirarProduto = new System.Windows.Forms.Button();
+            this.btnAdicionarProduto = new System.Windows.Forms.Button();
+            this.txtUnidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.txtUnidade = new System.Windows.Forms.TextBox();
+            this.dgvProdutos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -94,58 +101,6 @@
             this.label6.TabIndex = 31;
             this.label6.Text = "Valor";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(257, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 15);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "Un";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 15);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Qtde.";
-            // 
-            // nudQtde
-            // 
-            this.nudQtde.Location = new System.Drawing.Point(177, 146);
-            this.nudQtde.Name = "nudQtde";
-            this.nudQtde.Size = new System.Drawing.Size(74, 23);
-            this.nudQtde.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(304, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Produto";
-            // 
-            // cmbProduto
-            // 
-            this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(304, 145);
-            this.cmbProduto.Name = "cmbProduto";
-            this.cmbProduto.Size = new System.Drawing.Size(121, 23);
-            this.cmbProduto.TabIndex = 25;
-            this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 175);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(502, 150);
-            this.dataGridView1.TabIndex = 23;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -179,31 +134,141 @@
             this.cmbCliente.Size = new System.Drawing.Size(121, 23);
             this.cmbCliente.TabIndex = 18;
             // 
+            // btnRetirarProduto
+            // 
+            this.btnRetirarProduto.Location = new System.Drawing.Point(412, 129);
+            this.btnRetirarProduto.Name = "btnRetirarProduto";
+            this.btnRetirarProduto.Size = new System.Drawing.Size(122, 24);
+            this.btnRetirarProduto.TabIndex = 49;
+            this.btnRetirarProduto.Text = "Retirar Produto";
+            this.btnRetirarProduto.UseVisualStyleBackColor = true;
+            // 
+            // btnAdicionarProduto
+            // 
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(412, 155);
+            this.btnAdicionarProduto.Name = "btnAdicionarProduto";
+            this.btnAdicionarProduto.Size = new System.Drawing.Size(122, 24);
+            this.btnAdicionarProduto.TabIndex = 48;
+            this.btnAdicionarProduto.Text = "Adicionar Produto";
+            this.btnAdicionarProduto.UseVisualStyleBackColor = true;
+            // 
             // txtUnidade
             // 
-            this.txtUnidade.Location = new System.Drawing.Point(254, 146);
+            this.txtUnidade.Location = new System.Drawing.Point(235, 157);
             this.txtUnidade.Name = "txtUnidade";
             this.txtUnidade.ReadOnly = true;
             this.txtUnidade.Size = new System.Drawing.Size(44, 23);
-            this.txtUnidade.TabIndex = 36;
+            this.txtUnidade.TabIndex = 47;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(238, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 15);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Un";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(161, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 15);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Qtde.";
+            // 
+            // nudQtde
+            // 
+            this.nudQtde.Location = new System.Drawing.Point(158, 158);
+            this.nudQtde.Name = "nudQtde";
+            this.nudQtde.Size = new System.Drawing.Size(74, 23);
+            this.nudQtde.TabIndex = 44;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(285, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Produto";
+            // 
+            // cmbProduto
+            // 
+            this.cmbProduto.FormattingEnabled = true;
+            this.cmbProduto.Location = new System.Drawing.Point(285, 157);
+            this.cmbProduto.Name = "cmbProduto";
+            this.cmbProduto.Size = new System.Drawing.Size(121, 23);
+            this.cmbProduto.TabIndex = 42;
+            // 
+            // dgvProdutos
+            // 
+            this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AllowUserToDeleteRows = false;
+            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            this.dgvProdutos.Location = new System.Drawing.Point(32, 186);
+            this.dgvProdutos.Name = "dgvProdutos";
+            this.dgvProdutos.ReadOnly = true;
+            this.dgvProdutos.RowTemplate.Height = 25;
+            this.dgvProdutos.Size = new System.Drawing.Size(502, 150);
+            this.dgvProdutos.TabIndex = 41;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nome";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Un";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Qtde";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Preço";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRetirarProduto);
+            this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbProduto);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvProdutos);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
@@ -213,7 +278,7 @@
             this.Text = "Registro Saida";
             this.Load += new System.EventHandler(this.FormRegistroSaida_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,16 +291,23 @@
         private Label label8;
         private Label label7;
         private Label label6;
+        private Label label2;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private ComboBox cmbCliente;
+        private Button btnRetirarProduto;
+        private Button btnAdicionarProduto;
+        private TextBox txtUnidade;
         private Label label5;
         private Label label4;
         private NumericUpDown nudQtde;
         private Label label3;
         private ComboBox cmbProduto;
-        private DataGridView dataGridView1;
-        private Label label2;
-        private DateTimePicker dateTimePicker1;
-        private Label label1;
-        private ComboBox cmbCliente;
-        private TextBox txtUnidade;
+        private DataGridView dgvProdutos;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

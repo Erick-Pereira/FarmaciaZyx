@@ -28,33 +28,29 @@ namespace WFPresentationLayer
         }
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtUnidade.Text = TipoUnidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
-            if (txtUnidade.Text == "UN")
+            Produto produto = (Produto)cmbProduto.SelectedItem;
+            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            if (tipoUnidade != null)
             {
-                nudQtde.DecimalPlaces = 0;
-            }
-            if (txtUnidade.Text == "KG")
-            {
-                nudQtde.DecimalPlaces = 2;
+                txtUnidade.Text = tipoUnidade.Nome;
+                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
             }
         }
 
         private void FormRegistroSaida_Load(object sender, EventArgs e)
         {
             cmbCliente.DataSource = clienteBLL.GetAll().Dados;
-            cmbCliente.DisplayMember = "RazaoSocial";
+            cmbCliente.DisplayMember = "Nome";
             cmbCliente.ValueMember = "ID";
             cmbProduto.DataSource = produtorBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
-            txtUnidade.Text = TipoUnidadeBLL.GetById(Convert.ToInt32(cmbProduto.SelectedValue)).Item.Nome;
-            if (txtUnidade.Text == "UN")
+            Produto produto = (Produto)cmbProduto.SelectedItem;
+            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            if (tipoUnidade != null)
             {
-                nudQtde.DecimalPlaces = 0;
-            }
-            if (txtUnidade.Text == "KG")
-            {
-                nudQtde.DecimalPlaces = 2;
+                txtUnidade.Text = tipoUnidade.Nome;
+                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
             }
         }
     }
