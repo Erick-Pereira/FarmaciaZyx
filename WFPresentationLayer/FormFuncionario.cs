@@ -18,7 +18,11 @@ namespace WFPresentationLayer
         public FormFuncionario()
         {
             InitializeComponent();
-          
+          if(FuncionarioLogin.tipoFuncionarioId != 1)
+            {
+                btnCadastroFuncionario.Enabled = false;
+                btnCadastroFuncionario.Visible = false;
+            }
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
