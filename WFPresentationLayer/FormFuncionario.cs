@@ -14,9 +14,11 @@ namespace WFPresentationLayer
 {
     public partial class FormFuncionario : Form
     {
+        private Form currentChildForm;
         public FormFuncionario()
         {
             InitializeComponent();
+          
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -26,36 +28,18 @@ namespace WFPresentationLayer
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-
-        private void btnCadastrarCliente_Click(object sender, EventArgs e)
+        private void OpenChildForm(Form childForm)
         {
-            FormCadastroCliente formCadastroCliente = new FormCadastroCliente();
-            formCadastroCliente.ShowDialog();
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
-        private void btnCadastrarProduto_Click(object sender, EventArgs e)
-        {
-            FormCadastroProduto formCadastroProduto = new FormCadastroProduto();
-            formCadastroProduto.ShowDialog();
-        }
-
-        private void btnRegistrarFornecedor_Click(object sender, EventArgs e)
-        {
-            FormCadastroFornecedor formCadastroFornecedor = new FormCadastroFornecedor();
-            formCadastroFornecedor.ShowDialog();
-        }
-
-        private void btnRegistrarEntrada_Click(object sender, EventArgs e)
-        {
-            FormRegistroEntrada formRegistroEntrada = new FormRegistroEntrada();
-            formRegistroEntrada.ShowDialog();
-        }
-
-        private void btnRegistrarSaida_Click(object sender, EventArgs e)
-        {
-            FormRegistroSaida formRegistroSaida = new FormRegistroSaida();
-            formRegistroSaida.ShowDialog();
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -80,7 +64,45 @@ namespace WFPresentationLayer
             }
         }
 
-        
+
+        private void btnPerfilFuncionario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCadastroCliente_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCadastroCliente());
+        }
+
+        private void btnRegistroEntrada_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormRegistroEntrada());
+        }
+
+        private void btnRegistroSaida_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormRegistroSaida());
+        }
+
+        private void btnCadastroFornecedor_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCadastroFornecedor());
+        }
+
+        private void btnCadastroFuncionario_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCadastroProduto());
+        }
     }
 }
 

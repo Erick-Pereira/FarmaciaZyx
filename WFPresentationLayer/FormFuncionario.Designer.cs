@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionario));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCadastroFornecedor = new System.Windows.Forms.Button();
             this.btnPerfilFuncionario = new System.Windows.Forms.Button();
@@ -39,9 +40,11 @@
             this.btnRegistroEntrada = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelShadow = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -52,6 +55,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenu.Controls.Add(this.btnCadastroProduto);
             this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnCadastroFornecedor);
             this.panelMenu.Controls.Add(this.btnPerfilFuncionario);
@@ -65,6 +69,24 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 556);
             this.panelMenu.TabIndex = 12;
+            // 
+            // btnCadastroProduto
+            // 
+            this.btnCadastroProduto.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastroProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCadastroProduto.FlatAppearance.BorderSize = 0;
+            this.btnCadastroProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCadastroProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCadastroProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastroProduto.ForeColor = System.Drawing.Color.White;
+            this.btnCadastroProduto.Location = new System.Drawing.Point(42, 342);
+            this.btnCadastroProduto.Name = "btnCadastroProduto";
+            this.btnCadastroProduto.Size = new System.Drawing.Size(140, 36);
+            this.btnCadastroProduto.TabIndex = 20;
+            this.btnCadastroProduto.Text = "Cadastro Produto";
+            this.btnCadastroProduto.UseMnemonic = false;
+            this.btnCadastroProduto.UseVisualStyleBackColor = false;
+            this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
             // 
             // btnLogout
             // 
@@ -100,6 +122,7 @@
             this.btnCadastroFornecedor.Text = "Cadastro Fornecedor";
             this.btnCadastroFornecedor.UseMnemonic = false;
             this.btnCadastroFornecedor.UseVisualStyleBackColor = false;
+            this.btnCadastroFornecedor.Click += new System.EventHandler(this.btnCadastroFornecedor_Click);
             // 
             // btnPerfilFuncionario
             // 
@@ -117,6 +140,7 @@
             this.btnPerfilFuncionario.Text = "Perfil Funcionario";
             this.btnPerfilFuncionario.UseMnemonic = false;
             this.btnPerfilFuncionario.UseVisualStyleBackColor = false;
+            this.btnPerfilFuncionario.Click += new System.EventHandler(this.btnPerfilFuncionario_Click);
             // 
             // btnRegistroSaida
             // 
@@ -134,6 +158,7 @@
             this.btnRegistroSaida.Text = "Registro Venda";
             this.btnRegistroSaida.UseMnemonic = false;
             this.btnRegistroSaida.UseVisualStyleBackColor = false;
+            this.btnRegistroSaida.Click += new System.EventHandler(this.btnRegistroSaida_Click);
             // 
             // btnCadastroCliente
             // 
@@ -151,6 +176,7 @@
             this.btnCadastroCliente.Text = "Cadastro Cliente";
             this.btnCadastroCliente.UseMnemonic = false;
             this.btnCadastroCliente.UseVisualStyleBackColor = false;
+            this.btnCadastroCliente.Click += new System.EventHandler(this.btnCadastroCliente_Click);
             // 
             // btnCadastroFuncionario
             // 
@@ -161,13 +187,14 @@
             this.btnCadastroFuncionario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFuncionario.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFuncionario.Location = new System.Drawing.Point(42, 342);
+            this.btnCadastroFuncionario.Location = new System.Drawing.Point(42, 384);
             this.btnCadastroFuncionario.Name = "btnCadastroFuncionario";
             this.btnCadastroFuncionario.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFuncionario.TabIndex = 14;
             this.btnCadastroFuncionario.Text = "Cadastro Funcionario";
             this.btnCadastroFuncionario.UseMnemonic = false;
             this.btnCadastroFuncionario.UseVisualStyleBackColor = false;
+            this.btnCadastroFuncionario.Click += new System.EventHandler(this.btnCadastroFuncionario_Click);
             // 
             // btnRegistroEntrada
             // 
@@ -185,10 +212,12 @@
             this.btnRegistroEntrada.Text = "Registro Entrada";
             this.btnRegistroEntrada.UseMnemonic = false;
             this.btnRegistroEntrada.UseVisualStyleBackColor = false;
+            this.btnRegistroEntrada.Click += new System.EventHandler(this.btnRegistroEntrada_Click);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.panelShadow);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -205,6 +234,13 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panelShadow
+            // 
+            this.panelShadow.Location = new System.Drawing.Point(230, 61);
+            this.panelShadow.Name = "panelShadow";
+            this.panelShadow.Size = new System.Drawing.Size(796, 10);
+            this.panelShadow.TabIndex = 0;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -217,14 +253,14 @@
             // 
             // panelDesktop
             // 
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(230, 0);
+            this.panelDesktop.Location = new System.Drawing.Point(230, 61);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(795, 556);
+            this.panelDesktop.Size = new System.Drawing.Size(795, 495);
             this.panelDesktop.TabIndex = 13;
             // 
             // panelTitleBar
             // 
+            this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnClose);
             this.panelTitleBar.Controls.Add(this.label1);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -234,6 +270,28 @@
             this.panelTitleBar.TabIndex = 13;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // btnMinimize
+            // 
+            this.btnMinimize.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnMinimize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimize.BackgroundImage")));
+            this.btnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMinimize.ForeColor = System.Drawing.Color.Black;
+            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimize.Location = new System.Drawing.Point(711, 0);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(40, 20);
+            this.btnMinimize.TabIndex = 9;
+            this.btnMinimize.Text = "🗕";
+            this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimize.UseMnemonic = false;
+            this.btnMinimize.UseVisualStyleBackColor = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
@@ -242,6 +300,7 @@
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(747, 0);
             this.btnClose.Name = "btnClose";
@@ -289,5 +348,8 @@
         private Button btnRegistroEntrada;
         private Button btnClose;
         private Button btnLogout;
+        private Button btnMinimize;
+        private Panel panelShadow;
+        private Button btnCadastroProduto;
     }
 }

@@ -35,18 +35,15 @@ namespace WfPresentationLayer
             }
             else
             {
+                FuncionarioLogin.id = singleResponse.Item.ID;
+                FuncionarioLogin.nome = singleResponse.Item.Nome;
+                FuncionarioLogin.tipoFuncionarioId = singleResponse.Item.TipoFuncionarioId;
 
                 this.Hide();
-                if (singleResponse.Item.TipoFuncionarioId == 1)
-                {
-                    this.Close();
-                }
-                if (singleResponse.Item.TipoFuncionarioId == 2)
-                {
-                    FormFuncionario formFuncionario = new FormFuncionario();
-                    formFuncionario.ShowDialog();
-                    this.Close();
-                }
+                FormFuncionario formFuncionario = new FormFuncionario();
+                formFuncionario.ShowDialog();
+                this.Close();
+                
             }
         }
 

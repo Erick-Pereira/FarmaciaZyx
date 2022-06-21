@@ -58,6 +58,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnMinimize.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAA1ZJREFUeF7t202uTUEUBeCHjggdLQPQNAUdPSYgJiISGiSMgSbjYAQkxqDjp0U0
+        /dtL7JfKdfPyJBqqzvclK/TXPnWr6px3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEzpROVk5ZRMlXSW7uCvZXAy
+        RKwhXVoMOJbdB/9i5WrleuWGTJF0lc7S3ciizpGybYzzlZuVl5VPlR8yZdJdOrxVSafRHcOhcXuYX4/X
+        lXGQvle+yVRJZ2OHbyrZHTRHAv5wv9ID87nytZJBknmTDtNl9/qgAod6S3i7kgHJr0eGJv8fB6kHSObJ
+        2F067V7vVMJxYON6AK5UemCyAOwOj8ybscfxaJDOwyLAwfNKhuLL7389+OulO+2O0zkb1q+ErlUyEON5
+        v4dG1kr320eBdB9eD25Ql/6okmHIRZEFYO10v30p+LASFoCNyvnvRSXD0DuAcWBkvaTj3gHkGOAOYMPO
+        VN5WMgz73h3LeknHfdGb7jMDbNTZyvtKhqGHQtZPd53uMwNs1OnKq0oPhR3A+hl3AOk+M8CGPatkGPpc
+        KOunu35aYaP65vdeJcPgLcD66X77LUC6D28BNqhvfy9V+hehB8QisF52u80HQek+vAnYqC7+SSVD0b8M
+        FoG1MvbZHafz8PBvWP9J6IXKu8o4IBaBNbLv4U/X6Tz8WfDG9fnvcqW/E8+gjINjIZgvY3dJP/zpOF2H
+        sz+/jItA7wSSDE3uB/LaqF8Tyv+f7ivd9YOfpFsPP3v1QGRr+LjSuwGZP1kIcubvbb+Hn73GwcgN8d1K
+        vhPIByMfKh9liqSrdJbu8qqvb/vDw8+Rcim0ezOcr8XOyVTZ/cIvnbrw49gyMH4t5pcOveoDAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+iYODnzJDPsWaDQBNAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIADhkwEAZgAAAICAAAABACAAKAgBAEeUAQBAQAAAAQAgAChCAABvnAIAMDAAAAEA
