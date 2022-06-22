@@ -13,7 +13,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO BAIRROS (NOME_BAIRRO,CIDADE_ID) VALUES (@NOME_BAIRRO,@CIDADE_ID)";
+            string sql = $"INSERT INTO BAIRROS (NOME_BAIRRO,CIDADE_ID) VALUES (@NOME_BAIRRO,@CIDADE_ID); SELECT SCOPE_IDENTITY()";
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -149,7 +149,7 @@ namespace DataAccessLayer
                     bairro.CidadeId = Convert.ToInt32(reader["CIDADE_ID"]);
                     bairros.Add(bairro);
                 }
-                return new DataResponse<Bairro>("Bairro selecionados com sucesso!", true, bairros);
+                return new DataResponse<Bairro>("Bairros selecionados com sucesso!", true, bairros);
             }
             catch (Exception ex)
             {
@@ -190,6 +190,47 @@ namespace DataAccessLayer
                     return new SingleResponse<Bairro>("Bairro selecionado com sucesso!", true, bairro);
                 }
                 return new SingleResponse<Bairro>("Bairro não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Bairro>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public SingleResponse<Bairro> GetByNameAndCidadeId(Bairro item)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME_BAIRRO,CIDADE_ID FROM BAIRROS WHERE NOME_BAIRRO = @NOME_BAIRRO, CIDADE_ID = @CIDADE_ID";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@NOME_BAIRRO", item.NomeBairro);
+            command.Parameters.AddWithValue("@CIDADE_ID", item.CidadeId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Bairro bairro = new Bairro();
+                    bairro.ID = Convert.ToInt32(reader["ID"]);
+                    bairro.NomeBairro = Convert.ToString(reader["NOME_BAIRRO"]);
+                    bairro.CidadeId = Convert.ToInt32(reader["CIDADE_ID"]);
+                    return new SingleResponse<Bairro>("Bairro selecionado com sucesso!", true, bairro);
+                }
+                return new SingleResponse<Bairro>("Bairro não encontrado!", true, null);
             }
             catch (Exception ex)
             {

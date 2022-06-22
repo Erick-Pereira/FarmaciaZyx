@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroFuncionario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFuncionario = new System.Windows.Forms.TabPage();
+            this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
@@ -51,11 +53,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.tabEndereço = new System.Windows.Forms.TabPage();
+            this.cmbEstados = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.mtxtNumero = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -64,8 +68,6 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
-            this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -115,10 +117,27 @@
             this.tabFuncionario.TabIndex = 0;
             this.tabFuncionario.Text = "Funcionario";
             // 
+            // txtConfirmarSenha
+            // 
+            this.txtConfirmarSenha.Location = new System.Drawing.Point(333, 288);
+            this.txtConfirmarSenha.Name = "txtConfirmarSenha";
+            this.txtConfirmarSenha.PasswordChar = '●';
+            this.txtConfirmarSenha.Size = new System.Drawing.Size(100, 23);
+            this.txtConfirmarSenha.TabIndex = 47;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(334, 265);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(96, 15);
+            this.label11.TabIndex = 46;
+            this.label11.Text = "Confirmar Senha";
+            // 
             // mtxtRg
             // 
-            this.mtxtRg.Location = new System.Drawing.Point(333, 114);
-            this.mtxtRg.Mask = "0.000.000";
+            this.mtxtRg.Location = new System.Drawing.Point(330, 116);
+            this.mtxtRg.Mask = "00.000.000-0";
             this.mtxtRg.Name = "mtxtRg";
             this.mtxtRg.Size = new System.Drawing.Size(100, 23);
             this.mtxtRg.TabIndex = 45;
@@ -126,7 +145,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(333, 96);
+            this.label16.Location = new System.Drawing.Point(330, 98);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(22, 15);
             this.label16.TabIndex = 39;
@@ -134,7 +153,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(50, 288);
+            this.txtSenha.Location = new System.Drawing.Point(62, 288);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '●';
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
@@ -143,7 +162,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(50, 265);
+            this.label12.Location = new System.Drawing.Point(62, 265);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(39, 15);
             this.label12.TabIndex = 37;
@@ -291,11 +310,13 @@
             // tabEndereço
             // 
             this.tabEndereço.BackColor = System.Drawing.Color.White;
+            this.tabEndereço.Controls.Add(this.cmbEstados);
+            this.tabEndereço.Controls.Add(this.label17);
+            this.tabEndereço.Controls.Add(this.txtComplemento);
             this.tabEndereço.Controls.Add(this.btnCadastrar);
             this.tabEndereço.Controls.Add(this.label15);
             this.tabEndereço.Controls.Add(this.mtxtNumero);
             this.tabEndereço.Controls.Add(this.label14);
-            this.tabEndereço.Controls.Add(this.txtEstado);
             this.tabEndereço.Controls.Add(this.label13);
             this.tabEndereço.Controls.Add(this.txtCidade);
             this.tabEndereço.Controls.Add(this.label10);
@@ -312,6 +333,31 @@
             this.tabEndereço.TabIndex = 1;
             this.tabEndereço.Text = "Endereço";
             // 
+            // cmbEstados
+            // 
+            this.cmbEstados.FormattingEnabled = true;
+            this.cmbEstados.Location = new System.Drawing.Point(333, 122);
+            this.cmbEstados.Name = "cmbEstados";
+            this.cmbEstados.Size = new System.Drawing.Size(178, 23);
+            this.cmbEstados.TabIndex = 36;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(56, 90);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 15);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "Complemento";
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.BackColor = System.Drawing.Color.White;
+            this.txtComplemento.Location = new System.Drawing.Point(50, 104);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(178, 23);
+            this.txtComplemento.TabIndex = 34;
+            // 
             // btnCadastrar
             // 
             this.btnCadastrar.Location = new System.Drawing.Point(52, 271);
@@ -325,7 +371,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(50, 149);
+            this.label15.Location = new System.Drawing.Point(50, 182);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(51, 15);
             this.label15.TabIndex = 32;
@@ -334,7 +380,7 @@
             // mtxtNumero
             // 
             this.mtxtNumero.BackColor = System.Drawing.Color.White;
-            this.mtxtNumero.Location = new System.Drawing.Point(50, 166);
+            this.mtxtNumero.Location = new System.Drawing.Point(50, 199);
             this.mtxtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mtxtNumero.Mask = "0999";
             this.mtxtNumero.Name = "mtxtNumero";
@@ -349,14 +395,6 @@
             this.label14.Size = new System.Drawing.Size(42, 15);
             this.label14.TabIndex = 30;
             this.label14.Text = "Estado";
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.BackColor = System.Drawing.Color.White;
-            this.txtEstado.Location = new System.Drawing.Point(333, 111);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(178, 23);
-            this.txtEstado.TabIndex = 29;
             // 
             // label13
             // 
@@ -378,7 +416,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(56, 97);
+            this.label10.Location = new System.Drawing.Point(56, 130);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 15);
             this.label10.TabIndex = 22;
@@ -387,7 +425,7 @@
             // txtBairro
             // 
             this.txtBairro.BackColor = System.Drawing.Color.White;
-            this.txtBairro.Location = new System.Drawing.Point(50, 111);
+            this.txtBairro.Location = new System.Drawing.Point(50, 144);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(178, 23);
             this.txtBairro.TabIndex = 21;
@@ -397,9 +435,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(56, 42);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 15);
+            this.label9.Size = new System.Drawing.Size(27, 15);
             this.label9.TabIndex = 20;
-            this.label9.Text = "Logradouro";
+            this.label9.Text = "Rua";
             // 
             // txtRua
             // 
@@ -427,23 +465,6 @@
             this.mtxtCep.Name = "mtxtCep";
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
-            // 
-            // txtConfirmarSenha
-            // 
-            this.txtConfirmarSenha.Location = new System.Drawing.Point(333, 288);
-            this.txtConfirmarSenha.Name = "txtConfirmarSenha";
-            this.txtConfirmarSenha.PasswordChar = '●';
-            this.txtConfirmarSenha.Size = new System.Drawing.Size(100, 23);
-            this.txtConfirmarSenha.TabIndex = 47;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(334, 265);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 15);
-            this.label11.TabIndex = 46;
-            this.label11.Text = "Confirmar Senha";
             // 
             // FormCadastroFuncionario
             // 
@@ -486,7 +507,6 @@
         private Label label15;
         private MaskedTextBox mtxtNumero;
         private Label label14;
-        private TextBox txtEstado;
         private Label label13;
         private TextBox txtCidade;
         private Label label10;
@@ -503,5 +523,8 @@
         private MaskedTextBox mtxtRg;
         private TextBox txtConfirmarSenha;
         private Label label11;
+        private ComboBox cmbEstados;
+        private Label label17;
+        private TextBox txtComplemento;
     }
 }

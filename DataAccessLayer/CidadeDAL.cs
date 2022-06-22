@@ -13,7 +13,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO CIDADES (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID)";
+            string sql = $"INSERT INTO CIDADES (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID); SELECT SCOPE_IDENTITY()";
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -194,6 +194,47 @@ namespace DataAccessLayer
                     return new SingleResponse<Cidade>("Cidade selecionado com sucesso!", true, cidade);
                 }
                 return new SingleResponse<Cidade>("Cidade não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Cidade>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public SingleResponse<Cidade> GetByNameAndEstadoId(Cidade item)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@NOME_CIDADE", item.NomeCidade);
+            command.Parameters.AddWithValue("@ESTADO_ID", item.EstadoId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Cidade cidade = new Cidade();
+                    cidade.ID = Convert.ToInt32(reader["ID"]);
+                    cidade.NomeCidade = Convert.ToString(reader["NOME_CIDADE"]);
+                    cidade.EstadoId = Convert.ToInt32(reader["ESTADO_ID"]);
+                    return new SingleResponse<Cidade>("Cidade selecionado com sucesso!", true, cidade);
+                }
+                return new SingleResponse<Cidade>("Cidade não encontrado!", true, null);
             }
             catch (Exception ex)
             {

@@ -237,5 +237,13 @@ namespace BusinessLogicalLayer
             //Se chegou aqui, o nome ta certinho e retornamos "";
             return "";
         }
+        public string ValidateIfSenha1EqualsToSenha2(string senha1,string senha2)
+        {
+            if(senha1 != senha2)
+            {
+                return "";
+            }
+            return "Senhas não correspondem";
+        }
     }
 }

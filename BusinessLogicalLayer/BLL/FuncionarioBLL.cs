@@ -1,12 +1,19 @@
 ﻿using DataAccessLayer;
 using Entities;
 using Shared;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace BusinessLogicalLayer
 {
     public class FuncionarioBLL : ICRUD<Funcionario>
     {
         private FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
+
+        public FuncionarioBLL()
+        {
+        }
 
         public Response Delete(int id)
         {
@@ -23,12 +30,74 @@ namespace BusinessLogicalLayer
             return funcionarioDAL.GetByID(id);
         }
 
+        public Response Insert(FuncionarioComEndereco funcionarioComEndereco)
+        {
+            Response response = new Response();
+            FuncionarioValidator funcionarioValidator = new FuncionarioValidator();
+            StringValidator stringValidator = new StringValidator();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(stringValidator.ValidateCEP(funcionarioComEndereco.Endereco.CEP));
+            stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
+            stringBuilder.AppendLine(funcionarioValidator.Validate(funcionarioComEndereco.Funcionario).Message);
+            string erros = stringBuilder.ToString().Trim();
+            erros = Regex.Replace(erros, @"\s+", " ");
+            if (string.IsNullOrWhiteSpace(erros))
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    bool HasFound = false;
+                    Cidade cidade = new Cidade();
+                    Bairro bairro = new Bairro();
+                    FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
+                    EnderecoDAL enderecoDAL = new EnderecoDAL();
+                    CidadeDAL cidadeDAL = new CidadeDAL();
+                    BairroDAL bairroDAL = new BairroDAL();
+                    SingleResponse<Cidade> responseCidade = cidadeDAL.GetByNameAndEstadoId(funcionarioComEndereco.Cidade);
+                    if (responseCidade.HasSuccess && responseCidade.Item != null)
+                    {
+                        funcionarioComEndereco.Bairro.CidadeId = responseCidade.Item.ID;
+                        SingleResponse<Bairro> responseBairro = bairroDAL.GetByNameAndCidadeId(funcionarioComEndereco.Bairro);
+                        if (responseBairro.HasSuccess && responseBairro.Item != null)
+                        {
+                            SingleResponse<Endereco> responseEndereco = enderecoDAL.GetByEndereco(funcionarioComEndereco.Endereco);
+                            if (responseEndereco.HasSuccess && responseEndereco.Item != null)
+                            {
+                                funcionarioComEndereco.Funcionario.EnderecoId = responseEndereco.Item.ID;
+                                response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
+                            }
+                            else if (responseEndereco.HasSuccess && responseEndereco.Item == null)
+                            {
+                                response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
+                                response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
+                            }
+                        }
+                        else if (responseBairro.HasSuccess && responseBairro.Item == null)
+                        {
+                            response = bairroDAL.Insert(funcionarioComEndereco.Bairro);
+                            response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
+                            response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
+                        }
+                    }
+                    else if (responseCidade.HasSuccess && responseCidade.Item == null)
+                    {
+                        response = cidadeDAL.Insert(funcionarioComEndereco.Cidade);
+                        response = bairroDAL.Insert(funcionarioComEndereco.Bairro);
+                        response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
+                        response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
+                    }
+                    if (!response.HasSuccess)
+                    {
+                        return response;
+                    }
+                    scope.Complete();
+                }
+            }//scope.Dispose();
+            return response;
+        }
+
         public Response Insert(Funcionario item)
         {
-            //NAO ESQUEÇAM DAS VALIDAÇÕES!
-            //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
-            //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
-            return funcionarioDAL.Insert(item);
+            throw new NotImplementedException();
         }
 
         public Response Update(Funcionario item)

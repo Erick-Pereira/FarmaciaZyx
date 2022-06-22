@@ -12,7 +12,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO ENDERECOS (CEP,LOGRADOURO,NUMERO_CASA,BAIRRO_ID) VALUES (@CEP,@LOGRADOURO,@NUMERO_CASA,@BAIRRO_ID)";
+            string sql = $"INSERT INTO ENDERECOS (CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO) VALUES (@CEP,@NUMERO_CASA,@BAIRRO_ID,@RUA,@COMPLEMENTO); SELECT SCOPE_IDENTITY()";
 
 
 
@@ -21,9 +21,12 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@CEP", endereco.CEP);
-            command.Parameters.AddWithValue("@LOGRADOURO", endereco.Logradouro);
             command.Parameters.AddWithValue("@NUMERO_CASA", endereco.NumeroCasa);
             command.Parameters.AddWithValue("@BAIRRO_ID", endereco.BairroID);
+            command.Parameters.AddWithValue("@RUA", endereco.Rua);
+            command.Parameters.AddWithValue("@COMPLEMENTO", endereco.Complemento);
+
+
             //Estamos conectados na base de dados
             //try catch
             //try catch finally
@@ -52,7 +55,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE ENDERECOS SET CEP = @CEP, LOGRADOURO = @LOGRADOURO, NUMERO_CASA = @NUMERO_CASA, BAIRRO_ID = @BAIRRO_ID WHERE ID = @ID";
+            string sql = $"UPDATE ENDERECOS SET CEP = @CEP, NUMERO_CASA = @NUMERO_CASA, BAIRRO_ID = @BAIRRO_ID, RUA = @RUA, COMPLEMENTO = @COMPLEMENTO WHERE ID = @ID";
 
             
 
@@ -61,9 +64,10 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@CEP", endereco.CEP);
-            command.Parameters.AddWithValue("@LOGRADOURO", endereco.Logradouro);
             command.Parameters.AddWithValue("@NUMERO_CASA", endereco.NumeroCasa);
             command.Parameters.AddWithValue("@BAIRRO_ID", endereco.BairroID);
+            command.Parameters.AddWithValue("@RUA", endereco.Rua);
+            command.Parameters.AddWithValue("@COMPLEMENTO", endereco.Complemento);
             command.Parameters.AddWithValue("@ID", endereco.ID);
 
             //Estamos conectados na base de dados
@@ -136,7 +140,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,CEP,LOGRADOURO,NUMERO_CASA,BAIRRO_ID FROM ENDERECOS";
+            string sql = $"SELECT ID,CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO FROM ENDERECOS";
 
             
 
@@ -155,7 +159,9 @@ namespace DataAccessLayer
                     Endereco endereco = new Endereco();
                     endereco.ID = Convert.ToInt32(reader["ID"]);
                     endereco.CEP = Convert.ToString(reader["CEP"]);
-                    endereco.Logradouro = Convert.ToString(reader["LOGRADOURO"]);
+                    endereco.Rua = Convert.ToString(reader["RUA"]);
+                    endereco.Complemento = Convert.ToString(reader["COMPLEMENTO"]);
+
                     endereco.NumeroCasa = Convert.ToString(reader["NUMERO_CASA"]);
                     endereco.BairroID = Convert.ToInt32(reader["BAIRRO_ID"]);
 
@@ -179,7 +185,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,CEP,LOGRADOURO,NUMERO_CASA,BAIRRO_ID FROM ENDERECOS WHERE ID = @ID";
+            string sql = $"SELECT ID,CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO FROM ENDERECOS WHERE ID = @ID";
 
             
 
@@ -198,12 +204,59 @@ namespace DataAccessLayer
                     Endereco endereco = new Endereco();
                     endereco.ID = Convert.ToInt32(reader["ID"]);
                     endereco.CEP = Convert.ToString(reader["CEP"]);
-                    endereco.Logradouro = Convert.ToString(reader["LOGRADOURO"]);
+                    endereco.Rua = Convert.ToString(reader["RUA"]);
+                    endereco.Complemento = Convert.ToString(reader["COMPLEMENTO"]);
                     endereco.NumeroCasa = Convert.ToString(reader["NUMERO_CASA"]);
                     endereco.BairroID = Convert.ToInt32(reader["BAIRRO_ID"]);
                     return new SingleResponse<Endereco>("Endereço selecionado com sucesso!", true, endereco);
                 }
                 return new SingleResponse<Endereco>("Endereço não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Endereco>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public SingleResponse<Endereco> GetByEndereco(Endereco item)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO FROM ENDERECOS WHERE CEP = @CEP , NUMERO_CASA = @NUMERO_CASA , BAIRRO_ID = @BAIRRO_ID, RUA = @RUA";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@CEP", item.CEP);
+            command.Parameters.AddWithValue("@NUMERO_CASA", item.NumeroCasa);
+            command.Parameters.AddWithValue("@BAIRRO_ID", item.BairroID);
+            command.Parameters.AddWithValue("@RUA", item.Rua);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Endereco endereco = new Endereco();
+                    endereco.ID = Convert.ToInt32(reader["ID"]);
+                    endereco.CEP = Convert.ToString(reader["CEP"]);
+                    endereco.Rua = Convert.ToString(reader["RUA"]);
+                    endereco.Complemento = Convert.ToString(reader["COMPLEMENTO"]);
+                    endereco.NumeroCasa = Convert.ToString(reader["NUMERO_CASA"]);
+                    endereco.BairroID = Convert.ToInt32(reader["BAIRRO_ID"]);
+                    return new SingleResponse<Endereco>("Endereço selecionado com sucesso!", true, endereco);
+                }
+                return new SingleResponse<Endereco>("Endereço não encontrado!", true, null);
             }
             catch (Exception ex)
             {
