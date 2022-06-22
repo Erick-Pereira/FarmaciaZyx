@@ -73,6 +73,7 @@
             this.btnUpdateFornecedor.Text = "Update Fornecedor";
             this.btnUpdateFornecedor.UseMnemonic = false;
             this.btnUpdateFornecedor.UseVisualStyleBackColor = false;
+            this.btnUpdateFornecedor.Click += new System.EventHandler(this.btnUpdateFornecedor_Click);
             // 
             // btnDeleteFornecedor
             // 

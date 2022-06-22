@@ -30,13 +30,12 @@ namespace WFPresentationLayer
             childForm.Dock = DockStyle.Fill;
             panelDesktopClientes.Controls.Add(childForm);
             panelDesktopClientes.Tag = childForm;
-            childForm.BringToFront();
+            panelDesktopClientes.BringToFront();
             childForm.Show();
         }
 
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
-            panelDesktopClientes.BringToFront();
             OpenChildForm(new FormCadastroCliente());
         }
 
@@ -58,22 +57,50 @@ namespace WFPresentationLayer
             }
         }
 
-        private void btnUpdateCliente_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDeleteCliente_Click(object sender, EventArgs e)
         {
+
             if (dgvClientes.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel deletar um cliente não selecionado");
                 return;
             }
-            int rowindex = dgvClientes.CurrentCell.RowIndex;
-            int columnindex = dgvClientes.CurrentCell.ColumnIndex;
-            clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value));
-            dgvClientes.Rows.RemoveAt(rowindex);
+            string message = "Você realmente quer excluir este Cliente?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvClientes.CurrentCell.RowIndex;
+                int columnindex = dgvClientes.CurrentCell.ColumnIndex;
+                clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value));
+                dgvClientes.Rows.RemoveAt(rowindex);
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void btnUpdateCliente_Click(object sender, EventArgs e)
+        {
+            if (dgvClientes.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel fazer o Update um cliente não selecionado");
+                return;
+            }
+            string message = "Você realmente Fazer o Update deste Cliente?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvClientes.CurrentCell.RowIndex;
+                int columnindex = dgvClientes.CurrentCell.ColumnIndex;
+                StaticItem.item = clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value)).Item;
+                OpenChildForm(new FormUpdateCliente());
+            }
         }
     }
 }

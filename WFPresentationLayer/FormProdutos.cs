@@ -68,10 +68,18 @@ namespace WFPresentationLayer
                 MessageBox.Show("Não é possivel deletar um produto não selecionado");
                 return;
             }
-            int rowindex = dgvProdutos.CurrentCell.RowIndex;
-            int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
-            produtorBLL.Delete(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[columnindex].Value));
-            dgvProdutos.Rows.RemoveAt(rowindex);
+
+            string message = "Você realmente quer excluir este Produto?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvProdutos.CurrentCell.RowIndex;
+                int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
+                produtorBLL.Delete(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[columnindex].Value));
+                dgvProdutos.Rows.RemoveAt(rowindex);
+            }
         }
     }
 }

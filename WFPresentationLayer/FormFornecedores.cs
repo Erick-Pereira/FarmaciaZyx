@@ -66,10 +66,23 @@ namespace WFPresentationLayer
                 MessageBox.Show("Não é possivel deletar um fornecedor não selecionado");
                 return;
             }
-            int rowindex = dgvFornecedores.CurrentCell.RowIndex;
-            int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
-            fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value));
-            dgvFornecedores.Rows.RemoveAt(rowindex);
+
+            string message = "Você realmente quer excluir este Fornecedor?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvFornecedores.CurrentCell.RowIndex;
+                int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
+                fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value));
+                dgvFornecedores.Rows.RemoveAt(rowindex);
+            }
+        }
+
+        private void btnUpdateFornecedor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

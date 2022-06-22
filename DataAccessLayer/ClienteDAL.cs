@@ -188,6 +188,7 @@ namespace DataAccessLayer
                     Cliente cliente = new Cliente();
                     cliente.ID = Convert.ToInt32(reader["ID"]);
                     cliente.Nome = Convert.ToString(reader["NOME"]);
+                    cliente.RG = Convert.ToString(reader["RG"]);
                     cliente.CPF = Convert.ToString(reader["CPF"]);
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
@@ -232,6 +233,7 @@ namespace DataAccessLayer
                     Cliente cliente = new Cliente();
                     cliente.ID = Convert.ToInt32(reader["ID"]);
                     cliente.Nome = Convert.ToString(reader["NOME"]);
+                    cliente.RG = Convert.ToString(reader["RG"]);
                     cliente.CPF = Convert.ToString(reader["CPF"]);
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);

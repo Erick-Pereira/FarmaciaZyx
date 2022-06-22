@@ -18,7 +18,7 @@ namespace WFPresentationLayer
         public FormFuncionario()
         {
             InitializeComponent();
-          if(FuncionarioLogin.tipoFuncionarioId != 1)
+            if (FuncionarioLogin.tipoFuncionarioId != 1)
             {
                 btnCadastroFuncionario.Enabled = false;
                 btnCadastroFuncionario.Visible = false;
@@ -34,6 +34,10 @@ namespace WFPresentationLayer
 
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;

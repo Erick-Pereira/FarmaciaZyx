@@ -15,7 +15,7 @@ namespace WFPresentationLayer
     public partial class FormFuncionarios : Form
     {
         private Form currentChildForm;
-        
+
 
         TipoFuncionarioBLL tipoFuncionarioBLL = new TipoFuncionarioBLL();
         List<Funcionario> funcionarios = new List<Funcionario>();
@@ -30,7 +30,7 @@ namespace WFPresentationLayer
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelDesktopFuncionarios .Controls.Add(childForm);
+            panelDesktopFuncionarios.Controls.Add(childForm);
             panelDesktopFuncionarios.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
@@ -65,10 +65,17 @@ namespace WFPresentationLayer
                 MessageBox.Show("Não é possivel deletar um funcionario não selecionado");
                 return;
             }
-            int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
-            int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
-            funcionarioBLL.Delete(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[columnindex].Value));
-            dgvFuncionarios.Rows.RemoveAt(rowindex);
+            string message = "Você realmente quer excluir este Funcionario?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
+                int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
+                funcionarioBLL.Delete(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[columnindex].Value));
+                dgvFuncionarios.Rows.RemoveAt(rowindex);
+            }
         }
     }
 }
