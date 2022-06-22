@@ -57,5 +57,18 @@ namespace WFPresentationLayer
             panelDesktopFuncionarios.BringToFront();
             OpenChildForm(new FormCadastroFuncionario());
         }
+
+        private void btnDeleteFuncionario_Click(object sender, EventArgs e)
+        {
+            if (dgvFuncionarios.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel deletar um funcionario não selecionado");
+                return;
+            }
+            int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
+            int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
+            funcionarioBLL.Delete(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[columnindex].Value));
+            dgvFuncionarios.Rows.RemoveAt(rowindex);
+        }
     }
 }

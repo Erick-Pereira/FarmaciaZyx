@@ -65,7 +65,7 @@ namespace WFPresentationLayer
 
             if (dgvProdutos.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel retirar um produto não selecionado");
+                MessageBox.Show("Não é possivel deletar um produto não selecionado");
                 return;
             }
             int rowindex = dgvProdutos.CurrentCell.RowIndex;

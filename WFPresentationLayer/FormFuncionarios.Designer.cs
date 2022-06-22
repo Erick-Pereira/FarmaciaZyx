@@ -167,6 +167,7 @@
             this.btnDeleteFuncionario.Text = "Delete Funcionario";
             this.btnDeleteFuncionario.UseMnemonic = false;
             this.btnDeleteFuncionario.UseVisualStyleBackColor = false;
+            this.btnDeleteFuncionario.Click += new System.EventHandler(this.btnDeleteFuncionario_Click);
             // 
             // btnCadastroFuncionario
             // 
