@@ -42,8 +42,6 @@ namespace WFPresentationLayer
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-
-
             clientes = clienteBLL.GetAll().Dados;
             for (int i = 0; i < clientes.Count; i++)
             {

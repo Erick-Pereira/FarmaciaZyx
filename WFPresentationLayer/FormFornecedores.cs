@@ -35,9 +35,15 @@ namespace WFPresentationLayer
             childForm.BringToFront();
             childForm.Show();
         }
-        private void FormFuncionarios_Load(object sender, EventArgs e)
-        {
 
+        private void btnCadastroFornecedor_Click(object sender, EventArgs e)
+        {
+            panelDesktopFornecedores.BringToFront();
+            OpenChildForm(new FormCadastroFornecedor());
+        }
+
+        private void FormFornecedores_Load(object sender, EventArgs e)
+        {
             fornecedores = fornecedorBLL.GetAll().Dados;
             for (int i = 0; i < fornecedores.Count; i++)
             {
@@ -48,14 +54,8 @@ namespace WFPresentationLayer
                 dgvFornecedores.Rows[i].Cells["FornecedoresNomeContato"].Value = fornecedores[i].NomeContato;
                 dgvFornecedores.Rows[i].Cells["FornecedoresTelefone"].Value = fornecedores[i].Telefone;
                 dgvFornecedores.Rows[i].Cells["FornecedoresEmail"].Value = fornecedores[i].Email;
-                
-            }
-        }
 
-        private void btnCadastroFornecedor_Click(object sender, EventArgs e)
-        {
-            panelDesktopFornecedores.BringToFront();
-            OpenChildForm(new FormCadastroFornecedor());
+            }
         }
     }
 }

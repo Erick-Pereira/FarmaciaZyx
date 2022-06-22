@@ -185,6 +185,7 @@
             this.Controls.Add(this.panelDesktopFornecedores);
             this.Name = "FormFornecedores";
             this.Text = "FormFornecedores";
+            this.Load += new System.EventHandler(this.FormFornecedores_Load);
             this.panelMenuProdutos.ResumeLayout(false);
             this.panelDesktopFornecedores.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).EndInit();
