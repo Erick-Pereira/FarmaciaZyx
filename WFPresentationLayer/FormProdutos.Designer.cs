@@ -33,7 +33,6 @@
             this.btnDeleteProduto = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
-            this.panelDesktopProdutos = new System.Windows.Forms.Panel();
             this.ProdutosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,7 @@
             this.ProdutosLaboratorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosTipoUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDesktopProdutos = new System.Windows.Forms.Panel();
             this.panelMenuProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.panelDesktopProdutos.SuspendLayout();
@@ -131,16 +131,8 @@
             this.dgvFuncionarios.RowHeadersVisible = false;
             this.dgvFuncionarios.RowTemplate.Height = 25;
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(711, 495);
+            this.dgvFuncionarios.Size = new System.Drawing.Size(710, 523);
             this.dgvFuncionarios.TabIndex = 3;
-            // 
-            // panelDesktopProdutos
-            // 
-            this.panelDesktopProdutos.Controls.Add(this.dgvFuncionarios);
-            this.panelDesktopProdutos.Location = new System.Drawing.Point(0, -22);
-            this.panelDesktopProdutos.Name = "panelDesktopProdutos";
-            this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
-            this.panelDesktopProdutos.TabIndex = 5;
             // 
             // ProdutosID
             // 
@@ -183,6 +175,14 @@
             this.ProdutosValor.HeaderText = "Valor";
             this.ProdutosValor.Name = "ProdutosValor";
             this.ProdutosValor.ReadOnly = true;
+            // 
+            // panelDesktopProdutos
+            // 
+            this.panelDesktopProdutos.Controls.Add(this.dgvFuncionarios);
+            this.panelDesktopProdutos.Location = new System.Drawing.Point(0, -22);
+            this.panelDesktopProdutos.Name = "panelDesktopProdutos";
+            this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
+            this.panelDesktopProdutos.TabIndex = 5;
             // 
             // FormProdutos
             // 

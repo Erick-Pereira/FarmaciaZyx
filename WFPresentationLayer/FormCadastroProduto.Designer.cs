@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.btnCadastrarLaboratorio);
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label5);
