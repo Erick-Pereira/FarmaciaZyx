@@ -89,7 +89,7 @@ namespace WFPresentationLayer
 
         private void btnCadastroFornecedor_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCadastroFornecedor());
+            OpenChildForm(new FormFornecedores());
         }
 
         private void btnCadastroFuncionario_Click(object sender, EventArgs e)

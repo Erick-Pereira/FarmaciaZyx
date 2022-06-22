@@ -32,18 +32,17 @@
             this.btnUpdateFornecedor = new System.Windows.Forms.Button();
             this.btnDeleteFornecedor = new System.Windows.Forms.Button();
             this.btnCadastroFornecedor = new System.Windows.Forms.Button();
-            this.panelDesktopProdutos = new System.Windows.Forms.Panel();
-            this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
-            this.ProdutosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosQtdEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosLaboratorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosTipoUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDesktopFornecedores = new System.Windows.Forms.Panel();
+            this.dgvFornecedores = new System.Windows.Forms.DataGridView();
+            this.FornecedoresID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornecedoresRazaoSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornecedoresCNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornecedoresNomeContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornecedoresTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FornecedoresEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMenuProdutos.SuspendLayout();
-            this.panelDesktopProdutos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
+            this.panelDesktopFornecedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenuProdutos
@@ -108,80 +107,74 @@
             this.btnCadastroFornecedor.Text = "Cadastro  Fornecedor";
             this.btnCadastroFornecedor.UseMnemonic = false;
             this.btnCadastroFornecedor.UseVisualStyleBackColor = false;
+            this.btnCadastroFornecedor.Click += new System.EventHandler(this.btnCadastroFornecedor_Click);
             // 
-            // panelDesktopProdutos
+            // panelDesktopFornecedores
             // 
-            this.panelDesktopProdutos.Controls.Add(this.dgvFuncionarios);
-            this.panelDesktopProdutos.Location = new System.Drawing.Point(0, -22);
-            this.panelDesktopProdutos.Name = "panelDesktopProdutos";
-            this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
-            this.panelDesktopProdutos.TabIndex = 7;
+            this.panelDesktopFornecedores.Controls.Add(this.dgvFornecedores);
+            this.panelDesktopFornecedores.Location = new System.Drawing.Point(0, -22);
+            this.panelDesktopFornecedores.Name = "panelDesktopFornecedores";
+            this.panelDesktopFornecedores.Size = new System.Drawing.Size(795, 495);
+            this.panelDesktopFornecedores.TabIndex = 7;
             // 
-            // dgvFuncionarios
+            // dgvFornecedores
             // 
-            this.dgvFuncionarios.AllowUserToAddRows = false;
-            this.dgvFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFuncionarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvFuncionarios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProdutosID,
-            this.ProdutosNome,
-            this.ProdutosDescricao,
-            this.ProdutosQtdEstoque,
-            this.ProdutosLaboratorio,
-            this.ProdutosTipoUnidade,
-            this.ProdutosValor});
-            this.dgvFuncionarios.Location = new System.Drawing.Point(0, 22);
-            this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.ReadOnly = true;
-            this.dgvFuncionarios.RowHeadersVisible = false;
-            this.dgvFuncionarios.RowTemplate.Height = 25;
-            this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(710, 523);
-            this.dgvFuncionarios.TabIndex = 3;
+            this.dgvFornecedores.AllowUserToAddRows = false;
+            this.dgvFornecedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFornecedores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvFornecedores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFornecedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FornecedoresID,
+            this.FornecedoresRazaoSocial,
+            this.FornecedoresCNPJ,
+            this.FornecedoresNomeContato,
+            this.FornecedoresTelefone,
+            this.FornecedoresEmail});
+            this.dgvFornecedores.Location = new System.Drawing.Point(0, 22);
+            this.dgvFornecedores.Name = "dgvFornecedores";
+            this.dgvFornecedores.ReadOnly = true;
+            this.dgvFornecedores.RowHeadersVisible = false;
+            this.dgvFornecedores.RowTemplate.Height = 25;
+            this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFornecedores.Size = new System.Drawing.Size(710, 523);
+            this.dgvFornecedores.TabIndex = 3;
             // 
-            // ProdutosID
+            // FornecedoresID
             // 
-            this.ProdutosID.HeaderText = "ID";
-            this.ProdutosID.Name = "ProdutosID";
-            this.ProdutosID.ReadOnly = true;
+            this.FornecedoresID.HeaderText = "ID";
+            this.FornecedoresID.Name = "FornecedoresID";
+            this.FornecedoresID.ReadOnly = true;
             // 
-            // ProdutosNome
+            // FornecedoresRazaoSocial
             // 
-            this.ProdutosNome.HeaderText = "Nome";
-            this.ProdutosNome.Name = "ProdutosNome";
-            this.ProdutosNome.ReadOnly = true;
+            this.FornecedoresRazaoSocial.HeaderText = "Razão Social";
+            this.FornecedoresRazaoSocial.Name = "FornecedoresRazaoSocial";
+            this.FornecedoresRazaoSocial.ReadOnly = true;
             // 
-            // ProdutosDescricao
+            // FornecedoresCNPJ
             // 
-            this.ProdutosDescricao.HeaderText = "Descrição";
-            this.ProdutosDescricao.Name = "ProdutosDescricao";
-            this.ProdutosDescricao.ReadOnly = true;
+            this.FornecedoresCNPJ.HeaderText = "CNPJ";
+            this.FornecedoresCNPJ.Name = "FornecedoresCNPJ";
+            this.FornecedoresCNPJ.ReadOnly = true;
             // 
-            // ProdutosQtdEstoque
+            // FornecedoresNomeContato
             // 
-            this.ProdutosQtdEstoque.HeaderText = "Qtde Estoque";
-            this.ProdutosQtdEstoque.Name = "ProdutosQtdEstoque";
-            this.ProdutosQtdEstoque.ReadOnly = true;
+            this.FornecedoresNomeContato.HeaderText = "Nome Contato";
+            this.FornecedoresNomeContato.Name = "FornecedoresNomeContato";
+            this.FornecedoresNomeContato.ReadOnly = true;
             // 
-            // ProdutosLaboratorio
+            // FornecedoresTelefone
             // 
-            this.ProdutosLaboratorio.HeaderText = "Laboratorio";
-            this.ProdutosLaboratorio.Name = "ProdutosLaboratorio";
-            this.ProdutosLaboratorio.ReadOnly = true;
+            this.FornecedoresTelefone.HeaderText = "Telefone";
+            this.FornecedoresTelefone.Name = "FornecedoresTelefone";
+            this.FornecedoresTelefone.ReadOnly = true;
             // 
-            // ProdutosTipoUnidade
+            // FornecedoresEmail
             // 
-            this.ProdutosTipoUnidade.HeaderText = "Un";
-            this.ProdutosTipoUnidade.Name = "ProdutosTipoUnidade";
-            this.ProdutosTipoUnidade.ReadOnly = true;
-            // 
-            // ProdutosValor
-            // 
-            this.ProdutosValor.HeaderText = "Valor";
-            this.ProdutosValor.Name = "ProdutosValor";
-            this.ProdutosValor.ReadOnly = true;
+            this.FornecedoresEmail.HeaderText = "Email";
+            this.FornecedoresEmail.Name = "FornecedoresEmail";
+            this.FornecedoresEmail.ReadOnly = true;
             // 
             // FormFornecedores
             // 
@@ -189,12 +182,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMenuProdutos);
-            this.Controls.Add(this.panelDesktopProdutos);
+            this.Controls.Add(this.panelDesktopFornecedores);
             this.Name = "FormFornecedores";
             this.Text = "FormFornecedores";
             this.panelMenuProdutos.ResumeLayout(false);
-            this.panelDesktopProdutos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
+            this.panelDesktopFornecedores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,14 +198,13 @@
         private Button btnUpdateFornecedor;
         private Button btnDeleteFornecedor;
         private Button btnCadastroFornecedor;
-        private Panel panelDesktopProdutos;
-        private DataGridView dgvFuncionarios;
-        private DataGridViewTextBoxColumn ProdutosID;
-        private DataGridViewTextBoxColumn ProdutosNome;
-        private DataGridViewTextBoxColumn ProdutosDescricao;
-        private DataGridViewTextBoxColumn ProdutosQtdEstoque;
-        private DataGridViewTextBoxColumn ProdutosLaboratorio;
-        private DataGridViewTextBoxColumn ProdutosTipoUnidade;
-        private DataGridViewTextBoxColumn ProdutosValor;
+        private Panel panelDesktopFornecedores;
+        private DataGridView dgvFornecedores;
+        private DataGridViewTextBoxColumn FornecedoresID;
+        private DataGridViewTextBoxColumn FornecedoresRazaoSocial;
+        private DataGridViewTextBoxColumn FornecedoresCNPJ;
+        private DataGridViewTextBoxColumn FornecedoresNomeContato;
+        private DataGridViewTextBoxColumn FornecedoresTelefone;
+        private DataGridViewTextBoxColumn FornecedoresEmail;
     }
 }
