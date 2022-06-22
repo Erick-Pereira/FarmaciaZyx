@@ -16,5 +16,15 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
+
+        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormProdutos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
