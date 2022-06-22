@@ -35,5 +35,19 @@ namespace BusinessLogicalLayer
                 return new DataResponse<Laboratorio>(dataResponse.Message, dataResponse.HasSuccess, null);
             }
         }
+
+        public SingleResponse<Laboratorio> GetByID(int id)
+        {
+            
+            SingleResponse<Laboratorio> singleResponse = laboratorioDAL.GetByID(id);
+            if (singleResponse.HasSuccess)
+            {
+                return new SingleResponse<Laboratorio>(singleResponse.Message, true, singleResponse.Item);
+            }
+            else
+            {
+                return new SingleResponse<Laboratorio>(singleResponse.Message, singleResponse.HasSuccess, null);
+            }
+        }
     }
 }

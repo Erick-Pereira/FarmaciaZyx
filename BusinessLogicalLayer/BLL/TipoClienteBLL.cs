@@ -11,9 +11,10 @@ namespace BusinessLogicalLayer
 {
     public class TipoClienteBLL
     {
+        TipoClienteDAL tipoClienteDAL = new TipoClienteDAL();
         public DataResponse<TipoCliente> GetAll()
         {
-            TipoClienteDAL tipoClienteDAL = new TipoClienteDAL();
+           
             DataResponse<TipoCliente> dataResponse = tipoClienteDAL.GetAll();
             if (dataResponse.HasSuccess)
             {
@@ -26,7 +27,7 @@ namespace BusinessLogicalLayer
         }
         public SingleResponse<TipoCliente> GetByID(int id)
         {
-            TipoClienteDAL tipoClienteDAL = new TipoClienteDAL();
+            
             SingleResponse<TipoCliente> singleResponse = tipoClienteDAL.GetByID(id);
             if (singleResponse.HasSuccess)
             {

@@ -11,9 +11,10 @@ namespace BusinessLogicalLayer
 {
     public class TipoFuncionarioBLL
     {
+        TipoFuncionarioDAL tipoFuncionarioDal = new TipoFuncionarioDAL();
         public DataResponse<TipoFuncionario> GetAll()
         {
-            TipoFuncionarioDAL tipoFuncionarioDal = new TipoFuncionarioDAL();  
+            
             DataResponse<TipoFuncionario> dataResponse = tipoFuncionarioDal.GetAll();
             if (dataResponse.HasSuccess)
             {
@@ -26,7 +27,7 @@ namespace BusinessLogicalLayer
         }
         public SingleResponse<TipoFuncionario> GetByID(int id)
         {
-            TipoFuncionarioDAL tipoFuncionarioDal = new TipoFuncionarioDAL();
+           
             SingleResponse<TipoFuncionario> singleResponse = tipoFuncionarioDal.GetByID(id);
             if (singleResponse.HasSuccess)
             {

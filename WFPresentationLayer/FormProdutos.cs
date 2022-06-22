@@ -20,6 +20,7 @@ namespace WFPresentationLayer
         List<Produto> produtos = new List<Produto>();
         ProdutorBLL produtorBLL = new ProdutorBLL();
         TipoUnidadeBLL tipoUnidadeBLL = new TipoUnidadeBLL();
+        LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         public FormProdutos()
         {
             InitializeComponent();
@@ -47,13 +48,14 @@ namespace WFPresentationLayer
             produtos = produtorBLL.GetAll().Dados;
             for (int i = 0; i < produtos.Count; i++)
             {
-                dgvFuncionarios.Rows.Add();
-                dgvFuncionarios.Rows[i].Cells["ProdutosID"].Value = produtos[i].ID;
-                dgvFuncionarios.Rows[i].Cells["ProdutosNome"].Value = produtos[i].Nome;
-                dgvFuncionarios.Rows[i].Cells["ProdutosQtdEstoque"].Value = produtos[i].QtdEstoque;
-                dgvFuncionarios.Rows[i].Cells["ProdutosLaboratorio"].Value = tipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                dgvFuncionarios.Rows[i].Cells["ProdutosTipoUnidade"].Value = produtos[i].Descricao;
-                dgvFuncionarios.Rows[i].Cells["ProdutosValor"].Value = produtos[i].Valor;
+                dgvProdutos.Rows.Add();
+                dgvProdutos.Rows[i].Cells["ProdutosID"].Value = produtos[i].ID;
+                dgvProdutos.Rows[i].Cells["ProdutosNome"].Value = produtos[i].Nome;
+                dgvProdutos.Rows[i].Cells["ProdutosQtdEstoque"].Value = produtos[i].QtdEstoque;
+                dgvProdutos.Rows[i].Cells["ProdutosDescricao"].Value = produtos[i].Descricao;
+                dgvProdutos.Rows[i].Cells["ProdutosLaboratorio"].Value = laboratorioBLL.GetByID(produtos[i].LaboratorioId).Item.Nome;
+                dgvProdutos.Rows[i].Cells["ProdutosTipoUnidade"].Value = tipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                dgvProdutos.Rows[i].Cells["ProdutosValor"].Value = produtos[i].Valor;
             }
         }
     }

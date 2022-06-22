@@ -32,7 +32,7 @@
             this.btnUpdateProduto = new System.Windows.Forms.Button();
             this.btnDeleteProduto = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
-            this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.ProdutosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,7 @@
             this.ProdutosValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDesktopProdutos = new System.Windows.Forms.Panel();
             this.panelMenuProdutos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.panelDesktopProdutos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,14 +110,14 @@
             this.btnCadastroProduto.UseVisualStyleBackColor = false;
             this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
             // 
-            // dgvFuncionarios
+            // dgvProdutos
             // 
-            this.dgvFuncionarios.AllowUserToAddRows = false;
-            this.dgvFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFuncionarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvFuncionarios.BackgroundColor = System.Drawing.Color.White;
-            this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProdutos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvProdutos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdutosID,
             this.ProdutosNome,
             this.ProdutosDescricao,
@@ -125,14 +125,14 @@
             this.ProdutosLaboratorio,
             this.ProdutosTipoUnidade,
             this.ProdutosValor});
-            this.dgvFuncionarios.Location = new System.Drawing.Point(0, 22);
-            this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.ReadOnly = true;
-            this.dgvFuncionarios.RowHeadersVisible = false;
-            this.dgvFuncionarios.RowTemplate.Height = 25;
-            this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(710, 523);
-            this.dgvFuncionarios.TabIndex = 3;
+            this.dgvProdutos.Location = new System.Drawing.Point(0, 22);
+            this.dgvProdutos.Name = "dgvProdutos";
+            this.dgvProdutos.ReadOnly = true;
+            this.dgvProdutos.RowHeadersVisible = false;
+            this.dgvProdutos.RowTemplate.Height = 25;
+            this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProdutos.Size = new System.Drawing.Size(710, 523);
+            this.dgvProdutos.TabIndex = 3;
             // 
             // ProdutosID
             // 
@@ -178,7 +178,7 @@
             // 
             // panelDesktopProdutos
             // 
-            this.panelDesktopProdutos.Controls.Add(this.dgvFuncionarios);
+            this.panelDesktopProdutos.Controls.Add(this.dgvProdutos);
             this.panelDesktopProdutos.Location = new System.Drawing.Point(0, -22);
             this.panelDesktopProdutos.Name = "panelDesktopProdutos";
             this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
@@ -195,7 +195,7 @@
             this.Text = "FormProdutos";
             this.Load += new System.EventHandler(this.FormProdutos_Load);
             this.panelMenuProdutos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             this.panelDesktopProdutos.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -207,7 +207,7 @@
         private Button btnUpdateProduto;
         private Button btnDeleteProduto;
         private Button btnCadastroProduto;
-        private DataGridView dgvFuncionarios;
+        private DataGridView dgvProdutos;
         private Panel panelDesktopProdutos;
         private DataGridViewTextBoxColumn ProdutosID;
         private DataGridViewTextBoxColumn ProdutosNome;
