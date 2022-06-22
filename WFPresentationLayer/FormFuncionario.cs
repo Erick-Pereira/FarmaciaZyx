@@ -44,7 +44,6 @@ namespace WFPresentationLayer
             childForm.Show();
         }
 
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -71,12 +70,11 @@ namespace WFPresentationLayer
 
         private void btnPerfilFuncionario_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCadastroCliente());
+            OpenChildForm(new FormClientes());
         }
 
         private void btnRegistroEntrada_Click(object sender, EventArgs e)
@@ -96,7 +94,7 @@ namespace WFPresentationLayer
 
         private void btnCadastroFuncionario_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCadastroFuncionario());
+            OpenChildForm(new FormFuncionarios());
         }
         private void btnMinimize_Click(object sender, EventArgs e)
         {

@@ -46,14 +46,14 @@
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
-            this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Un = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvProdutosSaida = new System.Windows.Forms.DataGridView();
+            this.ProdutosSaidaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -219,59 +219,59 @@
             this.cmbProduto.Size = new System.Drawing.Size(121, 23);
             this.cmbProduto.TabIndex = 42;
             // 
-            // dgvProdutos
+            // dgvProdutosSaida
             // 
-            this.dgvProdutos.AllowUserToAddRows = false;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nome,
-            this.Un,
-            this.Qtde,
-            this.Valor});
-            this.dgvProdutos.Location = new System.Drawing.Point(27, 177);
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.RowTemplate.Height = 25;
-            this.dgvProdutos.Size = new System.Drawing.Size(501, 147);
-            this.dgvProdutos.TabIndex = 50;
+            this.dgvProdutosSaida.AllowUserToAddRows = false;
+            this.dgvProdutosSaida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutosSaida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProdutosSaidaID,
+            this.ProdutosSaidaNome,
+            this.ProdutosSaidaUn,
+            this.ProdutosSaidaQtde,
+            this.ProdutosSaidaValor});
+            this.dgvProdutosSaida.Location = new System.Drawing.Point(27, 177);
+            this.dgvProdutosSaida.Name = "dgvProdutosSaida";
+            this.dgvProdutosSaida.ReadOnly = true;
+            this.dgvProdutosSaida.RowTemplate.Height = 25;
+            this.dgvProdutosSaida.Size = new System.Drawing.Size(501, 147);
+            this.dgvProdutosSaida.TabIndex = 50;
             // 
-            // ID
+            // ProdutosSaidaID
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.ProdutosSaidaID.HeaderText = "ID";
+            this.ProdutosSaidaID.Name = "ProdutosSaidaID";
+            this.ProdutosSaidaID.ReadOnly = true;
             // 
-            // Nome
+            // ProdutosSaidaNome
             // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
+            this.ProdutosSaidaNome.HeaderText = "Nome";
+            this.ProdutosSaidaNome.Name = "ProdutosSaidaNome";
+            this.ProdutosSaidaNome.ReadOnly = true;
             // 
-            // Un
+            // ProdutosSaidaUn
             // 
-            this.Un.HeaderText = "Un";
-            this.Un.Name = "Un";
-            this.Un.ReadOnly = true;
+            this.ProdutosSaidaUn.HeaderText = "Un";
+            this.ProdutosSaidaUn.Name = "ProdutosSaidaUn";
+            this.ProdutosSaidaUn.ReadOnly = true;
             // 
-            // Qtde
+            // ProdutosSaidaQtde
             // 
-            this.Qtde.HeaderText = "Qtde";
-            this.Qtde.Name = "Qtde";
-            this.Qtde.ReadOnly = true;
+            this.ProdutosSaidaQtde.HeaderText = "Qtde";
+            this.ProdutosSaidaQtde.Name = "ProdutosSaidaQtde";
+            this.ProdutosSaidaQtde.ReadOnly = true;
             // 
-            // Valor
+            // ProdutosSaidaValor
             // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
+            this.ProdutosSaidaValor.HeaderText = "Valor";
+            this.ProdutosSaidaValor.Name = "ProdutosSaidaValor";
+            this.ProdutosSaidaValor.ReadOnly = true;
             // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvProdutos);
+            this.Controls.Add(this.dgvProdutosSaida);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
@@ -294,7 +294,7 @@
             this.Text = "Registro Saida";
             this.Load += new System.EventHandler(this.FormRegistroSaida_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,11 +319,11 @@
         private NumericUpDown nudQtde;
         private Label label3;
         private ComboBox cmbProduto;
-        private DataGridView dgvProdutos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn Un;
-        private DataGridViewTextBoxColumn Qtde;
-        private DataGridViewTextBoxColumn Valor;
+        private DataGridView dgvProdutosSaida;
+        private DataGridViewTextBoxColumn ProdutosSaidaID;
+        private DataGridViewTextBoxColumn ProdutosSaidaNome;
+        private DataGridViewTextBoxColumn ProdutosSaidaUn;
+        private DataGridViewTextBoxColumn ProdutosSaidaQtde;
+        private DataGridViewTextBoxColumn ProdutosSaidaValor;
     }
 }

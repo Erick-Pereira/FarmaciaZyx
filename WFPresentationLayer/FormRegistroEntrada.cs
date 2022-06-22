@@ -79,14 +79,14 @@ namespace WFPresentationLayer
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             produto.QtdEstoque = (double)nudQtde.Value;
             produtos.Add(produto);
-            dgvProdutos.Rows.Add();
+            dgvProdutosEntrada.Rows.Add();
             for (int i = 0; i < produtos.Count; i++)
             {
-                dgvProdutos.Rows[i].Cells["ID"].Value = produtos[i].ID;
-                dgvProdutos.Rows[i].Cells["Nome"].Value = produtos[i].Nome;
-                dgvProdutos.Rows[i].Cells["Un"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                dgvProdutos.Rows[i].Cells["Qtde"].Value = produtos[i].QtdEstoque;
-                dgvProdutos.Rows[i].Cells["Valor"].Value = produtos[i].Valor;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
             }
 
             //** // create columns automatically //**
@@ -98,23 +98,23 @@ namespace WFPresentationLayer
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
         {
-            if(dgvProdutos.CurrentCell == null)
+            if(dgvProdutosEntrada.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel retirar um produto não selecionado");
                 return;
             }
-            int rowindex = dgvProdutos.CurrentCell.RowIndex;
-            int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
+            int rowindex = dgvProdutosEntrada.CurrentCell.RowIndex;
+            int columnindex = dgvProdutosEntrada.CurrentCell.ColumnIndex;
             //MessageBox.Show(dgvProdutos.Rows[rowindex].Cells[columnindex].Value.ToString());
             produtos.RemoveAt(rowindex);
-            dgvProdutos.Rows.RemoveAt(rowindex);
+            dgvProdutosEntrada.Rows.RemoveAt(rowindex);
             for (int i = 0; i < produtos.Count; i++)
             {
-                dgvProdutos.Rows[i].Cells["ID"].Value = produtos[i].ID;
-                dgvProdutos.Rows[i].Cells["Nome"].Value = produtos[i].Nome;
-                dgvProdutos.Rows[i].Cells["Un"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                dgvProdutos.Rows[i].Cells["Qtde"].Value = produtos[i].QtdEstoque;
-                dgvProdutos.Rows[i].Cells["Valor"].Value = produtos[i].Valor;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
             }
             //produtos.Remove();
         }

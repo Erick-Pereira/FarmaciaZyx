@@ -24,5 +24,18 @@ namespace BusinessLogicalLayer
                 return new DataResponse<TipoFuncionario>(dataResponse.Message, dataResponse.HasSuccess, null);
             }
         }
+        public SingleResponse<TipoFuncionario> GetByID(int id)
+        {
+            TipoFuncionarioDAL tipoFuncionarioDal = new TipoFuncionarioDAL();
+            SingleResponse<TipoFuncionario> singleResponse = tipoFuncionarioDal.GetByID(id);
+            if (singleResponse.HasSuccess)
+            {
+                return new SingleResponse<TipoFuncionario>(singleResponse.Message, true, singleResponse.Item);
+            }
+            else
+            {
+                return new SingleResponse<TipoFuncionario>(singleResponse.Message, singleResponse.HasSuccess, null);
+            }
+        }
     }
 }

@@ -83,7 +83,7 @@
             this.btnCadastroProduto.Name = "btnCadastroProduto";
             this.btnCadastroProduto.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroProduto.TabIndex = 20;
-            this.btnCadastroProduto.Text = "Cadastro Produto";
+            this.btnCadastroProduto.Text = "Produtos";
             this.btnCadastroProduto.UseMnemonic = false;
             this.btnCadastroProduto.UseVisualStyleBackColor = false;
             this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
@@ -119,7 +119,7 @@
             this.btnCadastroFornecedor.Name = "btnCadastroFornecedor";
             this.btnCadastroFornecedor.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFornecedor.TabIndex = 18;
-            this.btnCadastroFornecedor.Text = "Cadastro Fornecedor";
+            this.btnCadastroFornecedor.Text = "Fornecedores";
             this.btnCadastroFornecedor.UseMnemonic = false;
             this.btnCadastroFornecedor.UseVisualStyleBackColor = false;
             this.btnCadastroFornecedor.Click += new System.EventHandler(this.btnCadastroFornecedor_Click);
@@ -155,7 +155,7 @@
             this.btnRegistroSaida.Name = "btnRegistroSaida";
             this.btnRegistroSaida.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroSaida.TabIndex = 16;
-            this.btnRegistroSaida.Text = "Registro Venda";
+            this.btnRegistroSaida.Text = "Venda";
             this.btnRegistroSaida.UseMnemonic = false;
             this.btnRegistroSaida.UseVisualStyleBackColor = false;
             this.btnRegistroSaida.Click += new System.EventHandler(this.btnRegistroSaida_Click);
@@ -173,7 +173,7 @@
             this.btnCadastroCliente.Name = "btnCadastroCliente";
             this.btnCadastroCliente.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroCliente.TabIndex = 15;
-            this.btnCadastroCliente.Text = "Cadastro Cliente";
+            this.btnCadastroCliente.Text = "Clientes";
             this.btnCadastroCliente.UseMnemonic = false;
             this.btnCadastroCliente.UseVisualStyleBackColor = false;
             this.btnCadastroCliente.Click += new System.EventHandler(this.btnCadastroCliente_Click);
@@ -191,7 +191,7 @@
             this.btnCadastroFuncionario.Name = "btnCadastroFuncionario";
             this.btnCadastroFuncionario.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFuncionario.TabIndex = 14;
-            this.btnCadastroFuncionario.Text = "Cadastro Funcionario";
+            this.btnCadastroFuncionario.Text = "Funcionarios";
             this.btnCadastroFuncionario.UseMnemonic = false;
             this.btnCadastroFuncionario.UseVisualStyleBackColor = false;
             this.btnCadastroFuncionario.Click += new System.EventHandler(this.btnCadastroFuncionario_Click);
@@ -209,7 +209,7 @@
             this.btnRegistroEntrada.Name = "btnRegistroEntrada";
             this.btnRegistroEntrada.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroEntrada.TabIndex = 9;
-            this.btnRegistroEntrada.Text = "Registro Entrada";
+            this.btnRegistroEntrada.Text = "Entrada";
             this.btnRegistroEntrada.UseMnemonic = false;
             this.btnRegistroEntrada.UseVisualStyleBackColor = false;
             this.btnRegistroEntrada.Click += new System.EventHandler(this.btnRegistroEntrada_Click);
@@ -253,6 +253,7 @@
             // 
             // panelDesktop
             // 
+            this.panelDesktop.BackColor = System.Drawing.Color.White;
             this.panelDesktop.Location = new System.Drawing.Point(230, 61);
             this.panelDesktop.Name = "panelDesktop";
             this.panelDesktop.Size = new System.Drawing.Size(795, 495);
@@ -260,6 +261,7 @@
             // 
             // panelTitleBar
             // 
+            this.panelTitleBar.BackColor = System.Drawing.Color.White;
             this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnClose);
             this.panelTitleBar.Controls.Add(this.label1);

@@ -34,12 +34,12 @@
             this.btnCadastrarNovoFornecedor = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Un = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvProdutosEntrada = new System.Windows.Forms.DataGridView();
+            this.ProdutosEntradaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoProduto = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,52 +99,52 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Data Entrada";
             // 
-            // dgvProdutos
+            // dgvProdutosEntrada
             // 
-            this.dgvProdutos.AllowUserToAddRows = false;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nome,
-            this.Un,
-            this.Qtde,
-            this.Valor});
-            this.dgvProdutos.Location = new System.Drawing.Point(27, 177);
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.RowTemplate.Height = 25;
-            this.dgvProdutos.Size = new System.Drawing.Size(501, 147);
-            this.dgvProdutos.TabIndex = 5;
+            this.dgvProdutosEntrada.AllowUserToAddRows = false;
+            this.dgvProdutosEntrada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutosEntrada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProdutosEntradaID,
+            this.ProdutosEntradaNome,
+            this.ProdutosEntradaUn,
+            this.ProdutosEntradaQtde,
+            this.ProdutosEntradaValor});
+            this.dgvProdutosEntrada.Location = new System.Drawing.Point(27, 177);
+            this.dgvProdutosEntrada.Name = "dgvProdutosEntrada";
+            this.dgvProdutosEntrada.ReadOnly = true;
+            this.dgvProdutosEntrada.RowTemplate.Height = 25;
+            this.dgvProdutosEntrada.Size = new System.Drawing.Size(501, 147);
+            this.dgvProdutosEntrada.TabIndex = 5;
             // 
-            // ID
+            // ProdutosEntradaID
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.ProdutosEntradaID.HeaderText = "ID";
+            this.ProdutosEntradaID.Name = "ProdutosEntradaID";
+            this.ProdutosEntradaID.ReadOnly = true;
             // 
-            // Nome
+            // ProdutosEntradaNome
             // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
+            this.ProdutosEntradaNome.HeaderText = "Nome";
+            this.ProdutosEntradaNome.Name = "ProdutosEntradaNome";
+            this.ProdutosEntradaNome.ReadOnly = true;
             // 
-            // Un
+            // ProdutosEntradaUn
             // 
-            this.Un.HeaderText = "Un";
-            this.Un.Name = "Un";
-            this.Un.ReadOnly = true;
+            this.ProdutosEntradaUn.HeaderText = "Un";
+            this.ProdutosEntradaUn.Name = "ProdutosEntradaUn";
+            this.ProdutosEntradaUn.ReadOnly = true;
             // 
-            // Qtde
+            // ProdutosEntradaQtde
             // 
-            this.Qtde.HeaderText = "Qtde";
-            this.Qtde.Name = "Qtde";
-            this.Qtde.ReadOnly = true;
+            this.ProdutosEntradaQtde.HeaderText = "Qtde";
+            this.ProdutosEntradaQtde.Name = "ProdutosEntradaQtde";
+            this.ProdutosEntradaQtde.ReadOnly = true;
             // 
-            // Valor
+            // ProdutosEntradaValor
             // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
+            this.ProdutosEntradaValor.HeaderText = "Valor";
+            this.ProdutosEntradaValor.Name = "ProdutosEntradaValor";
+            this.ProdutosEntradaValor.ReadOnly = true;
             // 
             // btnCadastroNovoProduto
             // 
@@ -282,7 +282,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbProduto);
             this.Controls.Add(this.btnCadastroNovoProduto);
-            this.Controls.Add(this.dgvProdutos);
+            this.Controls.Add(this.dgvProdutosEntrada);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCadastrarNovoFornecedor);
@@ -292,7 +292,7 @@
             this.Name = "FormRegistroEntrada";
             this.Text = "Registro Entrada";
             this.Load += new System.EventHandler(this.FormRegistroEntrada_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -306,7 +306,7 @@
         private Button btnCadastrarNovoFornecedor;
         private DateTimePicker dateTimePicker1;
         private Label label2;
-        private DataGridView dgvProdutos;
+        private DataGridView dgvProdutosEntrada;
         private Button btnCadastroNovoProduto;
         private ComboBox cmbProduto;
         private Label label3;
@@ -320,11 +320,11 @@
         private Button btnRetirarProduto;
         private DataGridViewTextBoxColumn qtdeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn UnDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn Un;
-        private DataGridViewTextBoxColumn Qtde;
-        private DataGridViewTextBoxColumn Valor;
         private Button button1;
+        private DataGridViewTextBoxColumn ProdutosEntradaID;
+        private DataGridViewTextBoxColumn ProdutosEntradaNome;
+        private DataGridViewTextBoxColumn ProdutosEntradaUn;
+        private DataGridViewTextBoxColumn ProdutosEntradaQtde;
+        private DataGridViewTextBoxColumn ProdutosEntradaValor;
     }
 }
