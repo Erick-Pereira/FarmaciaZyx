@@ -126,6 +126,44 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        public Response Delete(int id)
+        {
+            string sql = "DELETE FROM LABORATORIOS WHERE ID = @ID";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@ID", id);
+            //Estamos conectados na base de dados
+            //try catch
+            //try catch finally
+            //try finally
+            try
+            {
+                connection.Open();
+                int qtdLinhasExcluidas = command.ExecuteNonQuery();
+                if (qtdLinhasExcluidas == 1)
+                {
+                    return new Response("Laboratorio excluído com sucesso.", true);
+                }
+                return new Response("Laboratorio não excluído.", false);
+            }
+            catch (Exception ex)
+            {
+                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
+                return new Response("Erro no banco de dados, contate o administrador.", false);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+
 
     }
 }

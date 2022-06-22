@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class LaboratorioBLL
+    public class LaboratorioBLL:ICRUD<Laboratorio>
     {
         LaboratorioDAL laboratorioDAL = new LaboratorioDAL();
         public Response Insert(Laboratorio item)
@@ -48,6 +48,16 @@ namespace BusinessLogicalLayer
             {
                 return new SingleResponse<Laboratorio>(singleResponse.Message, singleResponse.HasSuccess, null);
             }
+        }
+
+        public Response Update(Laboratorio item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Response Delete(int id)
+        {
+            return laboratorioDAL.Delete(id);
         }
     }
 }

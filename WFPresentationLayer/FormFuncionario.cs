@@ -108,6 +108,11 @@ namespace WFPresentationLayer
         {
             OpenChildForm(new FormProdutos());
         }
+
+        private void btnLaboratorios_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormLaboratorios());
+        }
     }
 }
 

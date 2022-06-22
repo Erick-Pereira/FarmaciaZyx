@@ -46,6 +46,7 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnLaboratorios = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,6 +56,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenu.Controls.Add(this.btnLaboratorios);
             this.panelMenu.Controls.Add(this.btnCadastroProduto);
             this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnCadastroFornecedor);
@@ -79,7 +81,7 @@
             this.btnCadastroProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroProduto.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroProduto.Location = new System.Drawing.Point(42, 342);
+            this.btnCadastroProduto.Location = new System.Drawing.Point(42, 358);
             this.btnCadastroProduto.Name = "btnCadastroProduto";
             this.btnCadastroProduto.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroProduto.TabIndex = 20;
@@ -115,7 +117,7 @@
             this.btnCadastroFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFornecedor.Location = new System.Drawing.Point(42, 300);
+            this.btnCadastroFornecedor.Location = new System.Drawing.Point(42, 316);
             this.btnCadastroFornecedor.Name = "btnCadastroFornecedor";
             this.btnCadastroFornecedor.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFornecedor.TabIndex = 18;
@@ -151,7 +153,7 @@
             this.btnRegistroSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistroSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistroSaida.ForeColor = System.Drawing.Color.White;
-            this.btnRegistroSaida.Location = new System.Drawing.Point(42, 258);
+            this.btnRegistroSaida.Location = new System.Drawing.Point(42, 274);
             this.btnRegistroSaida.Name = "btnRegistroSaida";
             this.btnRegistroSaida.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroSaida.TabIndex = 16;
@@ -169,7 +171,7 @@
             this.btnCadastroCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroCliente.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroCliente.Location = new System.Drawing.Point(42, 174);
+            this.btnCadastroCliente.Location = new System.Drawing.Point(42, 190);
             this.btnCadastroCliente.Name = "btnCadastroCliente";
             this.btnCadastroCliente.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroCliente.TabIndex = 15;
@@ -187,7 +189,7 @@
             this.btnCadastroFuncionario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFuncionario.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFuncionario.Location = new System.Drawing.Point(42, 384);
+            this.btnCadastroFuncionario.Location = new System.Drawing.Point(42, 400);
             this.btnCadastroFuncionario.Name = "btnCadastroFuncionario";
             this.btnCadastroFuncionario.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFuncionario.TabIndex = 14;
@@ -205,7 +207,7 @@
             this.btnRegistroEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistroEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistroEntrada.ForeColor = System.Drawing.Color.White;
-            this.btnRegistroEntrada.Location = new System.Drawing.Point(42, 216);
+            this.btnRegistroEntrada.Location = new System.Drawing.Point(42, 232);
             this.btnRegistroEntrada.Name = "btnRegistroEntrada";
             this.btnRegistroEntrada.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroEntrada.TabIndex = 9;
@@ -313,6 +315,24 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnLaboratorios
+            // 
+            this.btnLaboratorios.BackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLaboratorios.FlatAppearance.BorderSize = 0;
+            this.btnLaboratorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLaboratorios.ForeColor = System.Drawing.Color.White;
+            this.btnLaboratorios.Location = new System.Drawing.Point(42, 148);
+            this.btnLaboratorios.Name = "btnLaboratorios";
+            this.btnLaboratorios.Size = new System.Drawing.Size(140, 36);
+            this.btnLaboratorios.TabIndex = 21;
+            this.btnLaboratorios.Text = "Laboratorios";
+            this.btnLaboratorios.UseMnemonic = false;
+            this.btnLaboratorios.UseVisualStyleBackColor = false;
+            this.btnLaboratorios.Click += new System.EventHandler(this.btnLaboratorios_Click);
+            // 
             // FormFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -353,5 +373,6 @@
         private Button btnMinimize;
         private Panel panelShadow;
         private Button btnCadastroProduto;
+        private Button btnLaboratorios;
     }
 }

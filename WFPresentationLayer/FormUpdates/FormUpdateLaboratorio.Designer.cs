@@ -1,6 +1,6 @@
 ﻿namespace WFPresentationLayer
 {
-    partial class FormCadastroLaboratorio
+    partial class FormUpdateLaboratorio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroLaboratorio));
             this.label1 = new System.Windows.Forms.Label();
             this.txtLaboratorio = new System.Windows.Forms.TextBox();
-            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnUpdateLaboratorio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(291, 158);
+            this.label1.Location = new System.Drawing.Point(286, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 15);
-            this.label1.TabIndex = 14;
+            this.label1.TabIndex = 17;
             this.label1.Text = "Laboratorio";
             // 
             // txtLaboratorio
             // 
-            this.txtLaboratorio.Location = new System.Drawing.Point(291, 176);
+            this.txtLaboratorio.Location = new System.Drawing.Point(286, 169);
             this.txtLaboratorio.Name = "txtLaboratorio";
             this.txtLaboratorio.Size = new System.Drawing.Size(100, 23);
-            this.txtLaboratorio.TabIndex = 13;
+            this.txtLaboratorio.TabIndex = 16;
             // 
-            // btnCadastrar
+            // btnUpdateLaboratorio
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(291, 205);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(100, 23);
-            this.btnCadastrar.TabIndex = 12;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
-            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            this.btnUpdateLaboratorio.Location = new System.Drawing.Point(286, 198);
+            this.btnUpdateLaboratorio.Name = "btnUpdateLaboratorio";
+            this.btnUpdateLaboratorio.Size = new System.Drawing.Size(100, 23);
+            this.btnUpdateLaboratorio.TabIndex = 15;
+            this.btnUpdateLaboratorio.Text = "Update";
+            this.btnUpdateLaboratorio.UseVisualStyleBackColor = true;
+            this.btnUpdateLaboratorio.Click += new System.EventHandler(this.btnUpdateLaboratorio_Click);
             // 
-            // FormCadastroLaboratorio
+            // FormUpdateLaboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 456);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLaboratorio);
-            this.Controls.Add(this.btnCadastrar);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormCadastroLaboratorio";
-            this.Text = "Cadastro Laboratorio";
+            this.Controls.Add(this.btnUpdateLaboratorio);
+            this.Name = "FormUpdateLaboratorio";
+            this.Text = "FormUpdateLaboratorio";
+            this.Load += new System.EventHandler(this.FormUpdateLaboratorio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,6 +79,6 @@
 
         private Label label1;
         private TextBox txtLaboratorio;
-        private Button btnCadastrar;
+        private Button btnUpdateLaboratorio;
     }
 }

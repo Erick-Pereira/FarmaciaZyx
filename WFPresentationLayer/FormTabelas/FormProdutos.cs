@@ -113,9 +113,8 @@ namespace WFPresentationLayer
                 btnDeleteProduto.Visible = false;
                 btnUpdateProduto.Visible = false;
                 int rowindex = dgvProdutos.CurrentCell.RowIndex;
-                int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
                 panelDesktopProdutos.BringToFront();
-                StaticItem.item = produtoBLL.GetByID(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[columnindex].Value)).Item;
+                StaticItem.item = produtoBLL.GetByID(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[0].Value)).Item;
                 OpenChildForm(new FormUpdateProduto());
             }
         }

@@ -110,7 +110,7 @@ namespace WFPresentationLayer
                 btnUpdateFuncionario.Visible = false;
                 int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
                 int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
-                StaticItem.item = funcionarioBLL.GetByID(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[columnindex].Value)).Item;
+                StaticItem.item = funcionarioBLL.GetByID(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[0].Value)).Item;
                 OpenChildForm(new FormUpdateFuncionario());
             }
         }

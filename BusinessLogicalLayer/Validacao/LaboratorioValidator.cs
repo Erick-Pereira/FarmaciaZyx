@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    internal class LaboratorioValidator
+    public class LaboratorioValidator
     {
         /// <summary>
         /// Verifica se o laboratorio esta vazio ou se é apenas espaços em branco

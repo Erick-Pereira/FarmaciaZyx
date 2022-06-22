@@ -111,7 +111,7 @@ namespace WFPresentationLayer
                 btnUpdateFornecedor.Visible = false;
                 int rowindex = dgvFornecedores.CurrentCell.RowIndex;
                 int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
-                StaticItem.item = fornecedorBLL.GetByID(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value)).Item;
+                StaticItem.item = fornecedorBLL.GetByID(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[0].Value)).Item;
                 OpenChildForm(new FormUpdateFornecedor());
             }
         }

@@ -110,7 +110,7 @@ namespace WFPresentationLayer
                 panelDesktopClientes.BringToFront();
                 int rowindex = dgvClientes.CurrentCell.RowIndex;
                 int columnindex = dgvClientes.CurrentCell.ColumnIndex;
-                StaticItem.item = clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value)).Item;
+                StaticItem.item = clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[0].Value)).Item;
                 OpenChildForm(new FormUpdateCliente());
             }
         }
