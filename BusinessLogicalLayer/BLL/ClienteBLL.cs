@@ -32,7 +32,7 @@ namespace BusinessLogicalLayer
             Response response = clienteValidator.Validate(item);
             if (response.HasSuccess)
             {
-                return Insert(item);
+                return clienteDAL.Insert(item);
             }
             return new Response(response.Message, false);
         }

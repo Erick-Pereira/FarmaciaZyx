@@ -192,7 +192,7 @@ namespace DataAccessLayer
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
-                    cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID "]);
+                    cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
                     clientes.Add(cliente);
                 }
                 return new DataResponse<Cliente>("Clientes selecionados com sucesso!", true, clientes);

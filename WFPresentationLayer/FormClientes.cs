@@ -52,10 +52,28 @@ namespace WFPresentationLayer
                 dgvClientes.Rows[i].Cells["ClientesRG"].Value = clientes[i].RG;
                 dgvClientes.Rows[i].Cells["ClientesTelefone1"].Value = clientes[i].Telefone1;
                 dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
-                dgvClientes.Rows[i].Cells["FuncionariosTelefone"].Value = clientes[i].Pontos;
-                dgvClientes.Rows[i].Cells["FuncionariosEmail"].Value = clientes[i].Email;
+                dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
+                dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
                 dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = tipoClienteBLL.GetByID(clientes[i].TipoClienteId).Item.Nome;
             }
+        }
+
+        private void btnUpdateCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteCliente_Click(object sender, EventArgs e)
+        {
+            if (dgvClientes.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel retirar um produto não selecionado");
+                return;
+            }
+            int rowindex = dgvClientes.CurrentCell.RowIndex;
+            int columnindex = dgvClientes.CurrentCell.ColumnIndex;
+            clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value));
+            dgvClientes.Rows.RemoveAt(rowindex);
         }
     }
 }

@@ -68,13 +68,14 @@
             this.btnUpdateCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUpdateCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateCliente.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateCliente.Location = new System.Drawing.Point(3, 87);
+            this.btnUpdateCliente.Location = new System.Drawing.Point(6, 87);
             this.btnUpdateCliente.Name = "btnUpdateCliente";
-            this.btnUpdateCliente.Size = new System.Drawing.Size(92, 59);
+            this.btnUpdateCliente.Size = new System.Drawing.Size(83, 59);
             this.btnUpdateCliente.TabIndex = 17;
             this.btnUpdateCliente.Text = "Update Cliente";
             this.btnUpdateCliente.UseMnemonic = false;
             this.btnUpdateCliente.UseVisualStyleBackColor = false;
+            this.btnUpdateCliente.Click += new System.EventHandler(this.btnUpdateCliente_Click);
             // 
             // btnDeleteCliente
             // 
@@ -92,6 +93,7 @@
             this.btnDeleteCliente.Text = "Delete Cliente";
             this.btnDeleteCliente.UseMnemonic = false;
             this.btnDeleteCliente.UseVisualStyleBackColor = false;
+            this.btnDeleteCliente.Click += new System.EventHandler(this.btnDeleteCliente_Click);
             // 
             // btnCadastroCliente
             // 
