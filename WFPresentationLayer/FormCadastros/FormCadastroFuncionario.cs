@@ -27,7 +27,6 @@ namespace WFPresentationLayer
             string telefone = mtxtTelefone.Text;
             int enderecoId = 0;
             string senha = txtSenha.Text;
-            //string nomeresponsavel = txtNomeResponsavel.Text;
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
             string cep = mtxtCep.Text;
             string rua = txtRua.Text;
@@ -36,11 +35,7 @@ namespace WFPresentationLayer
             string cidade = txtCidade.Text;
             string numero = mtxtNumero.Text;
             Funcionario funcionario = new Funcionario(nome,cpf, rg, telefone,email, senha, enderecoId, tipoFuncionarioId);
-            //string pontoReferencia = txtPontoDeReferencia.Text;
             //Endereco endereco = new Endereco(rua, bairro, cep, numero, cidade, estado);
-            //endereco.Complemento = txtComplemento.Text;
-            //endereco.PontoReferencia = txtPontoDeReferencia.Text;
-            //Cliente cli = new Cliente(0, nome, cpf, dataNascimento, email, endereco, telefone, genero, nomeresponsavel, true);
             FuncionarioValidator validator = new FuncionarioValidator();
             Response response = validator.Validate(funcionario);
             MessageBox.Show(response.Message);

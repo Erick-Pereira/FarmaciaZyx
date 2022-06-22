@@ -24,18 +24,29 @@ namespace WFPresentationLayer
         }
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
             panelDesktopClientes.Controls.Add(childForm);
             panelDesktopClientes.Tag = childForm;
-            panelDesktopClientes.BringToFront();
+            childForm.BringToFront();
             childForm.Show();
         }
 
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
+            btnCadastroCliente.Enabled = false;
+            btnDeleteCliente.Enabled = false;
+            btnUpdateCliente.Enabled = false;
+            btnCadastroCliente.Visible = false;
+            btnDeleteCliente.Visible = false;
+            btnUpdateCliente.Visible = false;
+            panelDesktopClientes.BringToFront();
             OpenChildForm(new FormCadastroCliente());
         }
 
@@ -59,7 +70,6 @@ namespace WFPresentationLayer
 
         private void btnDeleteCliente_Click(object sender, EventArgs e)
         {
-
             if (dgvClientes.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel deletar um cliente não selecionado");
@@ -76,11 +86,6 @@ namespace WFPresentationLayer
                 clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value));
                 dgvClientes.Rows.RemoveAt(rowindex);
             }
-            else
-            {
-
-            }
-
         }
 
         private void btnUpdateCliente_Click(object sender, EventArgs e)
@@ -96,10 +101,48 @@ namespace WFPresentationLayer
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
             {
+                btnCadastroCliente.Enabled = false;
+                btnDeleteCliente.Enabled = false;
+                btnUpdateCliente.Enabled = false;
+                btnCadastroCliente.Visible = false;
+                btnDeleteCliente.Visible = false;
+                btnUpdateCliente.Visible = false;
+                panelDesktopClientes.BringToFront();
                 int rowindex = dgvClientes.CurrentCell.RowIndex;
                 int columnindex = dgvClientes.CurrentCell.ColumnIndex;
                 StaticItem.item = clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value)).Item;
                 OpenChildForm(new FormUpdateCliente());
+            }
+        }
+
+
+        private void btnTabelaClientes_Click(object sender, EventArgs e)
+        {
+            btnCadastroCliente.Enabled = true;
+            btnDeleteCliente.Enabled = true;
+            btnUpdateCliente.Enabled = true;
+            btnCadastroCliente.Visible = true;
+            btnDeleteCliente.Visible = true;
+            btnUpdateCliente.Visible = true;
+            if(currentChildForm!= null)
+            {
+                panelDesktopClientes.SendToBack();
+                currentChildForm.Close();
+                clientes = clienteBLL.GetAll().Dados;
+                dgvClientes.Rows.Clear();
+                for (int i = 0; i < clientes.Count; i++)
+                {
+                    dgvClientes.Rows.Add();
+                    dgvClientes.Rows[i].Cells["ClientesID"].Value = clientes[i].ID;
+                    dgvClientes.Rows[i].Cells["ClientesNome"].Value = clientes[i].Nome;
+                    dgvClientes.Rows[i].Cells["ClientesCPF"].Value = clientes[i].CPF;
+                    dgvClientes.Rows[i].Cells["ClientesRG"].Value = clientes[i].RG;
+                    dgvClientes.Rows[i].Cells["ClientesTelefone1"].Value = clientes[i].Telefone1;
+                    dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
+                    dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
+                    dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
+                    dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = tipoClienteBLL.GetByID(clientes[i].TipoClienteId).Item.Nome;
+                }
             }
         }
     }

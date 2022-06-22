@@ -64,7 +64,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID VALOR = @VALOR WHERE ID = @ID";
+            string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID, VALOR = @VALOR WHERE ID = @ID";
 
 
 
@@ -78,7 +78,7 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
             command.Parameters.AddWithValue("@TIPO_UNIDADE_ID", produto.TipoUnidadeId);
             command.Parameters.AddWithValue("@VALOR", produto.Valor);
-
+            command.Parameters.AddWithValue("@ID", produto.ID);
 
             //Estamos conectados na base de dados
             //try catch

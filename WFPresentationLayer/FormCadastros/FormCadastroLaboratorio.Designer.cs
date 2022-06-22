@@ -37,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 197);
+            this.label1.Location = new System.Drawing.Point(30, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 15);
             this.label1.TabIndex = 14;
@@ -45,14 +45,14 @@
             // 
             // txtLaboratorio
             // 
-            this.txtLaboratorio.Location = new System.Drawing.Point(296, 215);
+            this.txtLaboratorio.Location = new System.Drawing.Point(30, 63);
             this.txtLaboratorio.Name = "txtLaboratorio";
             this.txtLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.txtLaboratorio.TabIndex = 13;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(296, 244);
+            this.btnCadastrar.Location = new System.Drawing.Point(30, 92);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(100, 23);
             this.btnCadastrar.TabIndex = 12;
@@ -64,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(186, 170);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLaboratorio);
             this.Controls.Add(this.btnCadastrar);

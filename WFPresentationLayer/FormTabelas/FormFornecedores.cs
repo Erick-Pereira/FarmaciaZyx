@@ -26,6 +26,10 @@ namespace WFPresentationLayer
         List<Fornecedor> fornecedores = new List<Fornecedor>();
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -38,6 +42,12 @@ namespace WFPresentationLayer
 
         private void btnCadastroFornecedor_Click(object sender, EventArgs e)
         {
+            btnCadastroFornecedor.Enabled = false;
+            btnDeleteFornecedor.Enabled = false;
+            btnUpdateFornecedor.Enabled = false;
+            btnCadastroFornecedor.Visible = false;
+            btnDeleteFornecedor.Visible = false;
+            btnUpdateFornecedor.Visible = false;
             panelDesktopFornecedores.BringToFront();
             OpenChildForm(new FormCadastroFornecedor());
         }
@@ -60,7 +70,6 @@ namespace WFPresentationLayer
 
         private void btnDeleteFornecedor_Click(object sender, EventArgs e)
         {
-
             if (dgvFornecedores.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel deletar um fornecedor não selecionado");
@@ -82,7 +91,58 @@ namespace WFPresentationLayer
 
         private void btnUpdateFornecedor_Click(object sender, EventArgs e)
         {
+            if (dgvFornecedores.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel fazer o update um Fornecedor não selecionado");
+                return;
+            }
+            string message = "Você realmente Fazer o update deste Fornecedor?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
 
+                btnCadastroFornecedor.Enabled = false;
+                btnDeleteFornecedor.Enabled = false;
+                btnUpdateFornecedor.Enabled = false;
+                btnCadastroFornecedor.Visible = false;
+                btnDeleteFornecedor.Visible = false;
+                btnUpdateFornecedor.Visible = false;
+                int rowindex = dgvFornecedores.CurrentCell.RowIndex;
+                int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
+                StaticItem.item = fornecedorBLL.GetByID(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value)).Item;
+                OpenChildForm(new FormUpdateFornecedor());
+            }
+        }
+
+        private void btnTabelaFornecedores_Click(object sender, EventArgs e)
+        {
+
+            btnCadastroFornecedor.Enabled = true;
+            btnDeleteFornecedor.Enabled = true;
+            btnUpdateFornecedor.Enabled = true;
+            btnCadastroFornecedor.Visible = true;
+            btnDeleteFornecedor.Visible = true;
+            btnUpdateFornecedor.Visible = true;
+            if (currentChildForm != null)
+            {
+                panelDesktopFornecedores.SendToBack();
+                currentChildForm.Close();
+                fornecedores = fornecedorBLL.GetAll().Dados;
+                dgvFornecedores.Rows.Clear();
+                for (int i = 0; i < fornecedores.Count; i++)
+                {
+                    dgvFornecedores.Rows.Add();
+                    dgvFornecedores.Rows[i].Cells["FornecedoresID"].Value = fornecedores[i].ID;
+                    dgvFornecedores.Rows[i].Cells["FornecedoresRazaoSocial"].Value = fornecedores[i].RazaoSocial;
+                    dgvFornecedores.Rows[i].Cells["FornecedoresCNPJ"].Value = fornecedores[i].CNPJ;
+                    dgvFornecedores.Rows[i].Cells["FornecedoresNomeContato"].Value = fornecedores[i].NomeContato;
+                    dgvFornecedores.Rows[i].Cells["FornecedoresTelefone"].Value = fornecedores[i].Telefone;
+                    dgvFornecedores.Rows[i].Cells["FornecedoresEmail"].Value = fornecedores[i].Email;
+
+                }
+            }
         }
     }
 }

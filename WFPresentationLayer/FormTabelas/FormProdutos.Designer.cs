@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelMenuProdutos = new System.Windows.Forms.Panel();
+            this.btnTabelaProdutos = new System.Windows.Forms.Button();
             this.btnUpdateProduto = new System.Windows.Forms.Button();
             this.btnDeleteProduto = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
@@ -49,14 +50,33 @@
             // panelMenuProdutos
             // 
             this.panelMenuProdutos.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuProdutos.Controls.Add(this.btnTabelaProdutos);
             this.panelMenuProdutos.Controls.Add(this.btnUpdateProduto);
             this.panelMenuProdutos.Controls.Add(this.btnDeleteProduto);
             this.panelMenuProdutos.Controls.Add(this.btnCadastroProduto);
             this.panelMenuProdutos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuProdutos.Location = new System.Drawing.Point(681, 0);
+            this.panelMenuProdutos.Location = new System.Drawing.Point(702, 0);
             this.panelMenuProdutos.Name = "panelMenuProdutos";
-            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 456);
+            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 450);
             this.panelMenuProdutos.TabIndex = 4;
+            // 
+            // btnTabelaProdutos
+            // 
+            this.btnTabelaProdutos.BackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTabelaProdutos.FlatAppearance.BorderSize = 0;
+            this.btnTabelaProdutos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaProdutos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTabelaProdutos.ForeColor = System.Drawing.Color.White;
+            this.btnTabelaProdutos.Location = new System.Drawing.Point(3, 12);
+            this.btnTabelaProdutos.Name = "btnTabelaProdutos";
+            this.btnTabelaProdutos.Size = new System.Drawing.Size(92, 59);
+            this.btnTabelaProdutos.TabIndex = 20;
+            this.btnTabelaProdutos.Text = "Tabela Produtos";
+            this.btnTabelaProdutos.UseMnemonic = false;
+            this.btnTabelaProdutos.UseVisualStyleBackColor = false;
+            this.btnTabelaProdutos.Click += new System.EventHandler(this.btnTabelaProdutos_Click);
             // 
             // btnUpdateProduto
             // 
@@ -67,13 +87,14 @@
             this.btnUpdateProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUpdateProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateProduto.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateProduto.Location = new System.Drawing.Point(3, 87);
+            this.btnUpdateProduto.Location = new System.Drawing.Point(3, 131);
             this.btnUpdateProduto.Name = "btnUpdateProduto";
             this.btnUpdateProduto.Size = new System.Drawing.Size(92, 59);
             this.btnUpdateProduto.TabIndex = 17;
             this.btnUpdateProduto.Text = "Update Produto";
             this.btnUpdateProduto.UseMnemonic = false;
             this.btnUpdateProduto.UseVisualStyleBackColor = false;
+            this.btnUpdateProduto.Click += new System.EventHandler(this.btnUpdateProduto_Click);
             // 
             // btnDeleteProduto
             // 
@@ -84,7 +105,7 @@
             this.btnDeleteProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDeleteProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteProduto.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteProduto.Location = new System.Drawing.Point(6, 152);
+            this.btnDeleteProduto.Location = new System.Drawing.Point(6, 196);
             this.btnDeleteProduto.Name = "btnDeleteProduto";
             this.btnDeleteProduto.Size = new System.Drawing.Size(92, 59);
             this.btnDeleteProduto.TabIndex = 16;
@@ -102,7 +123,7 @@
             this.btnCadastroProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroProduto.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroProduto.Location = new System.Drawing.Point(3, 22);
+            this.btnCadastroProduto.Location = new System.Drawing.Point(3, 66);
             this.btnCadastroProduto.Name = "btnCadastroProduto";
             this.btnCadastroProduto.Size = new System.Drawing.Size(92, 59);
             this.btnCadastroProduto.TabIndex = 15;
@@ -126,13 +147,13 @@
             this.ProdutosLaboratorio,
             this.ProdutosTipoUnidade,
             this.ProdutosValor});
-            this.dgvProdutos.Location = new System.Drawing.Point(0, 22);
+            this.dgvProdutos.Location = new System.Drawing.Point(0, 0);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowTemplate.Height = 25;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(710, 523);
+            this.dgvProdutos.Size = new System.Drawing.Size(702, 523);
             this.dgvProdutos.TabIndex = 3;
             // 
             // ProdutosID
@@ -180,16 +201,16 @@
             // panelDesktopProdutos
             // 
             this.panelDesktopProdutos.Controls.Add(this.dgvProdutos);
-            this.panelDesktopProdutos.Location = new System.Drawing.Point(0, -22);
+            this.panelDesktopProdutos.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopProdutos.Name = "panelDesktopProdutos";
-            this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
+            this.panelDesktopProdutos.Size = new System.Drawing.Size(702, 495);
             this.panelDesktopProdutos.TabIndex = 5;
             // 
             // FormProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 456);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMenuProdutos);
             this.Controls.Add(this.panelDesktopProdutos);
             this.Name = "FormProdutos";
@@ -217,5 +238,6 @@
         private DataGridViewTextBoxColumn ProdutosLaboratorio;
         private DataGridViewTextBoxColumn ProdutosTipoUnidade;
         private DataGridViewTextBoxColumn ProdutosValor;
+        private Button btnTabelaProdutos;
     }
 }

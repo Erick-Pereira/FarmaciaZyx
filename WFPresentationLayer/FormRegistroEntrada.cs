@@ -42,7 +42,7 @@ namespace WFPresentationLayer
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
         }
-        //cmbUnidade.SelectedIndex = produtorBLL.GetByNome(cmbProduto.SelectedText).Item.TipoUnidadeId;
+        
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
@@ -84,8 +84,6 @@ namespace WFPresentationLayer
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             if (produto != null)
             {
-
-
                 produto.QtdEstoque = (double)nudQtde.Value;
                 produtos.Add(produto);
                 dgvProdutosEntrada.Rows.Add();
@@ -125,7 +123,6 @@ namespace WFPresentationLayer
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
             }
-            //produtos.Remove();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -137,7 +134,6 @@ namespace WFPresentationLayer
                 Produto pro = produtos[i];
                 stringBuilder.AppendLine(pro.Nome);
             }
-
             MessageBox.Show(stringBuilder.ToString());
         }
     }

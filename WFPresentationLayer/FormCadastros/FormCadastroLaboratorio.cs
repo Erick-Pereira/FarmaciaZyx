@@ -25,7 +25,16 @@ namespace WFPresentationLayer
             LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
             Laboratorio laboratorio = new Laboratorio(txtLaboratorio.Text);
             Response response = laboratorioBLL.Insert(laboratorio);
-            MessageBox.Show(response.Message);
+            if (response.HasSuccess)
+            {
+                MessageBox.Show(response.Message);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(response.Message);
+            }
+          
         }
     }
 }

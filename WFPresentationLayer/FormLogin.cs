@@ -38,12 +38,10 @@ namespace WfPresentationLayer
                 FuncionarioLogin.id = singleResponse.Item.ID;
                 FuncionarioLogin.nome = singleResponse.Item.Nome;
                 FuncionarioLogin.tipoFuncionarioId = singleResponse.Item.TipoFuncionarioId;
-
                 this.Hide();
                 FormFuncionario formFuncionario = new FormFuncionario();
                 formFuncionario.ShowDialog();
                 this.Close();
-                
             }
         }
 

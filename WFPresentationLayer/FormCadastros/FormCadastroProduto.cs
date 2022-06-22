@@ -15,16 +15,26 @@ namespace WFPresentationLayer
 {
     public partial class FormCadastroProduto : Form
     {
+        private Form currentChildForm;
         LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         TipoUnidadeBLL tipoUnidadeBLL = new TipoUnidadeBLL();
         public FormCadastroProduto()
         {
             InitializeComponent();
         }
-
+        private void OpenChildForm(Form childForm)
+        {
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelCadastroLaboratorio.Controls.Add(childForm);
+            panelCadastroLaboratorio.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-
             ProdutorBLL produtorBLL = new ProdutorBLL();
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
@@ -38,11 +48,7 @@ namespace WFPresentationLayer
 
         private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
         {
-            FormCadastroLaboratorio formCadastroLaboratorio = new FormCadastroLaboratorio();
-            formCadastroLaboratorio.ShowDialog();
-            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
-            cmbLaboratorio.DisplayMember = "Nome";
-            cmbLaboratorio.ValueMember = "ID";
+            OpenChildForm(new FormCadastroLaboratorio());
         }
 
         private void FormCadastroProduto_Load(object sender, EventArgs e)
@@ -55,5 +61,11 @@ namespace WFPresentationLayer
             cmbUnidade.ValueMember = "ID";
         }
 
+        private void cmbLaboratorio_MouseClick(object sender, MouseEventArgs e)
+        {
+            cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
+            cmbLaboratorio.DisplayMember = "Nome";
+            cmbLaboratorio.ValueMember = "ID";
+        }
     }
 }

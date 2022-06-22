@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelMenuClientes = new System.Windows.Forms.Panel();
+            this.btnTabelaClientes = new System.Windows.Forms.Button();
             this.btnUpdateCliente = new System.Windows.Forms.Button();
             this.btnDeleteCliente = new System.Windows.Forms.Button();
             this.btnCadastroCliente = new System.Windows.Forms.Button();
@@ -50,14 +51,33 @@
             // panelMenuClientes
             // 
             this.panelMenuClientes.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuClientes.Controls.Add(this.btnTabelaClientes);
             this.panelMenuClientes.Controls.Add(this.btnUpdateCliente);
             this.panelMenuClientes.Controls.Add(this.btnDeleteCliente);
             this.panelMenuClientes.Controls.Add(this.btnCadastroCliente);
             this.panelMenuClientes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuClientes.Location = new System.Drawing.Point(681, 0);
+            this.panelMenuClientes.Location = new System.Drawing.Point(702, 0);
             this.panelMenuClientes.Name = "panelMenuClientes";
-            this.panelMenuClientes.Size = new System.Drawing.Size(98, 456);
+            this.panelMenuClientes.Size = new System.Drawing.Size(98, 450);
             this.panelMenuClientes.TabIndex = 3;
+            // 
+            // btnTabelaClientes
+            // 
+            this.btnTabelaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTabelaClientes.FlatAppearance.BorderSize = 0;
+            this.btnTabelaClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTabelaClientes.ForeColor = System.Drawing.Color.White;
+            this.btnTabelaClientes.Location = new System.Drawing.Point(6, 12);
+            this.btnTabelaClientes.Name = "btnTabelaClientes";
+            this.btnTabelaClientes.Size = new System.Drawing.Size(89, 59);
+            this.btnTabelaClientes.TabIndex = 19;
+            this.btnTabelaClientes.Text = "Tabela Clientes";
+            this.btnTabelaClientes.UseMnemonic = false;
+            this.btnTabelaClientes.UseVisualStyleBackColor = false;
+            this.btnTabelaClientes.Click += new System.EventHandler(this.btnTabelaClientes_Click);
             // 
             // btnUpdateCliente
             // 
@@ -68,7 +88,7 @@
             this.btnUpdateCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUpdateCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateCliente.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateCliente.Location = new System.Drawing.Point(6, 87);
+            this.btnUpdateCliente.Location = new System.Drawing.Point(6, 127);
             this.btnUpdateCliente.Name = "btnUpdateCliente";
             this.btnUpdateCliente.Size = new System.Drawing.Size(83, 59);
             this.btnUpdateCliente.TabIndex = 17;
@@ -86,7 +106,7 @@
             this.btnDeleteCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDeleteCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCliente.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteCliente.Location = new System.Drawing.Point(6, 152);
+            this.btnDeleteCliente.Location = new System.Drawing.Point(6, 192);
             this.btnDeleteCliente.Name = "btnDeleteCliente";
             this.btnDeleteCliente.Size = new System.Drawing.Size(92, 59);
             this.btnDeleteCliente.TabIndex = 16;
@@ -104,7 +124,7 @@
             this.btnCadastroCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroCliente.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroCliente.Location = new System.Drawing.Point(3, 22);
+            this.btnCadastroCliente.Location = new System.Drawing.Point(3, 62);
             this.btnCadastroCliente.Name = "btnCadastroCliente";
             this.btnCadastroCliente.Size = new System.Drawing.Size(92, 59);
             this.btnCadastroCliente.TabIndex = 15;
@@ -137,7 +157,7 @@
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowTemplate.Height = 25;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(705, 495);
+            this.dgvClientes.Size = new System.Drawing.Size(702, 495);
             this.dgvClientes.TabIndex = 2;
             // 
             // ClientesID
@@ -198,14 +218,14 @@
             // 
             this.panelDesktopClientes.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopClientes.Name = "panelDesktopClientes";
-            this.panelDesktopClientes.Size = new System.Drawing.Size(795, 495);
+            this.panelDesktopClientes.Size = new System.Drawing.Size(702, 514);
             this.panelDesktopClientes.TabIndex = 4;
             // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 456);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMenuClientes);
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.panelDesktopClientes);
@@ -235,5 +255,6 @@
         private DataGridViewTextBoxColumn ClientesEmail;
         private DataGridViewTextBoxColumn ClientesTipoCliente;
         private Panel panelDesktopClientes;
+        private Button btnTabelaClientes;
     }
 }

@@ -40,6 +40,7 @@
             this.FornecedoresNomeContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FornecedoresTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FornecedoresEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTabelaFornecedores = new System.Windows.Forms.Button();
             this.panelMenuProdutos.SuspendLayout();
             this.panelDesktopFornecedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
@@ -48,6 +49,7 @@
             // panelMenuProdutos
             // 
             this.panelMenuProdutos.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuProdutos.Controls.Add(this.btnTabelaFornecedores);
             this.panelMenuProdutos.Controls.Add(this.btnUpdateFornecedor);
             this.panelMenuProdutos.Controls.Add(this.btnDeleteFornecedor);
             this.panelMenuProdutos.Controls.Add(this.btnCadastroFornecedor);
@@ -66,7 +68,7 @@
             this.btnUpdateFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUpdateFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateFornecedor.Location = new System.Drawing.Point(3, 87);
+            this.btnUpdateFornecedor.Location = new System.Drawing.Point(3, 136);
             this.btnUpdateFornecedor.Name = "btnUpdateFornecedor";
             this.btnUpdateFornecedor.Size = new System.Drawing.Size(92, 59);
             this.btnUpdateFornecedor.TabIndex = 17;
@@ -84,7 +86,7 @@
             this.btnDeleteFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDeleteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteFornecedor.Location = new System.Drawing.Point(6, 152);
+            this.btnDeleteFornecedor.Location = new System.Drawing.Point(6, 201);
             this.btnDeleteFornecedor.Name = "btnDeleteFornecedor";
             this.btnDeleteFornecedor.Size = new System.Drawing.Size(92, 59);
             this.btnDeleteFornecedor.TabIndex = 16;
@@ -102,7 +104,7 @@
             this.btnCadastroFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFornecedor.Location = new System.Drawing.Point(3, 22);
+            this.btnCadastroFornecedor.Location = new System.Drawing.Point(3, 71);
             this.btnCadastroFornecedor.Name = "btnCadastroFornecedor";
             this.btnCadastroFornecedor.Size = new System.Drawing.Size(92, 59);
             this.btnCadastroFornecedor.TabIndex = 15;
@@ -116,7 +118,7 @@
             this.panelDesktopFornecedores.Controls.Add(this.dgvFornecedores);
             this.panelDesktopFornecedores.Location = new System.Drawing.Point(0, -22);
             this.panelDesktopFornecedores.Name = "panelDesktopFornecedores";
-            this.panelDesktopFornecedores.Size = new System.Drawing.Size(795, 495);
+            this.panelDesktopFornecedores.Size = new System.Drawing.Size(702, 495);
             this.panelDesktopFornecedores.TabIndex = 7;
             // 
             // dgvFornecedores
@@ -139,7 +141,7 @@
             this.dgvFornecedores.RowHeadersVisible = false;
             this.dgvFornecedores.RowTemplate.Height = 25;
             this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFornecedores.Size = new System.Drawing.Size(710, 523);
+            this.dgvFornecedores.Size = new System.Drawing.Size(702, 523);
             this.dgvFornecedores.TabIndex = 3;
             // 
             // FornecedoresID
@@ -178,6 +180,24 @@
             this.FornecedoresEmail.Name = "FornecedoresEmail";
             this.FornecedoresEmail.ReadOnly = true;
             // 
+            // btnTabelaFornecedores
+            // 
+            this.btnTabelaFornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTabelaFornecedores.FlatAppearance.BorderSize = 0;
+            this.btnTabelaFornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTabelaFornecedores.ForeColor = System.Drawing.Color.White;
+            this.btnTabelaFornecedores.Location = new System.Drawing.Point(3, 12);
+            this.btnTabelaFornecedores.Name = "btnTabelaFornecedores";
+            this.btnTabelaFornecedores.Size = new System.Drawing.Size(92, 59);
+            this.btnTabelaFornecedores.TabIndex = 18;
+            this.btnTabelaFornecedores.Text = "Tabela Fornecedores";
+            this.btnTabelaFornecedores.UseMnemonic = false;
+            this.btnTabelaFornecedores.UseVisualStyleBackColor = false;
+            this.btnTabelaFornecedores.Click += new System.EventHandler(this.btnTabelaFornecedores_Click);
+            // 
             // FormFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -209,5 +229,6 @@
         private DataGridViewTextBoxColumn FornecedoresNomeContato;
         private DataGridViewTextBoxColumn FornecedoresTelefone;
         private DataGridViewTextBoxColumn FornecedoresEmail;
+        private Button btnTabelaFornecedores;
     }
 }

@@ -31,36 +31,5 @@ namespace BusinessLogicalLayer
             }
             return new Response(erros.ToString().Trim(), false);
         }
-
     }
-
-    //class Carro
-    //{
-    //    public Carro(string marca, Motor motorizacao)
-    //    {
-    //        Marca = marca;
-    //        Motorizacao = motorizacao;
-    //    }
-
-    //    //Retorna true se o carro for cantar pneu (apenas veiculos com mais de 200 cv ou 6 cilindros no mínimo)
-    //    public bool Acelerar()
-    //    {
-    //        if(this.Motorizacao?.CV > 200 || this.Motorizacao.QtdCilindros >= 6)
-    //        {
-    //            return true;
-    //        }
-    //        return false;
-    //    }
-
-    //    public string Marca { get; set; }
-    //    public Motor Motorizacao { get; set; }
-    //}
-    //class Motor
-    //{
-    //    public int CV { get; set; }
-    //    public int QtdCilindros { get; set; }
-    //}
-
-
-
 }

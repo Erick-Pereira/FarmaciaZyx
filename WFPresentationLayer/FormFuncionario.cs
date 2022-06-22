@@ -71,7 +71,6 @@ namespace WFPresentationLayer
             }
         }
 
-
         private void btnPerfilFuncionario_Click(object sender, EventArgs e)
         {
         }

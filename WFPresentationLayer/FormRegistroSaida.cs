@@ -23,10 +23,6 @@ namespace WFPresentationLayer
         public FormRegistroSaida()
         {
             InitializeComponent();
-
-            //cmbUnidade.DataSource = TipoUnidadeBLL.GetAll().Dados;
-            //cmbUnidade.DisplayMember = "Nome";
-            //cmbUnidade.ValueMember = "ID";
         }
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -38,7 +34,6 @@ namespace WFPresentationLayer
                 nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
                 nudQtde.Value = 1;
             }
-
         }
 
         private void FormRegistroSaida_Load(object sender, EventArgs e)
@@ -102,7 +97,6 @@ namespace WFPresentationLayer
                 dgvProdutosSaida.Rows[i].Cells["ProdutosSaidaQtde"].Value = produtos[i].QtdEstoque;
                 dgvProdutosSaida.Rows[i].Cells["ProdutosSaidaValor"].Value = produtos[i].Valor;
             }
-            //produtos.Remove();
         }
     }
 }

@@ -41,6 +41,7 @@
             this.cmbUnidade = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCadastrarLaboratorio = new System.Windows.Forms.Button();
+            this.panelCadastroLaboratorio = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,6 +125,7 @@
             this.cmbLaboratorio.Name = "cmbLaboratorio";
             this.cmbLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.cmbLaboratorio.TabIndex = 9;
+            this.cmbLaboratorio.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbLaboratorio_MouseClick);
             // 
             // cmbUnidade
             // 
@@ -152,6 +154,14 @@
             this.btnCadastrarLaboratorio.UseVisualStyleBackColor = true;
             this.btnCadastrarLaboratorio.Click += new System.EventHandler(this.btnCadastrarLaboratorio_Click);
             // 
+            // panelCadastroLaboratorio
+            // 
+            this.panelCadastroLaboratorio.BackColor = System.Drawing.SystemColors.Control;
+            this.panelCadastroLaboratorio.Location = new System.Drawing.Point(447, 77);
+            this.panelCadastroLaboratorio.Name = "panelCadastroLaboratorio";
+            this.panelCadastroLaboratorio.Size = new System.Drawing.Size(202, 209);
+            this.panelCadastroLaboratorio.TabIndex = 13;
+            // 
             // FormCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -169,6 +179,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnCadastrar);
+            this.Controls.Add(this.panelCadastroLaboratorio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCadastroProduto";
             this.Text = "Cadastro de produto";
@@ -193,5 +204,6 @@
         private ComboBox cmbUnidade;
         private Label label5;
         private Button btnCadastrarLaboratorio;
+        private Panel panelCadastroLaboratorio;
     }
 }

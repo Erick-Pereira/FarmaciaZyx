@@ -32,7 +32,7 @@ namespace WFPresentationLayer
             mtxtTelefone2.Text = cliente.Telefone2;
             mtxtRg.Text = cliente.RG;
             txtEmail.Text = cliente.Email;
-            cmbTipoCliente.SelectedItem = cliente.TipoClienteId;           
+            cmbTipoCliente.SelectedValue = cliente.TipoClienteId;           
         }
 
         private void btnUpdateCliente_Click(object sender, EventArgs e)
@@ -56,7 +56,6 @@ namespace WFPresentationLayer
             else
             {
                 MessageBox.Show(response.Message);
-
             }
         }
     }
