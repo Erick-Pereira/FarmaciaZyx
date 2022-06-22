@@ -64,6 +64,8 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -84,6 +86,8 @@
             // tabFuncionario
             // 
             this.tabFuncionario.BackColor = System.Drawing.Color.White;
+            this.tabFuncionario.Controls.Add(this.txtConfirmarSenha);
+            this.tabFuncionario.Controls.Add(this.label11);
             this.tabFuncionario.Controls.Add(this.mtxtRg);
             this.tabFuncionario.Controls.Add(this.label16);
             this.tabFuncionario.Controls.Add(this.txtSenha);
@@ -130,7 +134,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(197, 279);
+            this.txtSenha.Location = new System.Drawing.Point(50, 288);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '●';
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
@@ -139,7 +143,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(198, 256);
+            this.label12.Location = new System.Drawing.Point(50, 265);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(39, 15);
             this.label12.TabIndex = 37;
@@ -424,6 +428,23 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
+            // txtConfirmarSenha
+            // 
+            this.txtConfirmarSenha.Location = new System.Drawing.Point(333, 288);
+            this.txtConfirmarSenha.Name = "txtConfirmarSenha";
+            this.txtConfirmarSenha.PasswordChar = '●';
+            this.txtConfirmarSenha.Size = new System.Drawing.Size(100, 23);
+            this.txtConfirmarSenha.TabIndex = 47;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(334, 265);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(96, 15);
+            this.label11.TabIndex = 46;
+            this.label11.Text = "Confirmar Senha";
+            // 
             // FormCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -480,5 +501,7 @@
         private TextBox txtSenha;
         private Label label12;
         private MaskedTextBox mtxtRg;
+        private TextBox txtConfirmarSenha;
+        private Label label11;
     }
 }
