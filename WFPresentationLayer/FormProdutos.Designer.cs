@@ -91,6 +91,7 @@
             this.btnDeleteProduto.Text = "Delete Produto";
             this.btnDeleteProduto.UseMnemonic = false;
             this.btnDeleteProduto.UseVisualStyleBackColor = false;
+            this.btnDeleteProduto.Click += new System.EventHandler(this.btnDeleteProduto_Click);
             // 
             // btnCadastroProduto
             // 

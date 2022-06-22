@@ -58,5 +58,20 @@ namespace WFPresentationLayer
                 dgvProdutos.Rows[i].Cells["ProdutosValor"].Value = produtos[i].Valor;
             }
         }
+
+        private void btnDeleteProduto_Click(object sender, EventArgs e)
+        {
+
+
+            if (dgvProdutos.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel retirar um produto não selecionado");
+                return;
+            }
+            int rowindex = dgvProdutos.CurrentCell.RowIndex;
+            int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
+            produtorBLL.Delete(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[columnindex].Value));
+            dgvProdutos.Rows.RemoveAt(rowindex);
+        }
     }
 }

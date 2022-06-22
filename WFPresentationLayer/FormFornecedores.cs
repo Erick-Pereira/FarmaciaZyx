@@ -57,5 +57,19 @@ namespace WFPresentationLayer
 
             }
         }
+
+        private void btnDeleteFornecedor_Click(object sender, EventArgs e)
+        {
+
+            if (dgvFornecedores.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel retirar um produto não selecionado");
+                return;
+            }
+            int rowindex = dgvFornecedores.CurrentCell.RowIndex;
+            int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
+            fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value));
+            dgvFornecedores.Rows.RemoveAt(rowindex);
+        }
     }
 }

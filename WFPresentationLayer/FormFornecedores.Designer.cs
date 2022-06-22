@@ -90,6 +90,7 @@
             this.btnDeleteFornecedor.Text = "Delete Fornecedor";
             this.btnDeleteFornecedor.UseMnemonic = false;
             this.btnDeleteFornecedor.UseVisualStyleBackColor = false;
+            this.btnDeleteFornecedor.Click += new System.EventHandler(this.btnDeleteFornecedor_Click);
             // 
             // btnCadastroFornecedor
             // 

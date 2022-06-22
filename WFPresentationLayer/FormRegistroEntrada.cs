@@ -46,20 +46,25 @@ namespace WFPresentationLayer
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
+            
             cmbFornecedor.DataSource = fornecedorBLL.GetAll().Dados;
             cmbFornecedor.DisplayMember = "RazaoSocial";
             cmbFornecedor.ValueMember = "ID";
             cmbProduto.DataSource = produtorBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
-            Produto produto = (Produto)cmbProduto.SelectedItem;
-            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
-            if (tipoUnidade != null)
+            if (cmbProduto.SelectedItem != null)
             {
-                txtUnidade.Text = tipoUnidade.Nome;
-                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
-                nudQtde.Value = 1;
+                Produto produto = (Produto)cmbProduto.SelectedItem;
+                TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
+                if (tipoUnidade != null)
+                {
+                    txtUnidade.Text = tipoUnidade.Nome;
+                    nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
+                    nudQtde.Value = 1;
+                }
             }
+           
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,18 +82,22 @@ namespace WFPresentationLayer
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
-            produto.QtdEstoque = (double)nudQtde.Value;
-            produtos.Add(produto);
-            dgvProdutosEntrada.Rows.Add();
-            for (int i = 0; i < produtos.Count; i++)
+            if (produto != null)
             {
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
-            }
 
+
+                produto.QtdEstoque = (double)nudQtde.Value;
+                produtos.Add(produto);
+                dgvProdutosEntrada.Rows.Add();
+                for (int i = 0; i < produtos.Count; i++)
+                {
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
+                }
+            }
             //** // create columns automatically //**
             //produto.QtdEstoque -= (double)nudQtde.Value;
             //produtorBLL.Update(produto);
@@ -98,7 +107,7 @@ namespace WFPresentationLayer
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
         {
-            if(dgvProdutosEntrada.CurrentCell == null)
+            if (dgvProdutosEntrada.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel retirar um produto não selecionado");
                 return;
