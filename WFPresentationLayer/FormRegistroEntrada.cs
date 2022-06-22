@@ -17,7 +17,7 @@ namespace WFPresentationLayer
         List<Produto> produtos = new List<Produto>();
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
         ProdutorBLL produtorBLL = new ProdutorBLL();
-        TipoUnidadeBLL unidadeBLL = new TipoUnidadeBLL();
+        TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
         List<Produto> produtosEntrada = new List<Produto>();
         public FormRegistroEntrada()
         {
@@ -52,47 +52,69 @@ namespace WFPresentationLayer
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
             Produto produto = (Produto)cmbProduto.SelectedItem;
-            TipoUnidade tipoUnidade = unidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
             if (tipoUnidade != null)
             {
                 txtUnidade.Text = tipoUnidade.Nome;
                 nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
+                nudQtde.Value = 1;
             }
-           
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
             Produto produto = (Produto)cmbProduto.SelectedItem;
-            TipoUnidade tipoUnidade = unidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
             if (tipoUnidade != null)
             {
                 txtUnidade.Text = tipoUnidade.Nome;
                 nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
+                nudQtde.Value = 1;
             }
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
+            produto.QtdEstoque = (double)nudQtde.Value;
             produtos.Add(produto);
+            dgvProdutos.Rows.Add();
+            for (int i = 0; i < produtos.Count; i++)
+            {
+                dgvProdutos.Rows[i].Cells["ID"].Value = produtos[i].ID;
+                dgvProdutos.Rows[i].Cells["Nome"].Value = produtos[i].Nome;
+                dgvProdutos.Rows[i].Cells["Un"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                dgvProdutos.Rows[i].Cells["Qtde"].Value = produtos[i].QtdEstoque;
+                dgvProdutos.Rows[i].Cells["Preço"].Value = produtos[i].Valor;
+            }
+
+            //** // create columns automatically //**
             //produto.QtdEstoque -= (double)nudQtde.Value;
             //produtorBLL.Update(produto);
             //DataTable dt = new DataTable();
             //dt = produto;
-            dgvProdutos.Rows.Add();
-            dgvProdutos.Rows[produtos.Count].Cells["Column1"].Value = produto.ID;
-            dgvProdutos.Rows[produtos.Count].Cells["Column2"].Value = produto.Nome;
-            dgvProdutos.Rows[produtos.Count].Cells["Column3"].Value = unidadeBLL.GetById(produto.TipoUnidadeId).Item.Nome;
-            dgvProdutos.Rows[produtos.Count].Cells["Column4"].Value = (double)nudQtde.Value;
-            dgvProdutos.Rows[produtos.Count].Cells["Column5"].Value = 0;
-
         }
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
         {
-            produtos.RemoveAt(Convert.ToInt32(dgvProdutos.SelectedRows)); ;
+            //foreach (DataGridViewRow row in dgvProdutos.SelectedRows)
+            //{
+            //    dgvProdutos.Rows.Remove(row);
+            //    int a = row.Index;
+            //    //produtos.RemoveAt(row.);
+            //   // foreach (var item in produtos)
+            //    //{
+            //     //   for (int i = 0; i < produtos.Count; i++)
+            //     //   {
+            //      //      dgvProdutos.Rows[i].Cells["Column1"].Value = produtos[i].ID;
+            //        //    dgvProdutos.Rows[i].Cells["Column2"].Value = produtos[i].Nome;
+            //        //    dgvProdutos.Rows[i].Cells["Column3"].Value = unidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+            //        //    dgvProdutos.Rows[i].Cells["Column4"].Value = produtos[i].QtdEstoque;
+            //        //    dgvProdutos.Rows[i].Cells["Column5"].Value = produtos[i].Valor;
+            //        //}
+
+            //   // }
+            //}
         }
     }
 }

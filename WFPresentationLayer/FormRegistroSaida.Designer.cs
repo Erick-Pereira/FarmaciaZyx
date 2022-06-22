@@ -151,6 +151,7 @@
             this.btnAdicionarProduto.TabIndex = 48;
             this.btnAdicionarProduto.Text = "Adicionar Produto";
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
+            this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
             // 
             // txtUnidade
             // 
@@ -181,9 +182,24 @@
             // nudQtde
             // 
             this.nudQtde.Location = new System.Drawing.Point(155, 148);
+            this.nudQtde.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudQtde.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(74, 23);
             this.nudQtde.TabIndex = 44;
+            this.nudQtde.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
