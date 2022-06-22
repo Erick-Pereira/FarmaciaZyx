@@ -103,7 +103,7 @@ namespace WFPresentationLayer
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormCadastroProduto());
+            OpenChildForm(new FormProdutos());
         }
     }
 }

@@ -33,14 +33,14 @@
             this.btnDeleteProduto = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
-            this.FuncionariosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosCPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosRG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionariosTipoFuncionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDesktopProdutos = new System.Windows.Forms.Panel();
+            this.ProdutosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosQtdEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosLaboratorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosTipoUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMenuProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.panelDesktopProdutos.SuspendLayout();
@@ -113,19 +113,18 @@
             // dgvFuncionarios
             // 
             this.dgvFuncionarios.AllowUserToAddRows = false;
-            this.dgvFuncionarios.AllowUserToDeleteRows = false;
             this.dgvFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFuncionarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvFuncionarios.BackgroundColor = System.Drawing.Color.White;
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FuncionariosID,
-            this.FuncionariosNome,
-            this.FuncionariosCPF,
-            this.FuncionariosRG,
-            this.FuncionariosTelefone,
-            this.FuncionariosEmail,
-            this.FuncionariosTipoFuncionario});
+            this.ProdutosID,
+            this.ProdutosNome,
+            this.ProdutosDescricao,
+            this.ProdutosQtdEstoque,
+            this.ProdutosLaboratorio,
+            this.ProdutosTipoUnidade,
+            this.ProdutosValor});
             this.dgvFuncionarios.Location = new System.Drawing.Point(0, 22);
             this.dgvFuncionarios.Name = "dgvFuncionarios";
             this.dgvFuncionarios.ReadOnly = true;
@@ -135,48 +134,6 @@
             this.dgvFuncionarios.Size = new System.Drawing.Size(711, 495);
             this.dgvFuncionarios.TabIndex = 3;
             // 
-            // FuncionariosID
-            // 
-            this.FuncionariosID.HeaderText = "ID";
-            this.FuncionariosID.Name = "FuncionariosID";
-            this.FuncionariosID.ReadOnly = true;
-            // 
-            // FuncionariosNome
-            // 
-            this.FuncionariosNome.HeaderText = "Nome";
-            this.FuncionariosNome.Name = "FuncionariosNome";
-            this.FuncionariosNome.ReadOnly = true;
-            // 
-            // FuncionariosCPF
-            // 
-            this.FuncionariosCPF.HeaderText = "CPF";
-            this.FuncionariosCPF.Name = "FuncionariosCPF";
-            this.FuncionariosCPF.ReadOnly = true;
-            // 
-            // FuncionariosRG
-            // 
-            this.FuncionariosRG.HeaderText = "RG";
-            this.FuncionariosRG.Name = "FuncionariosRG";
-            this.FuncionariosRG.ReadOnly = true;
-            // 
-            // FuncionariosTelefone
-            // 
-            this.FuncionariosTelefone.HeaderText = "Telefone";
-            this.FuncionariosTelefone.Name = "FuncionariosTelefone";
-            this.FuncionariosTelefone.ReadOnly = true;
-            // 
-            // FuncionariosEmail
-            // 
-            this.FuncionariosEmail.HeaderText = "Email";
-            this.FuncionariosEmail.Name = "FuncionariosEmail";
-            this.FuncionariosEmail.ReadOnly = true;
-            // 
-            // FuncionariosTipoFuncionario
-            // 
-            this.FuncionariosTipoFuncionario.HeaderText = "Tipo Funcionario";
-            this.FuncionariosTipoFuncionario.Name = "FuncionariosTipoFuncionario";
-            this.FuncionariosTipoFuncionario.ReadOnly = true;
-            // 
             // panelDesktopProdutos
             // 
             this.panelDesktopProdutos.Controls.Add(this.dgvFuncionarios);
@@ -184,6 +141,48 @@
             this.panelDesktopProdutos.Name = "panelDesktopProdutos";
             this.panelDesktopProdutos.Size = new System.Drawing.Size(795, 495);
             this.panelDesktopProdutos.TabIndex = 5;
+            // 
+            // ProdutosID
+            // 
+            this.ProdutosID.HeaderText = "ID";
+            this.ProdutosID.Name = "ProdutosID";
+            this.ProdutosID.ReadOnly = true;
+            // 
+            // ProdutosNome
+            // 
+            this.ProdutosNome.HeaderText = "Nome";
+            this.ProdutosNome.Name = "ProdutosNome";
+            this.ProdutosNome.ReadOnly = true;
+            // 
+            // ProdutosDescricao
+            // 
+            this.ProdutosDescricao.HeaderText = "Descrição";
+            this.ProdutosDescricao.Name = "ProdutosDescricao";
+            this.ProdutosDescricao.ReadOnly = true;
+            // 
+            // ProdutosQtdEstoque
+            // 
+            this.ProdutosQtdEstoque.HeaderText = "Qtde Estoque";
+            this.ProdutosQtdEstoque.Name = "ProdutosQtdEstoque";
+            this.ProdutosQtdEstoque.ReadOnly = true;
+            // 
+            // ProdutosLaboratorio
+            // 
+            this.ProdutosLaboratorio.HeaderText = "Laboratorio";
+            this.ProdutosLaboratorio.Name = "ProdutosLaboratorio";
+            this.ProdutosLaboratorio.ReadOnly = true;
+            // 
+            // ProdutosTipoUnidade
+            // 
+            this.ProdutosTipoUnidade.HeaderText = "Un";
+            this.ProdutosTipoUnidade.Name = "ProdutosTipoUnidade";
+            this.ProdutosTipoUnidade.ReadOnly = true;
+            // 
+            // ProdutosValor
+            // 
+            this.ProdutosValor.HeaderText = "Valor";
+            this.ProdutosValor.Name = "ProdutosValor";
+            this.ProdutosValor.ReadOnly = true;
             // 
             // FormProdutos
             // 
@@ -209,13 +208,13 @@
         private Button btnDeleteProduto;
         private Button btnCadastroProduto;
         private DataGridView dgvFuncionarios;
-        private DataGridViewTextBoxColumn FuncionariosID;
-        private DataGridViewTextBoxColumn FuncionariosNome;
-        private DataGridViewTextBoxColumn FuncionariosCPF;
-        private DataGridViewTextBoxColumn FuncionariosRG;
-        private DataGridViewTextBoxColumn FuncionariosTelefone;
-        private DataGridViewTextBoxColumn FuncionariosEmail;
-        private DataGridViewTextBoxColumn FuncionariosTipoFuncionario;
         private Panel panelDesktopProdutos;
+        private DataGridViewTextBoxColumn ProdutosID;
+        private DataGridViewTextBoxColumn ProdutosNome;
+        private DataGridViewTextBoxColumn ProdutosDescricao;
+        private DataGridViewTextBoxColumn ProdutosQtdEstoque;
+        private DataGridViewTextBoxColumn ProdutosLaboratorio;
+        private DataGridViewTextBoxColumn ProdutosTipoUnidade;
+        private DataGridViewTextBoxColumn ProdutosValor;
     }
 }
