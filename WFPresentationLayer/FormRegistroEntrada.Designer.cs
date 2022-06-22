@@ -39,21 +39,19 @@
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Un = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preço = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoProduto = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nudQtde = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtUnidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +75,7 @@
             // 
             // btnCadastrarNovoFornecedor
             // 
-            this.btnCadastrarNovoFornecedor.Location = new System.Drawing.Point(478, 46);
+            this.btnCadastrarNovoFornecedor.Location = new System.Drawing.Point(626, 415);
             this.btnCadastrarNovoFornecedor.Name = "btnCadastrarNovoFornecedor";
             this.btnCadastrarNovoFornecedor.Size = new System.Drawing.Size(161, 23);
             this.btnCadastrarNovoFornecedor.TabIndex = 2;
@@ -110,12 +108,12 @@
             this.Nome,
             this.Un,
             this.Qtde,
-            this.Preço});
-            this.dgvProdutos.Location = new System.Drawing.Point(26, 177);
+            this.Valor});
+            this.dgvProdutos.Location = new System.Drawing.Point(27, 177);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowTemplate.Height = 25;
-            this.dgvProdutos.Size = new System.Drawing.Size(502, 150);
+            this.dgvProdutos.Size = new System.Drawing.Size(501, 147);
             this.dgvProdutos.TabIndex = 5;
             // 
             // ID
@@ -142,11 +140,11 @@
             this.Qtde.Name = "Qtde";
             this.Qtde.ReadOnly = true;
             // 
-            // Preço
+            // Valor
             // 
-            this.Preço.HeaderText = "Preço";
-            this.Preço.Name = "Preço";
-            this.Preço.ReadOnly = true;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
             // 
             // btnCadastroNovoProduto
             // 
@@ -201,33 +199,6 @@
             this.label4.Size = new System.Drawing.Size(36, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Qtde.";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(664, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Valor";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(664, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Desconto(%)";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(661, 103);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 15);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Desconto(R$)";
             // 
             // label9
             // 
@@ -284,20 +255,28 @@
             this.btnRetirarProduto.UseVisualStyleBackColor = true;
             this.btnRetirarProduto.Click += new System.EventHandler(this.btnRetirarProduto_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(616, 336);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.label3);
@@ -333,9 +312,6 @@
         private Label label3;
         private NumericUpDown nudQtde;
         private Label label4;
-        private Label label6;
-        private Label label7;
-        private Label label8;
         private Label label9;
         private Label label10;
         private TextBox txtUnidade;
@@ -348,6 +324,7 @@
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Un;
         private DataGridViewTextBoxColumn Qtde;
-        private DataGridViewTextBoxColumn Preço;
+        private DataGridViewTextBoxColumn Valor;
+        private Button button1;
     }
 }

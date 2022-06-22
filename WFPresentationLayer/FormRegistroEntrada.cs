@@ -19,6 +19,7 @@ namespace WFPresentationLayer
         ProdutorBLL produtorBLL = new ProdutorBLL();
         TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
         List<Produto> produtosEntrada = new List<Produto>();
+
         public FormRegistroEntrada()
         {
             InitializeComponent();
@@ -85,7 +86,7 @@ namespace WFPresentationLayer
                 dgvProdutos.Rows[i].Cells["Nome"].Value = produtos[i].Nome;
                 dgvProdutos.Rows[i].Cells["Un"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
                 dgvProdutos.Rows[i].Cells["Qtde"].Value = produtos[i].QtdEstoque;
-                dgvProdutos.Rows[i].Cells["Preço"].Value = produtos[i].Valor;
+                dgvProdutos.Rows[i].Cells["Valor"].Value = produtos[i].Valor;
             }
 
             //** // create columns automatically //**
@@ -97,24 +98,38 @@ namespace WFPresentationLayer
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
         {
-            //foreach (DataGridViewRow row in dgvProdutos.SelectedRows)
-            //{
-            //    dgvProdutos.Rows.Remove(row);
-            //    int a = row.Index;
-            //    //produtos.RemoveAt(row.);
-            //   // foreach (var item in produtos)
-            //    //{
-            //     //   for (int i = 0; i < produtos.Count; i++)
-            //     //   {
-            //      //      dgvProdutos.Rows[i].Cells["Column1"].Value = produtos[i].ID;
-            //        //    dgvProdutos.Rows[i].Cells["Column2"].Value = produtos[i].Nome;
-            //        //    dgvProdutos.Rows[i].Cells["Column3"].Value = unidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-            //        //    dgvProdutos.Rows[i].Cells["Column4"].Value = produtos[i].QtdEstoque;
-            //        //    dgvProdutos.Rows[i].Cells["Column5"].Value = produtos[i].Valor;
-            //        //}
+            if(dgvProdutos.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel retirar um produto não selecionado");
+                return;
+            }
+            int rowindex = dgvProdutos.CurrentCell.RowIndex;
+            int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
+            //MessageBox.Show(dgvProdutos.Rows[rowindex].Cells[columnindex].Value.ToString());
+            produtos.RemoveAt(rowindex);
+            dgvProdutos.Rows.RemoveAt(rowindex);
+            for (int i = 0; i < produtos.Count; i++)
+            {
+                dgvProdutos.Rows[i].Cells["ID"].Value = produtos[i].ID;
+                dgvProdutos.Rows[i].Cells["Nome"].Value = produtos[i].Nome;
+                dgvProdutos.Rows[i].Cells["Un"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
+                dgvProdutos.Rows[i].Cells["Qtde"].Value = produtos[i].QtdEstoque;
+                dgvProdutos.Rows[i].Cells["Valor"].Value = produtos[i].Valor;
+            }
+            //produtos.Remove();
+        }
 
-            //   // }
-            //}
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < produtos.Count; i++)
+            {
+                Produto pro = produtos[i];
+                stringBuilder.AppendLine(pro.Nome);
+            }
+
+            MessageBox.Show(stringBuilder.ToString());
         }
     }
 }

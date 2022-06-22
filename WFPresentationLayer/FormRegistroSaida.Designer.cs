@@ -47,11 +47,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Un = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,7 @@
             this.btnRetirarProduto.TabIndex = 49;
             this.btnRetirarProduto.Text = "Retirar Produto";
             this.btnRetirarProduto.UseVisualStyleBackColor = true;
+            this.btnRetirarProduto.Click += new System.EventHandler(this.btnRetirarProduto_Click);
             // 
             // btnAdicionarProduto
             // 
@@ -221,56 +222,56 @@
             // dgvProdutos
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
-            this.dgvProdutos.AllowUserToDeleteRows = false;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dgvProdutos.Location = new System.Drawing.Point(26, 177);
+            this.ID,
+            this.Nome,
+            this.Un,
+            this.Qtde,
+            this.Valor});
+            this.dgvProdutos.Location = new System.Drawing.Point(27, 177);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowTemplate.Height = 25;
-            this.dgvProdutos.Size = new System.Drawing.Size(502, 150);
-            this.dgvProdutos.TabIndex = 41;
+            this.dgvProdutos.Size = new System.Drawing.Size(501, 147);
+            this.dgvProdutos.TabIndex = 50;
             // 
-            // Column1
+            // ID
             // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
-            // Column2
+            // Nome
             // 
-            this.Column2.HeaderText = "Nome";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
             // 
-            // Column3
+            // Un
             // 
-            this.Column3.HeaderText = "Un";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Un.HeaderText = "Un";
+            this.Un.Name = "Un";
+            this.Un.ReadOnly = true;
             // 
-            // Column4
+            // Qtde
             // 
-            this.Column4.HeaderText = "Qtde";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.Qtde.HeaderText = "Qtde";
+            this.Qtde.Name = "Qtde";
+            this.Qtde.ReadOnly = true;
             // 
-            // Column5
+            // Valor
             // 
-            this.Column5.HeaderText = "Preço";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
             // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
@@ -279,7 +280,6 @@
             this.Controls.Add(this.nudQtde);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbProduto);
-            this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -320,10 +320,10 @@
         private Label label3;
         private ComboBox cmbProduto;
         private DataGridView dgvProdutos;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn Un;
+        private DataGridViewTextBoxColumn Qtde;
+        private DataGridViewTextBoxColumn Valor;
     }
 }
