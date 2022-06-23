@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,9 @@ namespace WFPresentationLayer
     {
         List<Produto> produtos = new List<Produto>();
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
-        ProdutorBLL produtorBLL = new ProdutorBLL();
+        ProdutoBLL produtorBLL = new ProdutoBLL();
         TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
-        List<Produto> produtosEntrada = new List<Produto>();
+        //List<Produto> produtosEntrada = new List<Produto>();
 
         public FormRegistroEntrada()
         {
@@ -84,7 +85,8 @@ namespace WFPresentationLayer
             Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             if (produto != null)
             {
-                produto.QtdEstoque = (double)nudQtde.Value;
+                produto.QtdEstoque += (double)nudQtde.Value;
+                produto.Valor = (double)nudValor.Value;
                 produtos.Add(produto);
                 dgvProdutosEntrada.Rows.Add();
                 for (int i = 0; i < produtos.Count; i++)
@@ -92,7 +94,7 @@ namespace WFPresentationLayer
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = (double)nudQtde.Value;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
                 }
             }
@@ -101,6 +103,7 @@ namespace WFPresentationLayer
             //produtorBLL.Update(produto);
             //DataTable dt = new DataTable();
             //dt = produto;
+            produtorBLL.CalculateNewValue(produtos);
         }
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
@@ -128,11 +131,11 @@ namespace WFPresentationLayer
         private void button1_Click(object sender, EventArgs e)
         {
             StringBuilder stringBuilder = new StringBuilder();
-
+            DataResponse<Produto> dataResponse = produtorBLL.CalculateNewValue(produtos);
             for (int i = 0; i < produtos.Count; i++)
             {
-                Produto pro = produtos[i];
-                stringBuilder.AppendLine(pro.Nome);
+                Produto pro = dataResponse.Dados[i];
+                stringBuilder.AppendLine(pro.Nome+" || " + pro.QtdEstoque+ " || " + pro.Valor);
             }
             MessageBox.Show(stringBuilder.ToString());
         }

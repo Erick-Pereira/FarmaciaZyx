@@ -12,13 +12,14 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID) VALUES (@NOME,@CPF,@TELEFONE,@EMAIL,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID)";
+            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,RG,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID) VALUES (@NOME,@CPF,@RG,@TELEFONE,@EMAIL,@SENHA,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID)";
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", funcionario.Nome);
             command.Parameters.AddWithValue("@CPF", funcionario.CPF);
+            command.Parameters.AddWithValue("@RG", funcionario.RG);
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
             command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
             command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
@@ -62,7 +63,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE FUNCIONARIO SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, SENHA = @SENHA, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
+            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, SENHA = @SENHA, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -116,7 +117,7 @@ namespace DataAccessLayer
 
         public Response Delete(int id)
         {
-            string sql = "DELETE FROM FUNCIONARIO WHERE ID = @ID";
+            string sql = "DELETE FROM FUNCIONARIOS WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -156,7 +157,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS";
+            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS";
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
             SqlCommand command = new SqlCommand(sql, connection);
@@ -172,6 +173,7 @@ namespace DataAccessLayer
                     funcionario.ID = Convert.ToInt32(reader["ID"]);
                     funcionario.Nome = Convert.ToString(reader["NOME"]);
                     funcionario.CPF = Convert.ToString(reader["CPF"]);
+                    funcionario.RG = Convert.ToString(reader["RG"]);
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
@@ -196,7 +198,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,RG,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -215,6 +217,7 @@ namespace DataAccessLayer
                     funcionario.ID = Convert.ToInt32(reader["ID"]);
                     funcionario.Nome = Convert.ToString(reader["NOME"]);
                     funcionario.CPF = Convert.ToString(reader["CPF"]);
+                    funcionario.RG = Convert.ToString(reader["RG"]);
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);

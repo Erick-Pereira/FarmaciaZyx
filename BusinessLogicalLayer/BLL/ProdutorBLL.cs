@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class ProdutorBLL : ICRUD<Produto>
+    public class ProdutoBLL : ICRUD<Produto>
     {
         ProdutoDAL produtoDAL = new ProdutoDAL();
         
@@ -45,6 +45,29 @@ namespace BusinessLogicalLayer
         public Response Update(Produto item)
         {
             return produtoDAL.Update(item);
+        }
+        public DataResponse<Produto> CalculateNewValue(List<Produto> produtos)
+        {
+            SingleResponse<Produto> singleResponse = new SingleResponse<Produto>();
+            for (int i = 0; i < produtos.Count ; i++)
+            {
+                singleResponse = produtoDAL.GetByID(produtos[i].ID);
+                if (singleResponse.HasSuccess)
+                {
+                    produtos[i].Valor = (singleResponse.Item.Valor * singleResponse.Item.QtdEstoque) + (produtos[i].Valor * produtos[i].QtdEstoque) / (produtos[i].QtdEstoque + singleResponse.Item.QtdEstoque);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (singleResponse.HasSuccess)
+            {
+                return new DataResponse<Produto>(singleResponse.Message, true, produtos);
+            }
+            return new DataResponse<Produto>(singleResponse.Message, false, null);
+            
+           
         }
     }
 }

@@ -27,6 +27,8 @@ namespace WFPresentationLayer
             string email = txtEmail.Text;
             string cpf = mtxtCpf.Text;
             string rg = mtxtRg.Text;
+            cpf = cpf.Replace(",", ".");
+            rg = rg.Replace(",", ".");
             string telefone1 = mtxtTelefone1.Text;
             string telefone2 = mtxtTelefone2.Text;
             int tipoCliente = Convert.ToInt32(cmbTipoCliente.SelectedValue);

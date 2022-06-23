@@ -82,15 +82,22 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
-                int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
-                funcionarioBLL.Delete(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[columnindex].Value));
-                dgvFuncionarios.Rows.RemoveAt(rowindex);
+                int index = Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[0].Value);
+                if (index == FuncionarioLogin.id)
+                {
+                    MessageBox.Show("Você não pode se apagar.");
+                }
+                else
+                {
+                    funcionarioBLL.Delete(index);
+                    dgvFuncionarios.Rows.RemoveAt(rowindex);
+                }
+               
             }
         }
 
         private void btnUpdateFuncionario_Click(object sender, EventArgs e)
         {
-
             if (dgvFuncionarios.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel fazer o update um Funcionario não selecionado");
@@ -109,8 +116,8 @@ namespace WFPresentationLayer
                 btnDeleteFuncionario.Visible = false;
                 btnUpdateFuncionario.Visible = false;
                 int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
-                int columnindex = dgvFuncionarios.CurrentCell.ColumnIndex;
-                StaticItem.item = funcionarioBLL.GetByID(Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[0].Value)).Item;
+                int index = Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[0].Value);
+                StaticItem.item = funcionarioBLL.GetByID(index).Item;
                 OpenChildForm(new FormUpdateFuncionario());
             }
         }

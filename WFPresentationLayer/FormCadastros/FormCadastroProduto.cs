@@ -35,7 +35,7 @@ namespace WFPresentationLayer
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            ProdutorBLL produtorBLL = new ProdutorBLL();
+            ProdutoBLL produtorBLL = new ProdutoBLL();
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
             int laboratorio = Convert.ToInt32(cmbLaboratorio.SelectedValue);

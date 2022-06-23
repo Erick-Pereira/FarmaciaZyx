@@ -188,11 +188,6 @@
             0,
             0,
             0});
-            this.nudQtde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(74, 23);
             this.nudQtde.TabIndex = 44;

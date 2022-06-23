@@ -52,8 +52,11 @@
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.nudValor = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbFornecedor
@@ -177,11 +180,6 @@
             // nudQtde
             // 
             this.nudQtde.Location = new System.Drawing.Point(155, 148);
-            this.nudQtde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudQtde.Name = "nudQtde";
             this.nudQtde.Size = new System.Drawing.Size(74, 23);
             this.nudQtde.TabIndex = 9;
@@ -265,11 +263,45 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // nudValor
+            // 
+            this.nudValor.DecimalPlaces = 2;
+            this.nudValor.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudValor.Location = new System.Drawing.Point(61, 147);
+            this.nudValor.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.nudValor.Name = "nudValor";
+            this.nudValor.Size = new System.Drawing.Size(88, 23);
+            this.nudValor.TabIndex = 42;
+            this.nudValor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(61, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 15);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Valor";
+            // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.nudValor);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
@@ -294,6 +326,7 @@
             this.Load += new System.EventHandler(this.FormRegistroEntrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +359,7 @@
         private DataGridViewTextBoxColumn ProdutosEntradaUn;
         private DataGridViewTextBoxColumn ProdutosEntradaQtde;
         private DataGridViewTextBoxColumn ProdutosEntradaValor;
+        private NumericUpDown nudValor;
+        private Label label6;
     }
 }

@@ -68,7 +68,7 @@ namespace WFPresentationLayer
             Response response = produtoValidator.Validate(update);
             if (response.HasSuccess)
             {
-                ProdutorBLL produtorBLL = new ProdutorBLL();
+                ProdutoBLL produtorBLL = new ProdutoBLL();
                 Response response1 = produtorBLL.Update(update);
                 MessageBox.Show(response1.Message);
             }

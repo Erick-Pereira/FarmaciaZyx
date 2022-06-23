@@ -18,7 +18,7 @@ namespace WFPresentationLayer
 
 
         List<Produto> produtos = new List<Produto>();
-        ProdutorBLL produtoBLL = new ProdutorBLL();
+        ProdutoBLL produtoBLL = new ProdutoBLL();
         TipoUnidadeBLL tipoUnidadeBLL = new TipoUnidadeBLL();
         LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         public FormProdutos()

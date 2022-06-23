@@ -31,6 +31,7 @@ namespace WFPresentationLayer
             update.CNPJ = mtxtCnpj.Text;
             update.Telefone = mtxtTelefone.Text;
             update.Email = txtEmail.Text;
+            update.CNPJ = update.CNPJ.Replace(",", ".");
             FornecedorValidator fornecedorValidator = new FornecedorValidator();
             Response response = fornecedorValidator.Validate(update);
             if (response.HasSuccess)
@@ -53,12 +54,5 @@ namespace WFPresentationLayer
             mtxtTelefone.Text = fornecedor.Telefone;
             txtEmail.Text = fornecedor.Email;
         }
-
-
-
-
-
-
-
     }
 }

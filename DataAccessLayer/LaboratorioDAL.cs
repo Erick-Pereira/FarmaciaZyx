@@ -153,6 +153,12 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_PRODUTOS_LABORATORIO_ID"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Laboratorio que tenha um produto cadastrado.", false);
+                }
+                
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }

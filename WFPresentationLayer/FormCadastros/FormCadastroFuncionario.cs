@@ -55,24 +55,26 @@ namespace WFPresentationLayer
             {
                 Response response = funcionarioBLL.Insert(funcionarioComEndereco);
                 MessageBox.Show(response.Message);
-
-                txtNome.Text = "";
-                 mtxtCpf.Text = "";
-                mtxtRg.Text = "";
-                cmbTipoFuncionario.SelectedIndex = 1;
-                //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
-                txtEmail.Text = "";
-                mtxtTelefone.Text = "";
-                txtSenha.Text = "";
-                txtConfirmarSenha.Text = "";
-                //Genero genero = (Genero)cmbGenero.SelectedIndex;
-                mtxtCep.Text = "";
-                txtRua.Text = "";
-                txtBairro.Text = "";
-                cmbEstados.SelectedIndex = 1;
-                txtCidade.Text = "";
-                mtxtNumero.Text = "";
-                txtComplemento.Text = "";
+                if (response.HasSuccess)
+                {
+                    txtNome.Text = "";
+                    mtxtCpf.Text = "";
+                    mtxtRg.Text = "";
+                    cmbTipoFuncionario.SelectedIndex = 1;
+                    //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
+                    txtEmail.Text = "";
+                    mtxtTelefone.Text = "";
+                    txtSenha.Text = "";
+                    txtConfirmarSenha.Text = "";
+                    //Genero genero = (Genero)cmbGenero.SelectedIndex;
+                    mtxtCep.Text = "";
+                    txtRua.Text = "";
+                    txtBairro.Text = "";
+                    cmbEstados.SelectedIndex = 1;
+                    txtCidade.Text = "";
+                    mtxtNumero.Text = "";
+                    txtComplemento.Text = "";
+                }
             }
             else
             {

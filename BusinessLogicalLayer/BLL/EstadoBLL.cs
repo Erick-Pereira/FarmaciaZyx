@@ -16,5 +16,10 @@ namespace BusinessLogicalLayer
         {
             return estadoDAL.GetAll();
         }
+
+        public SingleResponse<Estado> GetByID(int id)
+        {
+            return estadoDAL.GetByID(id);
+        }
     }
 }

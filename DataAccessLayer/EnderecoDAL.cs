@@ -269,5 +269,48 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        public SingleResponse<Endereco> CountById(int id)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT COUNT(*) FROM FUNCIONARIOS WHERE ENDERECO = @ID";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@ID", id);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Endereco endereco = new Endereco();
+                    endereco.ID = Convert.ToInt32(reader["ID"]);
+                    endereco.CEP = Convert.ToString(reader["CEP"]);
+                    endereco.Rua = Convert.ToString(reader["RUA"]);
+                    endereco.Complemento = Convert.ToString(reader["COMPLEMENTO"]);
+                    endereco.NumeroCasa = Convert.ToString(reader["NUMERO_CASA"]);
+                    endereco.BairroID = Convert.ToInt32(reader["BAIRRO_ID"]);
+                    return new SingleResponse<Endereco>("Endereço selecionado com sucesso!", true, endereco);
+                }
+                return new SingleResponse<Endereco>("Endereço não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Endereco>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace WFPresentationLayer
         {
             string razaoSocial = txtRazaoSocial.Text;
             string cnpj = mtxtCnpj.Text;
+            cnpj = cnpj.Replace(",", ".");
             string nomeContato = txtNomeContato.Text;
             string telefone = mtxtTelefone.Text;
             string email = txtEmail.Text;
