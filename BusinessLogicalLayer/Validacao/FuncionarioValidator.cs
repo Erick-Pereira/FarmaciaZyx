@@ -11,7 +11,16 @@ namespace BusinessLogicalLayer
         private DateTimeValidator dateTimeValidator = new DateTimeValidator();
         private Normatization normatization = new Normatization();
         private FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
+        private string ValidateRG(string rG)
+        {
+            rG = rG.Replace(".", "");
+            if (string.IsNullOrWhiteSpace(rG))
+            {
+                return "RG precisa ser informado";
+            }
 
+            return "";
+        }
         public Response Validate(Funcionario funcionario)
         {
             StringBuilder erros = new StringBuilder();
@@ -20,14 +29,15 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateCPF(funcionario.CPF));
             erros.AppendLine(stringValidator.ValidateEmail(funcionario.Email));
             erros.AppendLine(stringValidator.ValidateTelefone(funcionario.Telefone));
+            erros.AppendLine(ValidateRG(funcionario.RG));
+
             //Sintaxe cliente.Endereco?.CEP verifica e só passaria o CEP informado caso a propriedade
             //Endereco de dentro do Cliente não seja nula, caso contrário, passará o valor padrão do CEP (que é uma string e vale null!)
             //erros += stringValidator.ValidateCEP(funcionario.);
             funcionario.Nome = (normatization.NormatizeName(funcionario.Nome));
             if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
             {
-                
-                return funcionarioDAL.Insert(funcionario);
+                return new Response(erros.ToString().Trim(), true);
             }
             return new Response(erros.ToString().Trim(), false);
             //Se chegou aqui, validamos com sucesso!
@@ -36,32 +46,5 @@ namespace BusinessLogicalLayer
         }
 
     }
-
-    //class Carro
-    //{
-    //    public Carro(string marca, Motor motorizacao)
-    //    {
-    //        Marca = marca;
-    //        Motorizacao = motorizacao;
-    //    }
-
-    //    //Retorna true se o carro for cantar pneu (apenas veiculos com mais de 200 cv ou 6 cilindros no mínimo)
-    //    public bool Acelerar()
-    //    {
-    //        if(this.Motorizacao?.CV > 200 || this.Motorizacao.QtdCilindros >= 6)
-    //        {
-    //            return true;
-    //        }
-    //        return false;
-    //    }
-
-    //    public string Marca { get; set; }
-    //    public Motor Motorizacao { get; set; }
-    //}
-    //class Motor
-    //{
-    //    public int CV { get; set; }
-    //    public int QtdCilindros { get; set; }
-    //}
 }
 

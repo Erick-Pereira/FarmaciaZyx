@@ -39,7 +39,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.cmbTipoFuncionario = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnProximo = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.mtxtTelefone = new System.Windows.Forms.MaskedTextBox();
@@ -68,6 +67,7 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.btnProximo = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -88,6 +88,7 @@
             // tabFuncionario
             // 
             this.tabFuncionario.BackColor = System.Drawing.Color.White;
+            this.tabFuncionario.Controls.Add(this.btnProximo);
             this.tabFuncionario.Controls.Add(this.txtConfirmarSenha);
             this.tabFuncionario.Controls.Add(this.label11);
             this.tabFuncionario.Controls.Add(this.mtxtRg);
@@ -96,7 +97,6 @@
             this.tabFuncionario.Controls.Add(this.label12);
             this.tabFuncionario.Controls.Add(this.cmbTipoFuncionario);
             this.tabFuncionario.Controls.Add(this.label7);
-            this.tabFuncionario.Controls.Add(this.btnProximo);
             this.tabFuncionario.Controls.Add(this.label6);
             this.tabFuncionario.Controls.Add(this.cmbGenero);
             this.tabFuncionario.Controls.Add(this.mtxtTelefone);
@@ -184,17 +184,6 @@
             this.label7.Size = new System.Drawing.Size(112, 15);
             this.label7.TabIndex = 35;
             this.label7.Text = "Tipo de Funcionario";
-            // 
-            // btnProximo
-            // 
-            this.btnProximo.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProximo.Location = new System.Drawing.Point(50, 317);
-            this.btnProximo.Name = "btnProximo";
-            this.btnProximo.Size = new System.Drawing.Size(461, 46);
-            this.btnProximo.TabIndex = 34;
-            this.btnProximo.Text = "Proxímo";
-            this.btnProximo.UseVisualStyleBackColor = false;
-            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
             // label6
             // 
@@ -466,6 +455,16 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
+            // btnProximo
+            // 
+            this.btnProximo.Location = new System.Drawing.Point(50, 358);
+            this.btnProximo.Name = "btnProximo";
+            this.btnProximo.Size = new System.Drawing.Size(435, 47);
+            this.btnProximo.TabIndex = 48;
+            this.btnProximo.Text = "Proximo";
+            this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
+            // 
             // FormCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -489,7 +488,6 @@
 
         private TabControl tabControl1;
         private TabPage tabFuncionario;
-        private Button btnProximo;
         private Label label6;
         private ComboBox cmbGenero;
         private MaskedTextBox mtxtTelefone;
@@ -526,5 +524,6 @@
         private ComboBox cmbEstados;
         private Label label17;
         private TextBox txtComplemento;
+        private Button btnProximo;
     }
 }

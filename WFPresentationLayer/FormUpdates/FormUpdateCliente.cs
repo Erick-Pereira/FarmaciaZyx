@@ -45,6 +45,7 @@ namespace WFPresentationLayer
             update.RG = mtxtRg.Text;
             update.Telefone2 = mtxtTelefone2.Text;
             update.Email = txtEmail.Text;
+            update.TipoClienteId = Convert.ToInt32(cmbTipoCliente.SelectedValue);
             ClienteValidator clienteValidator = new ClienteValidator();
             Response response = clienteValidator.Validate(update);
             if (response.HasSuccess)

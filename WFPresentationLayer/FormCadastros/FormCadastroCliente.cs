@@ -33,6 +33,16 @@ namespace WFPresentationLayer
             Cliente cliente = new Cliente(nome,rg,cpf,telefone1,telefone2,email, tipoCliente);
             ClienteBLL clienteBLL = new ClienteBLL();
             Response response = clienteBLL.Insert(cliente);
+            if (response.HasSuccess)
+            {
+                txtNome.Text = "";
+                txtEmail.Text = "";
+                mtxtCpf.Text = "";
+                mtxtRg.Text = "";
+                mtxtTelefone1.Text = "";
+                mtxtTelefone2.Text = "";
+                cmbTipoCliente.SelectedIndex = 1;
+            }
             MessageBox.Show(response.Message);
         }
 

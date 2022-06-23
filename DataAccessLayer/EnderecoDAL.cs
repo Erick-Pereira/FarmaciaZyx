@@ -7,7 +7,7 @@ namespace DataAccessLayer
     public class EnderecoDAL : ICRUD<Endereco>
     {
         string connectionString = ConnectionString._connectionString;
-        public Response Insert(Endereco endereco)
+        public Response Insert(Endereco item)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
@@ -20,11 +20,11 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@CEP", endereco.CEP);
-            command.Parameters.AddWithValue("@NUMERO_CASA", endereco.NumeroCasa);
-            command.Parameters.AddWithValue("@BAIRRO_ID", endereco.BairroID);
-            command.Parameters.AddWithValue("@RUA", endereco.Rua);
-            command.Parameters.AddWithValue("@COMPLEMENTO", endereco.Complemento);
+            command.Parameters.AddWithValue("@CEP", item.CEP);
+            command.Parameters.AddWithValue("@NUMERO_CASA", item.NumeroCasa);
+            command.Parameters.AddWithValue("@BAIRRO_ID", item.BairroID);
+            command.Parameters.AddWithValue("@RUA", item.Rua);
+            command.Parameters.AddWithValue("@COMPLEMENTO", item.Complemento);
 
 
             //Estamos conectados na base de dados
@@ -34,7 +34,7 @@ namespace DataAccessLayer
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+                item.ID = Convert.ToInt32(command.ExecuteScalar());
                 return new Response("Endereco cadastrado com sucesso.", true);
             }
             catch (Exception ex)
@@ -228,7 +228,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO FROM ENDERECOS WHERE CEP = @CEP , NUMERO_CASA = @NUMERO_CASA , BAIRRO_ID = @BAIRRO_ID, RUA = @RUA";
+            string sql = $"SELECT ID,CEP,NUMERO_CASA,BAIRRO_ID,RUA,COMPLEMENTO FROM ENDERECOS WHERE CEP = @CEP AND NUMERO_CASA = @NUMERO_CASA AND BAIRRO_ID = @BAIRRO_ID AND RUA = @RUA";
 
 
 

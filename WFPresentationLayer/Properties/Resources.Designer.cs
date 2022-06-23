@@ -73,6 +73,17 @@ namespace WFPresentationLayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap default_profile_picture_avatar_photo_placeholder_vector_illustration_default_profile_picture_avatar_photo_placeholder_vector_189495158 {
+            get {
+                object obj = ResourceManager.GetObject("default-profile-picture-avatar-photo-placeholder-vector-illustration-default-prof" +
+                        "ile-picture-avatar-photo-placeholder-vector-189495158", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kisspng_pharmacy_logo_pharmacist_pharmaceutical_drug_pharmacy_5abf3058eb4ce2_6455082715224791929638 {
             get {
                 object obj = ResourceManager.GetObject("kisspng-pharmacy-logo-pharmacist-pharmaceutical-drug-pharmacy-5abf3058eb4ce2.6455" +

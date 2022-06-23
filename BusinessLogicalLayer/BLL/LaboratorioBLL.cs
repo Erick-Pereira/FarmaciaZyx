@@ -52,7 +52,7 @@ namespace BusinessLogicalLayer
 
         public Response Update(Laboratorio item)
         {
-            throw new NotImplementedException();
+            return laboratorioDAL.Update(item);
         }
 
         public Response Delete(int id)

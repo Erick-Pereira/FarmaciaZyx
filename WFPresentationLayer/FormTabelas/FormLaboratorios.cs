@@ -119,8 +119,7 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvLaboratorios.CurrentCell.RowIndex;
-                int columnindex = dgvLaboratorios.CurrentCell.ColumnIndex;
-                laboratorioBLL.Delete(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[columnindex].Value));
+                laboratorioBLL.Delete(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[0].Value));
                 dgvLaboratorios.Rows.RemoveAt(rowindex);
             }
         }

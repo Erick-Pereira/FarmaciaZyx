@@ -8,7 +8,7 @@ namespace DataAccessLayer
     {
         string connectionString = ConnectionString._connectionString;
 
-        public Response Insert(Cidade cidade)
+        public Response Insert(Cidade item)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
@@ -19,8 +19,8 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@NOME_CIDADE", cidade.NomeCidade);
-            command.Parameters.AddWithValue("@ESTADO_ID", cidade.EstadoId);
+            command.Parameters.AddWithValue("@NOME_CIDADE", item.NomeCidade);
+            command.Parameters.AddWithValue("@ESTADO_ID", item.EstadoId);
             //Estamos conectados na base de dados
             //try catch
             //try catch finally
@@ -28,7 +28,7 @@ namespace DataAccessLayer
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+                item.ID = Convert.ToInt32(command.ExecuteScalar());
                 return new Response("Cidade cadastrado com sucesso.", true);
             }
             catch (Exception ex)
@@ -211,7 +211,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID";
+            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE NOME_CIDADE = @NOME_CIDADE AND ESTADO_ID = @ESTADO_ID";
 
 
 

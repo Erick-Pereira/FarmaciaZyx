@@ -40,7 +40,6 @@ namespace BusinessLogicalLayer
             stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
             stringBuilder.AppendLine(funcionarioValidator.Validate(funcionarioComEndereco.Funcionario).Message);
             string erros = stringBuilder.ToString().Trim();
-            erros = Regex.Replace(erros, @"\s+", " ");
             if (string.IsNullOrWhiteSpace(erros))
             {
                 using (TransactionScope scope = new TransactionScope())
@@ -59,6 +58,8 @@ namespace BusinessLogicalLayer
                         SingleResponse<Bairro> responseBairro = bairroDAL.GetByNameAndCidadeId(funcionarioComEndereco.Bairro);
                         if (responseBairro.HasSuccess && responseBairro.Item != null)
                         {
+                            funcionarioComEndereco.Bairro.ID = responseBairro.Item.ID;
+                            funcionarioComEndereco.Endereco.BairroID = responseBairro.Item.ID;
                             SingleResponse<Endereco> responseEndereco = enderecoDAL.GetByEndereco(funcionarioComEndereco.Endereco);
                             if (responseEndereco.HasSuccess && responseEndereco.Item != null)
                             {
@@ -70,12 +71,20 @@ namespace BusinessLogicalLayer
                                 response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
                                 response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
                             }
+                            else
+                            {
+                                return responseEndereco;
+                            }
                         }
                         else if (responseBairro.HasSuccess && responseBairro.Item == null)
                         {
                             response = bairroDAL.Insert(funcionarioComEndereco.Bairro);
                             response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
                             response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
+                        }
+                        else
+                        {
+                            return responseBairro;
                         }
                     }
                     else if (responseCidade.HasSuccess && responseCidade.Item == null)
@@ -85,9 +94,9 @@ namespace BusinessLogicalLayer
                         response = enderecoDAL.Insert(funcionarioComEndereco.Endereco);
                         response = funcionarioDAL.Insert(funcionarioComEndereco.Funcionario);
                     }
-                    if (!response.HasSuccess)
+                    else
                     {
-                        return response;
+                        return responseCidade;
                     }
                     scope.Complete();
                 }

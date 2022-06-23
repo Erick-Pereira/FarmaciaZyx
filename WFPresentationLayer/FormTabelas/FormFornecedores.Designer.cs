@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelMenuProdutos = new System.Windows.Forms.Panel();
+            this.btnTabelaFornecedores = new System.Windows.Forms.Button();
             this.btnUpdateFornecedor = new System.Windows.Forms.Button();
             this.btnDeleteFornecedor = new System.Windows.Forms.Button();
             this.btnCadastroFornecedor = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.FornecedoresNomeContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FornecedoresTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FornecedoresEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTabelaFornecedores = new System.Windows.Forms.Button();
             this.panelMenuProdutos.SuspendLayout();
             this.panelDesktopFornecedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
@@ -58,6 +58,24 @@
             this.panelMenuProdutos.Name = "panelMenuProdutos";
             this.panelMenuProdutos.Size = new System.Drawing.Size(98, 450);
             this.panelMenuProdutos.TabIndex = 6;
+            // 
+            // btnTabelaFornecedores
+            // 
+            this.btnTabelaFornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTabelaFornecedores.FlatAppearance.BorderSize = 0;
+            this.btnTabelaFornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnTabelaFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTabelaFornecedores.ForeColor = System.Drawing.Color.White;
+            this.btnTabelaFornecedores.Location = new System.Drawing.Point(3, 12);
+            this.btnTabelaFornecedores.Name = "btnTabelaFornecedores";
+            this.btnTabelaFornecedores.Size = new System.Drawing.Size(92, 59);
+            this.btnTabelaFornecedores.TabIndex = 18;
+            this.btnTabelaFornecedores.Text = "Tabela Fornecedores";
+            this.btnTabelaFornecedores.UseMnemonic = false;
+            this.btnTabelaFornecedores.UseVisualStyleBackColor = false;
+            this.btnTabelaFornecedores.Click += new System.EventHandler(this.btnTabelaFornecedores_Click);
             // 
             // btnUpdateFornecedor
             // 
@@ -180,28 +198,11 @@
             this.FornecedoresEmail.Name = "FornecedoresEmail";
             this.FornecedoresEmail.ReadOnly = true;
             // 
-            // btnTabelaFornecedores
-            // 
-            this.btnTabelaFornecedores.BackColor = System.Drawing.Color.Transparent;
-            this.btnTabelaFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnTabelaFornecedores.FlatAppearance.BorderSize = 0;
-            this.btnTabelaFornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnTabelaFornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnTabelaFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTabelaFornecedores.ForeColor = System.Drawing.Color.White;
-            this.btnTabelaFornecedores.Location = new System.Drawing.Point(3, 12);
-            this.btnTabelaFornecedores.Name = "btnTabelaFornecedores";
-            this.btnTabelaFornecedores.Size = new System.Drawing.Size(92, 59);
-            this.btnTabelaFornecedores.TabIndex = 18;
-            this.btnTabelaFornecedores.Text = "Tabela Fornecedores";
-            this.btnTabelaFornecedores.UseMnemonic = false;
-            this.btnTabelaFornecedores.UseVisualStyleBackColor = false;
-            this.btnTabelaFornecedores.Click += new System.EventHandler(this.btnTabelaFornecedores_Click);
-            // 
             // FormFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMenuProdutos);
             this.Controls.Add(this.panelDesktopFornecedores);

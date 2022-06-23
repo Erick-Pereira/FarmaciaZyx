@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionario));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnLaboratorios = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCadastroFornecedor = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnLaboratorios = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,6 +71,24 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 556);
             this.panelMenu.TabIndex = 12;
+            // 
+            // btnLaboratorios
+            // 
+            this.btnLaboratorios.BackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLaboratorios.FlatAppearance.BorderSize = 0;
+            this.btnLaboratorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLaboratorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLaboratorios.ForeColor = System.Drawing.Color.White;
+            this.btnLaboratorios.Location = new System.Drawing.Point(42, 148);
+            this.btnLaboratorios.Name = "btnLaboratorios";
+            this.btnLaboratorios.Size = new System.Drawing.Size(140, 36);
+            this.btnLaboratorios.TabIndex = 21;
+            this.btnLaboratorios.Text = "Laboratorios";
+            this.btnLaboratorios.UseMnemonic = false;
+            this.btnLaboratorios.UseVisualStyleBackColor = false;
+            this.btnLaboratorios.Click += new System.EventHandler(this.btnLaboratorios_Click);
             // 
             // btnCadastroProduto
             // 
@@ -314,24 +332,6 @@
             this.btnClose.UseMnemonic = false;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnLaboratorios
-            // 
-            this.btnLaboratorios.BackColor = System.Drawing.Color.Transparent;
-            this.btnLaboratorios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLaboratorios.FlatAppearance.BorderSize = 0;
-            this.btnLaboratorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnLaboratorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnLaboratorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLaboratorios.ForeColor = System.Drawing.Color.White;
-            this.btnLaboratorios.Location = new System.Drawing.Point(42, 148);
-            this.btnLaboratorios.Name = "btnLaboratorios";
-            this.btnLaboratorios.Size = new System.Drawing.Size(140, 36);
-            this.btnLaboratorios.TabIndex = 21;
-            this.btnLaboratorios.Text = "Laboratorios";
-            this.btnLaboratorios.UseMnemonic = false;
-            this.btnLaboratorios.UseVisualStyleBackColor = false;
-            this.btnLaboratorios.Click += new System.EventHandler(this.btnLaboratorios_Click);
             // 
             // FormFuncionario
             // 

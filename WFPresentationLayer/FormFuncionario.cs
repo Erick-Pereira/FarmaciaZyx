@@ -73,6 +73,7 @@ namespace WFPresentationLayer
 
         private void btnPerfilFuncionario_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new FormPerfilFuncionario());
         }
 
         private void btnCadastroCliente_Click(object sender, EventArgs e)

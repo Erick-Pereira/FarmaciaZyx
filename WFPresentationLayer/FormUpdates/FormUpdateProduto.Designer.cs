@@ -153,7 +153,7 @@
             // 
             // panelCadastroLaboratorio
             // 
-            this.panelCadastroLaboratorio.BackColor = System.Drawing.SystemColors.Control;
+            this.panelCadastroLaboratorio.BackColor = System.Drawing.Color.White;
             this.panelCadastroLaboratorio.Location = new System.Drawing.Point(417, 102);
             this.panelCadastroLaboratorio.Name = "panelCadastroLaboratorio";
             this.panelCadastroLaboratorio.Size = new System.Drawing.Size(202, 209);
@@ -163,6 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCadastrarLaboratorio);
             this.Controls.Add(this.cmbUnidade);

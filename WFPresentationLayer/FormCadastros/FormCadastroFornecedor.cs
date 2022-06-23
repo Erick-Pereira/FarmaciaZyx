@@ -31,7 +31,15 @@ namespace WFPresentationLayer
             FornecedorBLL fornecedorBLL = new FornecedorBLL();
             Response response = fornecedorBLL.Insert(fornecedor);
             MessageBox.Show(response.Message);
-            
+            if (response.HasSuccess)
+            {
+                txtRazaoSocial.Text = "";
+                mtxtCnpj.Text = "";
+                txtNomeContato.Text = "";
+                mtxtTelefone.Text = "";
+                txtEmail.Text = "";
+            }
+
         }
     }
 }

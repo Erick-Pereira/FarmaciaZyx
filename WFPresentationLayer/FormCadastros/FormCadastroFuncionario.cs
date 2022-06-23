@@ -8,7 +8,7 @@ namespace WFPresentationLayer
 {
     public partial class FormCadastroFuncionario : Form
     {
-       
+
         public FormCadastroFuncionario()
         {
             InitializeComponent();
@@ -18,15 +18,9 @@ namespace WFPresentationLayer
         TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
         EstadoBLL estadoBLL = new EstadoBLL();
-        
-        private void btnProximo_Click(object sender, EventArgs e)
-        {
-            ((Control)this.tabEndereço).Enabled = true;
-            this.tabControl1.SelectedIndex = 1;
-        }
+
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-
             StringBuilder stringBuilder = new StringBuilder();
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
@@ -34,7 +28,7 @@ namespace WFPresentationLayer
             int tipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
-            string telefone = mtxtTelefone.Text;;
+            string telefone = mtxtTelefone.Text; ;
             string senha = txtSenha.Text;
             string confirmarSenha = txtConfirmarSenha.Text;
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
@@ -52,21 +46,38 @@ namespace WFPresentationLayer
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
             Funcionario funcionario = new Funcionario(nome, cpf, rg, telefone, email, senha, tipoFuncionarioId);
             stringBuilder.AppendLine(validator.Validate(funcionario).Message);
-            Endereco endereco = new Endereco(cep,numero,rua,complemento);
+            Endereco endereco = new Endereco(cep, numero, rua, complemento);
             Bairro bairro1 = new Bairro(bairro);
             Cidade cidade1 = new Cidade(cidade, estado);
             FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1, tipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
-            erros = Regex.Replace(erros, @"\s+", " ");
-            if(string.IsNullOrWhiteSpace(erros))
+            if (string.IsNullOrWhiteSpace(erros))
             {
-               Response response = funcionarioBLL.Insert(funcionarioComEndereco);
+                Response response = funcionarioBLL.Insert(funcionarioComEndereco);
                 MessageBox.Show(response.Message);
+
+                txtNome.Text = "";
+                 mtxtCpf.Text = "";
+                mtxtRg.Text = "";
+                cmbTipoFuncionario.SelectedIndex = 1;
+                //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
+                txtEmail.Text = "";
+                mtxtTelefone.Text = "";
+                txtSenha.Text = "";
+                txtConfirmarSenha.Text = "";
+                //Genero genero = (Genero)cmbGenero.SelectedIndex;
+                mtxtCep.Text = "";
+                txtRua.Text = "";
+                txtBairro.Text = "";
+                cmbEstados.SelectedIndex = 1;
+                txtCidade.Text = "";
+                mtxtNumero.Text = "";
+                txtComplemento.Text = "";
             }
             else
             {
                 MessageBox.Show(erros);
-            }           
+            }
         }
 
         private void FormCadastroFuncionario_Load(object sender, EventArgs e)
@@ -77,7 +88,11 @@ namespace WFPresentationLayer
             cmbEstados.DataSource = estadoBLL.GetAll().Dados;
             cmbEstados.DisplayMember = "NomeEstado";
             cmbEstados.ValueMember = "ID";
-            ((Control)this.tabEndereço).Enabled = false;
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedIndex = 1;
         }
     }
 }

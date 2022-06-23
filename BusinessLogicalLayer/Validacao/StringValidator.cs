@@ -241,9 +241,9 @@ namespace BusinessLogicalLayer
         {
             if(senha1 != senha2)
             {
-                return "";
+                return "Senhas não correspondem"; 
             }
-            return "Senhas não correspondem";
+            return "";
         }
     }
 }

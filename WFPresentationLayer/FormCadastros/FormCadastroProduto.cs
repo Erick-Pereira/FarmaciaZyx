@@ -44,6 +44,15 @@ namespace WFPresentationLayer
             Produto produto = new Produto(nome, descricao, laboratorio, unidade, Valor);
             Response response = produtorBLL.Insert(produto);
             MessageBox.Show(response.Message);
+            if (response.HasSuccess)
+            {
+
+                txtNome.Text = "";
+                txtDescricao.Text = "";
+                cmbLaboratorio.SelectedIndex = 1;
+                nudValor.Value = 0;
+                cmbUnidade.SelectedIndex = 1;
+            }
         }
 
         private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)

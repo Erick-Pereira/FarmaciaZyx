@@ -196,7 +196,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE FROM FUNCIONARIOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -217,6 +217,8 @@ namespace DataAccessLayer
                     funcionario.CPF = Convert.ToString(reader["CPF"]);
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
+                    funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
+                    funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
                     return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
                 }
                 return new SingleResponse<Funcionario>("Funcionario não encontrado!", false, null);
