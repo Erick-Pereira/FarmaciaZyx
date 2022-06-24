@@ -90,7 +90,7 @@ namespace WFPresentationLayer
 
             if (string.IsNullOrWhiteSpace(erros))
             {
-                Response response = funcionarioBLL.Update(funcionarioComEnderecoUpdate);
+                Response response = funcionarioBLL.UpdateFuncionarioComEndereco(funcionarioComEnderecoUpdate);
                 MessageBox.Show(response.Message);
             }
             else

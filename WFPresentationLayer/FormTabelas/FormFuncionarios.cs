@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace WFPresentationLayer
         TipoFuncionarioBLL tipoFuncionarioBLL = new TipoFuncionarioBLL();
         List<Funcionario> funcionarios = new List<Funcionario>();
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
+        EnderecoBLL EnderecoBLL = new EnderecoBLL();
         public FormFuncionarios()
         {
             InitializeComponent();
@@ -89,8 +91,22 @@ namespace WFPresentationLayer
                 }
                 else
                 {
-                    funcionarioBLL.Delete(index);
+
+                    Response response = new Response();
+                    int enderecoId = funcionarioBLL.GetByID(index).Item.EnderecoId;
+                    DataResponse<Funcionario> dataResponseFuncionario = funcionarioBLL.GetAllByEnderecoId(enderecoId);
+                    if(dataResponseFuncionario.Dados.Count != 1)
+                    {
+                        response = funcionarioBLL.Delete(index);
+                    }
+                    response = funcionarioBLL.Delete(index);
+                    if (response.HasSuccess)
+                    {
+                        EnderecoBLL.Delete(enderecoId);
+                    }
+                    
                     dgvFuncionarios.Rows.RemoveAt(rowindex);
+                    MessageBox.Show(response.Message);
                 }
                
             }

@@ -25,12 +25,16 @@ namespace BusinessLogicalLayer
             return funcionarioDAL.GetAll();
         }
 
+        public DataResponse<Funcionario> GetAllByEnderecoId(int enderecoId)
+        {
+            return funcionarioDAL.GetAllByEnderecoId(enderecoId);
+        }
         public SingleResponse<Funcionario> GetByID(int id)
         {
             return funcionarioDAL.GetByID(id);
         }
 
-        public Response Insert(FuncionarioComEndereco funcionarioComEndereco)
+        public Response InsertFuncionarioComEndereco(FuncionarioComEndereco funcionarioComEndereco)
         {
             Response response = new Response();
             FuncionarioValidator funcionarioValidator = new FuncionarioValidator();
@@ -117,7 +121,7 @@ namespace BusinessLogicalLayer
         {
             throw new NotImplementedException();
         }
-        public Response Update(FuncionarioComEndereco funcionarioComEndereco)
+        public Response UpdateFuncionarioComEndereco(FuncionarioComEndereco funcionarioComEndereco)
         {
             Response response = new Response();
             FuncionarioValidator funcionarioValidator = new FuncionarioValidator();

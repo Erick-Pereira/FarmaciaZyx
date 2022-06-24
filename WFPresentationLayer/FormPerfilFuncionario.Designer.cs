@@ -36,7 +36,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblPermissao = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,22 +115,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Permissão:";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 274);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(762, 176);
-            this.panel2.TabIndex = 8;
-            // 
             // FormPerfilFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblPermissao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
@@ -159,6 +148,5 @@
         private PictureBox pictureBox1;
         private Label lblPermissao;
         private Label label4;
-        private Panel panel2;
     }
 }

@@ -53,7 +53,7 @@ namespace WFPresentationLayer
             string erros = stringBuilder.ToString().Trim();
             if (string.IsNullOrWhiteSpace(erros))
             {
-                Response response = funcionarioBLL.Insert(funcionarioComEndereco);
+                Response response = funcionarioBLL.InsertFuncionarioComEndereco(funcionarioComEndereco);
                 MessageBox.Show(response.Message);
                 if (response.HasSuccess)
                 {
