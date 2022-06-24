@@ -17,7 +17,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM LABORATORIOS";
+            string sql = $"SELECT ID,NOME,CNPJ FROM LABORATORIOS";
 
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
@@ -33,6 +33,8 @@ namespace DataAccessLayer
                     Laboratorio tipoCliente = new Laboratorio();
                     tipoCliente.ID = Convert.ToInt32(reader["ID"]);
                     tipoCliente.Nome = Convert.ToString(reader["NOME"]);
+                    tipoCliente.CNPJ = Convert.ToString(reader["CNPJ"]);
+
                     tipoClientes.Add(tipoCliente);
                 }
                 return new DataResponse<Laboratorio>("Laboratorios selecionados com sucesso!", true, tipoClientes);
@@ -53,7 +55,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO LABORATORIOS (NOME) VALUES (@NOME)";
+            string sql = $"INSERT INTO LABORATORIOS (NOME,CNPJ) VALUES (@NOME,@CNPJ)";
 
 
 
@@ -62,6 +64,8 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", laboratorio.Nome);
+            command.Parameters.AddWithValue("@CNPJ", laboratorio.CNPJ);
+
 
 
 
@@ -92,7 +96,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME FROM LABORATORIOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,CNPJ FROM LABORATORIOS WHERE ID = @ID";
 
 
 
@@ -111,6 +115,8 @@ namespace DataAccessLayer
                     Laboratorio laboratorio = new Laboratorio();
                     laboratorio.ID = Convert.ToInt32(reader["ID"]);
                     laboratorio.Nome = Convert.ToString(reader["NOME"]);
+                    laboratorio.CNPJ = Convert.ToString(reader["CNPJ"]);
+
                     return new SingleResponse<Laboratorio>("Laboratorio selecionado com sucesso!", true, laboratorio);
                 }
                 return new SingleResponse<Laboratorio>("Tipo de Cliente não encontrado!", false, null);
@@ -175,7 +181,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE LABORATORIOS SET NOME = @NOME WHERE ID = @ID";
+            string sql = $"UPDATE LABORATORIOS SET NOME = @NOME CNPJ = @CNPJ WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -183,6 +189,8 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", laboratorio.Nome);
+            command.Parameters.AddWithValue("@CNPJ", laboratorio.CNPJ);
+
             command.Parameters.AddWithValue("@ID", laboratorio.ID);
 
             //Estamos conectados na base de dados

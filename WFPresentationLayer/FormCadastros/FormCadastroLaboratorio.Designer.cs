@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.mtxtCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +54,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(291, 205);
+            this.btnCadastrar.Location = new System.Drawing.Point(291, 265);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(100, 23);
             this.btnCadastrar.TabIndex = 12;
@@ -60,12 +62,31 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "CNPJ";
+            // 
+            // mtxtCNPJ
+            // 
+            this.mtxtCNPJ.Location = new System.Drawing.Point(291, 227);
+            this.mtxtCNPJ.Mask = "00.000.000/0000-00";
+            this.mtxtCNPJ.Name = "mtxtCNPJ";
+            this.mtxtCNPJ.Size = new System.Drawing.Size(100, 23);
+            this.mtxtCNPJ.TabIndex = 17;
+            // 
             // FormCadastroLaboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(779, 456);
+            this.Controls.Add(this.mtxtCNPJ);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLaboratorio);
             this.Controls.Add(this.btnCadastrar);
@@ -82,5 +103,7 @@
         private Label label1;
         private TextBox txtLaboratorio;
         private Button btnCadastrar;
+        private Label label2;
+        private MaskedTextBox mtxtCNPJ;
     }
 }

@@ -12,7 +12,7 @@ namespace BusinessLogicalLayer
     public class ProdutoBLL : ICRUD<Produto>
     {
         ProdutoDAL produtoDAL = new ProdutoDAL();
-        
+
         public Response Delete(int id)
         {
             return produtoDAL.Delete(id);
@@ -46,15 +46,21 @@ namespace BusinessLogicalLayer
         {
             return produtoDAL.Update(item);
         }
+        public Response UpdateValueAndInventory(Produto item)
+        {
+            return produtoDAL.UpdateValueAndInventory(item);
+        }
+
         public DataResponse<Produto> CalculateNewValue(List<Produto> produtos)
         {
             SingleResponse<Produto> singleResponse = new SingleResponse<Produto>();
-            for (int i = 0; i < produtos.Count ; i++)
+            for (int i = 0; i < produtos.Count; i++)
             {
                 singleResponse = produtoDAL.GetByID(produtos[i].ID);
                 if (singleResponse.HasSuccess)
                 {
-                    produtos[i].Valor = (singleResponse.Item.Valor * singleResponse.Item.QtdEstoque) + (produtos[i].Valor * produtos[i].QtdEstoque) / (produtos[i].QtdEstoque + singleResponse.Item.QtdEstoque);
+                    produtos[i].Valor = ((singleResponse.Item.Valor * singleResponse.Item.QtdEstoque) + (produtos[i].Valor * produtos[i].QtdEstoque)) / (produtos[i].QtdEstoque + singleResponse.Item.QtdEstoque);
+                    produtos[i].Valor = Math.Round(produtos[i].Valor, 2);
                 }
                 else
                 {
@@ -66,8 +72,25 @@ namespace BusinessLogicalLayer
                 return new DataResponse<Produto>(singleResponse.Message, true, produtos);
             }
             return new DataResponse<Produto>(singleResponse.Message, false, null);
-            
-           
+        }
+        public DataResponse<Produto> CalculateInventory(List<Produto> produtos)
+        {
+            List<Produto> produtosWithEstoque = new List<Produto>();
+            for (int i = 0; i < produtos.Count; i++)
+            {
+                produtosWithEstoque.Add(produtoDAL.GetByID(produtos[i].ID).Item);
+                if (produtosWithEstoque[i].QtdEstoque >= produtos[i].QtdEstoque)
+                {
+                    produtosWithEstoque[i].QtdEstoque -= produtos[i].QtdEstoque;
+                }
+                else
+                {
+                    return new DataResponse<Produto>($"Não é possivel vender mais do que o estoque {produtosWithEstoque[i].Nome} {produtosWithEstoque[i].QtdEstoque}",false,null);
+                }
+            }
+            return new DataResponse<Produto>("Calculo efetuado com sucesso", true, produtosWithEstoque);
         }
     }
 }
+
+

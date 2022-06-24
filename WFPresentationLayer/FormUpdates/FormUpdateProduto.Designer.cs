@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCadastrarLaboratorio = new System.Windows.Forms.Button();
+            this.btnOpenLaboratorio = new System.Windows.Forms.Button();
             this.cmbUnidade = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbLaboratorio = new System.Windows.Forms.ComboBox();
@@ -41,18 +41,24 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnUpdateProduto = new System.Windows.Forms.Button();
             this.panelCadastroLaboratorio = new System.Windows.Forms.Panel();
+            this.mtxtCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtLaboratorio = new System.Windows.Forms.TextBox();
+            this.btnCadastrarLaboratorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
+            this.panelCadastroLaboratorio.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnCadastrarLaboratorio
+            // btnOpenLaboratorio
             // 
-            this.btnCadastrarLaboratorio.Location = new System.Drawing.Point(314, 331);
-            this.btnCadastrarLaboratorio.Name = "btnCadastrarLaboratorio";
-            this.btnCadastrarLaboratorio.Size = new System.Drawing.Size(130, 34);
-            this.btnCadastrarLaboratorio.TabIndex = 25;
-            this.btnCadastrarLaboratorio.Text = "Cadastrar Laboratorio";
-            this.btnCadastrarLaboratorio.UseVisualStyleBackColor = true;
-            this.btnCadastrarLaboratorio.Click += new System.EventHandler(this.btnCadastrarLaboratorio_Click);
+            this.btnOpenLaboratorio.Location = new System.Drawing.Point(314, 331);
+            this.btnOpenLaboratorio.Name = "btnOpenLaboratorio";
+            this.btnOpenLaboratorio.Size = new System.Drawing.Size(130, 34);
+            this.btnOpenLaboratorio.TabIndex = 25;
+            this.btnOpenLaboratorio.Text = "Cadastrar Laboratorio";
+            this.btnOpenLaboratorio.UseVisualStyleBackColor = true;
+            this.btnOpenLaboratorio.Click += new System.EventHandler(this.btnCadastrarLaboratorio_Click);
             // 
             // cmbUnidade
             // 
@@ -154,10 +160,61 @@
             // 
             // panelCadastroLaboratorio
             // 
-            this.panelCadastroLaboratorio.Location = new System.Drawing.Point(446, 103);
+            this.panelCadastroLaboratorio.BackColor = System.Drawing.Color.White;
+            this.panelCadastroLaboratorio.Controls.Add(this.mtxtCNPJ);
+            this.panelCadastroLaboratorio.Controls.Add(this.label6);
+            this.panelCadastroLaboratorio.Controls.Add(this.label7);
+            this.panelCadastroLaboratorio.Controls.Add(this.txtLaboratorio);
+            this.panelCadastroLaboratorio.Controls.Add(this.btnCadastrarLaboratorio);
+            this.panelCadastroLaboratorio.Enabled = false;
+            this.panelCadastroLaboratorio.Location = new System.Drawing.Point(474, 12);
             this.panelCadastroLaboratorio.Name = "panelCadastroLaboratorio";
-            this.panelCadastroLaboratorio.Size = new System.Drawing.Size(221, 208);
+            this.panelCadastroLaboratorio.Size = new System.Drawing.Size(202, 209);
             this.panelCadastroLaboratorio.TabIndex = 26;
+            this.panelCadastroLaboratorio.Visible = false;
+            // 
+            // mtxtCNPJ
+            // 
+            this.mtxtCNPJ.Location = new System.Drawing.Point(51, 108);
+            this.mtxtCNPJ.Mask = "00.000.000/0000-00";
+            this.mtxtCNPJ.Name = "mtxtCNPJ";
+            this.mtxtCNPJ.Size = new System.Drawing.Size(100, 23);
+            this.mtxtCNPJ.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(51, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 15);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "CNPJ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(51, 39);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 15);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Laboratorio";
+            // 
+            // txtLaboratorio
+            // 
+            this.txtLaboratorio.Location = new System.Drawing.Point(51, 57);
+            this.txtLaboratorio.Name = "txtLaboratorio";
+            this.txtLaboratorio.Size = new System.Drawing.Size(100, 23);
+            this.txtLaboratorio.TabIndex = 19;
+            // 
+            // btnCadastrarLaboratorio
+            // 
+            this.btnCadastrarLaboratorio.Location = new System.Drawing.Point(51, 146);
+            this.btnCadastrarLaboratorio.Name = "btnCadastrarLaboratorio";
+            this.btnCadastrarLaboratorio.Size = new System.Drawing.Size(100, 23);
+            this.btnCadastrarLaboratorio.TabIndex = 18;
+            this.btnCadastrarLaboratorio.Text = "Cadastrar";
+            this.btnCadastrarLaboratorio.UseVisualStyleBackColor = true;
+            this.btnCadastrarLaboratorio.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormUpdateProduto
             // 
@@ -166,7 +223,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelCadastroLaboratorio);
-            this.Controls.Add(this.btnCadastrarLaboratorio);
+            this.Controls.Add(this.btnOpenLaboratorio);
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbLaboratorio);
@@ -182,6 +239,8 @@
             this.Text = "FormUpdateProduto";
             this.Load += new System.EventHandler(this.FormUpdateProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
+            this.panelCadastroLaboratorio.ResumeLayout(false);
+            this.panelCadastroLaboratorio.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +248,7 @@
 
         #endregion
 
-        private Button btnCadastrarLaboratorio;
+        private Button btnOpenLaboratorio;
         private ComboBox cmbUnidade;
         private Label label5;
         private ComboBox cmbLaboratorio;
@@ -202,5 +261,10 @@
         private TextBox txtNome;
         private Button btnUpdateProduto;
         private Panel panelCadastroLaboratorio;
+        private MaskedTextBox mtxtCNPJ;
+        private Label label6;
+        private Label label7;
+        private TextBox txtLaboratorio;
+        private Button btnCadastrarLaboratorio;
     }
 }

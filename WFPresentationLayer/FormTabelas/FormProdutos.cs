@@ -87,8 +87,7 @@ namespace WFPresentationLayer
             {
 
                 int rowindex = dgvProdutos.CurrentCell.RowIndex;
-                int columnindex = dgvProdutos.CurrentCell.ColumnIndex;
-                produtoBLL.Delete(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[columnindex].Value));
+                produtoBLL.Delete(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[0].Value));
                 dgvProdutos.Rows.RemoveAt(rowindex);
             }
         }

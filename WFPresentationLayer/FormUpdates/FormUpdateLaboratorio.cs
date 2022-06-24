@@ -44,6 +44,7 @@ namespace WFPresentationLayer
         private void FormUpdateLaboratorio_Load(object sender, EventArgs e)
         {
             txtLaboratorio.Text = laboratorio.Nome;
+            mtxtCNPJ.Text = laboratorio.CNPJ;
         }
     }
 }

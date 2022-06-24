@@ -19,25 +19,10 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
-        private Form currentChildForm;
         LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         TipoUnidadeBLL tipoUnidadeBLL = new TipoUnidadeBLL();
         Produto produto = (Produto)StaticItem.item;
-        private void OpenChildForm(Form childForm)
-        {
-            if (currentChildForm != null)
-            {
-                currentChildForm.Close();
-            }
-            currentChildForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelCadastroLaboratorio.Controls.Add(childForm);
-            panelCadastroLaboratorio.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-        }
+
 
         private void FormUpdateProduto_Load(object sender, EventArgs e)
         {
@@ -88,8 +73,29 @@ namespace WFPresentationLayer
 
         private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
         {
-            panelCadastroLaboratorio.BringToFront();
-            OpenChildForm(new FormCadastroLaboratorio());
+            panelCadastroLaboratorio.Visible = true;
+            panelCadastroLaboratorio.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
+            string nome = txtLaboratorio.Text;
+            string cnpj = mtxtCNPJ.Text;
+            cnpj = cnpj.Replace(",", ".");
+            Laboratorio laboratorio = new Laboratorio(nome, cnpj);
+            LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
+            Response response = laboratorioValidator.Validate(laboratorio);
+            if (response.HasSuccess)
+            {
+                response = laboratorioBLL.Insert(laboratorio);
+                if (response.HasSuccess)
+                {
+                    txtLaboratorio.Text = "";
+                    mtxtCNPJ.Text = "";
+                }
+            }
+            MessageBox.Show(response.Message);
         }
     }
 }

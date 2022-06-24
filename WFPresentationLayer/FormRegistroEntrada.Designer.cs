@@ -32,12 +32,13 @@
             this.cmbFornecedor = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCadastrarNovoFornecedor = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvProdutosEntrada = new System.Windows.Forms.DataGridView();
             this.ProdutosEntradaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosEntradaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosEntradaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosEntradaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosEntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoProduto = new System.Windows.Forms.Button();
@@ -52,17 +53,19 @@
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
             this.btnRegistrarEntrada = new System.Windows.Forms.Button();
-            this.nudValor = new System.Windows.Forms.NumericUpDown();
+            this.nudValorUnitario = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtNumItens = new System.Windows.Forms.TextBox();
+            this.txtTotalPago = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorUnitario)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbFornecedor
             // 
             this.cmbFornecedor.FormattingEnabled = true;
-            this.cmbFornecedor.Location = new System.Drawing.Point(353, 47);
+            this.cmbFornecedor.Location = new System.Drawing.Point(407, 47);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(121, 23);
             this.cmbFornecedor.TabIndex = 0;
@@ -70,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 29);
+            this.label1.Location = new System.Drawing.Point(407, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 1;
@@ -86,17 +89,17 @@
             this.btnCadastrarNovoFornecedor.UseVisualStyleBackColor = true;
             this.btnCadastrarNovoFornecedor.Click += new System.EventHandler(this.btnCadastrarNovoFornecedor_Click);
             // 
-            // dateTimePicker1
+            // dtpDataEntrada
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(119, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtpDataEntrada.Location = new System.Drawing.Point(200, 47);
+            this.dtpDataEntrada.Name = "dtpDataEntrada";
+            this.dtpDataEntrada.Size = new System.Drawing.Size(200, 23);
+            this.dtpDataEntrada.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(119, 29);
+            this.label2.Location = new System.Drawing.Point(200, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 4;
@@ -110,6 +113,7 @@
             this.ProdutosEntradaID,
             this.ProdutosEntradaNome,
             this.ProdutosEntradaUn,
+            this.ProdutosEntradaTotal,
             this.ProdutosEntradaQtde,
             this.ProdutosEntradaValor});
             this.dgvProdutosEntrada.Location = new System.Drawing.Point(27, 177);
@@ -136,6 +140,12 @@
             this.ProdutosEntradaUn.HeaderText = "Un";
             this.ProdutosEntradaUn.Name = "ProdutosEntradaUn";
             this.ProdutosEntradaUn.ReadOnly = true;
+            // 
+            // ProdutosEntradaTotal
+            // 
+            this.ProdutosEntradaTotal.HeaderText = "Total";
+            this.ProdutosEntradaTotal.Name = "ProdutosEntradaTotal";
+            this.ProdutosEntradaTotal.ReadOnly = true;
             // 
             // ProdutosEntradaQtde
             // 
@@ -261,26 +271,26 @@
             this.btnRegistrarEntrada.TabIndex = 41;
             this.btnRegistrarEntrada.Text = "Registrar Entrada";
             this.btnRegistrarEntrada.UseVisualStyleBackColor = true;
-            this.btnRegistrarEntrada.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrarEntrada.Click += new System.EventHandler(this.btnRegistrarEntrada_Click);
             // 
-            // nudValor
+            // nudValorUnitario
             // 
-            this.nudValor.DecimalPlaces = 2;
-            this.nudValor.Increment = new decimal(new int[] {
+            this.nudValorUnitario.DecimalPlaces = 2;
+            this.nudValorUnitario.Increment = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.nudValor.Location = new System.Drawing.Point(61, 147);
-            this.nudValor.Maximum = new decimal(new int[] {
+            this.nudValorUnitario.Location = new System.Drawing.Point(61, 147);
+            this.nudValorUnitario.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.nudValor.Name = "nudValor";
-            this.nudValor.Size = new System.Drawing.Size(88, 23);
-            this.nudValor.TabIndex = 42;
-            this.nudValor.Value = new decimal(new int[] {
+            this.nudValorUnitario.Name = "nudValorUnitario";
+            this.nudValorUnitario.Size = new System.Drawing.Size(88, 23);
+            this.nudValorUnitario.TabIndex = 42;
+            this.nudValorUnitario.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -291,17 +301,35 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(61, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
+            this.label6.Size = new System.Drawing.Size(51, 15);
             this.label6.TabIndex = 43;
-            this.label6.Text = "Valor";
+            this.label6.Text = "Valor Un";
+            // 
+            // txtNumItens
+            // 
+            this.txtNumItens.Enabled = false;
+            this.txtNumItens.Location = new System.Drawing.Point(664, 175);
+            this.txtNumItens.Name = "txtNumItens";
+            this.txtNumItens.Size = new System.Drawing.Size(100, 23);
+            this.txtNumItens.TabIndex = 44;
+            // 
+            // txtTotalPago
+            // 
+            this.txtTotalPago.Enabled = false;
+            this.txtTotalPago.Location = new System.Drawing.Point(664, 218);
+            this.txtTotalPago.Name = "txtTotalPago";
+            this.txtTotalPago.Size = new System.Drawing.Size(100, 23);
+            this.txtTotalPago.TabIndex = 45;
             // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtTotalPago);
+            this.Controls.Add(this.txtNumItens);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.nudValor);
+            this.Controls.Add(this.nudValorUnitario);
             this.Controls.Add(this.btnRegistrarEntrada);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
@@ -316,7 +344,7 @@
             this.Controls.Add(this.btnCadastroNovoProduto);
             this.Controls.Add(this.dgvProdutosEntrada);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDataEntrada);
             this.Controls.Add(this.btnCadastrarNovoFornecedor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbFornecedor);
@@ -326,7 +354,7 @@
             this.Load += new System.EventHandler(this.FormRegistroEntrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorUnitario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,7 +365,7 @@
         private ComboBox cmbFornecedor;
         private Label label1;
         private Button btnCadastrarNovoFornecedor;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDataEntrada;
         private Label label2;
         private DataGridView dgvProdutosEntrada;
         private Button btnCadastroNovoProduto;
@@ -354,12 +382,15 @@
         private DataGridViewTextBoxColumn qtdeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn UnDataGridViewTextBoxColumn;
         private Button btnRegistrarEntrada;
+        private NumericUpDown nudValorUnitario;
+        private Label label6;
         private DataGridViewTextBoxColumn ProdutosEntradaID;
         private DataGridViewTextBoxColumn ProdutosEntradaNome;
         private DataGridViewTextBoxColumn ProdutosEntradaUn;
+        private DataGridViewTextBoxColumn ProdutosEntradaTotal;
         private DataGridViewTextBoxColumn ProdutosEntradaQtde;
         private DataGridViewTextBoxColumn ProdutosEntradaValor;
-        private NumericUpDown nudValor;
-        private Label label6;
+        private TextBox txtNumItens;
+        private TextBox txtTotalPago;
     }
 }

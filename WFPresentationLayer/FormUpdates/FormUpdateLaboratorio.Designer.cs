@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.btnUpdateLaboratorio = new System.Windows.Forms.Button();
+            this.mtxtCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +53,7 @@
             // 
             // btnUpdateLaboratorio
             // 
-            this.btnUpdateLaboratorio.Location = new System.Drawing.Point(286, 198);
+            this.btnUpdateLaboratorio.Location = new System.Drawing.Point(286, 250);
             this.btnUpdateLaboratorio.Name = "btnUpdateLaboratorio";
             this.btnUpdateLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.btnUpdateLaboratorio.TabIndex = 15;
@@ -59,12 +61,31 @@
             this.btnUpdateLaboratorio.UseVisualStyleBackColor = true;
             this.btnUpdateLaboratorio.Click += new System.EventHandler(this.btnUpdateLaboratorio_Click);
             // 
+            // mtxtCNPJ
+            // 
+            this.mtxtCNPJ.Location = new System.Drawing.Point(286, 221);
+            this.mtxtCNPJ.Mask = "00.000.000/0000-00";
+            this.mtxtCNPJ.Name = "mtxtCNPJ";
+            this.mtxtCNPJ.Size = new System.Drawing.Size(100, 23);
+            this.mtxtCNPJ.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(286, 203);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "CNPJ";
+            // 
             // FormUpdateLaboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mtxtCNPJ);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLaboratorio);
             this.Controls.Add(this.btnUpdateLaboratorio);
@@ -81,5 +102,7 @@
         private Label label1;
         private TextBox txtLaboratorio;
         private Button btnUpdateLaboratorio;
+        private MaskedTextBox mtxtCNPJ;
+        private Label label2;
     }
 }

@@ -345,6 +345,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormFuncionario";
             this.Text = "FarmaciaZyx";
+            this.Load += new System.EventHandler(this.FormFuncionario_Load);
             this.panelMenu.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

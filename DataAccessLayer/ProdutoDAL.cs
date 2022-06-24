@@ -106,7 +106,49 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        public Response UpdateValueAndInventory(Produto produto)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"UPDATE PRODUTOS SET VALOR = @VALOR, QTD_ESTOQUE = @QTD_ESTOQUE WHERE ID = @ID";
 
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@VALOR", produto.Valor);
+            command.Parameters.AddWithValue("@QTD_ESTOQUE", produto.QtdEstoque);
+            command.Parameters.AddWithValue("@ID", produto.ID);
+
+            //Estamos conectados na base de dados
+            //try catch
+            //try catch finally
+            //try finally
+            try
+            {
+                connection.Open();
+                int qtdRegistrosAlterados = command.ExecuteNonQuery();
+                if (qtdRegistrosAlterados != 1)
+                {
+                    return new Response("Produto excluido.", false);
+                }
+                return new Response("Produto alterado com sucesso.", true);
+            }
+            catch (Exception ex)
+            {
+                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
+                return new Response("Erro no banco de dados, contate o administrador.", false);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
         public Response Delete(int id)
         {
             string sql = "DELETE FROM PRODUTOS WHERE ID = @ID";

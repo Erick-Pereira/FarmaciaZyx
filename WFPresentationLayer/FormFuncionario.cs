@@ -114,6 +114,11 @@ namespace WFPresentationLayer
         {
             OpenChildForm(new FormLaboratorios());
         }
+
+        private void FormFuncionario_Load(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormPerfilFuncionario());
+        }
     }
 }
 

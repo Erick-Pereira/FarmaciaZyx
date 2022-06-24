@@ -83,9 +83,10 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvFornecedores.CurrentCell.RowIndex;
-                int columnindex = dgvFornecedores.CurrentCell.ColumnIndex;
-                fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[columnindex].Value));
-                dgvFornecedores.Rows.RemoveAt(rowindex);
+                if (fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[0].Value)).HasSuccess)
+                {
+                    dgvFornecedores.Rows.RemoveAt(rowindex);
+                } 
             }
         }
 

@@ -35,7 +35,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataSaida = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
@@ -52,10 +52,16 @@
             this.ProdutosSaidaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosSaidaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosSaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoCliente = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbFormaPamento = new System.Windows.Forms.ComboBox();
             this.btnRegistrarVenda = new System.Windows.Forms.Button();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.txtDescontoPorc = new System.Windows.Forms.TextBox();
+            this.txtDescontoRs = new System.Windows.Forms.TextBox();
+            this.txtNumItens = new System.Windows.Forms.TextBox();
+            this.txtTotalPago = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +69,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(664, 200);
+            this.label10.Location = new System.Drawing.Point(664, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 15);
             this.label10.TabIndex = 35;
@@ -72,7 +78,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(664, 157);
+            this.label9.Location = new System.Drawing.Point(664, 150);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 15);
             this.label9.TabIndex = 34;
@@ -81,7 +87,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(661, 103);
+            this.label8.Location = new System.Drawing.Point(664, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 15);
             this.label8.TabIndex = 33;
@@ -90,7 +96,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(664, 55);
+            this.label7.Location = new System.Drawing.Point(664, 62);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 15);
             this.label7.TabIndex = 32;
@@ -110,16 +116,16 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(200, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 15);
+            this.label2.Size = new System.Drawing.Size(62, 15);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Data Entrada";
+            this.label2.Text = "Data Saida";
             // 
-            // dateTimePicker1
+            // dtpDataSaida
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(200, 47);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 21;
+            this.dtpDataSaida.Location = new System.Drawing.Point(200, 47);
+            this.dtpDataSaida.Name = "dtpDataSaida";
+            this.dtpDataSaida.Size = new System.Drawing.Size(200, 23);
+            this.dtpDataSaida.TabIndex = 21;
             // 
             // label1
             // 
@@ -217,6 +223,7 @@
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 23);
             this.cmbProduto.TabIndex = 42;
+            this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged_1);
             // 
             // dgvProdutosSaida
             // 
@@ -227,7 +234,8 @@
             this.ProdutosSaidaNome,
             this.ProdutosSaidaUn,
             this.ProdutosSaidaQtde,
-            this.ProdutosSaidaValor});
+            this.ProdutosSaidaValor,
+            this.ProdutosSaidaTotal});
             this.dgvProdutosSaida.Location = new System.Drawing.Point(27, 177);
             this.dgvProdutosSaida.Name = "dgvProdutosSaida";
             this.dgvProdutosSaida.ReadOnly = true;
@@ -265,6 +273,12 @@
             this.ProdutosSaidaValor.Name = "ProdutosSaidaValor";
             this.ProdutosSaidaValor.ReadOnly = true;
             // 
+            // ProdutosSaidaTotal
+            // 
+            this.ProdutosSaidaTotal.HeaderText = "Total";
+            this.ProdutosSaidaTotal.Name = "ProdutosSaidaTotal";
+            this.ProdutosSaidaTotal.ReadOnly = true;
+            // 
             // btnCadastroNovoCliente
             // 
             this.btnCadastroNovoCliente.Location = new System.Drawing.Point(537, 415);
@@ -299,12 +313,58 @@
             this.btnRegistrarVenda.TabIndex = 54;
             this.btnRegistrarVenda.Text = "Registrar Venda";
             this.btnRegistrarVenda.UseVisualStyleBackColor = true;
+            this.btnRegistrarVenda.Click += new System.EventHandler(this.btnRegistrarVenda_Click);
+            // 
+            // txtValor
+            // 
+            this.txtValor.Enabled = false;
+            this.txtValor.Location = new System.Drawing.Point(664, 36);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(100, 23);
+            this.txtValor.TabIndex = 55;
+            // 
+            // txtDescontoPorc
+            // 
+            this.txtDescontoPorc.Enabled = false;
+            this.txtDescontoPorc.Location = new System.Drawing.Point(664, 80);
+            this.txtDescontoPorc.Name = "txtDescontoPorc";
+            this.txtDescontoPorc.Size = new System.Drawing.Size(100, 23);
+            this.txtDescontoPorc.TabIndex = 56;
+            // 
+            // txtDescontoRs
+            // 
+            this.txtDescontoRs.Enabled = false;
+            this.txtDescontoRs.Location = new System.Drawing.Point(664, 124);
+            this.txtDescontoRs.Name = "txtDescontoRs";
+            this.txtDescontoRs.Size = new System.Drawing.Size(100, 23);
+            this.txtDescontoRs.TabIndex = 57;
+            // 
+            // txtNumItens
+            // 
+            this.txtNumItens.Enabled = false;
+            this.txtNumItens.Location = new System.Drawing.Point(664, 168);
+            this.txtNumItens.Name = "txtNumItens";
+            this.txtNumItens.Size = new System.Drawing.Size(100, 23);
+            this.txtNumItens.TabIndex = 58;
+            // 
+            // txtTotalPago
+            // 
+            this.txtTotalPago.Enabled = false;
+            this.txtTotalPago.Location = new System.Drawing.Point(664, 212);
+            this.txtTotalPago.Name = "txtTotalPago";
+            this.txtTotalPago.Size = new System.Drawing.Size(100, 23);
+            this.txtTotalPago.TabIndex = 59;
             // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtTotalPago);
+            this.Controls.Add(this.txtNumItens);
+            this.Controls.Add(this.txtDescontoRs);
+            this.Controls.Add(this.txtDescontoPorc);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.btnRegistrarVenda);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbFormaPamento);
@@ -324,7 +384,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDataSaida);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbCliente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -346,7 +406,7 @@
         private Label label7;
         private Label label6;
         private Label label2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDataSaida;
         private Label label1;
         private ComboBox cmbCliente;
         private Button btnRetirarProduto;
@@ -358,14 +418,20 @@
         private Label label3;
         private ComboBox cmbProduto;
         private DataGridView dgvProdutosSaida;
+        private Button btnCadastroNovoCliente;
+        private Label label11;
+        private ComboBox cmbFormaPamento;
+        private Button btnRegistrarVenda;
         private DataGridViewTextBoxColumn ProdutosSaidaID;
         private DataGridViewTextBoxColumn ProdutosSaidaNome;
         private DataGridViewTextBoxColumn ProdutosSaidaUn;
         private DataGridViewTextBoxColumn ProdutosSaidaQtde;
         private DataGridViewTextBoxColumn ProdutosSaidaValor;
-        private Button btnCadastroNovoCliente;
-        private Label label11;
-        private ComboBox cmbFormaPamento;
-        private Button btnRegistrarVenda;
+        private DataGridViewTextBoxColumn ProdutosSaidaTotal;
+        private TextBox txtValor;
+        private TextBox txtDescontoPorc;
+        private TextBox txtDescontoRs;
+        private TextBox txtNumItens;
+        private TextBox txtTotalPago;
     }
 }

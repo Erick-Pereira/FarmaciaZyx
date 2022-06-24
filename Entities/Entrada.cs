@@ -13,8 +13,6 @@ namespace Entities
             public double Valor { get; set; }
             public int FuncionarioId { get; set; }
             public int FornecedorID { get; set; }
-            public int FormaPagamento { get; set; }
-            public double Desconto { get; set; }
             public List<ProdutosEntrada> produtosEntradas { get; set; }
     }
 }

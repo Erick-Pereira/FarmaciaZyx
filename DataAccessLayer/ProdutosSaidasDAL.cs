@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class ProdutosEntradasDAL
+    public class ProdutosSaidasDAL
     {
         string connectionString = ConnectionString._connectionString;
-        public DataResponse<ProdutosEntrada> GetAllByEntradaID(int id)
+        public DataResponse<ProdutoSaida> GetAllBySaidaID(int id)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ENTRADA_ID,PRODUTO_ID,QUANTIDADE,VALOR_UNITARIO FROM PRODUTOS_ENTRADAS WHERE ENTRADA_ID = @ENTRADA_ID";
+            string sql = $"SELECT PRODUTO_ID,SAIDA_ID,QUANTIDADE,VALOR_UNITARIO FROM PRODUTOS_SAIDA WHERE SAIDA_ID = @SAIDA_ID";
 
 
 
@@ -30,22 +30,22 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                List<ProdutosEntrada> produtosEntradas = new List<ProdutosEntrada>();
+                List<ProdutoSaida> produtoSaidas = new List<ProdutoSaida>();
                 //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
-                    ProdutosEntrada entrada = new ProdutosEntrada();
-                    entrada.EntradaID = Convert.ToInt32(reader["ENTRADA_ID"]);
-                    entrada.ProdutoId = Convert.ToInt32(reader["PRODUTO_ID"]);
-                    entrada.Quantidade = Convert.ToDouble(reader["QUANTIDADE"]);
-                    entrada.ValorUnitario = Convert.ToDouble(reader["VALOR_UNITARIO"]);
-                    produtosEntradas.Add(entrada);
+                    ProdutoSaida saida = new ProdutoSaida();
+                    saida.SaidaId = Convert.ToInt32(reader["ENTRADA_ID"]);
+                    saida.ProdutoId = Convert.ToInt32(reader["PRODUTO_ID"]);
+                    saida.Quantidade = Convert.ToDouble(reader["QUANTIDADE"]);
+                    saida.ValorUnitario = Convert.ToDouble(reader["VALOR_UNITARIO"]);
+                    produtoSaidas.Add(saida);
                 }
-                return new DataResponse<ProdutosEntrada>("Endereço selecionados com sucesso!", true, produtosEntradas);
+                return new DataResponse<ProdutoSaida>("ProdutosSaidas selecionados com sucesso!", true, produtoSaidas);
             }
             catch (Exception ex)
             {
-                return new DataResponse<ProdutosEntrada>("Erro no banco de dados, contate o administrador.", false, null);
+                return new DataResponse<ProdutoSaida>("Erro no banco de dados, contate o administrador.", false, null);
             }
             //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
@@ -54,17 +54,17 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-        public Response Insert(ProdutosEntrada item)
+        public Response Insert(ProdutoSaida item)
         {
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO PRODUTOS_ENTRADAS (ENTRADA_ID,PRODUTO_ID,QUANTIDADE,VALOR_UNITARIO) VALUES (@ENTRADA_ID,@PRODUTO_ID,@QUANTIDADE,@VALOR_UNITARIO) ";
+            string sql = $"INSERT INTO PRODUTOS_SAIDA (SAIDA_ID,PRODUTO_ID,QUANTIDADE,VALOR_UNITARIO) VALUES (@SAIDA_ID,@PRODUTO_ID,@QUANTIDADE,@VALOR_UNITARIO) ";
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@ENTRADA_ID", item.EntradaID);
+            command.Parameters.AddWithValue("@SAIDA_ID", item.SaidaId);
             command.Parameters.AddWithValue("@PRODUTO_ID", item.ProdutoId);
             command.Parameters.AddWithValue("@QUANTIDADE", item.Quantidade);
             command.Parameters.AddWithValue("@VALOR_UNITARIO", item.ValorUnitario);
@@ -77,7 +77,7 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 command.ExecuteNonQuery();
-                return new Response("Endereco cadastrado com sucesso.", true);
+                return new Response("Saida cadastrada com sucesso.", true);
             }
             catch (Exception ex)
             {

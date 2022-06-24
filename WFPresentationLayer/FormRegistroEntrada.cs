@@ -15,11 +15,12 @@ namespace WFPresentationLayer
 {
     public partial class FormRegistroEntrada : Form
     {
-        List<Produto> produtos = new List<Produto>();
+
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
-        ProdutoBLL produtorBLL = new ProdutoBLL();
+        ProdutoBLL produtoBLL = new ProdutoBLL();
         TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
-        //List<Produto> produtosEntrada = new List<Produto>();
+        List<Produto> produtos = new List<Produto>();
+        List<Produto> produtosWithValorAndEstoque = new List<Produto>();
 
         public FormRegistroEntrada()
         {
@@ -39,19 +40,19 @@ namespace WFPresentationLayer
         {
             FormCadastroProduto formCadastroProduto = new FormCadastroProduto();
             formCadastroProduto.ShowDialog();
-            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
+            cmbProduto.DataSource = produtoBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
         }
-        
+
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
-            
+
             cmbFornecedor.DataSource = fornecedorBLL.GetAll().Dados;
             cmbFornecedor.DisplayMember = "RazaoSocial";
             cmbFornecedor.ValueMember = "ID";
-            cmbProduto.DataSource = produtorBLL.GetAll().Dados;
+            cmbProduto.DataSource = produtoBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
             if (cmbProduto.SelectedItem != null)
@@ -65,7 +66,7 @@ namespace WFPresentationLayer
                     nudQtde.Value = 1;
                 }
             }
-           
+
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,33 +78,40 @@ namespace WFPresentationLayer
                 txtUnidade.Text = tipoUnidade.Nome;
                 nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
                 nudQtde.Value = 1;
+                nudValorUnitario.Value = 1;
             }
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            Produto produto = produtorBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
+            Produto produto = produtoBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             if (produto != null)
             {
-                produto.QtdEstoque += (double)nudQtde.Value;
-                produto.Valor = (double)nudValor.Value;
+                produto.QtdEstoque = (double)nudQtde.Value;
+                produto.Valor = (double)nudValorUnitario.Value;
                 produtos.Add(produto);
                 dgvProdutosEntrada.Rows.Add();
+                double valor = 0;
+                double descontoPorc = 0;
+                double descontoRS = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
-                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = (double)nudQtde.Value;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
+                    valor += (produtos[i].QtdEstoque * produtos[i].Valor);
                 }
+                txtNumItens.Text = produtos.Count.ToString();
+                txtTotalPago.Text = (valor).ToString();
             }
             //** // create columns automatically //**
             //produto.QtdEstoque -= (double)nudQtde.Value;
-            //produtorBLL.Update(produto);
+            //produtoBLL.Update(produto);
             //DataTable dt = new DataTable();
             //dt = produto;
-            produtorBLL.CalculateNewValue(produtos);
         }
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
@@ -114,9 +122,9 @@ namespace WFPresentationLayer
                 return;
             }
             int rowindex = dgvProdutosEntrada.CurrentCell.RowIndex;
-            int columnindex = dgvProdutosEntrada.CurrentCell.ColumnIndex;
             //MessageBox.Show(dgvProdutos.Rows[rowindex].Cells[columnindex].Value.ToString());
             produtos.RemoveAt(rowindex);
+            double valor = 0;
             dgvProdutosEntrada.Rows.RemoveAt(rowindex);
             for (int i = 0; i < produtos.Count; i++)
             {
@@ -126,18 +134,57 @@ namespace WFPresentationLayer
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
             }
+            txtNumItens.Text = produtos.Count.ToString();
+            txtTotalPago.Text = (valor).ToString();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRegistrarEntrada_Click(object sender, EventArgs e)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            DataResponse<Produto> dataResponse = produtorBLL.CalculateNewValue(produtos);
-            for (int i = 0; i < produtos.Count; i++)
+            if (produtos.Count != 0)
             {
-                Produto pro = dataResponse.Dados[i];
-                stringBuilder.AppendLine(pro.Nome+" || " + pro.QtdEstoque+ " || " + pro.Valor);
+                Entrada entrada = new Entrada();
+                List<ProdutosEntrada> produtosentradas = new List<ProdutosEntrada>();
+                double valor = 0;
+                for (int i = 0; i < produtos.Count; i++)
+                {
+                    ProdutosEntrada produtosentrada = new ProdutosEntrada();
+                    produtosentrada.ProdutoId = produtos[i].ID;
+                    produtosentrada.Quantidade = produtos[i].QtdEstoque;
+                    produtosentrada.ValorUnitario = produtos[i].Valor;
+                    produtosentradas.Add(produtosentrada);
+                    valor += produtos[i].Valor;
+                }
+                entrada.produtosEntradas = produtosentradas;
+                entrada.DataEntrada = dtpDataEntrada.Value;
+                entrada.Valor = valor;
+                entrada.FornecedorID = Convert.ToInt32(cmbFornecedor.SelectedValue);
+                entrada.FuncionarioId = FuncionarioLogin.id;
+                EntradaBLL entradabll = new EntradaBLL();
+                StringBuilder stringbuilder = new StringBuilder();
+                for (int i = 0; i < produtos.Count; i++)
+                {
+                    produtosWithValorAndEstoque.Add(produtoBLL.GetByID(produtos[i].ID).Item);
+                    produtosWithValorAndEstoque[i].QtdEstoque += produtos[i].QtdEstoque;
+                }
+                DataResponse<Produto> dataresponse = produtoBLL.CalculateNewValue(produtos);
+                Response response = entradabll.Insert(entrada);
+                if (response.HasSuccess)
+                {
+                    for (int i = 0; i < dataresponse.Dados.Count; i++)
+                    {
+                        produtosWithValorAndEstoque[i].Valor = Math.Round(dataresponse.Dados[i].Valor, 2);
+                        produtoBLL.UpdateValueAndInventory(produtosWithValorAndEstoque[i]);
+                    }
+                    MessageBox.Show(response.Message);
+                    dgvProdutosEntrada.Rows.Clear();
+                    produtos.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("não é possivel registrar uma entrada se não há produtos");
+                }
             }
-            MessageBox.Show(stringBuilder.ToString());
         }
     }
 }
