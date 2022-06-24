@@ -44,6 +44,9 @@ namespace WFPresentationLayer
             cmbProduto.DataSource = produtorBLL.GetAll().Dados;
             cmbProduto.DisplayMember = "Nome";
             cmbProduto.ValueMember = "ID";
+            //cmbFormaPamento.DataSource = formaPagamentoBLL.GetAll().Dados;
+            cmbFormaPamento.DisplayMember = "Nome";
+            cmbFormaPamento.ValueMember = "ID";
             if (cmbProduto.SelectedItem != null)
             {
                 Produto produto = (Produto)cmbProduto.SelectedItem;

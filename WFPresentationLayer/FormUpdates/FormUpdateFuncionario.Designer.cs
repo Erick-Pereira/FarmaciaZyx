@@ -31,12 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFuncionario = new System.Windows.Forms.TabPage();
             this.btnProximo = new System.Windows.Forms.Button();
-            this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtSenha = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.cmbTipoFuncionario = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,6 +63,7 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.btnTrocarSenha = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -87,13 +84,10 @@
             // tabFuncionario
             // 
             this.tabFuncionario.BackColor = System.Drawing.Color.White;
+            this.tabFuncionario.Controls.Add(this.btnTrocarSenha);
             this.tabFuncionario.Controls.Add(this.btnProximo);
-            this.tabFuncionario.Controls.Add(this.txtConfirmarSenha);
-            this.tabFuncionario.Controls.Add(this.label11);
             this.tabFuncionario.Controls.Add(this.mtxtRg);
             this.tabFuncionario.Controls.Add(this.label16);
-            this.tabFuncionario.Controls.Add(this.txtSenha);
-            this.tabFuncionario.Controls.Add(this.label12);
             this.tabFuncionario.Controls.Add(this.cmbTipoFuncionario);
             this.tabFuncionario.Controls.Add(this.label7);
             this.tabFuncionario.Controls.Add(this.label6);
@@ -126,23 +120,6 @@
             this.btnProximo.UseVisualStyleBackColor = true;
             this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
-            // txtConfirmarSenha
-            // 
-            this.txtConfirmarSenha.Location = new System.Drawing.Point(333, 288);
-            this.txtConfirmarSenha.Name = "txtConfirmarSenha";
-            this.txtConfirmarSenha.PasswordChar = '●';
-            this.txtConfirmarSenha.Size = new System.Drawing.Size(100, 23);
-            this.txtConfirmarSenha.TabIndex = 47;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(337, 267);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 15);
-            this.label11.TabIndex = 46;
-            this.label11.Text = "Confirmar Senha";
-            // 
             // mtxtRg
             // 
             this.mtxtRg.Location = new System.Drawing.Point(330, 116);
@@ -159,23 +136,6 @@
             this.label16.Size = new System.Drawing.Size(22, 15);
             this.label16.TabIndex = 39;
             this.label16.Text = "RG";
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(62, 288);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '●';
-            this.txtSenha.Size = new System.Drawing.Size(100, 23);
-            this.txtSenha.TabIndex = 38;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(65, 267);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 15);
-            this.label12.TabIndex = 37;
-            this.label12.Text = "Senha";
             // 
             // cmbTipoFuncionario
             // 
@@ -464,6 +424,16 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
+            // btnTrocarSenha
+            // 
+            this.btnTrocarSenha.Location = new System.Drawing.Point(50, 282);
+            this.btnTrocarSenha.Name = "btnTrocarSenha";
+            this.btnTrocarSenha.Size = new System.Drawing.Size(121, 29);
+            this.btnTrocarSenha.TabIndex = 49;
+            this.btnTrocarSenha.Text = "Trocar Senha";
+            this.btnTrocarSenha.UseVisualStyleBackColor = true;
+            this.btnTrocarSenha.Click += new System.EventHandler(this.btnTrocarSenha_Click);
+            // 
             // FormUpdateFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -488,12 +458,8 @@
         private TabControl tabControl1;
         private TabPage tabFuncionario;
         private Button btnProximo;
-        private TextBox txtConfirmarSenha;
-        private Label label11;
         private MaskedTextBox mtxtRg;
         private Label label16;
-        private TextBox txtSenha;
-        private Label label12;
         private ComboBox cmbTipoFuncionario;
         private Label label7;
         private Label label6;
@@ -524,5 +490,6 @@
         private TextBox txtRua;
         private Label label8;
         private MaskedTextBox mtxtCep;
+        private Button btnTrocarSenha;
     }
 }

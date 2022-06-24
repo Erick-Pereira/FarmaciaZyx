@@ -52,6 +52,7 @@
             this.btnCadastrarLaboratorio.TabIndex = 25;
             this.btnCadastrarLaboratorio.Text = "Cadastrar Laboratorio";
             this.btnCadastrarLaboratorio.UseVisualStyleBackColor = true;
+            this.btnCadastrarLaboratorio.Click += new System.EventHandler(this.btnCadastrarLaboratorio_Click);
             // 
             // cmbUnidade
             // 
@@ -153,10 +154,9 @@
             // 
             // panelCadastroLaboratorio
             // 
-            this.panelCadastroLaboratorio.BackColor = System.Drawing.Color.White;
-            this.panelCadastroLaboratorio.Location = new System.Drawing.Point(417, 102);
+            this.panelCadastroLaboratorio.Location = new System.Drawing.Point(446, 103);
             this.panelCadastroLaboratorio.Name = "panelCadastroLaboratorio";
-            this.panelCadastroLaboratorio.Size = new System.Drawing.Size(202, 209);
+            this.panelCadastroLaboratorio.Size = new System.Drawing.Size(221, 208);
             this.panelCadastroLaboratorio.TabIndex = 26;
             // 
             // FormUpdateProduto
@@ -165,6 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelCadastroLaboratorio);
             this.Controls.Add(this.btnCadastrarLaboratorio);
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label5);
@@ -177,7 +178,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnUpdateProduto);
-            this.Controls.Add(this.panelCadastroLaboratorio);
             this.Name = "FormUpdateProduto";
             this.Text = "FormUpdateProduto";
             this.Load += new System.EventHandler(this.FormUpdateProduto_Load);

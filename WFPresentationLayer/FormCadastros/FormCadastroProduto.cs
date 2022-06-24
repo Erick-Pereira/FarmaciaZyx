@@ -24,6 +24,10 @@ namespace WFPresentationLayer
         }
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -39,7 +43,7 @@ namespace WFPresentationLayer
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
             int laboratorio = Convert.ToInt32(cmbLaboratorio.SelectedValue);
-            double Valor = (double)nudValor.Value;
+            double Valor = 0;
             int unidade = Convert.ToInt32(cmbUnidade.SelectedValue);
             Produto produto = new Produto(nome, descricao, laboratorio, unidade, Valor);
             Response response = produtorBLL.Insert(produto);
@@ -50,13 +54,13 @@ namespace WFPresentationLayer
                 txtNome.Text = "";
                 txtDescricao.Text = "";
                 cmbLaboratorio.SelectedIndex = 1;
-                nudValor.Value = 0;
                 cmbUnidade.SelectedIndex = 1;
             }
         }
 
         private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
         {
+            panelCadastroLaboratorio.BringToFront();
             OpenChildForm(new FormCadastroLaboratorio());
         }
 

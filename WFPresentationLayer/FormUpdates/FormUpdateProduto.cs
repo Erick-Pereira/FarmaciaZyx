@@ -25,6 +25,10 @@ namespace WFPresentationLayer
         Produto produto = (Produto)StaticItem.item;
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -50,10 +54,8 @@ namespace WFPresentationLayer
             //nudValor.Text = produto.QtdEstoque;
             cmbUnidade.SelectedValue = produto.TipoUnidadeId;
         }
-        private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormCadastroLaboratorio());
-        }
+
+
 
         private void btnUpdateProduto_Click(object sender, EventArgs e)
         {
@@ -82,6 +84,12 @@ namespace WFPresentationLayer
             cmbLaboratorio.DataSource = laboratorioBLL.GetAll().Dados;
             cmbLaboratorio.DisplayMember = "Nome";
             cmbLaboratorio.ValueMember = "ID";
+        }
+
+        private void btnCadastrarLaboratorio_Click(object sender, EventArgs e)
+        {
+            panelCadastroLaboratorio.BringToFront();
+            OpenChildForm(new FormCadastroLaboratorio());
         }
     }
 }

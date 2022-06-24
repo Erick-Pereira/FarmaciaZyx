@@ -52,6 +52,10 @@
             this.ProdutosSaidaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosSaidaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdutosSaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCadastroNovoCliente = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbFormaPamento = new System.Windows.Forms.ComboBox();
+            this.btnRegistrarVenda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(119, 29);
+            this.label2.Location = new System.Drawing.Point(200, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 22;
@@ -112,7 +116,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(119, 47);
+            this.dateTimePicker1.Location = new System.Drawing.Point(200, 47);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 21;
@@ -120,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 29);
+            this.label1.Location = new System.Drawing.Point(406, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 19;
@@ -129,7 +133,7 @@
             // cmbCliente
             // 
             this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Location = new System.Drawing.Point(353, 47);
+            this.cmbCliente.Location = new System.Drawing.Point(406, 47);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(121, 23);
             this.cmbCliente.TabIndex = 18;
@@ -261,11 +265,50 @@
             this.ProdutosSaidaValor.Name = "ProdutosSaidaValor";
             this.ProdutosSaidaValor.ReadOnly = true;
             // 
+            // btnCadastroNovoCliente
+            // 
+            this.btnCadastroNovoCliente.Location = new System.Drawing.Point(537, 415);
+            this.btnCadastroNovoCliente.Name = "btnCadastroNovoCliente";
+            this.btnCadastroNovoCliente.Size = new System.Drawing.Size(142, 23);
+            this.btnCadastroNovoCliente.TabIndex = 51;
+            this.btnCadastroNovoCliente.Text = "Cadastrar novo Cliente";
+            this.btnCadastroNovoCliente.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 339);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(121, 15);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "Forma de Pagamento";
+            // 
+            // cmbFormaPamento
+            // 
+            this.cmbFormaPamento.FormattingEnabled = true;
+            this.cmbFormaPamento.Location = new System.Drawing.Point(27, 357);
+            this.cmbFormaPamento.Name = "cmbFormaPamento";
+            this.cmbFormaPamento.Size = new System.Drawing.Size(121, 23);
+            this.cmbFormaPamento.TabIndex = 52;
+            // 
+            // btnRegistrarVenda
+            // 
+            this.btnRegistrarVenda.Location = new System.Drawing.Point(534, 301);
+            this.btnRegistrarVenda.Name = "btnRegistrarVenda";
+            this.btnRegistrarVenda.Size = new System.Drawing.Size(105, 23);
+            this.btnRegistrarVenda.TabIndex = 54;
+            this.btnRegistrarVenda.Text = "Registrar Venda";
+            this.btnRegistrarVenda.UseVisualStyleBackColor = true;
+            // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRegistrarVenda);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cmbFormaPamento);
+            this.Controls.Add(this.btnCadastroNovoCliente);
             this.Controls.Add(this.dgvProdutosSaida);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
@@ -320,5 +363,9 @@
         private DataGridViewTextBoxColumn ProdutosSaidaUn;
         private DataGridViewTextBoxColumn ProdutosSaidaQtde;
         private DataGridViewTextBoxColumn ProdutosSaidaValor;
+        private Button btnCadastroNovoCliente;
+        private Label label11;
+        private ComboBox cmbFormaPamento;
+        private Button btnRegistrarVenda;
     }
 }

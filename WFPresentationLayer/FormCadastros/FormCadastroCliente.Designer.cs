@@ -88,7 +88,7 @@
             // 
             // mtxtRg
             // 
-            this.mtxtRg.Location = new System.Drawing.Point(249, 236);
+            this.mtxtRg.Location = new System.Drawing.Point(249, 234);
             this.mtxtRg.Mask = "0.000.000";
             this.mtxtRg.Name = "mtxtRg";
             this.mtxtRg.Size = new System.Drawing.Size(100, 23);

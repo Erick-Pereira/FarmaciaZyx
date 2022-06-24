@@ -51,7 +51,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistrarEntrada = new System.Windows.Forms.Button();
             this.nudValor = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).BeginInit();
@@ -253,15 +253,15 @@
             this.btnRetirarProduto.UseVisualStyleBackColor = true;
             this.btnRetirarProduto.Click += new System.EventHandler(this.btnRetirarProduto_Click);
             // 
-            // button1
+            // btnRegistrarEntrada
             // 
-            this.button1.Location = new System.Drawing.Point(616, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrarEntrada.Location = new System.Drawing.Point(534, 301);
+            this.btnRegistrarEntrada.Name = "btnRegistrarEntrada";
+            this.btnRegistrarEntrada.Size = new System.Drawing.Size(120, 23);
+            this.btnRegistrarEntrada.TabIndex = 41;
+            this.btnRegistrarEntrada.Text = "Registrar Entrada";
+            this.btnRegistrarEntrada.UseVisualStyleBackColor = true;
+            this.btnRegistrarEntrada.Click += new System.EventHandler(this.button1_Click);
             // 
             // nudValor
             // 
@@ -302,7 +302,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.nudValor);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRegistrarEntrada);
             this.Controls.Add(this.btnRetirarProduto);
             this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.txtUnidade);
@@ -353,7 +353,7 @@
         private Button btnRetirarProduto;
         private DataGridViewTextBoxColumn qtdeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn UnDataGridViewTextBoxColumn;
-        private Button button1;
+        private Button btnRegistrarEntrada;
         private DataGridViewTextBoxColumn ProdutosEntradaID;
         private DataGridViewTextBoxColumn ProdutosEntradaNome;
         private DataGridViewTextBoxColumn ProdutosEntradaUn;

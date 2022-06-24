@@ -35,14 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nudValor = new System.Windows.Forms.NumericUpDown();
             this.cmbLaboratorio = new System.Windows.Forms.ComboBox();
             this.cmbUnidade = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCadastrarLaboratorio = new System.Windows.Forms.Button();
             this.panelCadastroLaboratorio = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCadastrar
@@ -95,28 +92,6 @@
             this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Laboratorio";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(277, 245);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Valor";
-            // 
-            // nudValor
-            // 
-            this.nudValor.DecimalPlaces = 2;
-            this.nudValor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudValor.Location = new System.Drawing.Point(277, 263);
-            this.nudValor.Name = "nudValor";
-            this.nudValor.Size = new System.Drawing.Size(100, 23);
-            this.nudValor.TabIndex = 8;
             // 
             // cmbLaboratorio
             // 
@@ -172,8 +147,6 @@
             this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbLaboratorio);
-            this.Controls.Add(this.nudValor);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDescricao);
@@ -185,7 +158,6 @@
             this.Name = "FormCadastroProduto";
             this.Text = "Cadastro de produto";
             this.Load += new System.EventHandler(this.FormCadastroProduto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,8 +171,6 @@
         private Label label2;
         private TextBox txtDescricao;
         private Label label3;
-        private Label label4;
-        private NumericUpDown nudValor;
         private ComboBox cmbLaboratorio;
         private ComboBox cmbUnidade;
         private Label label5;

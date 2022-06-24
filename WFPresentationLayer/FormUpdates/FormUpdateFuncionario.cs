@@ -36,8 +36,8 @@ namespace WFPresentationLayer
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             txtEmail.Text = funcionario.Email;
             mtxtTelefone.Text = funcionario.Telefone;
-            txtSenha.Text = "";
-            txtConfirmarSenha.Text = "";
+            //txtSenha.Text = "";
+            //txtConfirmarSenha.Text = "";
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
             SingleResponse<Endereco> singleResponseEndereco = enderecoBLL.GetByID(funcionario.EnderecoId);
             SingleResponse<Bairro> singleResponseBairro = bairroBLL.GetByID(singleResponseEndereco.Item.BairroID);
@@ -80,10 +80,10 @@ namespace WFPresentationLayer
             cidadeUpdate.EstadoId = Convert.ToInt32(cmbEstados.SelectedValue);
             cidadeUpdate.NomeCidade = txtCidade.Text.ToUpper();
             bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
-            //stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
+            stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
             //stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
             //stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
-            //stringBuilder.AppendLine(validator.Validate(update).Message);
+            stringBuilder.AppendLine(validator.Validate(update).Message);
            
             FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
@@ -103,6 +103,12 @@ namespace WFPresentationLayer
         private void btnProximo_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void btnTrocarSenha_Click(object sender, EventArgs e)
+        {
+            FormUpdateSenha formUpdateSenha = new FormUpdateSenha();
+            formUpdateSenha.ShowDialog();
         }
     }
 }
