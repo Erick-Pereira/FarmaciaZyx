@@ -63,7 +63,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, SENHA = @SENHA, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
+            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -73,7 +73,6 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@NOME", funcionario.Nome);
             command.Parameters.AddWithValue("@CPF", funcionario.CPF);
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
-            command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
             command.Parameters.AddWithValue("@ID", funcionario.ID);
@@ -180,7 +179,7 @@ namespace DataAccessLayer
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
                     funcionarios.Add(funcionario);
                 }
-                return new DataResponse<Funcionario>("Fornecedor selecionados com sucesso!", true, funcionarios);
+                return new DataResponse<Funcionario>("Funcionarios selecionados com sucesso!", true, funcionarios);
             }
             catch (Exception ex)
             {
@@ -229,6 +228,48 @@ namespace DataAccessLayer
             catch (Exception ex)
             {
                 return new SingleResponse<Funcionario>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public DataResponse<Funcionario> GetAllByEnderecoId(int idEndereco)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ENDERECO_ID = @ENDERECO_ID";
+            SqlConnection connection = new SqlConnection(connectionString);
+            //ADO.NET 
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@ENDERECO_ID", idEndereco);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                List<Funcionario> funcionarios = new List<Funcionario>();
+                //Enquanto houver registros, o loop será executado!
+                while (reader.Read())
+                {
+                    Funcionario funcionario = new Funcionario();
+                    funcionario.ID = Convert.ToInt32(reader["ID"]);
+                    funcionario.Nome = Convert.ToString(reader["NOME"]);
+                    funcionario.CPF = Convert.ToString(reader["CPF"]);
+                    funcionario.RG = Convert.ToString(reader["RG"]);
+                    funcionario.Email = Convert.ToString(reader["EMAIL"]);
+                    funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
+                    funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
+                    funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
+                    funcionarios.Add(funcionario);
+                }
+                return new DataResponse<Funcionario>("Funcionarios selecionados com sucesso!", true, funcionarios);
+            }
+            catch (Exception ex)
+            {
+                return new DataResponse<Funcionario>("Erro no banco de dados, contate o administrador.", false, null);
             }
             //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally

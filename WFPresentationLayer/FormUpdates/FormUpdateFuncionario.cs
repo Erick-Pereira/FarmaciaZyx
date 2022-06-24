@@ -59,6 +59,7 @@ namespace WFPresentationLayer
             StringBuilder stringBuilder = new StringBuilder();
             Funcionario update = new Funcionario();
             update.ID = funcionario.ID;
+            update.EnderecoId = funcionario.EnderecoId;
             Endereco enderecoUpdate = new Endereco();
             Bairro bairroUpdate = new Bairro();
             Cidade cidadeUpdate = new Cidade();
@@ -68,7 +69,7 @@ namespace WFPresentationLayer
             update.TipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             update.Email = txtEmail.Text;
-            update.Telefone = mtxtTelefone.Text; ;
+            update.Telefone = mtxtTelefone.Text;
             //string senha = txtSenha.Text;
             //string confirmarSenha = txtConfirmarSenha.Text;
             //Genero genero = (Genero)cmbGenero.SelectedIndex;
@@ -79,10 +80,10 @@ namespace WFPresentationLayer
             cidadeUpdate.EstadoId = Convert.ToInt32(cmbEstados.SelectedValue);
             cidadeUpdate.NomeCidade = txtCidade.Text.ToUpper();
             bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
-            stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
+            //stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
             //stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
             //stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
-            stringBuilder.AppendLine(validator.Validate(update).Message);
+            //stringBuilder.AppendLine(validator.Validate(update).Message);
            
             FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
