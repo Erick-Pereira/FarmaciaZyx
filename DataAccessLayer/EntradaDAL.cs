@@ -38,7 +38,7 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 item.ID = Convert.ToInt32(command.ExecuteScalar());
-                return new Response("Endereco cadastrado com sucesso.", true);
+                return new Response("Entrada cadastrado com sucesso.", true);
             }
             catch (Exception ex)
             {

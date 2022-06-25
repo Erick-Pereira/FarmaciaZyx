@@ -77,7 +77,7 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 command.ExecuteNonQuery();
-                return new Response("Endereco cadastrado com sucesso.", true);
+                return new Response("Entrada cadastrado com sucesso.", true);
             }
             catch (Exception ex)
             {

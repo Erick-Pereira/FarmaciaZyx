@@ -92,8 +92,6 @@ namespace WFPresentationLayer
                 produtos.Add(produto);
                 dgvProdutosEntrada.Rows.Add();
                 double valor = 0;
-                double descontoPorc = 0;
-                double descontoRS = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
@@ -133,6 +131,8 @@ namespace WFPresentationLayer
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
+                valor += (produtos[i].QtdEstoque * produtos[i].Valor);
             }
             txtNumItens.Text = produtos.Count.ToString();
             txtTotalPago.Text = (valor).ToString();
@@ -141,40 +141,43 @@ namespace WFPresentationLayer
 
         private void btnRegistrarEntrada_Click(object sender, EventArgs e)
         {
-            if (produtos.Count != 0)
+            if (cmbFornecedor.SelectedIndex != -1)
             {
-                Entrada entrada = new Entrada();
-                List<ProdutosEntrada> produtosentradas = new List<ProdutosEntrada>();
-                double valor = 0;
-                for (int i = 0; i < produtos.Count; i++)
+                if (produtos.Count != 0)
                 {
-                    ProdutosEntrada produtosentrada = new ProdutosEntrada();
-                    produtosentrada.ProdutoId = produtos[i].ID;
-                    produtosentrada.Quantidade = produtos[i].QtdEstoque;
-                    produtosentrada.ValorUnitario = produtos[i].Valor;
-                    produtosentradas.Add(produtosentrada);
-                    valor += produtos[i].Valor;
-                }
-                entrada.produtosEntradas = produtosentradas;
-                entrada.DataEntrada = dtpDataEntrada.Value;
-                entrada.Valor = valor;
-                entrada.FornecedorID = Convert.ToInt32(cmbFornecedor.SelectedValue);
-                entrada.FuncionarioId = FuncionarioLogin.id;
-                EntradaBLL entradabll = new EntradaBLL();
-                StringBuilder stringbuilder = new StringBuilder();
-                for (int i = 0; i < produtos.Count; i++)
-                {
-                    produtosWithValorAndEstoque.Add(produtoBLL.GetByID(produtos[i].ID).Item);
-                    produtosWithValorAndEstoque[i].QtdEstoque += produtos[i].QtdEstoque;
-                }
-                DataResponse<Produto> dataresponse = produtoBLL.CalculateNewValue(produtos);
-                Response response = entradabll.Insert(entrada);
-                if (response.HasSuccess)
-                {
-                    for (int i = 0; i < dataresponse.Dados.Count; i++)
+                    Entrada entrada = new Entrada();
+                    List<ProdutosEntrada> produtosentradas = new List<ProdutosEntrada>();
+                    double valor = 0;
+                    for (int i = 0; i < produtos.Count; i++)
                     {
-                        produtosWithValorAndEstoque[i].Valor = Math.Round(dataresponse.Dados[i].Valor, 2);
-                        produtoBLL.UpdateValueAndInventory(produtosWithValorAndEstoque[i]);
+                        ProdutosEntrada produtosentrada = new ProdutosEntrada();
+                        produtosentrada.ProdutoId = produtos[i].ID;
+                        produtosentrada.Quantidade = produtos[i].QtdEstoque;
+                        produtosentrada.ValorUnitario = produtos[i].Valor;
+                        produtosentradas.Add(produtosentrada);
+                        valor += (produtos[i].QtdEstoque * produtos[i].Valor);
+                    }
+                    entrada.produtosEntradas = produtosentradas;
+                    entrada.DataEntrada = dtpDataEntrada.Value;
+                    entrada.Valor = valor;
+                    entrada.FornecedorID = Convert.ToInt32(cmbFornecedor.SelectedValue);
+                    entrada.FuncionarioId = FuncionarioLogin.id;
+                    EntradaBLL entradabll = new EntradaBLL();
+                    StringBuilder stringbuilder = new StringBuilder();
+                    for (int i = 0; i < produtos.Count; i++)
+                    {
+                        produtosWithValorAndEstoque.Add(produtoBLL.GetByID(produtos[i].ID).Item);
+                        produtosWithValorAndEstoque[i].QtdEstoque += produtos[i].QtdEstoque;
+                    }
+                    DataResponse<Produto> dataresponse = produtoBLL.CalculateNewValue(produtos);
+                    Response response = entradabll.Insert(entrada);
+                    if (response.HasSuccess)
+                    {
+                        for (int i = 0; i < dataresponse.Dados.Count; i++)
+                        {
+                            produtosWithValorAndEstoque[i].Valor = Math.Round(dataresponse.Dados[i].Valor, 2);
+                            produtoBLL.UpdateValueAndInventory(produtosWithValorAndEstoque[i]);
+                        }
                     }
                     MessageBox.Show(response.Message);
                     dgvProdutosEntrada.Rows.Clear();
@@ -182,8 +185,12 @@ namespace WFPresentationLayer
                 }
                 else
                 {
-                    MessageBox.Show("não é possivel registrar uma entrada se não há produtos");
+                    MessageBox.Show("não é possivel registrar uma entrada se não há Produtos");
                 }
+            }
+            else
+            {
+                MessageBox.Show("não é possivel registrar uma entrada se não há Fornecedor");
             }
         }
     }

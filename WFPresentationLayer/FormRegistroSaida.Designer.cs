@@ -287,6 +287,7 @@
             this.btnCadastroNovoCliente.TabIndex = 51;
             this.btnCadastroNovoCliente.Text = "Cadastrar novo Cliente";
             this.btnCadastroNovoCliente.UseVisualStyleBackColor = true;
+            this.btnCadastroNovoCliente.Click += new System.EventHandler(this.btnCadastroNovoCliente_Click);
             // 
             // label11
             // 

@@ -71,11 +71,6 @@ namespace WFPresentationLayer
             }
         }
 
-        private void btnPerfilFuncionario_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormPerfilFuncionario());
-        }
-
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormClientes());
@@ -118,6 +113,21 @@ namespace WFPresentationLayer
         private void FormFuncionario_Load(object sender, EventArgs e)
         {
             OpenChildForm(new FormPerfilFuncionario());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormPerfilFuncionario());
+        }
+
+        private void btnHistoricoEntradas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHistoricoSaida_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,7 @@ namespace WFPresentationLayer
                 }
             }
         }
-    
+
 
         private void btnCadastroLaboratorio_Click(object sender, EventArgs e)
         {
@@ -119,10 +120,12 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvLaboratorios.CurrentCell.RowIndex;
-                if (laboratorioBLL.Delete(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[0].Value)).HasSuccess)
+                Response response = laboratorioBLL.Delete(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[0].Value));
+                if (response.HasSuccess)
                 {
                     dgvLaboratorios.Rows.RemoveAt(rowindex);
                 }
+                MessageBox.Show(response.Message);
             }
         }
 

@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionario));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnHistoricoEntradas = new System.Windows.Forms.Button();
+            this.btnHistoricoSaida = new System.Windows.Forms.Button();
             this.btnLaboratorios = new System.Windows.Forms.Button();
             this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCadastroFornecedor = new System.Windows.Forms.Button();
-            this.btnPerfilFuncionario = new System.Windows.Forms.Button();
             this.btnRegistroSaida = new System.Windows.Forms.Button();
             this.btnCadastroCliente = new System.Windows.Forms.Button();
             this.btnCadastroFuncionario = new System.Windows.Forms.Button();
@@ -56,11 +57,12 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenu.Controls.Add(this.btnHistoricoEntradas);
+            this.panelMenu.Controls.Add(this.btnHistoricoSaida);
             this.panelMenu.Controls.Add(this.btnLaboratorios);
             this.panelMenu.Controls.Add(this.btnCadastroProduto);
             this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnCadastroFornecedor);
-            this.panelMenu.Controls.Add(this.btnPerfilFuncionario);
             this.panelMenu.Controls.Add(this.btnRegistroSaida);
             this.panelMenu.Controls.Add(this.btnCadastroCliente);
             this.panelMenu.Controls.Add(this.btnCadastroFuncionario);
@@ -72,6 +74,42 @@
             this.panelMenu.Size = new System.Drawing.Size(230, 556);
             this.panelMenu.TabIndex = 12;
             // 
+            // btnHistoricoEntradas
+            // 
+            this.btnHistoricoEntradas.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoEntradas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHistoricoEntradas.FlatAppearance.BorderSize = 0;
+            this.btnHistoricoEntradas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoEntradas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoEntradas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoricoEntradas.ForeColor = System.Drawing.Color.White;
+            this.btnHistoricoEntradas.Location = new System.Drawing.Point(41, 358);
+            this.btnHistoricoEntradas.Name = "btnHistoricoEntradas";
+            this.btnHistoricoEntradas.Size = new System.Drawing.Size(140, 36);
+            this.btnHistoricoEntradas.TabIndex = 23;
+            this.btnHistoricoEntradas.Text = "Historico de Entradas";
+            this.btnHistoricoEntradas.UseMnemonic = false;
+            this.btnHistoricoEntradas.UseVisualStyleBackColor = false;
+            this.btnHistoricoEntradas.Click += new System.EventHandler(this.btnHistoricoEntradas_Click);
+            // 
+            // btnHistoricoSaida
+            // 
+            this.btnHistoricoSaida.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoSaida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHistoricoSaida.FlatAppearance.BorderSize = 0;
+            this.btnHistoricoSaida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnHistoricoSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoricoSaida.ForeColor = System.Drawing.Color.White;
+            this.btnHistoricoSaida.Location = new System.Drawing.Point(41, 400);
+            this.btnHistoricoSaida.Name = "btnHistoricoSaida";
+            this.btnHistoricoSaida.Size = new System.Drawing.Size(140, 36);
+            this.btnHistoricoSaida.TabIndex = 22;
+            this.btnHistoricoSaida.Text = "Historico de Saidas";
+            this.btnHistoricoSaida.UseMnemonic = false;
+            this.btnHistoricoSaida.UseVisualStyleBackColor = false;
+            this.btnHistoricoSaida.Click += new System.EventHandler(this.btnHistoricoSaida_Click);
+            // 
             // btnLaboratorios
             // 
             this.btnLaboratorios.BackColor = System.Drawing.Color.Transparent;
@@ -81,7 +119,7 @@
             this.btnLaboratorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLaboratorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLaboratorios.ForeColor = System.Drawing.Color.White;
-            this.btnLaboratorios.Location = new System.Drawing.Point(42, 148);
+            this.btnLaboratorios.Location = new System.Drawing.Point(41, 106);
             this.btnLaboratorios.Name = "btnLaboratorios";
             this.btnLaboratorios.Size = new System.Drawing.Size(140, 36);
             this.btnLaboratorios.TabIndex = 21;
@@ -99,7 +137,7 @@
             this.btnCadastroProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroProduto.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroProduto.Location = new System.Drawing.Point(42, 358);
+            this.btnCadastroProduto.Location = new System.Drawing.Point(41, 316);
             this.btnCadastroProduto.Name = "btnCadastroProduto";
             this.btnCadastroProduto.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroProduto.TabIndex = 20;
@@ -117,7 +155,7 @@
             this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(42, 508);
+            this.btnLogout.Location = new System.Drawing.Point(0, 520);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(140, 36);
             this.btnLogout.TabIndex = 19;
@@ -135,7 +173,7 @@
             this.btnCadastroFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFornecedor.Location = new System.Drawing.Point(42, 316);
+            this.btnCadastroFornecedor.Location = new System.Drawing.Point(41, 274);
             this.btnCadastroFornecedor.Name = "btnCadastroFornecedor";
             this.btnCadastroFornecedor.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFornecedor.TabIndex = 18;
@@ -143,24 +181,6 @@
             this.btnCadastroFornecedor.UseMnemonic = false;
             this.btnCadastroFornecedor.UseVisualStyleBackColor = false;
             this.btnCadastroFornecedor.Click += new System.EventHandler(this.btnCadastroFornecedor_Click);
-            // 
-            // btnPerfilFuncionario
-            // 
-            this.btnPerfilFuncionario.BackColor = System.Drawing.Color.Transparent;
-            this.btnPerfilFuncionario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPerfilFuncionario.FlatAppearance.BorderSize = 0;
-            this.btnPerfilFuncionario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPerfilFuncionario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPerfilFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPerfilFuncionario.ForeColor = System.Drawing.Color.White;
-            this.btnPerfilFuncionario.Location = new System.Drawing.Point(42, 106);
-            this.btnPerfilFuncionario.Name = "btnPerfilFuncionario";
-            this.btnPerfilFuncionario.Size = new System.Drawing.Size(140, 36);
-            this.btnPerfilFuncionario.TabIndex = 17;
-            this.btnPerfilFuncionario.Text = "Perfil Funcionario";
-            this.btnPerfilFuncionario.UseMnemonic = false;
-            this.btnPerfilFuncionario.UseVisualStyleBackColor = false;
-            this.btnPerfilFuncionario.Click += new System.EventHandler(this.btnPerfilFuncionario_Click);
             // 
             // btnRegistroSaida
             // 
@@ -171,7 +191,7 @@
             this.btnRegistroSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistroSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistroSaida.ForeColor = System.Drawing.Color.White;
-            this.btnRegistroSaida.Location = new System.Drawing.Point(42, 274);
+            this.btnRegistroSaida.Location = new System.Drawing.Point(41, 232);
             this.btnRegistroSaida.Name = "btnRegistroSaida";
             this.btnRegistroSaida.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroSaida.TabIndex = 16;
@@ -189,7 +209,7 @@
             this.btnCadastroCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroCliente.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroCliente.Location = new System.Drawing.Point(42, 190);
+            this.btnCadastroCliente.Location = new System.Drawing.Point(41, 148);
             this.btnCadastroCliente.Name = "btnCadastroCliente";
             this.btnCadastroCliente.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroCliente.TabIndex = 15;
@@ -207,7 +227,7 @@
             this.btnCadastroFuncionario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCadastroFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastroFuncionario.ForeColor = System.Drawing.Color.White;
-            this.btnCadastroFuncionario.Location = new System.Drawing.Point(42, 400);
+            this.btnCadastroFuncionario.Location = new System.Drawing.Point(41, 442);
             this.btnCadastroFuncionario.Name = "btnCadastroFuncionario";
             this.btnCadastroFuncionario.Size = new System.Drawing.Size(140, 36);
             this.btnCadastroFuncionario.TabIndex = 14;
@@ -225,7 +245,7 @@
             this.btnRegistroEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnRegistroEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistroEntrada.ForeColor = System.Drawing.Color.White;
-            this.btnRegistroEntrada.Location = new System.Drawing.Point(42, 232);
+            this.btnRegistroEntrada.Location = new System.Drawing.Point(41, 190);
             this.btnRegistroEntrada.Name = "btnRegistroEntrada";
             this.btnRegistroEntrada.Size = new System.Drawing.Size(140, 36);
             this.btnRegistroEntrada.TabIndex = 9;
@@ -253,6 +273,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panelShadow
             // 
@@ -364,7 +385,6 @@
         private Panel panelDesktop;
         private Panel panelTitleBar;
         private Button btnCadastroFornecedor;
-        private Button btnPerfilFuncionario;
         private Button btnRegistroSaida;
         private Button btnCadastroCliente;
         private Button btnCadastroFuncionario;
@@ -375,5 +395,7 @@
         private Panel panelShadow;
         private Button btnCadastroProduto;
         private Button btnLaboratorios;
+        private Button btnHistoricoEntradas;
+        private Button btnHistoricoSaida;
     }
 }

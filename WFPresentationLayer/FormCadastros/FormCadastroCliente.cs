@@ -43,7 +43,7 @@ namespace WFPresentationLayer
                 mtxtRg.Text = "";
                 mtxtTelefone1.Text = "";
                 mtxtTelefone2.Text = "";
-                cmbTipoCliente.SelectedIndex = 1;
+                cmbTipoCliente.SelectedIndex = 0;
             }
             MessageBox.Show(response.Message);
         }

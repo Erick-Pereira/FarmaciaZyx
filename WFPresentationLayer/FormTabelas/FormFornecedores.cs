@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,10 +84,12 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvFornecedores.CurrentCell.RowIndex;
-                if (fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[0].Value)).HasSuccess)
+                Response response = fornecedorBLL.Delete(Convert.ToInt32(dgvFornecedores.Rows[rowindex].Cells[0].Value));
+                if (response.HasSuccess)
                 {
                     dgvFornecedores.Rows.RemoveAt(rowindex);
-                } 
+                }
+                MessageBox.Show(response.Message);
             }
         }
 
