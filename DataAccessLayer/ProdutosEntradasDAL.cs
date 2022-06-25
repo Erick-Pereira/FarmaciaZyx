@@ -25,7 +25,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@ID", id);
+            command.Parameters.AddWithValue("@ENTRADA_ID", id);
             try
             {
                 connection.Open();

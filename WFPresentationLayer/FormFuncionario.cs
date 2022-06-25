@@ -122,12 +122,12 @@ namespace WFPresentationLayer
 
         private void btnHistoricoEntradas_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new FormHistoricoEntrada());
         }
 
         private void btnHistoricoSaida_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new FormHistoricoSaida());
         }
     }
 }

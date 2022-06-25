@@ -25,7 +25,7 @@ namespace DataAccessLayer
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@ID", id);
+            command.Parameters.AddWithValue("@SAIDA_ID", id);
             try
             {
                 connection.Open();
@@ -35,7 +35,7 @@ namespace DataAccessLayer
                 while (reader.Read())
                 {
                     ProdutoSaida saida = new ProdutoSaida();
-                    saida.SaidaId = Convert.ToInt32(reader["ENTRADA_ID"]);
+                    saida.SaidaId = Convert.ToInt32(reader["SAIDA_ID"]);
                     saida.ProdutoId = Convert.ToInt32(reader["PRODUTO_ID"]);
                     saida.Quantidade = Convert.ToDouble(reader["QUANTIDADE"]);
                     saida.ValorUnitario = Convert.ToDouble(reader["VALOR_UNITARIO"]);
