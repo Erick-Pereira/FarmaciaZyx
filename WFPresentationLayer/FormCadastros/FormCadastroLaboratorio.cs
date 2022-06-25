@@ -15,6 +15,9 @@ namespace WFPresentationLayer
 {
     public partial class FormCadastroLaboratorio : Form
     {
+        LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
+        LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
+
         public FormCadastroLaboratorio()
         {
             InitializeComponent();
@@ -22,12 +25,10 @@ namespace WFPresentationLayer
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
             string nome = txtLaboratorio.Text;
             string cnpj = mtxtCNPJ.Text;
             cnpj = cnpj.Replace(",", ".");
             Laboratorio laboratorio = new Laboratorio(nome, cnpj);
-            LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
             Response response = laboratorioValidator.Validate(laboratorio);
             if (response.HasSuccess)
             {

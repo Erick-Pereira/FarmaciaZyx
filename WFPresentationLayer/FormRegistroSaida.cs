@@ -21,7 +21,6 @@ namespace WFPresentationLayer
         List<Produto> produtos = new List<Produto>();
         FormaPagamentoBLL formaPagamentoBLL = new FormaPagamentoBLL();
 
-
         public FormRegistroSaida()
         {
             InitializeComponent();
@@ -67,7 +66,6 @@ namespace WFPresentationLayer
             Produto produto = produtoBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
             if (produto != null)
             {
-
                 produto.QtdEstoque = (double)nudQtde.Value;
                 produtos.Add(produto);
                 dgvProdutosSaida.Rows.Add();
@@ -101,7 +99,6 @@ namespace WFPresentationLayer
             }
             int rowindex = dgvProdutosSaida.CurrentCell.RowIndex;
             int columnindex = dgvProdutosSaida.CurrentCell.ColumnIndex;
-            //MessageBox.Show(dgvProdutos.Rows[rowindex].Cells[columnindex].Value.ToString());
             produtos.RemoveAt(rowindex);
             dgvProdutosSaida.Rows.RemoveAt(rowindex);
             double valor = 0;

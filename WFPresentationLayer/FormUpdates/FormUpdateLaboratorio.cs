@@ -21,24 +21,23 @@ namespace WFPresentationLayer
         }
 
         Laboratorio laboratorio = (Laboratorio)StaticItem.item;
+        LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
+        LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
+
+
 
         private void btnUpdateLaboratorio_Click(object sender, EventArgs e)
         {
             Laboratorio update = new Laboratorio();
             update.ID = laboratorio.ID;
             update.Nome = txtLaboratorio.Text;
-            LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
             Response response = laboratorioValidator.Validate(update);
             if (response.HasSuccess)
             {
-                LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
-                Response response1 = laboratorioBLL.Update(update);
-                MessageBox.Show(response1.Message);
+                response = laboratorioBLL.Update(update);
+       
             }
-            else
-            {
                 MessageBox.Show(response.Message);
-            }
         }
 
         private void FormUpdateLaboratorio_Load(object sender, EventArgs e)

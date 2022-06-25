@@ -39,7 +39,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(308, 76);
+            this.txtSenha.Location = new System.Drawing.Point(306, 104);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '●';
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
@@ -48,7 +48,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(308, 53);
+            this.label12.Location = new System.Drawing.Point(306, 81);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 15);
             this.label12.TabIndex = 39;
@@ -56,7 +56,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(308, 125);
+            this.textBox1.Location = new System.Drawing.Point(306, 153);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '●';
             this.textBox1.Size = new System.Drawing.Size(100, 23);
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(308, 102);
+            this.label1.Location = new System.Drawing.Point(306, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 15);
             this.label1.TabIndex = 41;
@@ -73,7 +73,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(308, 174);
+            this.textBox2.Location = new System.Drawing.Point(306, 202);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '●';
             this.textBox2.Size = new System.Drawing.Size(100, 23);
@@ -82,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 151);
+            this.label2.Location = new System.Drawing.Point(306, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 15);
             this.label2.TabIndex = 43;
@@ -90,7 +90,7 @@
             // 
             // btnUpdateSenha
             // 
-            this.btnUpdateSenha.Location = new System.Drawing.Point(308, 219);
+            this.btnUpdateSenha.Location = new System.Drawing.Point(306, 247);
             this.btnUpdateSenha.Name = "btnUpdateSenha";
             this.btnUpdateSenha.Size = new System.Drawing.Size(100, 23);
             this.btnUpdateSenha.TabIndex = 45;

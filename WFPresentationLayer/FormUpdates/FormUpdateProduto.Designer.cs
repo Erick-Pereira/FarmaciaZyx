@@ -84,6 +84,7 @@
             this.cmbLaboratorio.Name = "cmbLaboratorio";
             this.cmbLaboratorio.Size = new System.Drawing.Size(100, 23);
             this.cmbLaboratorio.TabIndex = 22;
+            this.cmbLaboratorio.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbLaboratorio_MouseClick);
             // 
             // nudValor
             // 

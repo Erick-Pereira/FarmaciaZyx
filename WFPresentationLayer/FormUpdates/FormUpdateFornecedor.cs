@@ -19,6 +19,9 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
+        FornecedorValidator fornecedorValidator = new FornecedorValidator();
+        FornecedorBLL fornecedorBLL = new FornecedorBLL();
+
 
         Fornecedor fornecedor = (Fornecedor)StaticItem.item;
 
@@ -32,18 +35,13 @@ namespace WFPresentationLayer
             update.Telefone = mtxtTelefone.Text;
             update.Email = txtEmail.Text;
             update.CNPJ = update.CNPJ.Replace(",", ".");
-            FornecedorValidator fornecedorValidator = new FornecedorValidator();
             Response response = fornecedorValidator.Validate(update);
             if (response.HasSuccess)
             {
-                FornecedorBLL fornecedorBLL = new FornecedorBLL();
-                Response response1 = fornecedorBLL.Update(update);
-                MessageBox.Show(response1.Message);
+                response = fornecedorBLL.Update(update);
             }
-            else
-            {
                 MessageBox.Show(response.Message);
-            }
+           
         }
 
         private void FormUpdateFornecedor_Load(object sender, EventArgs e)

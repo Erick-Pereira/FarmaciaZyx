@@ -18,10 +18,11 @@ namespace WFPresentationLayer
         TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
         EstadoBLL estadoBLL = new EstadoBLL();
+        StringBuilder stringBuilder = new StringBuilder();
+
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            StringBuilder stringBuilder = new StringBuilder();
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
             string rg = mtxtRg.Text;
@@ -41,6 +42,10 @@ namespace WFPresentationLayer
             string complemento = txtComplemento.Text.ToUpper();
             cpf = cpf.Replace(",", ".");
             rg = rg.Replace(",", ".");
+            if (!stringValidator.validateRg(rg))
+            {
+                stringBuilder.AppendLine("RG invalido");
+            }
             stringBuilder.AppendLine(stringValidator.ValidateCEP(cep));
             stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));

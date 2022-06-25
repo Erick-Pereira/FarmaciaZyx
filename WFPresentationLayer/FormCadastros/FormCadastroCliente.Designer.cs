@@ -89,7 +89,7 @@
             // mtxtRg
             // 
             this.mtxtRg.Location = new System.Drawing.Point(249, 234);
-            this.mtxtRg.Mask = "0.000.000";
+            this.mtxtRg.Mask = "00.000.000-0";
             this.mtxtRg.Name = "mtxtRg";
             this.mtxtRg.Size = new System.Drawing.Size(100, 23);
             this.mtxtRg.TabIndex = 44;

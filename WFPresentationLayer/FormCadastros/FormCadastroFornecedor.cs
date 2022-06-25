@@ -15,6 +15,8 @@ namespace WFPresentationLayer
 {
     public partial class FormCadastroFornecedor : Form
     {
+        FornecedorValidator fornecedorValidator = new FornecedorValidator();
+        FornecedorBLL fornecedorBLL = new FornecedorBLL();
         public FormCadastroFornecedor()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace WFPresentationLayer
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            Response response = new Response();
             string razaoSocial = txtRazaoSocial.Text;
             string cnpj = mtxtCnpj.Text;
             cnpj = cnpj.Replace(",", ".");
@@ -29,18 +32,20 @@ namespace WFPresentationLayer
             string telefone = mtxtTelefone.Text;
             string email = txtEmail.Text;
             Fornecedor fornecedor = new Fornecedor(razaoSocial, cnpj, nomeContato, telefone, email);
-            FornecedorBLL fornecedorBLL = new FornecedorBLL();
-            Response response = fornecedorBLL.Insert(fornecedor);
-            MessageBox.Show(response.Message);
+            response = fornecedorValidator.Validate(fornecedor);
             if (response.HasSuccess)
             {
-                txtRazaoSocial.Text = "";
-                mtxtCnpj.Text = "";
-                txtNomeContato.Text = "";
-                mtxtTelefone.Text = "";
-                txtEmail.Text = "";
+                response = fornecedorBLL.Insert(fornecedor);
+                if (response.HasSuccess)
+                {
+                    txtRazaoSocial.Text = "";
+                    mtxtCnpj.Text = "";
+                    txtNomeContato.Text = "";
+                    mtxtTelefone.Text = "";
+                    txtEmail.Text = "";
+                }
             }
-
+            MessageBox.Show(response.Message);
         }
     }
 }

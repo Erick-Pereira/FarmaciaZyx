@@ -112,8 +112,3 @@ namespace WFPresentationLayer
         }
     }
 }
-
-//update.CPF = update.CPF.Replace(",", ".");
-//    update.RG = update.RG.Replace(",", ".");
-
-

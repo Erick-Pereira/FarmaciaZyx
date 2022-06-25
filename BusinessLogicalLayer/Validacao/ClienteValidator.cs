@@ -20,8 +20,11 @@ namespace BusinessLogicalLayer
             {
                 return "RG precisa ser informado";
             }
-
-            return "";
+            if(stringValidator.validateRg(rG))
+            {
+                return "";
+            }
+            return "RG Invalido";
         }
         public Response Validate(Cliente cliente)
         {
@@ -32,9 +35,6 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone1));
             erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone2));
             erros.AppendLine(ValidateRG(cliente.RG));
-            //cliente.Nome = (normatization.NormatizeName(cliente.Nome));
-            //Sintaxe cliente.Endereco?.CEP verifica e só passaria o CEP informado caso a propriedade
-            //Endereco de dentro do Cliente não seja nula, caso contrário, passará o valor padrão do CEP (que é uma string e vale null!)
             if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
             {
                 return new Response(erros.ToString(), true);

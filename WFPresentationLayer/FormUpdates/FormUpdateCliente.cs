@@ -15,7 +15,9 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateCliente : Form
     {
+        ClienteBLL clienteBLL = new ClienteBLL();
         TipoClienteBLL tipoClienteBLL = new TipoClienteBLL();
+        ClienteValidator clienteValidator = new ClienteValidator();
         public FormUpdateCliente()
         {
             InitializeComponent();
@@ -48,18 +50,13 @@ namespace WFPresentationLayer
             update.CPF = update.CPF.Replace(",", ".");
             update.RG = update.RG.Replace(",", ".");
             update.TipoClienteId = Convert.ToInt32(cmbTipoCliente.SelectedValue);
-            ClienteValidator clienteValidator = new ClienteValidator();
             Response response = clienteValidator.Validate(update);
             if (response.HasSuccess)
             {
-                ClienteBLL clienteBLL = new ClienteBLL();
-                Response response1 = clienteBLL.Update(update);
-                MessageBox.Show(response1.Message);
+                response = clienteBLL.Update(update);
+                
             }
-            else
-            {
-                MessageBox.Show(response.Message);
-            }
+            MessageBox.Show(response.Message);
         }
     }
 }

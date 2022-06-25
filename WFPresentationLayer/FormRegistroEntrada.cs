@@ -15,7 +15,6 @@ namespace WFPresentationLayer
 {
     public partial class FormRegistroEntrada : Form
     {
-
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
         ProdutoBLL produtoBLL = new ProdutoBLL();
         TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
@@ -48,7 +47,6 @@ namespace WFPresentationLayer
 
         private void FormRegistroEntrada_Load(object sender, EventArgs e)
         {
-
             cmbFornecedor.DataSource = fornecedorBLL.GetAll().Dados;
             cmbFornecedor.DisplayMember = "RazaoSocial";
             cmbFornecedor.ValueMember = "ID";
@@ -66,7 +64,6 @@ namespace WFPresentationLayer
                     nudQtde.Value = 1;
                 }
             }
-
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,11 +102,6 @@ namespace WFPresentationLayer
                 txtNumItens.Text = produtos.Count.ToString();
                 txtTotalPago.Text = (valor).ToString();
             }
-            //** // create columns automatically //**
-            //produto.QtdEstoque -= (double)nudQtde.Value;
-            //produtoBLL.Update(produto);
-            //DataTable dt = new DataTable();
-            //dt = produto;
         }
 
         private void btnRetirarProduto_Click(object sender, EventArgs e)
@@ -120,7 +112,6 @@ namespace WFPresentationLayer
                 return;
             }
             int rowindex = dgvProdutosEntrada.CurrentCell.RowIndex;
-            //MessageBox.Show(dgvProdutos.Rows[rowindex].Cells[columnindex].Value.ToString());
             produtos.RemoveAt(rowindex);
             double valor = 0;
             dgvProdutosEntrada.Rows.RemoveAt(rowindex);
@@ -136,7 +127,6 @@ namespace WFPresentationLayer
             }
             txtNumItens.Text = produtos.Count.ToString();
             txtTotalPago.Text = (valor).ToString();
-
         }
 
         private void btnRegistrarEntrada_Click(object sender, EventArgs e)
