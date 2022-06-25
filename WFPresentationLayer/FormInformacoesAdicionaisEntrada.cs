@@ -16,10 +16,5 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
-
-        private void FormInformacoesAdicionaisEntrada_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

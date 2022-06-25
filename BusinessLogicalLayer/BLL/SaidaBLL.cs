@@ -28,7 +28,10 @@ namespace BusinessLogicalLayer
         public SingleResponse<Saida> GetByID(int id)
         {
             SingleResponse<Saida> singleResponse = saidaDAL.GetByID(id);
-            singleResponse.Item.produtosSaidas = produtosSaidasDAL.GetAllBySaidaID(id).Dados;
+            if (singleResponse.HasSuccess)
+            {
+                singleResponse.Item.produtosSaidas = produtosSaidasDAL.GetAllBySaidaID(singleResponse.Item.ID).Dados;
+            }
             return singleResponse;
         }
 

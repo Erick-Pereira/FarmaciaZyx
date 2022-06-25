@@ -78,8 +78,6 @@ namespace WFPresentationLayer
 
         private void btnInformacoesEntrada_Click(object sender, EventArgs e)
         {
-            panelDesktopEntradas.BringToFront();
-            OpenChildForm(new FormInformacoesAdicionaisEntrada());
         }
     }
 }

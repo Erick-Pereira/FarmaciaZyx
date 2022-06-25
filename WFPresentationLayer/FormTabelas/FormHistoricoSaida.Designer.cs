@@ -98,7 +98,7 @@
             this.panelDesktopEntradas.Controls.Add(this.dgvSaidas);
             this.panelDesktopEntradas.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopEntradas.Name = "panelDesktopEntradas";
-            this.panelDesktopEntradas.Size = new System.Drawing.Size(702, 455);
+            this.panelDesktopEntradas.Size = new System.Drawing.Size(702, 518);
             this.panelDesktopEntradas.TabIndex = 8;
             // 
             // dgvSaidas

@@ -107,7 +107,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,PRECO,FORNECEDOR_ID,FUNCIONARIO_ID,DATA_ENTRADA FROM ENTRADAS WHERE ID = @ID";
+            string sql = $"SELECT ID,VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,DESCONTO,VALOR_TOTAL FROM SAIDAS WHERE ID = @ID";
 
 
 
@@ -129,8 +129,9 @@ namespace DataAccessLayer
                     saida.ClienteId = Convert.ToInt32(reader["CLIENTE_ID"]);
                     saida.FuncionarioId = Convert.ToInt32(reader["FUNCIONARIO_ID"]);
                     saida.DataSaida = Convert.ToDateTime(reader["DATA_SAIDA"]);
-                    saida.FuncionarioId = Convert.ToInt32(reader["FORMA_PAGAMENTO_ID"]);
+                    saida.FormaPagamento = Convert.ToInt32(reader["FORMA_PAGAMENTO_ID"]);
                     saida.Desconto = Convert.ToDouble(reader["DESCONTO"]);
+                    saida.ValorTotal = Convert.ToDouble(reader["VALOR_TOTAL"]);
                     return new SingleResponse<Saida>("Saida selecionada com sucesso!", true, saida);
                 }
                 return new SingleResponse<Saida>("Saida não encontrada!", false, null);

@@ -18,9 +18,6 @@ namespace DataAccessLayer
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT PRODUTO_ID,SAIDA_ID,QUANTIDADE,VALOR_UNITARIO FROM PRODUTOS_SAIDA WHERE SAIDA_ID = @SAIDA_ID";
-
-
-
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
