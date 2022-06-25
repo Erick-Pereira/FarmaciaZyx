@@ -32,7 +32,7 @@ namespace WFPresentationLayer
             string nome = txtNome.Text;
             string email = txtEmail.Text;
             string cpf = mtxtCpf.Text;
-            string rg = mtxtRg.Text;
+            string rg = txtRg.Text;
             cpf = cpf.Replace(",", ".");
             rg = rg.Replace(",", ".");
             string telefone1 = mtxtTelefone1.Text;
@@ -48,7 +48,7 @@ namespace WFPresentationLayer
                     txtNome.Text = "";
                     txtEmail.Text = "";
                     mtxtCpf.Text = "";
-                    mtxtRg.Text = "";
+                    txtRg.Text = "";
                     mtxtTelefone1.Text = "";
                     mtxtTelefone2.Text = "";
                     cmbTipoCliente.SelectedIndex = 0;

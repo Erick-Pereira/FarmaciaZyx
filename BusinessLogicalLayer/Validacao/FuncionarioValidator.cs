@@ -19,11 +19,7 @@ namespace BusinessLogicalLayer
             {
                 return "RG precisa ser informado";
             }
-            if (stringValidator.validateRg(rG))
-            {
                 return "";
-            }
-            return "RG Invalido";
         }
         public Response Validate(Funcionario funcionario)
         {

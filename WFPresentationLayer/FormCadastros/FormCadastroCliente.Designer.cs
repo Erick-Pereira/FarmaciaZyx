@@ -34,7 +34,6 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cmbTipoCliente
@@ -85,14 +85,6 @@
             this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Email";
-            // 
-            // mtxtRg
-            // 
-            this.mtxtRg.Location = new System.Drawing.Point(249, 234);
-            this.mtxtRg.Mask = "00.000.000-0";
-            this.mtxtRg.Name = "mtxtRg";
-            this.mtxtRg.Size = new System.Drawing.Size(100, 23);
-            this.mtxtRg.TabIndex = 44;
             // 
             // label16
             // 
@@ -176,19 +168,26 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(249, 234);
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(100, 23);
+            this.txtRg.TabIndex = 51;
+            // 
             // FormCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRg);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.mtxtTelefone2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.mtxtTelefone1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.mtxtRg);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.mtxtCpf);
             this.Controls.Add(this.label3);
@@ -213,7 +212,6 @@
         private TextBox txtNome;
         private TextBox txtEmail;
         private Label label2;
-        private MaskedTextBox mtxtRg;
         private Label label16;
         private MaskedTextBox mtxtCpf;
         private Label label3;
@@ -223,5 +221,6 @@
         private Label label4;
         private Label label6;
         private Button btnCadastrar;
+        private TextBox txtRg;
     }
 }

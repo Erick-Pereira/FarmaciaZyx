@@ -20,6 +20,22 @@ namespace WFPresentationLayer
         CidadeBLL cidadeBLL = new CidadeBLL();
         EnderecoBLL enderecoBLL = new EnderecoBLL();
         Funcionario funcionario = new Funcionario();
+        private Form currentChildForm;
+        private void OpenChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelUpdateSenha.Controls.Add(childForm);
+            panelUpdateSenha.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
         private void FormUpdateFuncionario_Load(object sender, EventArgs e)
         {
             funcionario = (Funcionario)StaticItem.item;
@@ -31,7 +47,7 @@ namespace WFPresentationLayer
             cmbEstados.ValueMember = "ID";
             txtNome.Text = funcionario.Nome;
             mtxtCpf.Text = funcionario.CPF;
-            mtxtRg.Text = funcionario.RG;
+            txtRg.Text = funcionario.RG;
             cmbTipoFuncionario.SelectedValue = funcionario.TipoFuncionarioId;
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             txtEmail.Text = funcionario.Email;
@@ -65,7 +81,7 @@ namespace WFPresentationLayer
             Cidade cidadeUpdate = new Cidade();
             update.Nome = txtNome.Text;
             update.CPF = mtxtCpf.Text.Replace(",", ".");
-            update.RG = mtxtRg.Text.Replace(",", ".");
+            update.RG = txtRg.Text.Replace(",", ".");
             update.TipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             update.Email = txtEmail.Text;
@@ -81,13 +97,10 @@ namespace WFPresentationLayer
             cidadeUpdate.NomeCidade = txtCidade.Text.ToUpper();
             bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
             stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
-            //stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
-            //stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
             stringBuilder.AppendLine(validator.Validate(update).Message);
-           
             FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
-
+            stringBuilder.Clear();
             if (string.IsNullOrWhiteSpace(erros))
             {
                 Response response = funcionarioBLL.UpdateFuncionarioComEndereco(funcionarioComEnderecoUpdate);
@@ -107,8 +120,8 @@ namespace WFPresentationLayer
 
         private void btnTrocarSenha_Click(object sender, EventArgs e)
         {
-            FormUpdateSenha formUpdateSenha = new FormUpdateSenha();
-            formUpdateSenha.ShowDialog();
+            panelUpdateSenha.BringToFront();
+            OpenChildForm(new FormUpdateSenha());
         }
     }
 }

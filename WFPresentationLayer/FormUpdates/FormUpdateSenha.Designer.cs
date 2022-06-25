@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtSenhaAntiga = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNovaSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtConfirmarNovaSenha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpdateSenha = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtSenha
+            // txtSenhaAntiga
             // 
-            this.txtSenha.Location = new System.Drawing.Point(306, 104);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '●';
-            this.txtSenha.Size = new System.Drawing.Size(100, 23);
-            this.txtSenha.TabIndex = 40;
+            this.txtSenhaAntiga.Location = new System.Drawing.Point(306, 104);
+            this.txtSenhaAntiga.Name = "txtSenhaAntiga";
+            this.txtSenhaAntiga.PasswordChar = '●';
+            this.txtSenhaAntiga.Size = new System.Drawing.Size(100, 23);
+            this.txtSenhaAntiga.TabIndex = 40;
             // 
             // label12
             // 
@@ -54,13 +55,13 @@
             this.label12.TabIndex = 39;
             this.label12.Text = "Senha antiga";
             // 
-            // textBox1
+            // txtNovaSenha
             // 
-            this.textBox1.Location = new System.Drawing.Point(306, 153);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '●';
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 42;
+            this.txtNovaSenha.Location = new System.Drawing.Point(306, 153);
+            this.txtNovaSenha.Name = "txtNovaSenha";
+            this.txtNovaSenha.PasswordChar = '●';
+            this.txtNovaSenha.Size = new System.Drawing.Size(100, 23);
+            this.txtNovaSenha.TabIndex = 42;
             // 
             // label1
             // 
@@ -71,13 +72,13 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Nova Senha";
             // 
-            // textBox2
+            // txtConfirmarNovaSenha
             // 
-            this.textBox2.Location = new System.Drawing.Point(306, 202);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '●';
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 44;
+            this.txtConfirmarNovaSenha.Location = new System.Drawing.Point(306, 202);
+            this.txtConfirmarNovaSenha.Name = "txtConfirmarNovaSenha";
+            this.txtConfirmarNovaSenha.PasswordChar = '●';
+            this.txtConfirmarNovaSenha.Size = new System.Drawing.Size(100, 23);
+            this.txtConfirmarNovaSenha.TabIndex = 44;
             // 
             // label2
             // 
@@ -98,17 +99,37 @@
             this.btnUpdateSenha.UseVisualStyleBackColor = true;
             this.btnUpdateSenha.Click += new System.EventHandler(this.btnUpdateSenha_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Crimson;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(637, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(48, 20);
+            this.btnClose.TabIndex = 46;
+            this.btnClose.Text = "X";
+            this.btnClose.UseMnemonic = false;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormUpdateSenha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(697, 383);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdateSenha);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtConfirmarNovaSenha);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNovaSenha);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtSenha);
+            this.Controls.Add(this.txtSenhaAntiga);
             this.Controls.Add(this.label12);
             this.Name = "FormUpdateSenha";
             this.Text = "FormUpdateSenha";
@@ -119,12 +140,13 @@
 
         #endregion
 
-        private TextBox txtSenha;
+        private TextBox txtSenhaAntiga;
         private Label label12;
-        private TextBox textBox1;
+        private TextBox txtNovaSenha;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox txtConfirmarNovaSenha;
         private Label label2;
         private Button btnUpdateSenha;
+        private Button btnClose;
     }
 }

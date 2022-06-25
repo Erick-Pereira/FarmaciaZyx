@@ -33,6 +33,10 @@ namespace BusinessLogicalLayer
         {
             return funcionarioDAL.GetByID(id);
         }
+        public SingleResponse<Funcionario> GetSenhaByID(int id)
+        {
+            return funcionarioDAL.GetSenhaByID(id);
+        }
 
         public Response InsertFuncionarioComEndereco(FuncionarioComEndereco funcionarioComEndereco)
         {
@@ -127,9 +131,9 @@ namespace BusinessLogicalLayer
             FuncionarioValidator funcionarioValidator = new FuncionarioValidator();
             StringValidator stringValidator = new StringValidator();
             StringBuilder stringBuilder = new StringBuilder();
-            //stringBuilder.AppendLine(stringValidator.ValidateCEP(funcionarioComEndereco.Endereco.CEP));
-            //stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
-            //stringBuilder.AppendLine(funcionarioValidator.Validate(funcionarioComEndereco.Funcionario).Message);
+            stringBuilder.AppendLine(stringValidator.ValidateCEP(funcionarioComEndereco.Endereco.CEP));
+            stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
+            stringBuilder.AppendLine(funcionarioValidator.Validate(funcionarioComEndereco.Funcionario).Message);
             string erros = stringBuilder.ToString().Trim();
             if (string.IsNullOrWhiteSpace(erros))
             {
@@ -280,6 +284,10 @@ namespace BusinessLogicalLayer
         public Response Update(Funcionario item)
         {
             return funcionarioDAL.Update(item);
+        }
+        public Response UpdateSenha(Funcionario item)
+        {
+            return funcionarioDAL.UpdateSenha(item);
         }
 
     }

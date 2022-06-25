@@ -15,7 +15,7 @@ namespace WFPresentationLayer
 {
     public partial class FormFuncionarios : Form
     {
-        private Form currentChildForm;
+        
 
 
         TipoFuncionarioBLL tipoFuncionarioBLL = new TipoFuncionarioBLL();
@@ -26,6 +26,7 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
+        private Form currentChildForm;
         private void OpenChildForm(Form childForm)
         {
             if (currentChildForm != null)

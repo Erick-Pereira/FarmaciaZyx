@@ -25,7 +25,7 @@ namespace WFPresentationLayer
         {
             string nome = txtNome.Text;
             string cpf = mtxtCpf.Text;
-            string rg = mtxtRg.Text;
+            string rg = txtRg.Text;
             int tipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
@@ -42,10 +42,6 @@ namespace WFPresentationLayer
             string complemento = txtComplemento.Text.ToUpper();
             cpf = cpf.Replace(",", ".");
             rg = rg.Replace(",", ".");
-            if (!stringValidator.validateRg(rg))
-            {
-                stringBuilder.AppendLine("RG invalido");
-            }
             stringBuilder.AppendLine(stringValidator.ValidateCEP(cep));
             stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
@@ -56,6 +52,7 @@ namespace WFPresentationLayer
             Cidade cidade1 = new Cidade(cidade, estado);
             FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1, tipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
+            stringBuilder.Clear();
             if (string.IsNullOrWhiteSpace(erros))
             {
                 Response response = funcionarioBLL.InsertFuncionarioComEndereco(funcionarioComEndereco);
@@ -64,7 +61,7 @@ namespace WFPresentationLayer
                 {
                     txtNome.Text = "";
                     mtxtCpf.Text = "";
-                    mtxtRg.Text = "";
+                    txtRg.Text = "";
                     cmbTipoFuncionario.SelectedIndex = 1;
                     //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
                     txtEmail.Text = "";

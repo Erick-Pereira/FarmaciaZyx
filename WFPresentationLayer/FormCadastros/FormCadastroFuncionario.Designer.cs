@@ -34,7 +34,6 @@
             this.btnProximo = new System.Windows.Forms.Button();
             this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,6 +67,7 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -88,10 +88,10 @@
             // tabFuncionario
             // 
             this.tabFuncionario.BackColor = System.Drawing.Color.White;
+            this.tabFuncionario.Controls.Add(this.txtRg);
             this.tabFuncionario.Controls.Add(this.btnProximo);
             this.tabFuncionario.Controls.Add(this.txtConfirmarSenha);
             this.tabFuncionario.Controls.Add(this.label11);
-            this.tabFuncionario.Controls.Add(this.mtxtRg);
             this.tabFuncionario.Controls.Add(this.label16);
             this.tabFuncionario.Controls.Add(this.txtSenha);
             this.tabFuncionario.Controls.Add(this.label12);
@@ -143,14 +143,6 @@
             this.label11.Size = new System.Drawing.Size(96, 15);
             this.label11.TabIndex = 46;
             this.label11.Text = "Confirmar Senha";
-            // 
-            // mtxtRg
-            // 
-            this.mtxtRg.Location = new System.Drawing.Point(333, 116);
-            this.mtxtRg.Mask = "00.000.000-0";
-            this.mtxtRg.Name = "mtxtRg";
-            this.mtxtRg.Size = new System.Drawing.Size(100, 23);
-            this.mtxtRg.TabIndex = 45;
             // 
             // label16
             // 
@@ -465,6 +457,13 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(329, 116);
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(100, 23);
+            this.txtRg.TabIndex = 49;
+            // 
             // FormCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -518,12 +517,12 @@
         private Label label16;
         private TextBox txtSenha;
         private Label label12;
-        private MaskedTextBox mtxtRg;
         private TextBox txtConfirmarSenha;
         private Label label11;
         private ComboBox cmbEstados;
         private Label label17;
         private TextBox txtComplemento;
         private Button btnProximo;
+        private TextBox txtRg;
     }
 }

@@ -121,28 +121,42 @@ namespace BusinessLogicalLayer
             //Verifica se o tamanho da string é 9
             if (rg.Length == 9)
             {
-                int[] n = new int[8];
+                int[] n = new int[9];
 
+                try
+                {
+                    n[0] = Convert.ToInt32(rg.Substring(0, 1));
+                    n[1] = Convert.ToInt32(rg.Substring(1, 1));
+                    n[2] = Convert.ToInt32(rg.Substring(2, 1));
+                    n[3] = Convert.ToInt32(rg.Substring(3, 1));
+                    n[4] = Convert.ToInt32(rg.Substring(4, 1));
+                    n[5] = Convert.ToInt32(rg.Substring(5, 1));
+                    n[6] = Convert.ToInt32(rg.Substring(6, 1));
+                    n[7] = Convert.ToInt32(rg.Substring(7, 1));
+                    if (rg.Substring(8, 1).Equals("x") || rg.Substring(8, 1).Equals("X"))
+                    {
+                        n[8] = 10;
+                    }
+                    else
+                    {
+                        n[8] = Convert.ToInt32(rg.Substring(8, 1));
+                    }
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
                 //obtém cada um dos caracteres do rg
-                n[0] = Convert.ToInt32(rg.Substring(0, 1));
-                n[1] = Convert.ToInt32(rg.Substring(1, 1));
-                n[2] = Convert.ToInt32(rg.Substring(2, 1));
-                n[3] = Convert.ToInt32(rg.Substring(3, 1));
-                n[4] = Convert.ToInt32(rg.Substring(4, 1));
-                n[5] = Convert.ToInt32(rg.Substring(5, 1));
-                n[6] = Convert.ToInt32(rg.Substring(6, 1));
-                n[7] = Convert.ToInt32(rg.Substring(7, 1));
-                n[8] = Convert.ToInt32(rg.Substring(8, 1));
 
                 //Aplica a regra de validação do RG, multiplicando cada digito por valores pré-determinados
-                n[0] = 2;
-                n[1] = 3;
-                n[2] = 4;
-                n[3] = 5;
-                n[4] = 6;
-                n[5] = 7;
-                n[6] = 8;
-                n[7] = 9;
+                n[0] *= 2;
+                n[1] *= 3;
+                n[2] *= 4;
+                n[3] *= 5;
+                n[4] *= 6;
+                n[5] *= 7;
+                n[6] *= 8;
+                n[7] *= 9;
                 n[8] *= 100;
 
                 //Valida o RG
@@ -161,6 +175,7 @@ namespace BusinessLogicalLayer
                 return false;
             }
         }
+
         /// <summary>
         /// Verifica se o Email esta dentro dos padrões
         /// </summary>
@@ -268,7 +283,7 @@ namespace BusinessLogicalLayer
                 return "Senha deve ser informado.";
             }
 
-            if(senha.Contains(" "))
+            if (senha.Contains(" "))
             {
                 return "Senha não deve conter espaço.";
             }
@@ -286,11 +301,11 @@ namespace BusinessLogicalLayer
             //Se chegou aqui, o nome ta certinho e retornamos "";
             return "";
         }
-        public string ValidateIfSenha1EqualsToSenha2(string senha1,string senha2)
+        public string ValidateIfSenha1EqualsToSenha2(string senha1, string senha2)
         {
-            if(senha1 != senha2)
+            if (senha1 != senha2)
             {
-                return "Senhas não correspondem"; 
+                return "Senhas não correspondem";
             }
             return "";
         }

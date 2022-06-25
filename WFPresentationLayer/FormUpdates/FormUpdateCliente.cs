@@ -32,7 +32,7 @@ namespace WFPresentationLayer
             mtxtCpf.Text = cliente.CPF;
             mtxtTelefone1.Text = cliente.Telefone1;
             mtxtTelefone2.Text = cliente.Telefone2;
-            mtxtRg.Text = cliente.RG;
+            txtRg.Text = cliente.RG;
             txtEmail.Text = cliente.Email;
             cmbTipoCliente.SelectedValue = cliente.TipoClienteId;           
         }
@@ -44,7 +44,7 @@ namespace WFPresentationLayer
             update.Nome = txtNome.Text;
             update.CPF = mtxtCpf.Text;
             update.Telefone1 = mtxtTelefone1.Text;
-            update.RG = mtxtRg.Text;
+            update.RG = txtRg.Text;
             update.Telefone2 = mtxtTelefone2.Text;
             update.Email = txtEmail.Text;
             update.CPF = update.CPF.Replace(",", ".");

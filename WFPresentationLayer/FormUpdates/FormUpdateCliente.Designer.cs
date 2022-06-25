@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.mtxtTelefone1 = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.mtxtRg = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTipoCliente = new System.Windows.Forms.ComboBox();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnUpdateCliente
@@ -99,14 +99,6 @@
             this.label5.Size = new System.Drawing.Size(60, 15);
             this.label5.TabIndex = 60;
             this.label5.Text = "Telefone 1";
-            // 
-            // mtxtRg
-            // 
-            this.mtxtRg.Location = new System.Drawing.Point(271, 269);
-            this.mtxtRg.Mask = "0.000.000";
-            this.mtxtRg.Name = "mtxtRg";
-            this.mtxtRg.Size = new System.Drawing.Size(100, 23);
-            this.mtxtRg.TabIndex = 59;
             // 
             // label16
             // 
@@ -175,19 +167,26 @@
             this.cmbTipoCliente.Size = new System.Drawing.Size(114, 23);
             this.cmbTipoCliente.TabIndex = 51;
             // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(271, 267);
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(100, 23);
+            this.txtRg.TabIndex = 66;
+            // 
             // FormUpdateCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRg);
             this.Controls.Add(this.btnUpdateCliente);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.mtxtTelefone2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.mtxtTelefone1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.mtxtRg);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.mtxtCpf);
             this.Controls.Add(this.label3);
@@ -212,7 +211,6 @@
         private Label label4;
         private MaskedTextBox mtxtTelefone1;
         private Label label5;
-        private MaskedTextBox mtxtRg;
         private Label label16;
         private MaskedTextBox mtxtCpf;
         private Label label3;
@@ -221,5 +219,6 @@
         private TextBox txtNome;
         private Label label1;
         private ComboBox cmbTipoCliente;
+        private TextBox txtRg;
     }
 }
