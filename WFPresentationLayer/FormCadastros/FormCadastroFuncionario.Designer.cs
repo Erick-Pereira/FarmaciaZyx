@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroFuncionario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFuncionario = new System.Windows.Forms.TabPage();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.btnProximo = new System.Windows.Forms.Button();
             this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
-            this.txtRg = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
             this.tabEndereço.SuspendLayout();
@@ -116,6 +116,13 @@
             this.tabFuncionario.Size = new System.Drawing.Size(792, 422);
             this.tabFuncionario.TabIndex = 0;
             this.tabFuncionario.Text = "Funcionario";
+            // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(329, 116);
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(100, 23);
+            this.txtRg.TabIndex = 49;
             // 
             // btnProximo
             // 
@@ -208,6 +215,7 @@
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(121, 23);
             this.cmbGenero.TabIndex = 12;
+            this.cmbGenero.SelectedIndexChanged += new System.EventHandler(this.cmbGenero_SelectedIndexChanged);
             // 
             // mtxtTelefone
             // 
@@ -247,6 +255,7 @@
             // mtxtDataNascimento
             // 
             this.mtxtDataNascimento.BackColor = System.Drawing.Color.White;
+            this.mtxtDataNascimento.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.mtxtDataNascimento.Location = new System.Drawing.Point(333, 171);
             this.mtxtDataNascimento.Mask = "00/00/0000";
             this.mtxtDataNascimento.Name = "mtxtDataNascimento";
@@ -456,13 +465,6 @@
             this.mtxtCep.Name = "mtxtCep";
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
-            // 
-            // txtRg
-            // 
-            this.txtRg.Location = new System.Drawing.Point(329, 116);
-            this.txtRg.Name = "txtRg";
-            this.txtRg.Size = new System.Drawing.Size(100, 23);
-            this.txtRg.TabIndex = 49;
             // 
             // FormCadastroFuncionario
             // 

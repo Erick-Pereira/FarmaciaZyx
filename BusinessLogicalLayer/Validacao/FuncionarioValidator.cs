@@ -21,6 +21,20 @@ namespace BusinessLogicalLayer
             }
                 return "";
         }
+        private string ValidateAge(DateTime dataNascimento)
+        {
+            string data = dataNascimento.ToString();
+            data = data.Replace("/", " ");
+            if (!string.IsNullOrWhiteSpace(data))
+            {
+                if (16 > dateTimeValidator.CalculateAge(dataNascimento))
+                {
+                    return "Idade minima de 16 anos";
+                }
+                return "";
+            }
+            return "Data de nascimento deve ser informada";
+        }
         public Response Validate(Funcionario funcionario)
         {
             StringBuilder erros = new StringBuilder();
@@ -30,6 +44,7 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateEmail(funcionario.Email));
             erros.AppendLine(stringValidator.ValidateTelefone(funcionario.Telefone));
             erros.AppendLine(ValidateRG(funcionario.RG));
+            erros.AppendLine(ValidateAge(funcionario.DataNascimento));
             if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
             {
                 return new Response(erros.ToString().Trim(), true);

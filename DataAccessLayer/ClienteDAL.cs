@@ -14,7 +14,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO CLIENTES (NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID) VALUES (@NOME,@RG,@CPF,@TELEFONE1,@TELEFONE2,@EMAIL,@PONTOS,@TIPO_CLIENTE_ID)";
+            string sql = $"INSERT INTO CLIENTES (NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID,DATA_NASCIMENTO) VALUES (@NOME,@RG,@CPF,@TELEFONE1,@TELEFONE2,@EMAIL,@PONTOS,@TIPO_CLIENTE_ID,@GENEROS_ID,@DATA_NASCIMENTO)";
 
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -28,6 +28,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@EMAIL", cliente.Email);
             command.Parameters.AddWithValue("@PONTOS", cliente.Pontos);
             command.Parameters.AddWithValue("@TIPO_CLIENTE_ID", cliente.TipoClienteId);
+            command.Parameters.AddWithValue("@GENEROS_ID", cliente.GeneroId);
+            command.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.DataNascimento);
 
 
             //Estamos conectados na base de dados
@@ -68,7 +70,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS WHERE ID = @ID";
+            string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS,GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
 
             
 
@@ -83,6 +85,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@TELEFONE2", cliente.Telefone2);
             command.Parameters.AddWithValue("@PONTOS", cliente.Pontos);
             command.Parameters.AddWithValue("@ID", cliente.ID);
+            command.Parameters.AddWithValue("@GENEROS_ID", cliente.GeneroId);
+            command.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.DataNascimento);
 
             //Estamos conectados na base de dados
             //try catch
@@ -169,7 +173,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID FROM CLIENTES";
+            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID, GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES";
 
             
 
@@ -194,6 +198,8 @@ namespace DataAccessLayer
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
                     cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
+                    cliente.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     clientes.Add(cliente);
                 }
                 return new DataResponse<Cliente>("Clientes selecionados com sucesso!", true, clientes);
@@ -214,7 +220,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS FROM CLIENTES WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE ID = @ID";
 
             
 
@@ -238,6 +244,9 @@ namespace DataAccessLayer
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
+                    cliente.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     return new SingleResponse<Cliente>("Cliente selecionado com sucesso!", true, cliente);
                 }
                 return new SingleResponse<Cliente>("Cliente não encontrado!", false, null);

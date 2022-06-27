@@ -78,6 +78,25 @@ namespace WFPresentationLayer
 
         private void btnInformacoesEntrada_Click(object sender, EventArgs e)
         {
+            if (dgvEntradas.CurrentCell == null)
+            {
+                MessageBox.Show("Não é possivel ver as informações adicionais de uma Entrada não selecionada");
+                return;
+            }
+            string message = "Você realmente  ver as informações adicionais desta Entrada?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                int rowindex = dgvEntradas.CurrentCell.RowIndex;
+                int index = Convert.ToInt32(dgvEntradas.Rows[rowindex].Cells[0].Value);
+                btnInformacoesEntrada.Enabled = false;
+                btnInformacoesEntrada.Visible = false;
+                StaticItem.item = entradaBLL.GetByID(index).Item;
+                panelDesktopEntradas.BringToFront();
+                OpenChildForm(new FormInformacoesAdicionaisEntrada());
+            }
         }
     }
 }

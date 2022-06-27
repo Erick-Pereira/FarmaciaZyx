@@ -84,6 +84,7 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+
         /// <summary>
         /// Faz a validação se tudo esta dentro dos padrões
         /// </summary>
@@ -99,6 +100,7 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateEmail(fornecedor.Email));
             erros.AppendLine(ValidateNomeContato(fornecedor.NomeContato));
             erros.AppendLine(stringValidator.ValidateTelefone(fornecedor.Telefone));
+
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
             if (string.IsNullOrWhiteSpace(erros.ToString()))
             {

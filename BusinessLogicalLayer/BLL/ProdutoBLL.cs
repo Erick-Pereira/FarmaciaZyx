@@ -73,6 +73,15 @@ namespace BusinessLogicalLayer
             }
             return new DataResponse<Produto>(singleResponse.Message, false, null);
         }
+
+
+        public double CalculateNewValueWithProdutos(Produto OldProduto, Produto NewProduto)
+        {
+            double valor = ((OldProduto.Valor * OldProduto.QtdEstoque) + (NewProduto.Valor * NewProduto.QtdEstoque)) / (NewProduto.QtdEstoque + OldProduto.QtdEstoque);
+            return Math.Round(valor, 2);
+
+
+        }
         public DataResponse<Produto> CalculateInventory(List<Produto> produtos)
         {
             List<Produto> produtosWithEstoque = new List<Produto>();

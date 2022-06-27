@@ -43,11 +43,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTipoCliente = new System.Windows.Forms.ComboBox();
             this.txtRg = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbGenero = new System.Windows.Forms.ComboBox();
+            this.mtxtDataNascimento = new System.Windows.Forms.MaskedTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUpdateCliente
             // 
-            this.btnUpdateCliente.Location = new System.Drawing.Point(317, 308);
+            this.btnUpdateCliente.Location = new System.Drawing.Point(317, 351);
             this.btnUpdateCliente.Name = "btnUpdateCliente";
             this.btnUpdateCliente.Size = new System.Drawing.Size(144, 23);
             this.btnUpdateCliente.TabIndex = 65;
@@ -174,12 +178,58 @@
             this.txtRg.Size = new System.Drawing.Size(100, 23);
             this.txtRg.TabIndex = 66;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(416, 249);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 15);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Genero";
+            // 
+            // cmbGenero
+            // 
+            this.cmbGenero.BackColor = System.Drawing.Color.White;
+            this.cmbGenero.FormattingEnabled = true;
+            this.cmbGenero.Items.AddRange(new object[] {
+            "Masculino",
+            "Feminino",
+            "Outre"});
+            this.cmbGenero.Location = new System.Drawing.Point(416, 267);
+            this.cmbGenero.Name = "cmbGenero";
+            this.cmbGenero.Size = new System.Drawing.Size(121, 23);
+            this.cmbGenero.TabIndex = 67;
+            // 
+            // mtxtDataNascimento
+            // 
+            this.mtxtDataNascimento.BackColor = System.Drawing.Color.White;
+            this.mtxtDataNascimento.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.mtxtDataNascimento.Location = new System.Drawing.Point(352, 322);
+            this.mtxtDataNascimento.Mask = "00/00/0000";
+            this.mtxtDataNascimento.Name = "mtxtDataNascimento";
+            this.mtxtDataNascimento.Size = new System.Drawing.Size(90, 23);
+            this.mtxtDataNascimento.TabIndex = 70;
+            this.mtxtDataNascimento.ValidatingType = typeof(System.DateTime);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(341, 304);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 15);
+            this.label8.TabIndex = 69;
+            this.label8.Text = "Data de Nascimento";
+            // 
             // FormUpdateCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mtxtDataNascimento);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cmbGenero);
             this.Controls.Add(this.txtRg);
             this.Controls.Add(this.btnUpdateCliente);
             this.Controls.Add(this.label6);
@@ -220,5 +270,9 @@
         private Label label1;
         private ComboBox cmbTipoCliente;
         private TextBox txtRg;
+        private Label label7;
+        private ComboBox cmbGenero;
+        private MaskedTextBox mtxtDataNascimento;
+        private Label label8;
     }
 }

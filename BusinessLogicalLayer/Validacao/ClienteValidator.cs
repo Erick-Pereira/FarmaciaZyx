@@ -13,6 +13,7 @@ namespace BusinessLogicalLayer
         private DateTimeValidator dateTimeValidator = new DateTimeValidator();
         private Normatization normatization = new Normatization();
         private ClienteDAL clienteDAL = new ClienteDAL();
+
         private string ValidateRG(string rG)
         {
             rG = rG.Replace(".", "");
@@ -20,7 +21,21 @@ namespace BusinessLogicalLayer
             {
                 return "RG precisa ser informado";
             }
+            return "";
+        }
+        private string ValidateAge(DateTime dataNascimento)
+        {
+            string data = dataNascimento.ToString();
+            data = data.Replace("/", " ");
+            if (!string.IsNullOrWhiteSpace(data))
+            {
+                if (16 > dateTimeValidator.CalculateAge(dataNascimento))
+                {
+                    return "Idade minima de 16 anos";
+                }
                 return "";
+            }
+            return "Data de nascimento deve ser informada";
         }
         public Response Validate(Cliente cliente)
         {
@@ -30,6 +45,8 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateEmail(cliente.Email));
             erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone1));
             erros.AppendLine(stringValidator.ValidateTelefone(cliente.Telefone2));
+            erros.AppendLine(ValidateAge(cliente.DataNascimento));
+
             erros.AppendLine(ValidateRG(cliente.RG));
             if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
             {

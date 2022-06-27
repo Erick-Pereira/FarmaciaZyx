@@ -1,6 +1,7 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
 using Shared;
+using System.Globalization;
 using System.Text;
 
 namespace WFPresentationLayer
@@ -18,7 +19,9 @@ namespace WFPresentationLayer
         EstadoBLL estadoBLL = new EstadoBLL();
         BairroBLL bairroBLL = new BairroBLL();
         CidadeBLL cidadeBLL = new CidadeBLL();
+        GeneroBLL generoBLL = new GeneroBLL();
         EnderecoBLL enderecoBLL = new EnderecoBLL();
+        DateTimeValidator dateTimeValidator = new DateTimeValidator();
         Funcionario funcionario = new Funcionario();
         private Form currentChildForm;
         private void OpenChildForm(Form childForm)
@@ -45,11 +48,16 @@ namespace WFPresentationLayer
             cmbEstados.DataSource = estadoBLL.GetAll().Dados;
             cmbEstados.DisplayMember = "NomeEstado";
             cmbEstados.ValueMember = "ID";
+            cmbGenero.DataSource = generoBLL.GetAll().Dados;
+            cmbGenero.DisplayMember = "Nome";
+            cmbGenero.ValueMember = "ID";
             txtNome.Text = funcionario.Nome;
             mtxtCpf.Text = funcionario.CPF;
             txtRg.Text = funcionario.RG;
+            cmbGenero.SelectedValue = funcionario.GerenoId;
             cmbTipoFuncionario.SelectedValue = funcionario.TipoFuncionarioId;
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
+            mtxtDataNascimento.Text = Convert.ToString(funcionario.DataNascimento, new CultureInfo("pt-br"));
             txtEmail.Text = funcionario.Email;
             mtxtTelefone.Text = funcionario.Telefone;
             //txtSenha.Text = "";
@@ -82,34 +90,42 @@ namespace WFPresentationLayer
             update.Nome = txtNome.Text;
             update.CPF = mtxtCpf.Text.Replace(",", ".");
             update.RG = txtRg.Text.Replace(",", ".");
+            update.GerenoId = Convert.ToInt32(cmbGenero.SelectedValue);
             update.TipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
-            //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
-            update.Email = txtEmail.Text;
-            update.Telefone = mtxtTelefone.Text;
-            //string senha = txtSenha.Text;
-            //string confirmarSenha = txtConfirmarSenha.Text;
-            //Genero genero = (Genero)cmbGenero.SelectedIndex;
-            enderecoUpdate.CEP = mtxtCep.Text;
-            enderecoUpdate.Rua = txtRua.Text.ToUpper();
-            enderecoUpdate.NumeroCasa = mtxtNumero.Text;
-            enderecoUpdate.Complemento = txtComplemento.Text.ToUpper();
-            cidadeUpdate.EstadoId = Convert.ToInt32(cmbEstados.SelectedValue);
-            cidadeUpdate.NomeCidade = txtCidade.Text.ToUpper();
-            bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
-            stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
-            stringBuilder.AppendLine(validator.Validate(update).Message);
-            FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
-            string erros = stringBuilder.ToString().Trim();
-            stringBuilder.Clear();
-            if (string.IsNullOrWhiteSpace(erros))
+            DateTime dataNascimento = new DateTime();
+            string erro = dateTimeValidator.VerifyIfIsNull(mtxtDataNascimento.Text);
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                Response response = funcionarioBLL.UpdateFuncionarioComEndereco(funcionarioComEnderecoUpdate);
-                MessageBox.Show(response.Message);
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                update.DataNascimento = dataNascimento;
+                //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
+                update.Email = txtEmail.Text;
+                update.Telefone = mtxtTelefone.Text;
+                //string senha = txtSenha.Text;
+                //string confirmarSenha = txtConfirmarSenha.Text;
+                enderecoUpdate.CEP = mtxtCep.Text;
+                enderecoUpdate.Rua = txtRua.Text.ToUpper();
+                enderecoUpdate.NumeroCasa = mtxtNumero.Text;
+                enderecoUpdate.Complemento = txtComplemento.Text.ToUpper();
+                cidadeUpdate.EstadoId = Convert.ToInt32(cmbEstados.SelectedValue);
+                cidadeUpdate.NomeCidade = txtCidade.Text.ToUpper();
+                bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
+                stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
+                stringBuilder.AppendLine(validator.Validate(update).Message);
+                FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
+                string erros = stringBuilder.ToString().Trim();
+                stringBuilder.Clear();
+                if (string.IsNullOrWhiteSpace(erros))
+                {
+                    Response response = funcionarioBLL.UpdateFuncionarioComEndereco(funcionarioComEnderecoUpdate);
+                    MessageBox.Show(response.Message);
+                }
             }
             else
             {
-                MessageBox.Show(erros);
+                MessageBox.Show(erro);
             }
+
         }
 
 

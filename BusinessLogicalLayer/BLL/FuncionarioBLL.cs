@@ -132,7 +132,7 @@ namespace BusinessLogicalLayer
             StringValidator stringValidator = new StringValidator();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(stringValidator.ValidateCEP(funcionarioComEndereco.Endereco.CEP));
-            stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
+            //stringBuilder.AppendLine(stringValidator.ValidateSenha(funcionarioComEndereco.Funcionario.Senha));
             stringBuilder.AppendLine(funcionarioValidator.Validate(funcionarioComEndereco.Funcionario).Message);
             string erros = stringBuilder.ToString().Trim();
             if (string.IsNullOrWhiteSpace(erros))

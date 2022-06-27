@@ -82,12 +82,29 @@ namespace WFPresentationLayer
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
             Produto produto = produtoBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
+            bool HasFind = false;
             if (produto != null)
             {
                 produto.QtdEstoque = (double)nudQtde.Value;
                 produto.Valor = (double)nudValorUnitario.Value;
-                produtos.Add(produto);
+                for (int i = 0; i < produtos.Count; i++)
+                {
+                    if(produto.ID == produtos[i].ID)
+                    {
+                        HasFind = true;
+                        produtos[i].QtdEstoque += produto.QtdEstoque;
+                        if(produtos[i].Valor != produto.Valor)
+                        {
+                            produtos[i].Valor = produtoBLL.CalculateNewValueWithProdutos(produtos[i], produto);
+                        }
+                        break;
+                    }
+                }
+                if(!HasFind)
+                { produtos.Add(produto);
+               
                 dgvProdutosEntrada.Rows.Add();
+                }
                 double valor = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {

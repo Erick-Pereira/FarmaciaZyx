@@ -48,7 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtRg = new System.Windows.Forms.TextBox();
-            this.panelUpdateSenha = new System.Windows.Forms.Panel();
             this.tabEndereço = new System.Windows.Forms.TabPage();
             this.cmbEstados = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -65,10 +64,11 @@
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.panelUpdateSenha = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabFuncionario.SuspendLayout();
-            this.panelUpdateSenha.SuspendLayout();
             this.tabEndereço.SuspendLayout();
+            this.panelUpdateSenha.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -217,6 +217,7 @@
             // mtxtDataNascimento
             // 
             this.mtxtDataNascimento.BackColor = System.Drawing.Color.White;
+            this.mtxtDataNascimento.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.mtxtDataNascimento.Location = new System.Drawing.Point(333, 171);
             this.mtxtDataNascimento.Mask = "00/00/0000";
             this.mtxtDataNascimento.Name = "mtxtDataNascimento";
@@ -237,7 +238,7 @@
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
             this.mtxtCpf.Location = new System.Drawing.Point(333, 56);
-            this.mtxtCpf.Mask = "000,000,000-00";
+            this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";
             this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
             this.mtxtCpf.TabIndex = 5;
@@ -274,16 +275,6 @@
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(100, 23);
             this.txtRg.TabIndex = 0;
-            // 
-            // panelUpdateSenha
-            // 
-            this.panelUpdateSenha.CausesValidation = false;
-            this.panelUpdateSenha.Controls.Add(this.tabControl1);
-            this.panelUpdateSenha.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelUpdateSenha.Location = new System.Drawing.Point(0, 0);
-            this.panelUpdateSenha.Name = "panelUpdateSenha";
-            this.panelUpdateSenha.Size = new System.Drawing.Size(800, 450);
-            this.panelUpdateSenha.TabIndex = 50;
             // 
             // tabEndereço
             // 
@@ -444,6 +435,16 @@
             this.mtxtCep.Size = new System.Drawing.Size(110, 23);
             this.mtxtCep.TabIndex = 1;
             // 
+            // panelUpdateSenha
+            // 
+            this.panelUpdateSenha.CausesValidation = false;
+            this.panelUpdateSenha.Controls.Add(this.tabControl1);
+            this.panelUpdateSenha.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelUpdateSenha.Location = new System.Drawing.Point(0, 0);
+            this.panelUpdateSenha.Name = "panelUpdateSenha";
+            this.panelUpdateSenha.Size = new System.Drawing.Size(800, 450);
+            this.panelUpdateSenha.TabIndex = 50;
+            // 
             // FormUpdateFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -457,9 +458,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabFuncionario.ResumeLayout(false);
             this.tabFuncionario.PerformLayout();
-            this.panelUpdateSenha.ResumeLayout(false);
             this.tabEndereço.ResumeLayout(false);
             this.tabEndereço.PerformLayout();
+            this.panelUpdateSenha.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

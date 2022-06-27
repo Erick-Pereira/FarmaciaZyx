@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace WFPresentationLayer
         ClienteBLL clienteBLL = new ClienteBLL();
         TipoClienteBLL tipoClienteBLL = new TipoClienteBLL();
         ClienteValidator clienteValidator = new ClienteValidator();
+        GeneroBLL generoBLL = new GeneroBLL();
+        DateTimeValidator dateTimeValidator = new DateTimeValidator();
+
         public FormUpdateCliente()
         {
             InitializeComponent();
@@ -28,13 +32,18 @@ namespace WFPresentationLayer
             cmbTipoCliente.DataSource = tipoClienteBLL.GetAll().Dados;
             cmbTipoCliente.DisplayMember = "Nome";
             cmbTipoCliente.ValueMember = "ID";
+            cmbGenero.DataSource = generoBLL.GetAll().Dados;
+            cmbGenero.DisplayMember = "Nome";
+            cmbGenero.ValueMember = "ID";
             txtNome.Text = cliente.Nome;
             mtxtCpf.Text = cliente.CPF;
             mtxtTelefone1.Text = cliente.Telefone1;
             mtxtTelefone2.Text = cliente.Telefone2;
             txtRg.Text = cliente.RG;
             txtEmail.Text = cliente.Email;
-            cmbTipoCliente.SelectedValue = cliente.TipoClienteId;           
+            cmbGenero.SelectedValue = cliente.GeneroId;
+            cmbTipoCliente.SelectedValue = cliente.TipoClienteId;
+            mtxtDataNascimento.Text = Convert.ToString(cliente.DataNascimento, new CultureInfo("pt-br"));
         }
 
         private void btnUpdateCliente_Click(object sender, EventArgs e)
@@ -46,17 +55,29 @@ namespace WFPresentationLayer
             update.Telefone1 = mtxtTelefone1.Text;
             update.RG = txtRg.Text;
             update.Telefone2 = mtxtTelefone2.Text;
-            update.Email = txtEmail.Text;
-            update.CPF = update.CPF.Replace(",", ".");
-            update.RG = update.RG.Replace(",", ".");
-            update.TipoClienteId = Convert.ToInt32(cmbTipoCliente.SelectedValue);
-            Response response = clienteValidator.Validate(update);
-            if (response.HasSuccess)
+            string erro = dateTimeValidator.VerifyIfIsNull(mtxtDataNascimento.Text);
+            DateTime dataNascimento = new DateTime();
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                response = clienteBLL.Update(update);
-                
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                update.DataNascimento = dataNascimento;
+                update.Email = txtEmail.Text;
+                update.GeneroId = Convert.ToInt32(cmbGenero.SelectedValue);
+                update.CPF = update.CPF.Replace(",", ".");
+                update.RG = update.RG.Replace(",", ".");
+                update.TipoClienteId = Convert.ToInt32(cmbTipoCliente.SelectedValue);
+                Response response = clienteValidator.Validate(update);
+                if (response.HasSuccess)
+                {
+                    response = clienteBLL.Update(update);
+
+                }
+                MessageBox.Show(response.Message);
             }
-            MessageBox.Show(response.Message);
+            else
+            {
+                MessageBox.Show(erro);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,RG,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID) VALUES (@NOME,@CPF,@RG,@TELEFONE,@EMAIL,@SENHA,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID)";
+            string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,RG,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO) VALUES (@NOME,@CPF,@RG,@TELEFONE,@EMAIL,@SENHA,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID,@GENEROS_ID,@DATA_NASCIMENTO)";
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -25,6 +25,8 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
+            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GerenoId);
+            command.Parameters.AddWithValue("@DATA_NASCIMENTO", funcionario.DataNascimento);
             //Estamos conectados na base de dados
             //try catch
             //try catch finally
@@ -63,7 +65,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID WHERE ID = @ID";
+            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID, GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -75,7 +77,9 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
+            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GerenoId);
             command.Parameters.AddWithValue("@ID", funcionario.ID);
+            command.Parameters.AddWithValue("@DATA_NASCIMENTO", funcionario.DataNascimento);
 
             //Estamos conectados na base de dados
             //try catch
@@ -206,7 +210,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS";
+            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID,DATA_NASCIMENTO FROM FUNCIONARIOS";
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
             SqlCommand command = new SqlCommand(sql, connection);
@@ -227,6 +231,8 @@ namespace DataAccessLayer
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
+                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     funcionarios.Add(funcionario);
                 }
                 return new DataResponse<Funcionario>("Funcionarios selecionados com sucesso!", true, funcionarios);
@@ -247,7 +253,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,RG,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ID = @ID";
+            string sql = $"SELECT ID,NOME,RG,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO FROM FUNCIONARIOS WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -271,6 +277,9 @@ namespace DataAccessLayer
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
+                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
+
                     return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
                 }
                 return new SingleResponse<Funcionario>("Funcionario não encontrado!", false, null);
@@ -329,7 +338,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE ENDERECO_ID = @ENDERECO_ID";
+            string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO FROM FUNCIONARIOS WHERE ENDERECO_ID = @ENDERECO_ID";
             SqlConnection connection = new SqlConnection(connectionString);
             //ADO.NET 
             SqlCommand command = new SqlCommand(sql, connection);
@@ -351,6 +360,8 @@ namespace DataAccessLayer
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
+                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     funcionarios.Add(funcionario);
                 }
                 return new DataResponse<Funcionario>("Funcionarios selecionados com sucesso!", true, funcionarios);

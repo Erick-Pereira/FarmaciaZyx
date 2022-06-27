@@ -19,7 +19,8 @@ namespace WFPresentationLayer
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
         EstadoBLL estadoBLL = new EstadoBLL();
         StringBuilder stringBuilder = new StringBuilder();
-
+        GeneroBLL generoBLL = new GeneroBLL();
+        DateTimeValidator dateTimeValidator = new DateTimeValidator();
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -27,12 +28,18 @@ namespace WFPresentationLayer
             string cpf = mtxtCpf.Text;
             string rg = txtRg.Text;
             int tipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
+            string erro = dateTimeValidator.VerifyIfIsNull(mtxtDataNascimento.Text);
+            DateTime dataNascimento = new DateTime();
+            if (string.IsNullOrWhiteSpace(erro))
+            {
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+            }
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;
-            string telefone = mtxtTelefone.Text; ;
+            string telefone = mtxtTelefone.Text;
             string senha = txtSenha.Text;
             string confirmarSenha = txtConfirmarSenha.Text;
-            //Genero genero = (Genero)cmbGenero.SelectedIndex;
+            int genero = (int)cmbGenero.SelectedValue;
             string cep = mtxtCep.Text;
             string rua = txtRua.Text.ToUpper();
             string bairro = txtBairro.Text.ToUpper();
@@ -42,19 +49,20 @@ namespace WFPresentationLayer
             string complemento = txtComplemento.Text.ToUpper();
             cpf = cpf.Replace(",", ".");
             rg = rg.Replace(",", ".");
+            stringBuilder.AppendLine(erro);
             stringBuilder.AppendLine(stringValidator.ValidateCEP(cep));
             stringBuilder.AppendLine(stringValidator.ValidateSenha(senha));
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
-            Funcionario funcionario = new Funcionario(nome, cpf, rg, telefone, email, senha, tipoFuncionarioId);
+            Funcionario funcionario = new Funcionario(nome, cpf, rg, telefone, email, senha, tipoFuncionarioId, genero, dataNascimento);
             stringBuilder.AppendLine(validator.Validate(funcionario).Message);
-            Endereco endereco = new Endereco(cep, numero, rua, complemento);
-            Bairro bairro1 = new Bairro(bairro);
-            Cidade cidade1 = new Cidade(cidade, estado);
-            FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1, tipoFuncionarioId);
             string erros = stringBuilder.ToString().Trim();
-            stringBuilder.Clear();
             if (string.IsNullOrWhiteSpace(erros))
             {
+
+                Endereco endereco = new Endereco(cep, numero, rua, complemento);
+                Bairro bairro1 = new Bairro(bairro);
+                Cidade cidade1 = new Cidade(cidade, estado);
+                FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1, tipoFuncionarioId);
                 Response response = funcionarioBLL.InsertFuncionarioComEndereco(funcionarioComEndereco);
                 MessageBox.Show(response.Message);
                 if (response.HasSuccess)
@@ -63,12 +71,12 @@ namespace WFPresentationLayer
                     mtxtCpf.Text = "";
                     txtRg.Text = "";
                     cmbTipoFuncionario.SelectedIndex = 1;
-                    //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
+                    mtxtDataNascimento.Text = "";
                     txtEmail.Text = "";
                     mtxtTelefone.Text = "";
                     txtSenha.Text = "";
                     txtConfirmarSenha.Text = "";
-                    //Genero genero = (Genero)cmbGenero.SelectedIndex;
+                    cmbGenero.SelectedIndex = 1;
                     mtxtCep.Text = "";
                     txtRua.Text = "";
                     txtBairro.Text = "";
@@ -82,6 +90,7 @@ namespace WFPresentationLayer
             {
                 MessageBox.Show(erros);
             }
+            stringBuilder.Clear();
         }
 
         private void FormCadastroFuncionario_Load(object sender, EventArgs e)
@@ -92,11 +101,19 @@ namespace WFPresentationLayer
             cmbEstados.DataSource = estadoBLL.GetAll().Dados;
             cmbEstados.DisplayMember = "NomeEstado";
             cmbEstados.ValueMember = "ID";
+            cmbGenero.DataSource = generoBLL.GetAll().Dados;
+            cmbGenero.DisplayMember = "Nome";
+            cmbGenero.ValueMember = "ID";
         }
 
         private void btnProximo_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void cmbGenero_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
