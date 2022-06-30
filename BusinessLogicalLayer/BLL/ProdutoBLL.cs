@@ -94,7 +94,7 @@ namespace BusinessLogicalLayer
                 }
                 else
                 {
-                    return new DataResponse<Produto>($"Não é possivel vender mais do que o estoque {produtosWithEstoque[i].Nome} {produtosWithEstoque[i].QtdEstoque}",false,null);
+                    return new DataResponse<Produto>($"Não é possivel vender mais do que o estoque! Produto: {produtosWithEstoque[i].Nome}, Estoque: {produtosWithEstoque[i].QtdEstoque}",false,null);
                 }
             }
             return new DataResponse<Produto>("Calculo efetuado com sucesso", true, produtosWithEstoque);

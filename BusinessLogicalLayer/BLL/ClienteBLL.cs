@@ -23,6 +23,10 @@ namespace BusinessLogicalLayer
             return clienteDAL.GetByID(id);
         }
 
+        public SingleResponse<Cliente> GetByCPF(string cPF)
+        {
+            return clienteDAL.GetByCPF(cPF);
+        }
         public Response Insert(Cliente item)
         {
             //NAO ESQUEÇAM DAS VALIDAÇÕES!
@@ -39,6 +43,29 @@ namespace BusinessLogicalLayer
         public Response Update(Cliente item)
         {
             return clienteDAL.Update(item);
+        }
+        public Response WithdrawPontos(Cliente item)
+        {
+            item.Pontos = item.Pontos - 10;
+            if(item.Pontos < 0)
+            {
+                item.Pontos = 0;
+            }
+            return clienteDAL.UpdatePontos(item);
+        }
+        public Response GivePontos(Cliente item, double Valor)
+        {
+            int pontos = (int)Valor / 10;
+            item.Pontos += pontos;
+            return clienteDAL.UpdatePontos(item);
+        }
+        public double VerifyIfHasDesconto(Cliente cliente)
+        {
+            if(cliente.Pontos >= 10)
+            {
+                return 10;
+            }
+            return 0;
         }
     }
 }

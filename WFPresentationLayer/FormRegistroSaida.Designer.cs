@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDataSaida = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.btnRetirarProduto = new System.Windows.Forms.Button();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.txtUnidade = new System.Windows.Forms.TextBox();
@@ -62,6 +61,10 @@
             this.txtDescontoRs = new System.Windows.Forms.TextBox();
             this.txtNumItens = new System.Windows.Forms.TextBox();
             this.txtTotalPago = new System.Windows.Forms.TextBox();
+            this.btnAdicionarCliente = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.SuspendLayout();
@@ -130,19 +133,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(406, 29);
+            this.label1.Location = new System.Drawing.Point(72, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 19;
             this.label1.Text = "Cliente";
-            // 
-            // cmbCliente
-            // 
-            this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Location = new System.Drawing.Point(406, 47);
-            this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(121, 23);
-            this.cmbCliente.TabIndex = 18;
             // 
             // btnRetirarProduto
             // 
@@ -356,11 +351,52 @@
             this.txtTotalPago.Size = new System.Drawing.Size(100, 23);
             this.txtTotalPago.TabIndex = 59;
             // 
+            // btnAdicionarCliente
+            // 
+            this.btnAdicionarCliente.Location = new System.Drawing.Point(502, 36);
+            this.btnAdicionarCliente.Name = "btnAdicionarCliente";
+            this.btnAdicionarCliente.Size = new System.Drawing.Size(75, 40);
+            this.btnAdicionarCliente.TabIndex = 60;
+            this.btnAdicionarCliente.Text = "Adicionar Cliente";
+            this.btnAdicionarCliente.UseVisualStyleBackColor = true;
+            this.btnAdicionarCliente.Click += new System.EventHandler(this.btnAdicionarCliente_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(406, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 15);
+            this.label12.TabIndex = 61;
+            this.label12.Text = "CPF Cliente";
+            // 
+            // mtxtCpf
+            // 
+            this.mtxtCpf.BackColor = System.Drawing.Color.White;
+            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
+            this.mtxtCpf.Location = new System.Drawing.Point(406, 47);
+            this.mtxtCpf.Mask = "000.000.000-00";
+            this.mtxtCpf.Name = "mtxtCpf";
+            this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
+            this.mtxtCpf.TabIndex = 62;
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Enabled = false;
+            this.txtCliente.Location = new System.Drawing.Point(72, 46);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(119, 23);
+            this.txtCliente.TabIndex = 63;
+            // 
             // FormRegistroSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.mtxtCpf);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.btnAdicionarCliente);
             this.Controls.Add(this.txtTotalPago);
             this.Controls.Add(this.txtNumItens);
             this.Controls.Add(this.txtDescontoRs);
@@ -387,7 +423,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpDataSaida);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbCliente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegistroSaida";
             this.Text = "Registro Saida";
@@ -409,7 +444,6 @@
         private Label label2;
         private DateTimePicker dtpDataSaida;
         private Label label1;
-        private ComboBox cmbCliente;
         private Button btnRetirarProduto;
         private Button btnAdicionarProduto;
         private TextBox txtUnidade;
@@ -434,5 +468,9 @@
         private TextBox txtDescontoRs;
         private TextBox txtNumItens;
         private TextBox txtTotalPago;
+        private Button btnAdicionarCliente;
+        private Label label12;
+        private MaskedTextBox mtxtCpf;
+        private TextBox txtCliente;
     }
 }

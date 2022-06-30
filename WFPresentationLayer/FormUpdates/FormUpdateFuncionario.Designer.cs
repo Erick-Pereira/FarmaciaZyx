@@ -217,7 +217,6 @@
             // mtxtDataNascimento
             // 
             this.mtxtDataNascimento.BackColor = System.Drawing.Color.White;
-            this.mtxtDataNascimento.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.mtxtDataNascimento.Location = new System.Drawing.Point(333, 171);
             this.mtxtDataNascimento.Mask = "00/00/0000";
             this.mtxtDataNascimento.Name = "mtxtDataNascimento";
@@ -237,6 +236,7 @@
             // mtxtCpf
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
+            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCpf.Location = new System.Drawing.Point(333, 56);
             this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";

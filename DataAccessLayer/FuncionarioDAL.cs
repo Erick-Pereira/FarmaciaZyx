@@ -65,7 +65,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,CPF = @CPF, TELEFONE = @TELEFONE, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID, GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
+            string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,RG = @RG ,  CPF = @CPF, TELEFONE = @TELEFONE,EMAIL = @EMAIL, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID, GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
 
 
             //ADO.NET 
@@ -73,8 +73,10 @@ namespace DataAccessLayer
 
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", funcionario.Nome);
+            command.Parameters.AddWithValue("@RG", funcionario.RG);
             command.Parameters.AddWithValue("@CPF", funcionario.CPF);
             command.Parameters.AddWithValue("@TELEFONE", funcionario.Telefone);
+            command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
             command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GerenoId);

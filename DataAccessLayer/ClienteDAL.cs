@@ -70,10 +70,7 @@ namespace DataAccessLayer
             //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
             //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
             //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS,GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
-
-            
-
+            string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF,EMAIL = @EMAIL, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS,TIPO_CLIENTE_ID = @TIPO_CLIENTE_ID,GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -81,12 +78,15 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@NOME", cliente.Nome);
             command.Parameters.AddWithValue("@RG", cliente.RG);
             command.Parameters.AddWithValue("@CPF", cliente.CPF);
+            command.Parameters.AddWithValue("@EMAIL", cliente.Email);
             command.Parameters.AddWithValue("@TELEFONE1", cliente.Telefone1);
             command.Parameters.AddWithValue("@TELEFONE2", cliente.Telefone2);
             command.Parameters.AddWithValue("@PONTOS", cliente.Pontos);
-            command.Parameters.AddWithValue("@ID", cliente.ID);
+            command.Parameters.AddWithValue("@TIPO_CLIENTE_ID", cliente.TipoClienteId);
             command.Parameters.AddWithValue("@GENEROS_ID", cliente.GeneroId);
             command.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.DataNascimento);
+            command.Parameters.AddWithValue("@ID", cliente.ID);
+           
 
             //Estamos conectados na base de dados
             //try catch
@@ -120,6 +120,53 @@ namespace DataAccessLayer
             }
         }
 
+        public Response UpdatePontos(Cliente cliente)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"UPDATE CLIENTES SET PONTOS = @PONTOS WHERE ID = @ID";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@PONTOS", cliente.Pontos);
+            command.Parameters.AddWithValue("@ID", cliente.ID);
+
+            //Estamos conectados na base de dados
+            //try catch
+            //try catch finally
+            //try finally
+            try
+            {
+                connection.Open();
+                int qtdRegistrosAlterados = command.ExecuteNonQuery();
+                if (qtdRegistrosAlterados != 1)
+                {
+                    return new Response("Cliente excluido.", false);
+                }
+                return new Response("Cliente alterado com sucesso.", true);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("UQ_CLIENTES_EMAIL"))
+                {
+                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
+                    return new Response("Email já está em uso.", false);
+                }
+                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
+                return new Response("Erro no banco de dados, contate o administrador.", false);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CLIENTES WHERE ID = @ID";
@@ -197,6 +244,7 @@ namespace DataAccessLayer
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.Pontos = Convert.ToInt32(reader["PONTOS"]);
                     cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
                     cliente.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
                     cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
@@ -244,6 +292,55 @@ namespace DataAccessLayer
                     cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
                     cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
                     cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.Pontos = Convert.ToInt32(reader["PONTOS"]);
+                    cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
+                    cliente.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
+                    return new SingleResponse<Cliente>("Cliente selecionado com sucesso!", true, cliente);
+                }
+                return new SingleResponse<Cliente>("Cliente não encontrado!", false, null);
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<Cliente>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
+            finally
+            {
+                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+        public SingleResponse<Cliente> GetByCPF(string cPF)
+        {
+            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
+            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
+            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
+            string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE CPF = @CPF";
+
+
+
+            //ADO.NET 
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@CPF", cPF);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                //Enquanto houver registros, o loop será executado!
+                if (reader.Read())
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.ID = Convert.ToInt32(reader["ID"]);
+                    cliente.Nome = Convert.ToString(reader["NOME"]);
+                    cliente.RG = Convert.ToString(reader["RG"]);
+                    cliente.CPF = Convert.ToString(reader["CPF"]);
+                    cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
+                    cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
+                    cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.Pontos = Convert.ToInt32(reader["PONTOS"]);
                     cliente.TipoClienteId = Convert.ToInt32(reader["TIPO_CLIENTE_ID"]);
                     cliente.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
                     cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);

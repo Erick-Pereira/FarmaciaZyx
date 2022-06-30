@@ -176,6 +176,7 @@
             // 
             // mtxtCNPJ
             // 
+            this.mtxtCNPJ.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCNPJ.Location = new System.Drawing.Point(51, 108);
             this.mtxtCNPJ.Mask = "00.000.000/0000-00";
             this.mtxtCNPJ.Name = "mtxtCNPJ";

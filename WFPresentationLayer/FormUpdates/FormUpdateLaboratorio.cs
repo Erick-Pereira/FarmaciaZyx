@@ -31,6 +31,8 @@ namespace WFPresentationLayer
             Laboratorio update = new Laboratorio();
             update.ID = laboratorio.ID;
             update.Nome = txtLaboratorio.Text;
+            update.CNPJ = mtxtCNPJ.Text;
+            update.CNPJ = update.CNPJ.Replace(",", ".");
             Response response = laboratorioValidator.Validate(update);
             if (response.HasSuccess)
             {

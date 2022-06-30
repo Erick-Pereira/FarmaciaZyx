@@ -82,7 +82,7 @@ namespace WFPresentationLayer
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
             Produto produto = produtoBLL.GetByID(Convert.ToInt32(cmbProduto.SelectedValue)).Item;
-            bool HasFind = false;
+            bool hasFound = false;
             if (produto != null)
             {
                 produto.QtdEstoque = (double)nudQtde.Value;
@@ -91,7 +91,7 @@ namespace WFPresentationLayer
                 {
                     if(produto.ID == produtos[i].ID)
                     {
-                        HasFind = true;
+                        hasFound = true;
                         produtos[i].QtdEstoque += produto.QtdEstoque;
                         if(produtos[i].Valor != produto.Valor)
                         {
@@ -100,7 +100,7 @@ namespace WFPresentationLayer
                         break;
                     }
                 }
-                if(!HasFind)
+                if(!hasFound)
                 { produtos.Add(produto);
                
                 dgvProdutosEntrada.Rows.Add();
@@ -108,13 +108,13 @@ namespace WFPresentationLayer
                 double valor = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {
+                    valor += Math.Round((produtos[i].QtdEstoque * produtos[i].Valor), 2);
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaID"].Value = produtos[i].ID;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
-                    valor += (produtos[i].QtdEstoque * produtos[i].Valor);
                 }
                 txtNumItens.Text = produtos.Count.ToString();
                 txtTotalPago.Text = (valor).ToString();
@@ -154,6 +154,7 @@ namespace WFPresentationLayer
                 {
                     Entrada entrada = new Entrada();
                     List<ProdutosEntrada> produtosentradas = new List<ProdutosEntrada>();
+                    
                     double valor = 0;
                     for (int i = 0; i < produtos.Count; i++)
                     {
