@@ -1,6 +1,7 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
 using Shared;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -32,7 +33,7 @@ namespace WFPresentationLayer
             DateTime dataNascimento = new DateTime();
             if (string.IsNullOrWhiteSpace(erro))
             {
-                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text, new CultureInfo("pt-br"));
             }
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             string email = txtEmail.Text;

@@ -59,7 +59,7 @@ namespace WFPresentationLayer
             DateTime dataNascimento = new DateTime();
             if (string.IsNullOrWhiteSpace(erro))
             {
-                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text,new CultureInfo("pt-br"));
                 update.DataNascimento = dataNascimento;
                 update.Email = txtEmail.Text;
                 update.GeneroId = Convert.ToInt32(cmbGenero.SelectedValue);

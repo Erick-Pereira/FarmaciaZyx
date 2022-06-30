@@ -96,7 +96,7 @@ namespace WFPresentationLayer
             string erro = dateTimeValidator.VerifyIfIsNull(mtxtDataNascimento.Text);
             if (string.IsNullOrWhiteSpace(erro))
             {
-                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text,new CultureInfo("pt-br"));
                 update.DataNascimento = dataNascimento;
                 //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
                 update.Email = txtEmail.Text;

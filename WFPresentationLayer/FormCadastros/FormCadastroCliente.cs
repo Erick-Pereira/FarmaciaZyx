@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace WFPresentationLayer
             DateTime dataNascimento = new DateTime();
             if (string.IsNullOrWhiteSpace(erro))
             {
-                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text);
+                dataNascimento = Convert.ToDateTime(mtxtDataNascimento.Text, new CultureInfo("pt-br"));
             }
             Cliente cliente = new Cliente(nome, rg, cpf, telefone1, telefone2, email, tipoCliente, genero, dataNascimento);
             response = clienteValidator.Validate(cliente);
