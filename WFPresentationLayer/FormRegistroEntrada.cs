@@ -113,8 +113,8 @@ namespace WFPresentationLayer
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
                     dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
-                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
-                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = Math.Round(produtos[i].Valor,2);
+                    dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = Math.Round(produtos[i].QtdEstoque * produtos[i].Valor, 2);
                 }
                 txtNumItens.Text = produtos.Count.ToString();
                 txtTotalPago.Text = (valor).ToString();
@@ -138,8 +138,8 @@ namespace WFPresentationLayer
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaNome"].Value = produtos[i].Nome;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaUn"].Value = TipoUnidadeBLL.GetById(produtos[i].TipoUnidadeId).Item.Nome;
                 dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaQtde"].Value = produtos[i].QtdEstoque;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = produtos[i].Valor;
-                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaValor"].Value = Math.Round(produtos[i].Valor, 2);
+                dgvProdutosEntrada.Rows[i].Cells["ProdutosEntradaTotal"].Value = Math.Round(produtos[i].QtdEstoque * produtos[i].Valor, 2);
                 valor += (produtos[i].QtdEstoque * produtos[i].Valor);
             }
             txtNumItens.Text = produtos.Count.ToString();

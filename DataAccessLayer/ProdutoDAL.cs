@@ -48,6 +48,16 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_PRODUTOS_ENTRADAS_PRODUTOS"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Produto que tenha uma Entrada cadastrada.", false);
+                }
+                if (ex.Message.Contains("FK_PRODUTOS_SAIDA_PRODUTOS"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Produto que tenha uma Venda cadastrada.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
@@ -176,6 +186,16 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_PRODUTOS_SAIDA_PRODUTOS"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Produto que tenha uma Venda cadastrada.", false);
+                }
+                if (ex.Message.Contains("FK_PRODUTOS_ENTRADAS_PRODUTOS"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Produto que tenha uma Entrada cadastrada.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }

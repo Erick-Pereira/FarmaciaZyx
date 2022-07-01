@@ -83,8 +83,7 @@ namespace WFPresentationLayer
             if (result == DialogResult.Yes)
             {
                 int rowindex = dgvClientes.CurrentCell.RowIndex;
-                int columnindex = dgvClientes.CurrentCell.ColumnIndex;
-                Response response = clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[columnindex].Value));
+                Response response = clienteBLL.Delete(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[0].Value));
                 if (response.HasSuccess)
                 {
                     dgvClientes.Rows.RemoveAt(rowindex);

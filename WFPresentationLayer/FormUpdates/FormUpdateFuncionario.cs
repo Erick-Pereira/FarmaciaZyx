@@ -54,7 +54,7 @@ namespace WFPresentationLayer
             txtNome.Text = funcionario.Nome;
             mtxtCpf.Text = funcionario.CPF;
             txtRg.Text = funcionario.RG;
-            cmbGenero.SelectedValue = funcionario.GerenoId;
+            cmbGenero.SelectedValue = funcionario.GeneroId;
             cmbTipoFuncionario.SelectedValue = funcionario.TipoFuncionarioId;
             //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             mtxtDataNascimento.Text = Convert.ToString(funcionario.DataNascimento, new CultureInfo("pt-br"));
@@ -90,7 +90,7 @@ namespace WFPresentationLayer
             update.Nome = txtNome.Text;
             update.CPF = mtxtCpf.Text.Replace(",", ".");
             update.RG = txtRg.Text.Replace(",", ".");
-            update.GerenoId = Convert.ToInt32(cmbGenero.SelectedValue);
+            update.GeneroId = Convert.ToInt32(cmbGenero.SelectedValue);
             update.TipoFuncionarioId = Convert.ToInt32(cmbTipoFuncionario.SelectedValue);
             DateTime dataNascimento = new DateTime();
             string erro = dateTimeValidator.VerifyIfIsNull(mtxtDataNascimento.Text);

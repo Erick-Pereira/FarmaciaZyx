@@ -6,7 +6,7 @@
         {
         }
 
-        public Funcionario(int iD, string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId, int gerenoId, DateTime dataNascimento)
+        public Funcionario(int iD, string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId, int generoId, DateTime dataNascimento)
         {
             ID = iD;
             Nome = nome;
@@ -17,11 +17,11 @@
             Senha = senha;
             EnderecoId = enderecoId;
             TipoFuncionarioId = tipoFuncionarioId;
-            GerenoId = gerenoId;
+            GeneroId = generoId;
             DataNascimento = dataNascimento;
         }
 
-        public Funcionario(string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId, int gerenoId, DateTime dataNascimento)
+        public Funcionario(string nome, string cPF, string rG, string telefone, string email, string senha, int enderecoId, int tipoFuncionarioId, int generoId, DateTime dataNascimento)
         {
             Nome = nome;
             CPF = cPF;
@@ -31,11 +31,11 @@
             Senha = senha;
             EnderecoId = enderecoId;
             TipoFuncionarioId = tipoFuncionarioId;
-            GerenoId = gerenoId;
+            GeneroId = generoId;
             DataNascimento = dataNascimento;
         }
 
-        public Funcionario(string nome, string cPF, string rG, string telefone, string email, string senha, int tipoFuncionarioId, int gerenoId, DateTime dataNascimento)
+        public Funcionario(string nome, string cPF, string rG, string telefone, string email, string senha, int tipoFuncionarioId, int generoId, DateTime dataNascimento)
         {
             Nome = nome;
             CPF = cPF;
@@ -44,7 +44,7 @@
             Email = email;
             Senha = senha;
             TipoFuncionarioId = tipoFuncionarioId;
-            GerenoId = gerenoId;
+            GeneroId = generoId;
             DataNascimento = dataNascimento;
         }
 
@@ -57,7 +57,7 @@
         public string Senha { get; set; }
         public int EnderecoId { get; set; }
         public int TipoFuncionarioId { get; set; }
-        public int GerenoId { get; set; }
+        public int GeneroId { get; set; }
         public DateTime DataNascimento { get; set; }
     }
 }

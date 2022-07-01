@@ -13,6 +13,7 @@ namespace WfPresentationLayer
         {
             InitializeComponent();
         }
+        Hash hash = new Hash();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -24,14 +25,13 @@ namespace WfPresentationLayer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
-            string senha = txtSenha.Text;
+            string senha = hash.EncryptString(txtSenha.Text);
             Login login = new Login(email, senha);
             LoginBLL loginBLL = new LoginBLL();
             SingleResponse<Funcionario> singleResponse = loginBLL.Logar(login);
             if (!singleResponse.HasSuccess)
             {
                 MessageBox.Show(singleResponse.Message);
-
             }
             else
             {
