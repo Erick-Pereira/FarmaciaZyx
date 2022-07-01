@@ -109,6 +109,11 @@ namespace DataAccessLayer
                     //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
                     return new Response("Email já está em uso.", false);
                 }
+                if (ex.Message.Contains("UQ_CLIENTES_CPF"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("CPF já está em uso.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
@@ -152,11 +157,6 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("UQ_CLIENTES_EMAIL"))
-                {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
-                    return new Response("Email já está em uso.", false);
-                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
@@ -194,15 +194,10 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("UQ_CLIENTES_EMAIL"))
-                {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
-                    return new Response("Email já está em uso.", false);
-                }
-                if (ex.Message.Contains("UQ_CLIENTES_CPF"))
+                if (ex.Message.Contains("FK_SAIDAS_CLIENTE"))
                 {
                     //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
-                    return new Response("CPF já está em uso.", false);
+                    return new Response("Não é possivel excluir uma Cliente que tenha uma Venda cadastrada.", false);
                 }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);

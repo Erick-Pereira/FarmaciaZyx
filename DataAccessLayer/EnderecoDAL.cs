@@ -39,6 +39,11 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_FUNCIONARIOS_ENDERECO"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Endereço que tenha um Funcionario cadastrado.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }

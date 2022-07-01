@@ -83,7 +83,6 @@ namespace WFPresentationLayer
                 }
                 double valor = 0;
                 double descontoPorc = descontoPorcentagem;
-
                 for (int i = 0; i < produtos.Count; i++)
                 {
                     valor += Math.Round((produtos[i].QtdEstoque * produtos[i].Valor),2);
@@ -111,12 +110,10 @@ namespace WFPresentationLayer
                 return;
             }
             int rowindex = dgvProdutosSaida.CurrentCell.RowIndex;
-            int columnindex = dgvProdutosSaida.CurrentCell.ColumnIndex;
             produtos.RemoveAt(rowindex);
             dgvProdutosSaida.Rows.RemoveAt(rowindex);
             double valor = 0;
             double descontoPorc = descontoPorcentagem;
-            double descontoRS = (valor * descontoPorc) / 100;
             for (int i = 0; i < produtos.Count; i++)
             {
                 dgvProdutosSaida.Rows[i].Cells["ProdutosSaidaID"].Value = produtos[i].ID;
@@ -127,6 +124,7 @@ namespace WFPresentationLayer
                 dgvProdutosSaida.Rows[i].Cells["ProdutosSaidaTotal"].Value = (produtos[i].QtdEstoque * produtos[i].Valor);
                 valor += (produtos[i].QtdEstoque * produtos[i].Valor);
             }
+            double descontoRS = (valor * descontoPorc) / 100;
             txtNumItens.Text = produtos.Count.ToString();
             txtTotalPago.Text = (valor - descontoRS).ToString();
             txtValor.Text = valor.ToString();
@@ -142,7 +140,7 @@ namespace WFPresentationLayer
             {
                 Saida saida = new Saida();
                 List<ProdutoSaida> produtoSaidas = new List<ProdutoSaida>();
-                double Valor = 0;
+                double valor = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {
                     ProdutoSaida produtoSaida = new ProdutoSaida();
@@ -150,14 +148,14 @@ namespace WFPresentationLayer
                     produtoSaida.Quantidade = produtos[i].QtdEstoque;
                     produtoSaida.ValorUnitario = produtos[i].Valor;
                     produtoSaidas.Add(produtoSaida);
-                    Valor += Math.Round((produtos[i].QtdEstoque * produtos[i].Valor),2);
+                    valor += Math.Round((produtos[i].QtdEstoque * produtos[i].Valor),2);
                 }
                 saida.produtosSaidas = produtoSaidas;
                 saida.DataSaida = dtpDataSaida.Value;
-                saida.Valor = Valor;
-                saida.Desconto = 0;
+                saida.Valor = valor;
+                saida.Desconto = (valor * descontoPorcentagem) / 100;
                 saida.FormaPagamento = Convert.ToInt32(cmbFormaPamento.SelectedValue);
-                saida.ValorTotal = Valor - saida.Desconto;
+                saida.ValorTotal = valor - saida.Desconto;
                 saida.ClienteId = cliente.ID;
                 saida.FuncionarioId = FuncionarioLogin.id;
                 SaidaBLL saidaBLL = new SaidaBLL();
@@ -178,7 +176,7 @@ namespace WFPresentationLayer
                         }
                         if (cliente.TipoClienteId == 2)
                         {
-                            clienteBLL.GivePontos(cliente, Valor - saida.Desconto);
+                            clienteBLL.GivePontos(cliente, valor - saida.Desconto);
                         }
                         dgvProdutosSaida.Rows.Clear();
                         produtos.Clear();

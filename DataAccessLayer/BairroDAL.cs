@@ -32,6 +32,11 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_ENDERECOS_BAIRRO"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um bairro que tenha um endereço cadastrado.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
@@ -112,6 +117,12 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_ENDERECOS_BAIRRO"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir um Bairro que tenha um Endereço cadastrado.", false);
+                }
+
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
             //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta

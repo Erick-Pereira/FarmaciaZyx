@@ -91,12 +91,8 @@ namespace DataAccessLayer
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CIDADES WHERE ID = @ID";
-
-            
-
             //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
             //Estamos conectados na base de dados
@@ -115,6 +111,11 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("FK_BAIRROS_CIDADE"))
+                {
+                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
+                    return new Response("Não é possivel excluir uma Cidade que tenha um Bairro cadastrado.", false);
+                }
                 //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }

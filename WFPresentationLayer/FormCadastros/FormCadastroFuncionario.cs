@@ -22,6 +22,7 @@ namespace WFPresentationLayer
         StringBuilder stringBuilder = new StringBuilder();
         GeneroBLL generoBLL = new GeneroBLL();
         DateTimeValidator dateTimeValidator = new DateTimeValidator();
+        Hash hash = new Hash();
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -56,6 +57,7 @@ namespace WFPresentationLayer
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
             Funcionario funcionario = new Funcionario(nome, cpf, rg, telefone, email, senha, tipoFuncionarioId, genero, dataNascimento);
             stringBuilder.AppendLine(validator.Validate(funcionario).Message);
+            senha = hash.EncryptString(senha);
             string erros = stringBuilder.ToString().Trim();
             if (string.IsNullOrWhiteSpace(erros))
             {

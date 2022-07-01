@@ -27,7 +27,7 @@ namespace WFPresentationLayer
         {
             StringBuilder stringBuilder = new StringBuilder();
             Funcionario funcionario = (Funcionario)StaticItem.item;
-
+            Hash hash = new Hash();
             if (string.IsNullOrEmpty(txtSenhaAntiga.Text))
             { stringBuilder.AppendLine("Senha Antiga deve ser informada"); }
             if (string.IsNullOrEmpty(txtNovaSenha.Text))
@@ -37,9 +37,11 @@ namespace WFPresentationLayer
             if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
             {
                 string senha = funcionarioBLL.GetSenhaByID(funcionario.ID).Item.Senha;
-                if (txtSenhaAntiga.Text == senha)
+                string senhaAntiga = hash.EncryptString(txtSenhaAntiga.Text);
+
+                if (senhaAntiga == senha)
                 {
-                    if (txtNovaSenha.Text != senha)
+                    if (hash.EncryptString(txtNovaSenha.Text) != senha)
                     {
                         stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(txtNovaSenha.Text, txtConfirmarNovaSenha.Text));
                         if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
@@ -47,9 +49,13 @@ namespace WFPresentationLayer
                             stringBuilder.AppendLine(stringValidator.ValidateSenha(txtNovaSenha.Text));
                             if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
                             {
-                                funcionario.Senha = senha;
+                                funcionario.Senha = hash.EncryptString(txtNovaSenha.Text);
                                 Response response = funcionarioBLL.UpdateSenha(funcionario);
                                 MessageBox.Show(response.Message);
+                            }
+                            else
+                            {
+                                MessageBox.Show(stringBuilder.ToString());
                             }
                         }
                         else

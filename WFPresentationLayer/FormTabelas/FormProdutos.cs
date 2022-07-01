@@ -72,8 +72,6 @@ namespace WFPresentationLayer
 
         private void btnDeleteProduto_Click(object sender, EventArgs e)
         {
-
-
             if (dgvProdutos.CurrentCell == null)
             {
                 MessageBox.Show("Não é possivel deletar um produto não selecionado");

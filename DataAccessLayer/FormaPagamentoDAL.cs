@@ -74,7 +74,7 @@ namespace DataAccessLayer
                     formaPagamento.Nome = Convert.ToString(reader["NOME"]);
                     return new SingleResponse<FormaPagamento>("Forma de Pagamento selecionada com sucesso!", true, formaPagamento);
                 }
-                return new SingleResponse<FormaPagamento>("Tipo de Cliente não encontrado!", false, null);
+                return new SingleResponse<FormaPagamento>("Forma de Pagamento não encontrado!", false, null);
             }
             catch (Exception ex)
             {
