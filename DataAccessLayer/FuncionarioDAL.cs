@@ -25,7 +25,7 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@SENHA", funcionario.Senha);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
-            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GerenoId);
+            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GeneroId);
             command.Parameters.AddWithValue("@DATA_NASCIMENTO", funcionario.DataNascimento);
             //Estamos conectados na base de dados
             //try catch
@@ -79,7 +79,7 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@EMAIL", funcionario.Email);
             command.Parameters.AddWithValue("@ENDERECO_ID", funcionario.EnderecoId);
             command.Parameters.AddWithValue("@TIPO_FUNCIONARIO_ID", funcionario.TipoFuncionarioId);
-            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GerenoId);
+            command.Parameters.AddWithValue("@GENEROS_ID", funcionario.GeneroId);
             command.Parameters.AddWithValue("@ID", funcionario.ID);
             command.Parameters.AddWithValue("@DATA_NASCIMENTO", funcionario.DataNascimento);
 
@@ -233,7 +233,7 @@ namespace DataAccessLayer
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
-                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
                     funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     funcionarios.Add(funcionario);
                 }
@@ -279,7 +279,7 @@ namespace DataAccessLayer
                     funcionario.Email = Convert.ToString(reader["EMAIL"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
-                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
                     funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
 
                     return new SingleResponse<Funcionario>("Funcionario selecionado com sucesso!", true, funcionario);
@@ -362,7 +362,7 @@ namespace DataAccessLayer
                     funcionario.Telefone = Convert.ToString(reader["TELEFONE"]);
                     funcionario.EnderecoId = Convert.ToInt32(reader["ENDERECO_ID"]);
                     funcionario.TipoFuncionarioId = Convert.ToInt32(reader["TIPO_FUNCIONARIO_ID"]);
-                    funcionario.GerenoId = Convert.ToInt32(reader["GENEROS_ID"]);
+                    funcionario.GeneroId = Convert.ToInt32(reader["GENEROS_ID"]);
                     funcionario.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
                     funcionarios.Add(funcionario);
                 }

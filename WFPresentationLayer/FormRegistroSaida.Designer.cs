@@ -189,7 +189,7 @@
             // 
             this.nudQtde.Location = new System.Drawing.Point(155, 148);
             this.nudQtde.Maximum = new decimal(new int[] {
-            999999,
+            999,
             0,
             0,
             0});
@@ -373,6 +373,7 @@
             // mtxtCpf
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
+            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCpf.Location = new System.Drawing.Point(406, 47);
             this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";
