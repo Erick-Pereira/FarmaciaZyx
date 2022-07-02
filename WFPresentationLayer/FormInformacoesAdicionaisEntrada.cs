@@ -19,26 +19,22 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
-        ProdutoBLL ProdutoBLL = new ProdutoBLL();
-        FornecedorBLL fornecedorBLL = new FornecedorBLL();
-        FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
+        EntradaBLL entradaBLL = new EntradaBLL();
         private void FormInformacoesAdicionaisEntrada_Load(object sender, EventArgs e)
         {
-
-            Entrada entrada = (Entrada)StaticItem.item;
-            txtFornecedor.Text = fornecedorBLL.GetByID(entrada.FornecedorID).Item.RazaoSocial;
+            EntradaView entrada = (EntradaView)StaticItem.item;
+            entrada.produtosEntradas = entradaBLL.GetAllBySaidaID(entrada.ID).Dados;
+            txtFornecedor.Text = entrada.Fornecedor;
             txtData.Text = entrada.DataEntrada.ToString();
-            txtFuncionario.Text = funcionarioBLL.GetByID(entrada.FuncionarioId).Item.Nome;
+            txtFuncionario.Text = entrada.Funcionario;
             txtID.Text = entrada.ID.ToString();
             txtValorTotal.Text = entrada.Valor.ToString();
-
             for (int i = 0; i < entrada.produtosEntradas.Count; i++)
             {
-                SingleResponse<Produto> singleResponseProduto = ProdutoBLL.GetByID(entrada.produtosEntradas[i].ProdutoId);
                 dgvProdutosSaida.Rows.Add();
-                dgvProdutosSaida.Rows[i].Cells["SaidaProduto"].Value = singleResponseProduto.Item.Nome;
-                dgvProdutosSaida.Rows[i].Cells["SaidaQuantidade"].Value = entrada.produtosEntradas[i].Quantidade;
-                dgvProdutosSaida.Rows[i].Cells["SaidaValorUnitario"].Value = entrada.produtosEntradas[i].ValorUnitario;
+                dgvProdutosSaida.Rows[i].Cells["EntradaProduto"].Value = entrada.produtosEntradas[i].Produto.Nome;
+                dgvProdutosSaida.Rows[i].Cells["EntradaQuantidade"].Value = entrada.produtosEntradas[i].Quantidade;
+                dgvProdutosSaida.Rows[i].Cells["EntradaValorUnitario"].Value = entrada.produtosEntradas[i].ValorUnitario;
             }
 
         }

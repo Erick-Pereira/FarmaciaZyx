@@ -46,6 +46,7 @@
             this.panelDesktopClientes = new System.Windows.Forms.Panel();
             this.panelMenuClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.panelDesktopClientes.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenuClientes
@@ -56,9 +57,9 @@
             this.panelMenuClientes.Controls.Add(this.btnDeleteCliente);
             this.panelMenuClientes.Controls.Add(this.btnCadastroCliente);
             this.panelMenuClientes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuClientes.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuClientes.Location = new System.Drawing.Point(681, 0);
             this.panelMenuClientes.Name = "panelMenuClientes";
-            this.panelMenuClientes.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuClientes.Size = new System.Drawing.Size(98, 456);
             this.panelMenuClientes.TabIndex = 3;
             // 
             // btnTabelaClientes
@@ -151,13 +152,14 @@
             this.ClientesPontos,
             this.ClientesEmail,
             this.ClientesTipoCliente});
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.Location = new System.Drawing.Point(0, 0);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowTemplate.Height = 25;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(702, 495);
+            this.dgvClientes.Size = new System.Drawing.Size(681, 456);
             this.dgvClientes.TabIndex = 2;
             // 
             // ClientesID
@@ -216,9 +218,11 @@
             // 
             // panelDesktopClientes
             // 
+            this.panelDesktopClientes.Controls.Add(this.dgvClientes);
+            this.panelDesktopClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopClientes.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopClientes.Name = "panelDesktopClientes";
-            this.panelDesktopClientes.Size = new System.Drawing.Size(702, 514);
+            this.panelDesktopClientes.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopClientes.TabIndex = 4;
             // 
             // FormClientes
@@ -226,15 +230,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuClientes);
-            this.Controls.Add(this.dgvClientes);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopClientes);
+            this.Controls.Add(this.panelMenuClientes);
             this.Name = "FormClientes";
             this.Text = "FormClientes";
             this.Load += new System.EventHandler(this.FormClientes_Load);
             this.panelMenuClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.panelDesktopClientes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

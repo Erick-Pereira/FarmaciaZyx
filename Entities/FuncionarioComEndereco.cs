@@ -12,20 +12,18 @@ namespace Entities
         {
         }
 
-        public FuncionarioComEndereco(Funcionario funcionario, Endereco endereco, Bairro bairro, Cidade cidade, int tipoFuncionarioId)
+        public FuncionarioComEndereco(Funcionario funcionario, Endereco endereco, Bairro bairro, Cidade cidade)
         {
             this.Funcionario = funcionario;
             this.Endereco = endereco;
             Bairro = bairro;
             Cidade = cidade;
-            TipoFuncionarioId = tipoFuncionarioId;
         }
 
         public Funcionario Funcionario { get; set; }
         public Endereco Endereco { get; set; }
         public Bairro Bairro { get; set; }
         public Cidade Cidade { get; set; }
-        public int TipoFuncionarioId { get; set; }
     }
 }
 

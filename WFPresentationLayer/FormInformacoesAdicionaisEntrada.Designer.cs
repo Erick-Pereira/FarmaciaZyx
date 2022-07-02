@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvProdutosSaida = new System.Windows.Forms.DataGridView();
-            this.SaidaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaidaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaidaValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSaidaInfo = new System.Windows.Forms.Panel();
             this.txtData = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,12 +53,13 @@
             // 
             this.dgvProdutosSaida.AllowUserToAddRows = false;
             this.dgvProdutosSaida.AllowUserToDeleteRows = false;
+            this.dgvProdutosSaida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdutosSaida.BackgroundColor = System.Drawing.Color.White;
             this.dgvProdutosSaida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutosSaida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SaidaProduto,
-            this.SaidaQuantidade,
-            this.SaidaValorUnitario});
+            this.EntradaProduto,
+            this.EntradaQuantidade,
+            this.EntradaValorUnitario});
             this.dgvProdutosSaida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdutosSaida.Location = new System.Drawing.Point(0, 77);
             this.dgvProdutosSaida.Name = "dgvProdutosSaida";
@@ -67,23 +68,23 @@
             this.dgvProdutosSaida.Size = new System.Drawing.Size(688, 373);
             this.dgvProdutosSaida.TabIndex = 22;
             // 
-            // SaidaProduto
+            // EntradaProduto
             // 
-            this.SaidaProduto.HeaderText = "Produto";
-            this.SaidaProduto.Name = "SaidaProduto";
-            this.SaidaProduto.ReadOnly = true;
+            this.EntradaProduto.HeaderText = "Produto";
+            this.EntradaProduto.Name = "EntradaProduto";
+            this.EntradaProduto.ReadOnly = true;
             // 
-            // SaidaQuantidade
+            // EntradaQuantidade
             // 
-            this.SaidaQuantidade.HeaderText = "Quantidade";
-            this.SaidaQuantidade.Name = "SaidaQuantidade";
-            this.SaidaQuantidade.ReadOnly = true;
+            this.EntradaQuantidade.HeaderText = "Quantidade";
+            this.EntradaQuantidade.Name = "EntradaQuantidade";
+            this.EntradaQuantidade.ReadOnly = true;
             // 
-            // SaidaValorUnitario
+            // EntradaValorUnitario
             // 
-            this.SaidaValorUnitario.HeaderText = "ValorUnitario";
-            this.SaidaValorUnitario.Name = "SaidaValorUnitario";
-            this.SaidaValorUnitario.ReadOnly = true;
+            this.EntradaValorUnitario.HeaderText = "ValorUnitario";
+            this.EntradaValorUnitario.Name = "EntradaValorUnitario";
+            this.EntradaValorUnitario.ReadOnly = true;
             // 
             // panelSaidaInfo
             // 
@@ -224,9 +225,6 @@
         #endregion
 
         private DataGridView dgvProdutosSaida;
-        private DataGridViewTextBoxColumn SaidaProduto;
-        private DataGridViewTextBoxColumn SaidaQuantidade;
-        private DataGridViewTextBoxColumn SaidaValorUnitario;
         private Panel panelSaidaInfo;
         private TextBox txtData;
         private Label label7;
@@ -239,5 +237,8 @@
         private Panel panelPagamentoInfo;
         private Label label8;
         private TextBox txtValorTotal;
+        private DataGridViewTextBoxColumn EntradaProduto;
+        private DataGridViewTextBoxColumn EntradaQuantidade;
+        private DataGridViewTextBoxColumn EntradaValorUnitario;
     }
 }

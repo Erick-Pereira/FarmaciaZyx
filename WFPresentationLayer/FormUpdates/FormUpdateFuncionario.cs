@@ -112,7 +112,7 @@ namespace WFPresentationLayer
                 bairroUpdate.NomeBairro = txtBairro.Text.ToUpper();
                 stringBuilder.AppendLine(stringValidator.ValidateCEP(enderecoUpdate.CEP));
                 stringBuilder.AppendLine(validator.Validate(update).Message);
-                FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate, update.TipoFuncionarioId);
+                FuncionarioComEndereco funcionarioComEnderecoUpdate = new FuncionarioComEndereco(update, enderecoUpdate, bairroUpdate, cidadeUpdate);
                 string erros = stringBuilder.ToString().Trim();
                 stringBuilder.Clear();
                 if (string.IsNullOrWhiteSpace(erros))

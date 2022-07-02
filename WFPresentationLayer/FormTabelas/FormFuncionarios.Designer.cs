@@ -54,6 +54,7 @@
             this.panelDesktopFuncionarios = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.panelMenuFuncionarios.SuspendLayout();
+            this.panelDesktopFuncionarios.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvFuncionarios
@@ -72,13 +73,14 @@
             this.FuncionariosTelefone,
             this.FuncionariosEmail,
             this.FuncionariosTipoFuncionario});
+            this.dgvFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFuncionarios.Location = new System.Drawing.Point(0, 0);
             this.dgvFuncionarios.Name = "dgvFuncionarios";
             this.dgvFuncionarios.ReadOnly = true;
             this.dgvFuncionarios.RowHeadersVisible = false;
             this.dgvFuncionarios.RowTemplate.Height = 25;
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(702, 495);
+            this.dgvFuncionarios.Size = new System.Drawing.Size(681, 456);
             this.dgvFuncionarios.TabIndex = 0;
             // 
             // FuncionariosID
@@ -131,9 +133,9 @@
             this.panelMenuFuncionarios.Controls.Add(this.btnDeleteFuncionario);
             this.panelMenuFuncionarios.Controls.Add(this.btnCadastroFuncionario);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
             this.panelMenuFuncionarios.TabIndex = 1;
             // 
             // btnTabelaFuncionarios
@@ -260,9 +262,11 @@
             // 
             // panelDesktopFuncionarios
             // 
+            this.panelDesktopFuncionarios.Controls.Add(this.dgvFuncionarios);
+            this.panelDesktopFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopFuncionarios.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopFuncionarios.Name = "panelDesktopFuncionarios";
-            this.panelDesktopFuncionarios.Size = new System.Drawing.Size(702, 495);
+            this.panelDesktopFuncionarios.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopFuncionarios.TabIndex = 2;
             // 
             // FormFuncionarios
@@ -270,15 +274,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuFuncionarios);
-            this.Controls.Add(this.dgvFuncionarios);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopFuncionarios);
+            this.Controls.Add(this.panelMenuFuncionarios);
             this.Name = "FormFuncionarios";
             this.Text = "FormFuncionarios";
             this.Load += new System.EventHandler(this.FormFuncionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
             this.panelMenuFuncionarios.ResumeLayout(false);
+            this.panelDesktopFuncionarios.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

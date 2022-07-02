@@ -17,7 +17,7 @@ namespace WFPresentationLayer
     {
         private Form currentChildForm;
         TipoClienteBLL tipoClienteBLL = new TipoClienteBLL();
-        List<Cliente> clientes = new List<Cliente>();
+        List<ClienteView> clientes = new List<ClienteView>();
         ClienteBLL clienteBLL = new ClienteBLL();
         public FormClientes()
         {
@@ -53,7 +53,7 @@ namespace WFPresentationLayer
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            clientes = clienteBLL.GetAll().Dados;
+            clientes = clienteBLL.GetAllClienteView().Dados;
             for (int i = 0; i < clientes.Count; i++)
             {
                 dgvClientes.Rows.Add();
@@ -65,7 +65,7 @@ namespace WFPresentationLayer
                 dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
                 dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
                 dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
-                dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = tipoClienteBLL.GetByID(clientes[i].TipoClienteId).Item.Nome;
+                dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
             }
         }
 
@@ -132,7 +132,7 @@ namespace WFPresentationLayer
             {
                 panelDesktopClientes.SendToBack();
                 currentChildForm.Close();
-                clientes = clienteBLL.GetAll().Dados;
+                clientes = clienteBLL.GetAllClienteView().Dados;
                 dgvClientes.Rows.Clear();
                 for (int i = 0; i < clientes.Count; i++)
                 {
@@ -145,7 +145,7 @@ namespace WFPresentationLayer
                     dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
                     dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
                     dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
-                    dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = tipoClienteBLL.GetByID(clientes[i].TipoClienteId).Item.Nome;
+                    dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
                 }
             }
         }

@@ -65,7 +65,7 @@ namespace WFPresentationLayer
                 Endereco endereco = new Endereco(cep, numero, rua, complemento);
                 Bairro bairro1 = new Bairro(bairro);
                 Cidade cidade1 = new Cidade(cidade, estado);
-                FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1, tipoFuncionarioId);
+                FuncionarioComEndereco funcionarioComEndereco = new FuncionarioComEndereco(funcionario, endereco, bairro1, cidade1);
                 Response response = funcionarioBLL.InsertFuncionarioComEndereco(funcionarioComEndereco);
                 MessageBox.Show(response.Message);
                 if (response.HasSuccess)

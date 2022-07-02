@@ -9,7 +9,6 @@ namespace BusinessLogicalLayer
     {
         private StringValidator stringValidator = new StringValidator();
         private DateTimeValidator dateTimeValidator = new DateTimeValidator();
-        private Normatization normatization = new Normatization();
         private FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
 
         private string ValidateRG(string rG)
@@ -50,9 +49,6 @@ namespace BusinessLogicalLayer
                 return new Response(erros.ToString().Trim(), true);
             }
             return new Response(erros.ToString().Trim(), false);
-            //Se chegou aqui, validamos com sucesso!
-
-
         }
 
     }

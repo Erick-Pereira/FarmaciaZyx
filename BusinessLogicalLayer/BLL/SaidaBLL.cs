@@ -15,24 +15,17 @@ namespace BusinessLogicalLayer
         SaidaDAL saidaDAL = new SaidaDAL();
         ProdutosSaidasDAL produtosSaidasDAL = new ProdutosSaidasDAL();
 
-        public DataResponse<Saida> GetAll()
+        public DataResponse<SaidaView> GetAll()
         {
-            DataResponse<Saida> dataResponse = saidaDAL.GetAll();
-            for (int i = 0; i < dataResponse.Dados.Count; i++)
-            {
-                dataResponse.Dados[i].produtosSaidas = produtosSaidasDAL.GetAllBySaidaID(dataResponse.Dados[i].ID).Dados;
-            }
-            return dataResponse;
+            return saidaDAL.GetAllSaidaView();
         }
-
-        public SingleResponse<Saida> GetByID(int id)
+        public DataResponse<ProdutosSaidaView> GetAllProdutosSaidaViewBySaidaID(int id)
         {
-            SingleResponse<Saida> singleResponse = saidaDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                singleResponse.Item.produtosSaidas = produtosSaidasDAL.GetAllBySaidaID(singleResponse.Item.ID).Dados;
-            }
-            return singleResponse;
+            return produtosSaidasDAL.GetAllProdutosSaidaViewBySaidaID(id);
+        }
+        public SingleResponse<SaidaView> GetByID(int id)
+        {
+            return saidaDAL.GetSaidaViewByID(id);
         }
 
         public Response Insert(Saida item)
@@ -40,9 +33,6 @@ namespace BusinessLogicalLayer
             Response response = new Response();
             using (TransactionScope scope = new TransactionScope())
             {
-
-
-                //INSERE UM ENDEREÇO NO BANCO E JÁ VINCULA O ID DESTE ENDEREÇO COM O SELECT NO BANCO 
                 response = saidaDAL.Insert(item);
                 for (int i = 0; i < item.produtosSaidas.Count; i++)
                 {
@@ -54,7 +44,7 @@ namespace BusinessLogicalLayer
                     return response;
                 }
                 scope.Complete();
-            }//scope.Dispose();
+            }
             return response;
         }
     }

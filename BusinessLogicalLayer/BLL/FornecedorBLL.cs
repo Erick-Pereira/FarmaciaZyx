@@ -25,9 +25,6 @@ namespace BusinessLogicalLayer
 
         public Response Insert(Fornecedor item)
         {
-            //NAO ESQUEÇAM DAS VALIDAÇÕES!
-            //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
-            //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
             FornecedorValidator produtoValidator = new FornecedorValidator();
             Response response = produtoValidator.Validate(item);
             if (response.HasSuccess)

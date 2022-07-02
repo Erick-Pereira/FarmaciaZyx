@@ -139,11 +139,11 @@ namespace WFPresentationLayer
             if (produtos.Count != 0)
             {
                 Saida saida = new Saida();
-                List<ProdutoSaida> produtoSaidas = new List<ProdutoSaida>();
+                List<ProdutosSaida> produtoSaidas = new List<ProdutosSaida>();
                 double valor = 0;
                 for (int i = 0; i < produtos.Count; i++)
                 {
-                    ProdutoSaida produtoSaida = new ProdutoSaida();
+                    ProdutosSaida produtoSaida = new ProdutosSaida();
                     produtoSaida.ProdutoId = produtos[i].ID;
                     produtoSaida.Quantidade = produtos[i].QtdEstoque;
                     produtoSaida.ValorUnitario = produtos[i].Valor;
@@ -154,7 +154,7 @@ namespace WFPresentationLayer
                 saida.DataSaida = dtpDataSaida.Value;
                 saida.Valor = valor;
                 saida.Desconto = (valor * descontoPorcentagem) / 100;
-                saida.FormaPagamento = Convert.ToInt32(cmbFormaPamento.SelectedValue);
+                saida.FormaPagamentoId = Convert.ToInt32(cmbFormaPamento.SelectedValue);
                 saida.ValorTotal = valor - saida.Desconto;
                 saida.ClienteId = cliente.ID;
                 saida.FuncionarioId = FuncionarioLogin.id;

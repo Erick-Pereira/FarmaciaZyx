@@ -50,9 +50,9 @@
             this.panelMenuFuncionarios.Controls.Add(this.btnDeleteLaboratorio);
             this.panelMenuFuncionarios.Controls.Add(this.btnCadastroLaboratorio);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
             this.panelMenuFuncionarios.TabIndex = 4;
             // 
             // btnTabelaLaboratorios
@@ -138,13 +138,14 @@
             this.dgvLaboratorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LaboratoriosID,
             this.LaboratoriosNome});
-            this.dgvLaboratorios.Location = new System.Drawing.Point(0, 22);
+            this.dgvLaboratorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLaboratorios.Location = new System.Drawing.Point(0, 0);
             this.dgvLaboratorios.Name = "dgvLaboratorios";
             this.dgvLaboratorios.ReadOnly = true;
             this.dgvLaboratorios.RowHeadersVisible = false;
             this.dgvLaboratorios.RowTemplate.Height = 25;
             this.dgvLaboratorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLaboratorios.Size = new System.Drawing.Size(702, 495);
+            this.dgvLaboratorios.Size = new System.Drawing.Size(681, 456);
             this.dgvLaboratorios.TabIndex = 3;
             // 
             // LaboratoriosID
@@ -162,9 +163,10 @@
             // panelDesktopLaboratorios
             // 
             this.panelDesktopLaboratorios.Controls.Add(this.dgvLaboratorios);
-            this.panelDesktopLaboratorios.Location = new System.Drawing.Point(0, -22);
+            this.panelDesktopLaboratorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopLaboratorios.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopLaboratorios.Name = "panelDesktopLaboratorios";
-            this.panelDesktopLaboratorios.Size = new System.Drawing.Size(702, 495);
+            this.panelDesktopLaboratorios.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopLaboratorios.TabIndex = 5;
             // 
             // FormLaboratorios
@@ -172,9 +174,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuFuncionarios);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopLaboratorios);
+            this.Controls.Add(this.panelMenuFuncionarios);
             this.Name = "FormLaboratorios";
             this.Text = "FormLaboratorios";
             this.Load += new System.EventHandler(this.FormLaboratorios_Load);

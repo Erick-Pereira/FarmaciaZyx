@@ -21,9 +21,6 @@ namespace WFPresentationLayer
         }
 
         EntradaBLL entradaBLL = new EntradaBLL();
-        FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
-        FornecedorBLL fornecedorBLL = new FornecedorBLL();
-
         private Form currentChildForm;
         private void OpenChildForm(Form childForm)
         {
@@ -42,13 +39,13 @@ namespace WFPresentationLayer
         }
         private void FormHistoricoEntrada_Load(object sender, EventArgs e)
         {
-            DataResponse<Entrada> dataResponse = entradaBLL.GetAll();
+            DataResponse<EntradaView> dataResponse = entradaBLL.GetAll();
             for (int i = 0; i < dataResponse.Dados.Count; i++)
             {
                 dgvEntradas.Rows.Add();
                 dgvEntradas.Rows[i].Cells["EntradaID"].Value = dataResponse.Dados[i].ID;
-                dgvEntradas.Rows[i].Cells["EntradaFornecedor"].Value = fornecedorBLL.GetByID(dataResponse.Dados[i].FornecedorID).Item.RazaoSocial;
-                dgvEntradas.Rows[i].Cells["EntradaFuncionario"].Value = funcionarioBLL.GetByID(dataResponse.Dados[i].FuncionarioId).Item.Nome;
+                dgvEntradas.Rows[i].Cells["EntradaFornecedor"].Value = dataResponse.Dados[i].Fornecedor;
+                dgvEntradas.Rows[i].Cells["EntradaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
                 dgvEntradas.Rows[i].Cells["EntradaData"].Value = dataResponse.Dados[i].DataEntrada;
                 dgvEntradas.Rows[i].Cells["EntradaValor"].Value = dataResponse.Dados[i].Valor;
             }
@@ -57,21 +54,21 @@ namespace WFPresentationLayer
         private void btnTabelaFuncionarios_Click(object sender, EventArgs e)
         {
             btnInformacoesEntrada.Enabled = true;
+            btnInformacoesEntrada.Visible = true;
             if (currentChildForm != null)
             {
                 panelDesktopEntradas.SendToBack();
                 currentChildForm.Close();
                 dgvEntradas.Rows.Clear();
-                DataResponse<Entrada> dataResponse = entradaBLL.GetAll();
+                DataResponse<EntradaView> dataResponse = entradaBLL.GetAll();
                 for (int i = 0; i < dataResponse.Dados.Count; i++)
                 {
                     dgvEntradas.Rows.Add();
                     dgvEntradas.Rows[i].Cells["EntradaID"].Value = dataResponse.Dados[i].ID;
-                    dgvEntradas.Rows[i].Cells["EntradaFornecedor"].Value = fornecedorBLL.GetByID(dataResponse.Dados[i].FornecedorID).Item.RazaoSocial;
-                    dgvEntradas.Rows[i].Cells["EntradaFuncionario"].Value = funcionarioBLL.GetByID(dataResponse.Dados[i].FuncionarioId).Item.Nome;
+                    dgvEntradas.Rows[i].Cells["EntradaFornecedor"].Value = dataResponse.Dados[i].Fornecedor;
+                    dgvEntradas.Rows[i].Cells["EntradaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
                     dgvEntradas.Rows[i].Cells["EntradaData"].Value = dataResponse.Dados[i].DataEntrada;
                     dgvEntradas.Rows[i].Cells["EntradaValor"].Value = dataResponse.Dados[i].Valor;
-                    // dgvEntradas.Rows[i].Cells["FuncionariosTipoFuncionario"].Value = .GetByID(funcionarios[i].TipoFuncionarioId).Item.Nome;
                 }
             }
         }

@@ -19,10 +19,8 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
+        DataResponse<SaidaView> dataResponse = new DataResponse<SaidaView>();
         SaidaBLL saidaBLL = new SaidaBLL();
-        FormaPagamentoBLL formaPagamentoBLL = new FormaPagamentoBLL();
-        FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
-        ClienteBLL clienteBLL = new ClienteBLL();
         private Form currentChildForm;
         private void OpenChildForm(Form childForm)
         {
@@ -41,16 +39,16 @@ namespace WFPresentationLayer
         }
         private void FormHistoricoSaida_Load(object sender, EventArgs e)
         {
-            DataResponse<Saida> dataResponse = saidaBLL.GetAll();
+            dataResponse = saidaBLL.GetAll();
             for (int i = 0; i < dataResponse.Dados.Count; i++)
             {
                 dgvSaidas.Rows.Add();
                 dgvSaidas.Rows[i].Cells["SaidaID"].Value = dataResponse.Dados[i].ID;
-                dgvSaidas.Rows[i].Cells["SaidaCliente"].Value = clienteBLL.GetByID(dataResponse.Dados[i].ClienteId).Item.Nome;
-                dgvSaidas.Rows[i].Cells["SaidaFuncionario"].Value = funcionarioBLL.GetByID(dataResponse.Dados[i].FuncionarioId).Item.Nome;
+                dgvSaidas.Rows[i].Cells["SaidaCliente"].Value = dataResponse.Dados[i].Cliente;
+                dgvSaidas.Rows[i].Cells["SaidaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
                 dgvSaidas.Rows[i].Cells["SaidaData"].Value = dataResponse.Dados[i].DataSaida;
                 dgvSaidas.Rows[i].Cells["SaidaValor"].Value = dataResponse.Dados[i].Valor;
-                dgvSaidas.Rows[i].Cells["SaidaFormaPagamento"].Value = formaPagamentoBLL.GetById(dataResponse.Dados[i].FormaPagamento).Item.Nome;
+                dgvSaidas.Rows[i].Cells["SaidaFormaPagamento"].Value = dataResponse.Dados[i].FormaPagamento;
                 dgvSaidas.Rows[i].Cells["SaidaValorTotal"].Value = dataResponse.Dados[i].ValorTotal;
                 dgvSaidas.Rows[i].Cells["SaidaDesconto"].Value = dataResponse.Dados[i].Desconto;
             }
@@ -65,16 +63,16 @@ namespace WFPresentationLayer
                 panelDesktopEntradas.SendToBack();
                 currentChildForm.Close();
                 dgvSaidas.Rows.Clear();
-                DataResponse<Saida> dataResponse = saidaBLL.GetAll();
+                dataResponse = saidaBLL.GetAll();
                 for (int i = 0; i < dataResponse.Dados.Count; i++)
                 {
                     dgvSaidas.Rows.Add();
                     dgvSaidas.Rows[i].Cells["SaidaID"].Value = dataResponse.Dados[i].ID;
-                    dgvSaidas.Rows[i].Cells["SaidaCliente"].Value = clienteBLL.GetByID(dataResponse.Dados[i].ClienteId).Item.Nome;
-                    dgvSaidas.Rows[i].Cells["SaidaFuncionario"].Value = funcionarioBLL.GetByID(dataResponse.Dados[i].FuncionarioId).Item.Nome;
+                    dgvSaidas.Rows[i].Cells["SaidaCliente"].Value = dataResponse.Dados[i].Cliente;
+                    dgvSaidas.Rows[i].Cells["SaidaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
                     dgvSaidas.Rows[i].Cells["SaidaData"].Value = dataResponse.Dados[i].DataSaida;
                     dgvSaidas.Rows[i].Cells["SaidaValor"].Value = dataResponse.Dados[i].Valor;
-                    dgvSaidas.Rows[i].Cells["SaidaFormaPagamento"].Value = formaPagamentoBLL.GetById(dataResponse.Dados[i].FormaPagamento).Item.Nome;
+                    dgvSaidas.Rows[i].Cells["SaidaFormaPagamento"].Value = dataResponse.Dados[i].FormaPagamento;
                     dgvSaidas.Rows[i].Cells["SaidaValorTotal"].Value = dataResponse.Dados[i].ValorTotal;
                     dgvSaidas.Rows[i].Cells["SaidaDesconto"].Value = dataResponse.Dados[i].Desconto;
                 }

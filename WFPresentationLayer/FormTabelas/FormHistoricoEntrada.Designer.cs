@@ -34,10 +34,10 @@
             this.panelDesktopEntradas = new System.Windows.Forms.Panel();
             this.dgvEntradas = new System.Windows.Forms.DataGridView();
             this.EntradaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntradaFornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntradaFuncionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntradaData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMenuFuncionarios.SuspendLayout();
             this.panelDesktopEntradas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntradas)).BeginInit();
@@ -49,9 +49,9 @@
             this.panelMenuFuncionarios.Controls.Add(this.btnTabelaEntrada);
             this.panelMenuFuncionarios.Controls.Add(this.btnInformacoesEntrada);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
             this.panelMenuFuncionarios.TabIndex = 4;
             // 
             // btnTabelaEntrada
@@ -93,9 +93,10 @@
             // panelDesktopEntradas
             // 
             this.panelDesktopEntradas.Controls.Add(this.dgvEntradas);
+            this.panelDesktopEntradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopEntradas.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopEntradas.Name = "panelDesktopEntradas";
-            this.panelDesktopEntradas.Size = new System.Drawing.Size(702, 495);
+            this.panelDesktopEntradas.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopEntradas.TabIndex = 5;
             // 
             // dgvEntradas
@@ -108,17 +109,18 @@
             this.dgvEntradas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEntradas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EntradaID,
-            this.EntradaValor,
             this.EntradaFornecedor,
             this.EntradaFuncionario,
-            this.EntradaData});
+            this.EntradaData,
+            this.EntradaValor});
+            this.dgvEntradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEntradas.Location = new System.Drawing.Point(0, 0);
             this.dgvEntradas.Name = "dgvEntradas";
             this.dgvEntradas.ReadOnly = true;
             this.dgvEntradas.RowHeadersVisible = false;
             this.dgvEntradas.RowTemplate.Height = 25;
             this.dgvEntradas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEntradas.Size = new System.Drawing.Size(702, 501);
+            this.dgvEntradas.Size = new System.Drawing.Size(681, 456);
             this.dgvEntradas.TabIndex = 7;
             // 
             // EntradaID
@@ -126,12 +128,6 @@
             this.EntradaID.HeaderText = "ID";
             this.EntradaID.Name = "EntradaID";
             this.EntradaID.ReadOnly = true;
-            // 
-            // EntradaValor
-            // 
-            this.EntradaValor.HeaderText = "Valor";
-            this.EntradaValor.Name = "EntradaValor";
-            this.EntradaValor.ReadOnly = true;
             // 
             // EntradaFornecedor
             // 
@@ -151,13 +147,19 @@
             this.EntradaData.Name = "EntradaData";
             this.EntradaData.ReadOnly = true;
             // 
+            // EntradaValor
+            // 
+            this.EntradaValor.HeaderText = "Valor";
+            this.EntradaValor.Name = "EntradaValor";
+            this.EntradaValor.ReadOnly = true;
+            // 
             // FormHistoricoEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuFuncionarios);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopEntradas);
+            this.Controls.Add(this.panelMenuFuncionarios);
             this.Name = "FormHistoricoEntrada";
             this.Text = "FormHistoricoEntrada";
             this.Load += new System.EventHandler(this.FormHistoricoEntrada_Load);
@@ -176,9 +178,9 @@
         private Panel panelDesktopEntradas;
         private DataGridView dgvEntradas;
         private DataGridViewTextBoxColumn EntradaID;
-        private DataGridViewTextBoxColumn EntradaValor;
         private DataGridViewTextBoxColumn EntradaFornecedor;
         private DataGridViewTextBoxColumn EntradaFuncionario;
         private DataGridViewTextBoxColumn EntradaData;
+        private DataGridViewTextBoxColumn EntradaValor;
     }
 }

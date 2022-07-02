@@ -10,20 +10,11 @@ namespace DataAccessLayer
         string connectionString = ConnectionString._connectionString;
         public Response Insert(Estado estado)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"INSERT INTO ESTADOS (NOME_ESTADO,SIGLA) VALUES (@NOME_ESTADO,@SIGLA)";
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME_ESTADO", estado.NomeEstado);
             command.Parameters.AddWithValue("@SIGLA", estado.Sigla);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -34,39 +25,23 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("UQ_ESTADOS_SIGLA"))
                 {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
                     return new Response("Estado sigla já está em uso.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public Response Update(Estado estado)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"UPDATE ESTADOS SET NOME_ESTADO = @NOME_ESTADO, SIGLA = @SIGLA WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME_ESTADO", estado.NomeEstado);
             command.Parameters.AddWithValue("@SIGLA", estado.Sigla);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -81,16 +56,12 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("UQ_ESTADOS_SIGLA"))
                 {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
                     return new Response("Estado sigla já está em uso.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
@@ -98,18 +69,9 @@ namespace DataAccessLayer
         public Response Delete(int id)
         {
             string sql = "DELETE FROM ESTADOS WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -124,39 +86,26 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("FK_CIDADES_ESTADO"))
                 {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
                     return new Response("Não é possivel excluir um Estado que tenha uma Cidade cadastrada.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public DataResponse<Estado> GetAll()
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME_ESTADO,SIGLA FROM ESTADOS";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 List<Estado> estados = new List<Estado>();
-                //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
                     Estado estado = new Estado();
@@ -171,32 +120,21 @@ namespace DataAccessLayer
             {
                 return new DataResponse<Estado>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public SingleResponse<Estado> GetByID(int id)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME_ESTADO,SIGLA FROM ESTADOS WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
                 if (reader.Read())
                 {
                     Estado estado = new Estado();
@@ -211,10 +149,8 @@ namespace DataAccessLayer
             {
                 return new SingleResponse<Estado>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }

@@ -52,9 +52,9 @@
             this.panelMenuFuncionarios.Controls.Add(this.btnTabelaSaida);
             this.panelMenuFuncionarios.Controls.Add(this.btnInformacoesSaida);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
             this.panelMenuFuncionarios.TabIndex = 7;
             // 
             // btnTabelaSaida
@@ -96,9 +96,10 @@
             // panelDesktopEntradas
             // 
             this.panelDesktopEntradas.Controls.Add(this.dgvSaidas);
+            this.panelDesktopEntradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopEntradas.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopEntradas.Name = "panelDesktopEntradas";
-            this.panelDesktopEntradas.Size = new System.Drawing.Size(702, 518);
+            this.panelDesktopEntradas.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopEntradas.TabIndex = 8;
             // 
             // dgvSaidas
@@ -118,13 +119,14 @@
             this.SaidaValor,
             this.SaidaDesconto,
             this.SaidaValorTotal});
-            this.dgvSaidas.Location = new System.Drawing.Point(3, 0);
+            this.dgvSaidas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSaidas.Location = new System.Drawing.Point(0, 0);
             this.dgvSaidas.Name = "dgvSaidas";
             this.dgvSaidas.ReadOnly = true;
             this.dgvSaidas.RowHeadersVisible = false;
             this.dgvSaidas.RowTemplate.Height = 25;
             this.dgvSaidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSaidas.Size = new System.Drawing.Size(702, 495);
+            this.dgvSaidas.Size = new System.Drawing.Size(681, 456);
             this.dgvSaidas.TabIndex = 9;
             // 
             // SaidaId
@@ -179,9 +181,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuFuncionarios);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopEntradas);
+            this.Controls.Add(this.panelMenuFuncionarios);
             this.Name = "FormHistoricoSaida";
             this.Text = "FormHistoricoSaida";
             this.Load += new System.EventHandler(this.FormHistoricoSaida_Load);

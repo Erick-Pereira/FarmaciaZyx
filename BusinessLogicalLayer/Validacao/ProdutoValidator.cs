@@ -38,8 +38,6 @@ namespace BusinessLogicalLayer
             return "";
         }
 
-
-
         /// <summary>
         /// Verifica se a descrição esta vazia ou se é apenas espaços em branco
         /// </summary>

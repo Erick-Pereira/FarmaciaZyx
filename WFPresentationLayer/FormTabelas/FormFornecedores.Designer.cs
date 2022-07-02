@@ -54,9 +54,9 @@
             this.panelMenuProdutos.Controls.Add(this.btnDeleteFornecedor);
             this.panelMenuProdutos.Controls.Add(this.btnCadastroFornecedor);
             this.panelMenuProdutos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuProdutos.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuProdutos.Location = new System.Drawing.Point(681, 0);
             this.panelMenuProdutos.Name = "panelMenuProdutos";
-            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 456);
             this.panelMenuProdutos.TabIndex = 6;
             // 
             // btnTabelaFornecedores
@@ -134,9 +134,10 @@
             // panelDesktopFornecedores
             // 
             this.panelDesktopFornecedores.Controls.Add(this.dgvFornecedores);
-            this.panelDesktopFornecedores.Location = new System.Drawing.Point(0, -22);
+            this.panelDesktopFornecedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopFornecedores.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopFornecedores.Name = "panelDesktopFornecedores";
-            this.panelDesktopFornecedores.Size = new System.Drawing.Size(702, 495);
+            this.panelDesktopFornecedores.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopFornecedores.TabIndex = 7;
             // 
             // dgvFornecedores
@@ -153,13 +154,14 @@
             this.FornecedoresNomeContato,
             this.FornecedoresTelefone,
             this.FornecedoresEmail});
-            this.dgvFornecedores.Location = new System.Drawing.Point(0, 22);
+            this.dgvFornecedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFornecedores.Location = new System.Drawing.Point(0, 0);
             this.dgvFornecedores.Name = "dgvFornecedores";
             this.dgvFornecedores.ReadOnly = true;
             this.dgvFornecedores.RowHeadersVisible = false;
             this.dgvFornecedores.RowTemplate.Height = 25;
             this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFornecedores.Size = new System.Drawing.Size(702, 523);
+            this.dgvFornecedores.Size = new System.Drawing.Size(681, 456);
             this.dgvFornecedores.TabIndex = 3;
             // 
             // FornecedoresID
@@ -203,9 +205,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuProdutos);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopFornecedores);
+            this.Controls.Add(this.panelMenuProdutos);
             this.Name = "FormFornecedores";
             this.Text = "FormFornecedores";
             this.Load += new System.EventHandler(this.FormFornecedores_Load);

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Saida
+    public class SaidaView
     {
         public int ID { get; set; }
         public DateTime DataSaida { get; set; }
         public double Valor { get; set; }
-        public int FuncionarioId { get; set; }
-        public int ClienteId { get; set; }
-        public int FormaPagamentoId { get; set; }
+        public string Funcionario { get; set; }
+        public string Cliente { get; set; }
+        public string FormaPagamento { get; set; }
         public double ValorTotal { get; set; }
         public double Desconto { get; set; }
-        public List<ProdutosSaida> produtosSaidas { get; set; }
+        public List<ProdutosSaidaView> produtosSaidas { get; set; }
     }
 }

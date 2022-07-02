@@ -15,21 +15,17 @@ namespace BusinessLogicalLayer
         EntradaDAL entradaDAL = new EntradaDAL();
         ProdutosEntradasDAL produtosEntradasDAL = new ProdutosEntradasDAL();
 
-        public DataResponse<Entrada> GetAll()
+        public DataResponse<EntradaView> GetAll()
         {
-            DataResponse<Entrada> dataResponse = entradaDAL.GetAll();
-            for (int i = 0; i < dataResponse.Dados.Count ; i++)
-            {
-                dataResponse.Dados[i].produtosEntradas = produtosEntradasDAL.GetAllByEntradaID(dataResponse.Dados[i].ID).Dados;
-            }
-            return dataResponse;
+            return entradaDAL.GetAll();
         }
-
-        public SingleResponse<Entrada> GetByID(int id)
+        public SingleResponse<EntradaView> GetByID(int id)
         {
-            SingleResponse<Entrada> singleResponse = entradaDAL.GetByID(id);
-            singleResponse.Item.produtosEntradas =  produtosEntradasDAL.GetAllByEntradaID(id).Dados;
-            return singleResponse;
+            return entradaDAL.GetByID(id);
+        }
+        public DataResponse<ProdutosEntradaView> GetAllBySaidaID(int id)
+        {
+            return produtosEntradasDAL.GetAllBySaidaID(id);
         }
 
         public Response Insert(Entrada item)
@@ -37,9 +33,6 @@ namespace BusinessLogicalLayer
             Response response = new Response();
             using (TransactionScope scope = new TransactionScope())
             {
-               
-                
-                //INSERE UM ENDEREÇO NO BANCO E JÁ VINCULA O ID DESTE ENDEREÇO COM O SELECT NO BANCO 
                 response = entradaDAL.Insert(item);
                 for (int i = 0; i < item.produtosEntradas.Count; i++)
                 {
@@ -51,7 +44,7 @@ namespace BusinessLogicalLayer
                     return response;
                 }
                 scope.Complete();
-            }//scope.Dispose();
+            }
             return response;
         }
 }

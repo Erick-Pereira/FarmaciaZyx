@@ -10,21 +10,11 @@ namespace DataAccessLayer
 
         public Response Insert(Cidade item)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"INSERT INTO CIDADES (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID); SELECT SCOPE_IDENTITY()";
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME_CIDADE", item.NomeCidade);
             command.Parameters.AddWithValue("@ESTADO_ID", item.EstadoId);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -33,38 +23,22 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public Response Update(Cidade cidade)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"UPDATE CIDADES SET NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME_CIDADE", cidade.NomeCidade);
             command.Parameters.AddWithValue("@ESTADO_ID", cidade.EstadoId);
             command.Parameters.AddWithValue("@ID", cidade.ID);
-
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -77,13 +51,10 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
@@ -91,14 +62,9 @@ namespace DataAccessLayer
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CIDADES WHERE ID = @ID";
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -113,39 +79,26 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("FK_BAIRROS_CIDADE"))
                 {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
                     return new Response("Não é possivel excluir uma Cidade que tenha um Bairro cadastrado.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public DataResponse<Cidade> GetAll()
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 List<Cidade> cidades = new List<Cidade>();
-                //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
                     Cidade cidade = new Cidade();
@@ -160,32 +113,21 @@ namespace DataAccessLayer
             {
                 return new DataResponse<Cidade>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public SingleResponse<Cidade> GetByID(int id)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
-            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
+            string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE ID = @ID"; 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
                 if (reader.Read())
                 {
                     Cidade cidade = new Cidade();
@@ -200,25 +142,15 @@ namespace DataAccessLayer
             {
                 return new SingleResponse<Cidade>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public SingleResponse<Cidade> GetByNameAndEstadoId(Cidade item)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE NOME_CIDADE = @NOME_CIDADE AND ESTADO_ID = @ESTADO_ID";
-
-
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME_CIDADE", item.NomeCidade);
             command.Parameters.AddWithValue("@ESTADO_ID", item.EstadoId);
@@ -226,7 +158,6 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
                 if (reader.Read())
                 {
                     Cidade cidade = new Cidade();
@@ -241,10 +172,8 @@ namespace DataAccessLayer
             {
                 return new SingleResponse<Cidade>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }

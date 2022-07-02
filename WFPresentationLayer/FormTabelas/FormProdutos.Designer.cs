@@ -55,9 +55,9 @@
             this.panelMenuProdutos.Controls.Add(this.btnDeleteProduto);
             this.panelMenuProdutos.Controls.Add(this.btnCadastroProduto);
             this.panelMenuProdutos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuProdutos.Location = new System.Drawing.Point(702, 0);
+            this.panelMenuProdutos.Location = new System.Drawing.Point(681, 0);
             this.panelMenuProdutos.Name = "panelMenuProdutos";
-            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 450);
+            this.panelMenuProdutos.Size = new System.Drawing.Size(98, 456);
             this.panelMenuProdutos.TabIndex = 4;
             // 
             // btnTabelaProdutos
@@ -147,13 +147,14 @@
             this.ProdutosLaboratorio,
             this.ProdutosTipoUnidade,
             this.ProdutosValor});
+            this.dgvProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProdutos.Location = new System.Drawing.Point(0, 0);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowTemplate.Height = 25;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(702, 523);
+            this.dgvProdutos.Size = new System.Drawing.Size(681, 456);
             this.dgvProdutos.TabIndex = 3;
             // 
             // ProdutosID
@@ -201,9 +202,10 @@
             // panelDesktopProdutos
             // 
             this.panelDesktopProdutos.Controls.Add(this.dgvProdutos);
+            this.panelDesktopProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopProdutos.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopProdutos.Name = "panelDesktopProdutos";
-            this.panelDesktopProdutos.Size = new System.Drawing.Size(702, 495);
+            this.panelDesktopProdutos.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopProdutos.TabIndex = 5;
             // 
             // FormProdutos
@@ -211,9 +213,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelMenuProdutos);
+            this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopProdutos);
+            this.Controls.Add(this.panelMenuProdutos);
             this.Name = "FormProdutos";
             this.Text = "FormProdutos";
             this.Load += new System.EventHandler(this.FormProdutos_Load);

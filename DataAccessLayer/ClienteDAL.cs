@@ -11,14 +11,8 @@ namespace DataAccessLayer
 
         public Response Insert(Cliente cliente)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"INSERT INTO CLIENTES (NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID,DATA_NASCIMENTO) VALUES (@NOME,@RG,@CPF,@TELEFONE1,@TELEFONE2,@EMAIL,@PONTOS,@TIPO_CLIENTE_ID,@GENEROS_ID,@DATA_NASCIMENTO)";
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", cliente.Nome);
             command.Parameters.AddWithValue("@RG", cliente.RG);
@@ -30,12 +24,6 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@TIPO_CLIENTE_ID", cliente.TipoClienteId);
             command.Parameters.AddWithValue("@GENEROS_ID", cliente.GeneroId);
             command.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.DataNascimento);
-
-
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -46,34 +34,24 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("UQ_CLIENTES_EMAIL"))
                 {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
                     return new Response("Email já está em uso.", false);
                 }
                 if (ex.Message.Contains("UQ_CLIENTES_CPF"))
                 {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
                     return new Response("CPF já está em uso.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public Response Update(Cliente cliente)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF,EMAIL = @EMAIL, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS,TIPO_CLIENTE_ID = @TIPO_CLIENTE_ID,GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@NOME", cliente.Nome);
             command.Parameters.AddWithValue("@RG", cliente.RG);
@@ -86,12 +64,6 @@ namespace DataAccessLayer
             command.Parameters.AddWithValue("@GENEROS_ID", cliente.GeneroId);
             command.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.DataNascimento);
             command.Parameters.AddWithValue("@ID", cliente.ID);
-           
-
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -106,45 +78,27 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("UQ_CLIENTES_EMAIL"))
                 {
-                    //RETORNAR MENSAGEM QUE O EMAIL TA DUPLICADO
                     return new Response("Email já está em uso.", false);
                 }
                 if (ex.Message.Contains("UQ_CLIENTES_CPF"))
                 {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
                     return new Response("CPF já está em uso.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
 
         public Response UpdatePontos(Cliente cliente)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"UPDATE CLIENTES SET PONTOS = @PONTOS WHERE ID = @ID";
-
-
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@PONTOS", cliente.Pontos);
             command.Parameters.AddWithValue("@ID", cliente.ID);
-
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -157,31 +111,19 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CLIENTES WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
-            //Estamos conectados na base de dados
-            //try catch
-            //try catch finally
-            //try finally
             try
             {
                 connection.Open();
@@ -196,39 +138,64 @@ namespace DataAccessLayer
             {
                 if (ex.Message.Contains("FK_SAIDAS_CLIENTE"))
                 {
-                    //RETORNAR MENSAGEM QUE O CPF TA DUPLICADO
                     return new Response("Não é possivel excluir uma Cliente que tenha uma Venda cadastrada.", false);
                 }
-                //SE NAO ENTROU EM NENHUM IF DE CIMA, SÓ PODE SER UM ERRO DE INFRAESTRUTURA
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
+                connection.Dispose();
+            }
+        }
+
+        public DataResponse<ClienteView> GetAllClienteView()
+        {
+            string sql = $"SELECT C.ID,C.NOME,C.RG,C.CPF,C.TELEFONE1,C.TELEFONE2,C.EMAIL,C.PONTOS,C.DATA_NASCIMENTO,TP.NOME AS TIPOS_CLIENTES,G.NOME AS GENEROS FROM CLIENTES C INNER JOIN TIPOS_CLIENTES TP ON C.TIPO_CLIENTE_ID = TP.ID INNER JOIN GENEROS G ON C.GENEROS_ID = G.ID";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                List<ClienteView> clientes = new List<ClienteView>();
+                while (reader.Read())
+                {
+                    ClienteView cliente = new ClienteView();
+                    cliente.ID = Convert.ToInt32(reader["ID"]);
+                    cliente.Nome = Convert.ToString(reader["NOME"]);
+                    cliente.RG = Convert.ToString(reader["RG"]);
+                    cliente.CPF = Convert.ToString(reader["CPF"]);
+                    cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
+                    cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
+                    cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.Pontos = Convert.ToInt32(reader["PONTOS"]);
+                    cliente.TipoCliente = Convert.ToString(reader["TIPOS_CLIENTES"]);
+                    cliente.Genero = Convert.ToString(reader["GENEROS"]);
+                    cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
+                    clientes.Add(cliente);
+                }
+                return new DataResponse<ClienteView>("Clientes selecionados com sucesso!", true, clientes);
+            }
+            catch (Exception ex)
+            {
+                return new DataResponse<ClienteView>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            finally
+            {
                 connection.Dispose();
             }
         }
 
         public DataResponse<Cliente> GetAll()
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID, GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 List<Cliente> clientes = new List<Cliente>();
-                //Enquanto houver registros, o loop será executado!
                 while (reader.Read())
                 {
                     Cliente cliente = new Cliente();
@@ -251,32 +218,21 @@ namespace DataAccessLayer
             {
                 return new DataResponse<Cliente>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public SingleResponse<Cliente> GetByID(int id)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE ID = @ID";
-
-            
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", id);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
                 if (reader.Read())
                 {
                     Cliente cliente = new Cliente();
@@ -299,32 +255,21 @@ namespace DataAccessLayer
             {
                 return new SingleResponse<Cliente>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }
         public SingleResponse<Cliente> GetByCPF(string cPF)
         {
-            //PARÂMETROS SQL - AUTOMATICAMENTE ADICIONA UMA "/" NA FRENTE DE NOMES COM ' EX SHAQQILE O'NEAL
-            //               - AUTOMATICAMENTE ADICIONAR '' EM DATAS, VARCHARS E CHARS
-            //               - AUTOMATICAMENTE VALIDA SQL INJECTIONS BÁSICOS
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE CPF = @CPF";
-
-
-
-            //ADO.NET 
             SqlConnection connection = new SqlConnection(connectionString);
-
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@CPF", cPF);
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
                 if (reader.Read())
                 {
                     Cliente cliente = new Cliente();
@@ -347,10 +292,8 @@ namespace DataAccessLayer
             {
                 return new SingleResponse<Cliente>("Erro no banco de dados, contate o administrador.", false, null);
             }
-            //Instrução que SEMPRE será executada e "fecharão" a conexão caso ela esteja aberta
             finally
             {
-                //Fecha a conexão
                 connection.Dispose();
             }
         }

@@ -35,12 +35,6 @@
             this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvProdutosEntrada = new System.Windows.Forms.DataGridView();
-            this.ProdutosEntradaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosEntradaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosEntradaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosEntradaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosEntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosEntradaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoProduto = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,6 +51,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtNumItens = new System.Windows.Forms.TextBox();
             this.txtTotalPago = new System.Windows.Forms.TextBox();
+            this.ProdutosEntradaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosEntradaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorUnitario)).BeginInit();
@@ -108,12 +108,13 @@
             // dgvProdutosEntrada
             // 
             this.dgvProdutosEntrada.AllowUserToAddRows = false;
+            this.dgvProdutosEntrada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdutosEntrada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutosEntrada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProdutosEntradaID,
             this.ProdutosEntradaNome,
-            this.ProdutosEntradaUn,
             this.ProdutosEntradaQtde,
+            this.ProdutosEntradaUn,
             this.ProdutosEntradaValor,
             this.ProdutosEntradaTotal});
             this.dgvProdutosEntrada.Location = new System.Drawing.Point(27, 177);
@@ -122,42 +123,6 @@
             this.dgvProdutosEntrada.RowTemplate.Height = 25;
             this.dgvProdutosEntrada.Size = new System.Drawing.Size(501, 147);
             this.dgvProdutosEntrada.TabIndex = 5;
-            // 
-            // ProdutosEntradaID
-            // 
-            this.ProdutosEntradaID.HeaderText = "ID";
-            this.ProdutosEntradaID.Name = "ProdutosEntradaID";
-            this.ProdutosEntradaID.ReadOnly = true;
-            // 
-            // ProdutosEntradaNome
-            // 
-            this.ProdutosEntradaNome.HeaderText = "Nome";
-            this.ProdutosEntradaNome.Name = "ProdutosEntradaNome";
-            this.ProdutosEntradaNome.ReadOnly = true;
-            // 
-            // ProdutosEntradaUn
-            // 
-            this.ProdutosEntradaUn.HeaderText = "Un";
-            this.ProdutosEntradaUn.Name = "ProdutosEntradaUn";
-            this.ProdutosEntradaUn.ReadOnly = true;
-            // 
-            // ProdutosEntradaQtde
-            // 
-            this.ProdutosEntradaQtde.HeaderText = "Qtde";
-            this.ProdutosEntradaQtde.Name = "ProdutosEntradaQtde";
-            this.ProdutosEntradaQtde.ReadOnly = true;
-            // 
-            // ProdutosEntradaValor
-            // 
-            this.ProdutosEntradaValor.HeaderText = "Valor";
-            this.ProdutosEntradaValor.Name = "ProdutosEntradaValor";
-            this.ProdutosEntradaValor.ReadOnly = true;
-            // 
-            // ProdutosEntradaTotal
-            // 
-            this.ProdutosEntradaTotal.HeaderText = "Total";
-            this.ProdutosEntradaTotal.Name = "ProdutosEntradaTotal";
-            this.ProdutosEntradaTotal.ReadOnly = true;
             // 
             // btnCadastroNovoProduto
             // 
@@ -326,6 +291,42 @@
             this.txtTotalPago.Size = new System.Drawing.Size(100, 23);
             this.txtTotalPago.TabIndex = 45;
             // 
+            // ProdutosEntradaID
+            // 
+            this.ProdutosEntradaID.HeaderText = "ID";
+            this.ProdutosEntradaID.Name = "ProdutosEntradaID";
+            this.ProdutosEntradaID.ReadOnly = true;
+            // 
+            // ProdutosEntradaNome
+            // 
+            this.ProdutosEntradaNome.HeaderText = "Nome";
+            this.ProdutosEntradaNome.Name = "ProdutosEntradaNome";
+            this.ProdutosEntradaNome.ReadOnly = true;
+            // 
+            // ProdutosEntradaQtde
+            // 
+            this.ProdutosEntradaQtde.HeaderText = "Qtde";
+            this.ProdutosEntradaQtde.Name = "ProdutosEntradaQtde";
+            this.ProdutosEntradaQtde.ReadOnly = true;
+            // 
+            // ProdutosEntradaUn
+            // 
+            this.ProdutosEntradaUn.HeaderText = "Un";
+            this.ProdutosEntradaUn.Name = "ProdutosEntradaUn";
+            this.ProdutosEntradaUn.ReadOnly = true;
+            // 
+            // ProdutosEntradaValor
+            // 
+            this.ProdutosEntradaValor.HeaderText = "Valor Un";
+            this.ProdutosEntradaValor.Name = "ProdutosEntradaValor";
+            this.ProdutosEntradaValor.ReadOnly = true;
+            // 
+            // ProdutosEntradaTotal
+            // 
+            this.ProdutosEntradaTotal.HeaderText = "Total";
+            this.ProdutosEntradaTotal.Name = "ProdutosEntradaTotal";
+            this.ProdutosEntradaTotal.ReadOnly = true;
+            // 
             // FormRegistroEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -393,8 +394,8 @@
         private TextBox txtTotalPago;
         private DataGridViewTextBoxColumn ProdutosEntradaID;
         private DataGridViewTextBoxColumn ProdutosEntradaNome;
-        private DataGridViewTextBoxColumn ProdutosEntradaUn;
         private DataGridViewTextBoxColumn ProdutosEntradaQtde;
+        private DataGridViewTextBoxColumn ProdutosEntradaUn;
         private DataGridViewTextBoxColumn ProdutosEntradaValor;
         private DataGridViewTextBoxColumn ProdutosEntradaTotal;
     }

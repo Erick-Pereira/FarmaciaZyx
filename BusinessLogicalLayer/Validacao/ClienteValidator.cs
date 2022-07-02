@@ -11,7 +11,6 @@ namespace BusinessLogicalLayer
     {
         private StringValidator stringValidator = new StringValidator();
         private DateTimeValidator dateTimeValidator = new DateTimeValidator();
-        private Normatization normatization = new Normatization();
         private ClienteDAL clienteDAL = new ClienteDAL();
 
         private string ValidateRG(string rG)

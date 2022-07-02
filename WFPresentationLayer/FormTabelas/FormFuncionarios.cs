@@ -19,7 +19,7 @@ namespace WFPresentationLayer
 
 
         TipoFuncionarioBLL tipoFuncionarioBLL = new TipoFuncionarioBLL();
-        List<Funcionario> funcionarios = new List<Funcionario>();
+        List<FuncionarioView> funcionarios = new List<FuncionarioView>();
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
         EnderecoBLL EnderecoBLL = new EnderecoBLL();
         public FormFuncionarios()
@@ -44,8 +44,7 @@ namespace WFPresentationLayer
         }
         private void FormFuncionarios_Load(object sender, EventArgs e)
         {
-
-            funcionarios = funcionarioBLL.GetAll().Dados;
+            funcionarios = funcionarioBLL.GetAllFuncionarioView().Dados;
             for (int i = 0; i < funcionarios.Count; i++)
             {
                 dgvFuncionarios.Rows.Add();
@@ -55,7 +54,7 @@ namespace WFPresentationLayer
                 dgvFuncionarios.Rows[i].Cells["FuncionariosRG"].Value = funcionarios[i].RG;
                 dgvFuncionarios.Rows[i].Cells["FuncionariosTelefone"].Value = funcionarios[i].Telefone;
                 dgvFuncionarios.Rows[i].Cells["FuncionariosEmail"].Value = funcionarios[i].Email;
-                dgvFuncionarios.Rows[i].Cells["FuncionariosTipoFuncionario"].Value = tipoFuncionarioBLL.GetByID(funcionarios[i].TipoFuncionarioId).Item.Nome;
+                dgvFuncionarios.Rows[i].Cells["FuncionariosTipoFuncionario"].Value = funcionarios[i].TipoFuncionario;
             }
         }
 
@@ -151,7 +150,7 @@ namespace WFPresentationLayer
             {
                 panelDesktopFuncionarios.SendToBack();
                 currentChildForm.Close();
-                funcionarios = funcionarioBLL.GetAll().Dados;
+                funcionarios = funcionarioBLL.GetAllFuncionarioView().Dados;
                 dgvFuncionarios.Rows.Clear();
                 for (int i = 0; i < funcionarios.Count; i++)
                 {
@@ -162,7 +161,7 @@ namespace WFPresentationLayer
                     dgvFuncionarios.Rows[i].Cells["FuncionariosRG"].Value = funcionarios[i].RG;
                     dgvFuncionarios.Rows[i].Cells["FuncionariosTelefone"].Value = funcionarios[i].Telefone;
                     dgvFuncionarios.Rows[i].Cells["FuncionariosEmail"].Value = funcionarios[i].Email;
-                    dgvFuncionarios.Rows[i].Cells["FuncionariosTipoFuncionario"].Value = tipoFuncionarioBLL.GetByID(funcionarios[i].TipoFuncionarioId).Item.Nome;
+                    dgvFuncionarios.Rows[i].Cells["FuncionariosTipoFuncionario"].Value = funcionarios[i].TipoFuncionario;
                 }
             }
         }

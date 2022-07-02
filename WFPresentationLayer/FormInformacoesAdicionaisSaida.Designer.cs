@@ -233,6 +233,7 @@
             // 
             this.dgvProdutosSaida.AllowUserToAddRows = false;
             this.dgvProdutosSaida.AllowUserToDeleteRows = false;
+            this.dgvProdutosSaida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdutosSaida.BackgroundColor = System.Drawing.Color.White;
             this.dgvProdutosSaida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutosSaida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -276,7 +277,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInformacoesAdicionaisSaida";
             this.Text = "Informações Adicionais";
-            this.Load += new System.EventHandler(this.FormInformacoesAdicionaisEntrada_Load);
+            this.Load += new System.EventHandler(this.FormInformacoesAdicionaisSaida_Load);
             this.panelSaidaInfo.ResumeLayout(false);
             this.panelSaidaInfo.PerformLayout();
             this.panelPagamentoInfo.ResumeLayout(false);

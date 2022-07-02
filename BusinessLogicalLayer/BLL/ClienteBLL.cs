@@ -18,6 +18,10 @@ namespace BusinessLogicalLayer
             return clienteDAL.GetAll();
         }
 
+        public DataResponse<ClienteView> GetAllClienteView()
+        {
+            return clienteDAL.GetAllClienteView();
+        }
         public SingleResponse<Cliente> GetByID(int id)
         {
             return clienteDAL.GetByID(id);
@@ -29,9 +33,6 @@ namespace BusinessLogicalLayer
         }
         public Response Insert(Cliente item)
         {
-            //NAO ESQUEÇAM DAS VALIDAÇÕES!
-            //SE EXISTIREM NO OBJETO CLIENTE, RETORNAR ERROS!!
-            //NÃO ACESSAR O DAL CASO O OBJETO CLIENTE ESTEJA INCORRETO!!!!
             ClienteValidator clienteValidator = new ClienteValidator();
             Response response = clienteValidator.Validate(item);
             if (response.HasSuccess)
