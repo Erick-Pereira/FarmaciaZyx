@@ -56,13 +56,9 @@ namespace WFPresentationLayer
             txtRg.Text = funcionario.RG;
             cmbGenero.SelectedValue = funcionario.GeneroId;
             cmbTipoFuncionario.SelectedValue = funcionario.TipoFuncionarioId;
-            //DateTime dataNascimento = DateTime.Parse(mtxtDataDeNascimento.Text, new CultureInfo("pt-br"));
             mtxtDataNascimento.Text = Convert.ToString(funcionario.DataNascimento, new CultureInfo("pt-br"));
             txtEmail.Text = funcionario.Email;
             mtxtTelefone.Text = funcionario.Telefone;
-            //txtSenha.Text = "";
-            //txtConfirmarSenha.Text = "";
-            //Genero genero = (Genero)cmbGenero.SelectedIndex;
             SingleResponse<Endereco> singleResponseEndereco = enderecoBLL.GetByID(funcionario.EnderecoId);
             SingleResponse<Bairro> singleResponseBairro = bairroBLL.GetByID(singleResponseEndereco.Item.BairroID);
             SingleResponse<Cidade> singleResponseCidade = cidadeBLL.GetByID(singleResponseBairro.Item.CidadeId);
