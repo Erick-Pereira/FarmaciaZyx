@@ -58,7 +58,6 @@ namespace WFPresentationLayer
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
-
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
