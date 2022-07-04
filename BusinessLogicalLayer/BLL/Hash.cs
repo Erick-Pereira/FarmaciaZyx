@@ -12,7 +12,6 @@ namespace BusinessLogicalLayer
         string key = "b14ca5898a4e4133bbce2ea2315a1916";
         public string EncryptString(string plainText)
         {
-
             byte[] iv = new byte[16];
             byte[] array;
 

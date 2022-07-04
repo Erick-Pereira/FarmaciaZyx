@@ -10,16 +10,10 @@ namespace BusinessLogicalLayer
     public class FuncionarioBLL : ICRUD<Funcionario>
     {
         private FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
-
-        public FuncionarioBLL()
-        {
-        }
-
         public Response Delete(int id)
         {
             return funcionarioDAL.Delete(id);
         }
-
         public DataResponse<Funcionario> GetAll()
         {
             return funcionarioDAL.GetAll();
@@ -28,7 +22,6 @@ namespace BusinessLogicalLayer
         {
             return funcionarioDAL.GetAllFuncionarioView();
         }
-
         public DataResponse<Funcionario> GetAllByEnderecoId(int enderecoId)
         {
             return funcionarioDAL.GetAllByEnderecoId(enderecoId);
@@ -41,7 +34,6 @@ namespace BusinessLogicalLayer
         {
             return funcionarioDAL.GetSenhaByID(id);
         }
-
         public Response InsertFuncionarioComEndereco(FuncionarioComEndereco funcionarioComEndereco)
         {
             Response response = new Response();

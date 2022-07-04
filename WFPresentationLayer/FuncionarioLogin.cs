@@ -9,9 +9,7 @@ namespace WFPresentationLayer
     internal static class FuncionarioLogin
     {
         public static int id;
-
         public static string nome;
         public static int tipoFuncionarioId;
-
     }
 }
