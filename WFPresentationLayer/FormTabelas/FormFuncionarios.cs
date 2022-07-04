@@ -39,7 +39,7 @@ namespace WFPresentationLayer
             childForm.Dock = DockStyle.Fill;
             panelDesktopFuncionarios.Controls.Add(childForm);
             panelDesktopFuncionarios.Tag = childForm;
-            panelDesktopFuncionarios.BringToFront();
+            childForm.BringToFront();
             childForm.Show();
         }
         private void FormFuncionarios_Load(object sender, EventArgs e)
