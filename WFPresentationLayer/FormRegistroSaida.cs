@@ -27,17 +27,6 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
-        private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Produto produto = (Produto)cmbProduto.SelectedItem;
-            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
-            if (tipoUnidade != null)
-            {
-                txtUnidade.Text = tipoUnidade.Nome;
-                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
-                nudQtde.Value = 1;
-            }
-        }
 
         private void FormRegistroSaida_Load(object sender, EventArgs e)
         {
@@ -209,7 +198,14 @@ namespace WFPresentationLayer
 
         private void cmbProduto_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            nudQtde.Value = 1;
+            Produto produto = (Produto)cmbProduto.SelectedItem;
+            TipoUnidade tipoUnidade = TipoUnidadeBLL.GetById(produto.TipoUnidadeId).Item;
+            if (tipoUnidade != null)
+            {
+                txtUnidade.Text = tipoUnidade.Nome;
+                nudQtde.DecimalPlaces = tipoUnidade.CasasDecimais;
+                nudQtde.Value = 1;
+            }
         }
 
         private void btnCadastroNovoCliente_Click(object sender, EventArgs e)

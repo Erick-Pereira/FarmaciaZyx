@@ -25,7 +25,7 @@ namespace WfPresentationLayer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
-            string senha = hash.EncryptString(txtSenha.Text);
+            string senha = hash.ComputeSha256Hash(txtSenha.Text);
             Login login = new Login(email, senha);
             LoginBLL loginBLL = new LoginBLL();
             SingleResponse<Funcionario> singleResponse = loginBLL.Logar(login);

@@ -9,33 +9,23 @@ namespace BusinessLogicalLayer
 {
     public class Hash
     {
-        string key = "b14ca5898a4e4133bbce2ea2315a1916";
-        public string EncryptString(string plainText)
+        public string ComputeSha256Hash(string rawData)
         {
-            byte[] iv = new byte[16];
-            byte[] array;
-
-            using (Aes aes = Aes.Create())
+            rawData = "Q342SSGQQWERTD" + rawData + "U7RGJ786EFGQ2";
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(key);
-                aes.IV = iv;
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
-                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                using (MemoryStream memoryStream = new MemoryStream())
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
                 {
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
-                        {
-                            streamWriter.Write(plainText);
-                        }
-
-                        array = memoryStream.ToArray();
-                    }
+                    builder.Append(bytes[i].ToString("x2"));
                 }
+                return builder.ToString();
             }
-            return Convert.ToBase64String(array);
         }
     }
 }

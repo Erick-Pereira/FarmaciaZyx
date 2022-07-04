@@ -28,7 +28,7 @@ namespace WFPresentationLayer
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            Response response = new Response();
+             Response response = new Response();
             string nome = txtNome.Text;
             string email = txtEmail.Text;
             string cpf = mtxtCpf.Text;

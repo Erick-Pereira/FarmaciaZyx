@@ -57,7 +57,7 @@ namespace WFPresentationLayer
             stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(senha, confirmarSenha));
             Funcionario funcionario = new Funcionario(nome, cpf, rg, telefone, email, senha, tipoFuncionarioId, genero, dataNascimento);
             stringBuilder.AppendLine(validator.Validate(funcionario).Message);
-            senha = hash.EncryptString(senha);
+            funcionario.Senha = hash.ComputeSha256Hash(senha);
             string erros = stringBuilder.ToString().Trim();
             if (string.IsNullOrWhiteSpace(erros))
             {

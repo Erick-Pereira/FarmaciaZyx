@@ -37,11 +37,11 @@ namespace WFPresentationLayer
             if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
             {
                 string senha = funcionarioBLL.GetSenhaByID(funcionario.ID).Item.Senha;
-                string senhaAntiga = hash.EncryptString(txtSenhaAntiga.Text);
+                string senhaAntiga = hash.ComputeSha256Hash(txtSenhaAntiga.Text);
 
                 if (senhaAntiga == senha)
                 {
-                    if (hash.EncryptString(txtNovaSenha.Text) != senha)
+                    if (hash.ComputeSha256Hash(txtNovaSenha.Text) != senha)
                     {
                         stringBuilder.AppendLine(stringValidator.ValidateIfSenha1EqualsToSenha2(txtNovaSenha.Text, txtConfirmarNovaSenha.Text));
                         if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
@@ -49,7 +49,7 @@ namespace WFPresentationLayer
                             stringBuilder.AppendLine(stringValidator.ValidateSenha(txtNovaSenha.Text));
                             if (string.IsNullOrWhiteSpace(stringBuilder.ToString()))
                             {
-                                funcionario.Senha = hash.EncryptString(txtNovaSenha.Text);
+                                funcionario.Senha = hash.ComputeSha256Hash(txtNovaSenha.Text);
                                 Response response = funcionarioBLL.UpdateSenha(funcionario);
                                 MessageBox.Show(response.Message);
                             }
