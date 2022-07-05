@@ -58,5 +58,11 @@ namespace WfPresentationLayer
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            DALValidator dALValidator = new DALValidator();
+            dALValidator.Verify();
+        }
     }
 }

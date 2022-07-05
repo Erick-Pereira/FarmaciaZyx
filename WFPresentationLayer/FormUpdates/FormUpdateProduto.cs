@@ -15,18 +15,16 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateProduto : Form
     {
-        public FormUpdateProduto()
-        {
-            InitializeComponent();
-        }
         LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
         TipoUnidadeBLL tipoUnidadeBLL = new TipoUnidadeBLL();
-        Produto produto = (Produto)StaticItem.item;
         ProdutoValidator produtoValidator = new ProdutoValidator();
         ProdutoBLL produtorBLL = new ProdutoBLL();
-
-
-
+        Produto produto = new Produto();
+        public FormUpdateProduto(Produto _produto)
+        {
+            produto = _produto;
+            InitializeComponent();
+        }
 
         private void FormUpdateProduto_Load(object sender, EventArgs e)
         {

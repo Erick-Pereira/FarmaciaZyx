@@ -15,9 +15,6 @@ namespace WFPresentationLayer
 {
     public partial class FormFuncionarios : Form
     {
-        
-
-
         TipoFuncionarioBLL tipoFuncionarioBLL = new TipoFuncionarioBLL();
         List<FuncionarioView> funcionarios = new List<FuncionarioView>();
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
@@ -133,8 +130,7 @@ namespace WFPresentationLayer
                 btnUpdateFuncionario.Visible = false;
                 int rowindex = dgvFuncionarios.CurrentCell.RowIndex;
                 int index = Convert.ToInt32(dgvFuncionarios.Rows[rowindex].Cells[0].Value);
-                StaticItem.item = funcionarioBLL.GetByID(index).Item;
-                OpenChildForm(new FormUpdateFuncionario());
+                OpenChildForm(new FormUpdateFuncionario(funcionarioBLL.GetByID(index).Item));
             }
         }
 

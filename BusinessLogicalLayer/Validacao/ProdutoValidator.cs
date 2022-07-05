@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
@@ -51,38 +52,28 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+
         /// <summary>
-        /// Verifica se o nome do laboratorio esta vazio ou se é apenas espaços em branco
-        /// </summary>
-        /// <param name="laboratorio"></param>
-        /// <returns>Retorna uma string contendo o erro, "" se não houver erro</returns>
-        private string ValidateLaboratorio(string laboratorio)
-        {
-            if (string.IsNullOrWhiteSpace(laboratorio))
-            {
-                return "Laboratorio deve ser informada.";
-            }
-            return "";
-        }
-        /// <summary>
-        /// Faz a validação se tudo esta dentro dos padrões
+        /// Recebe um produto e faz as validações
         /// </summary>
         /// <param name="nome"></param>
         /// <param name="descricao"></param>
         /// <param name="laboratorio"></param>
-        /// <returns>Retorna uma string contendo os erros, "" se não houver erros</returns>
+        /// <returns>Retorna um response com uma string vazia e boolean true caso tudo esteja certo</returns>
         public Response Validate(Produto produto)
         {
             StringBuilder erros = new StringBuilder();
             erros.AppendLine(ValidateNome(produto.Nome));
             erros.AppendLine(ValidateDescricao(produto.Descricao));
             erros.AppendLine(ValidateUnidade(produto));
+            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
-            if (string.IsNullOrWhiteSpace(erros.ToString()))
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                return new Response(erros.ToString(), true);
+                return new Response(erro, true);
             }
-            return new Response(erros.ToString(), false);
+            return new Response(erro, false);
         }
     }
 }

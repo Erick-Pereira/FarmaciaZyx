@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
@@ -24,6 +25,11 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+        /// <summary>
+        /// Verifica se o CNPJ esta de acordo com os padrões
+        /// </summary>
+        /// <param name="cnpj"></param>
+        /// <returns>Retorna um boolean</returns>
         internal static bool IsCnpj(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -59,6 +65,11 @@ namespace BusinessLogicalLayer
             return cnpj.EndsWith(digito);
         }
 
+        /// <summary>
+        /// Recebe o CNPJ e faz a verificação se esta de acordo
+        /// </summary>
+        /// <param name="cnpj"></param>
+        /// <returns>Retorna vazio "" se tudo estiver certo</returns>
         internal string ValidateCNPJ(string cnpj)
         {
             if (string.IsNullOrWhiteSpace(cnpj))
@@ -91,7 +102,7 @@ namespace BusinessLogicalLayer
         /// <param name="nome"></param>
         /// <param name="descricao"></param>
         /// <param name="laboratorio"></param>
-        /// <returns>Retorna uma string contendo os erros, "" se não houver erros</returns>
+        /// <returns>Retorna um response com uma string vazia e boolean true caso tudo esteja certo</returns>
         public Response Validate(Fornecedor fornecedor)
         {
             StringBuilder erros = new StringBuilder();
@@ -100,13 +111,14 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateEmail(fornecedor.Email));
             erros.AppendLine(ValidateNomeContato(fornecedor.NomeContato));
             erros.AppendLine(stringValidator.ValidateTelefone(fornecedor.Telefone));
-
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
+            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+
             if (string.IsNullOrWhiteSpace(erros.ToString()))
             {
-                return new Response(erros.ToString().Trim(), true);
+                return new Response(erro, true);
             }
-            return new Response(erros.ToString().Trim(), false);
+            return new Response(erro, false);
         }
     }
 }

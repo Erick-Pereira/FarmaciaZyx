@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
@@ -70,17 +71,24 @@ namespace BusinessLogicalLayer
             }
             return "CNPJ invalido.";
         }
+        /// <summary>
+        /// Recebe um Laboratorio e faz a validação
+        /// </summary>
+        /// <param name="laboratorio"></param>
+        /// <returns>Retorna um response com uma string vazia e boolean true caso tudo esteja certo</returns>
         public Response Validate(Laboratorio laboratorio)
         {
             StringBuilder erros = new StringBuilder();
             StringValidator stringValidator = new StringValidator();
             erros.AppendLine(ValidateLaboratorio(laboratorio.Nome));
             erros.AppendLine(ValidateCNPJ(laboratorio.CNPJ));
-            if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
+            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                return new Response(erros.ToString(), true);
+                return new Response(erro, true);
             }
-            return new Response(erros.ToString().Trim(), false);
+            return new Response(erro, false);
         }
     }
 }

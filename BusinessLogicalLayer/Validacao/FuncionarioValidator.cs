@@ -2,6 +2,7 @@
 using Entities;
 using Shared;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BusinessLogicalLayer
 {
@@ -9,8 +10,12 @@ namespace BusinessLogicalLayer
     {
         private StringValidator stringValidator = new StringValidator();
         private DateTimeValidator dateTimeValidator = new DateTimeValidator();
-        private FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
 
+        /// <summary>
+        /// Verifica se o RG foi informado
+        /// </summary>
+        /// <param name="rG"></param>
+        /// <returns>Retorna vazio "" se o RG foi informado</returns>
         private string ValidateRG(string rG)
         {
             rG = rG.Replace(".", "");
@@ -20,6 +25,11 @@ namespace BusinessLogicalLayer
             }
                 return "";
         }
+        /// <summary>
+        /// Recebe data de nascimento e verifica se a pessoa é maior do que a idade minima
+        /// </summary>
+        /// <param name="dataNascimento"></param>
+        /// <returns>Retorna vazio "" se estiver tudo certo</returns>
         private string ValidateAge(DateTime dataNascimento)
         {
             string data = dataNascimento.ToString();
@@ -34,6 +44,11 @@ namespace BusinessLogicalLayer
             }
             return "Data de nascimento deve ser informada";
         }
+        /// <summary>
+        /// Recebe um funcionario e faz a validação
+        /// </summary>
+        /// <param name="funcionario"></param>
+        /// <returns>Retorna um response com uma string vazia e boolean true caso tudo esteja certo</returns>
         public Response Validate(Funcionario funcionario)
         {
             StringBuilder erros = new StringBuilder();
@@ -44,11 +59,13 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateTelefone(funcionario.Telefone));
             erros.AppendLine(ValidateRG(funcionario.RG));
             erros.AppendLine(ValidateAge(funcionario.DataNascimento));
-            if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
+            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                return new Response(erros.ToString().Trim(), true);
+                return new Response(erro, true);
             }
-            return new Response(erros.ToString().Trim(), false);
+            return new Response(erro, false);
         }
 
     }

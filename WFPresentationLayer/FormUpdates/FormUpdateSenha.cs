@@ -15,18 +15,20 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateSenha : Form
     {
-        public FormUpdateSenha()
-        {
-            InitializeComponent();
-        }
         FuncionarioBLL funcionarioBLL = new FuncionarioBLL();
         FuncionarioValidator funcionarioValidator = new FuncionarioValidator();
         StringValidator stringValidator = new StringValidator();
+        Funcionario funcionario = new Funcionario();
+        public FormUpdateSenha(Funcionario _funcionario)
+        {
+            funcionario = _funcionario;
+            InitializeComponent();
+        }
+
 
         private void btnUpdateSenha_Click(object sender, EventArgs e)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            Funcionario funcionario = (Funcionario)StaticItem.item;
             Hash hash = new Hash();
             if (string.IsNullOrEmpty(txtSenhaAntiga.Text))
             { stringBuilder.AppendLine("Senha Antiga deve ser informada"); }

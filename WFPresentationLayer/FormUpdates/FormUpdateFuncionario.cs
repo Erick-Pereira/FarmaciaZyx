@@ -8,10 +8,12 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateFuncionario : Form
     {
-        public FormUpdateFuncionario()
+        public FormUpdateFuncionario(Funcionario _funcionario)
         {
+            funcionario = _funcionario;
             InitializeComponent();
         }
+        Funcionario funcionario = new Funcionario();
         FuncionarioValidator validator = new FuncionarioValidator();
         StringValidator stringValidator = new StringValidator();
         TipoFuncionarioBLL tipoFuncionario = new TipoFuncionarioBLL();
@@ -22,7 +24,6 @@ namespace WFPresentationLayer
         GeneroBLL generoBLL = new GeneroBLL();
         EnderecoBLL enderecoBLL = new EnderecoBLL();
         DateTimeValidator dateTimeValidator = new DateTimeValidator();
-        Funcionario funcionario = new Funcionario();
         private Form currentChildForm;
         private void OpenChildForm(Form childForm)
         {
@@ -41,7 +42,6 @@ namespace WFPresentationLayer
         }
         private void FormUpdateFuncionario_Load(object sender, EventArgs e)
         {
-            funcionario = (Funcionario)StaticItem.item;
             cmbTipoFuncionario.DataSource = tipoFuncionario.GetAll().Dados;
             cmbTipoFuncionario.DisplayMember = "Nome";
             cmbTipoFuncionario.ValueMember = "ID";
@@ -133,7 +133,7 @@ namespace WFPresentationLayer
         private void btnTrocarSenha_Click(object sender, EventArgs e)
         {
             panelUpdateSenha.BringToFront();
-            OpenChildForm(new FormUpdateSenha());
+            OpenChildForm(new FormUpdateSenha(funcionario));
         }
     }
 }

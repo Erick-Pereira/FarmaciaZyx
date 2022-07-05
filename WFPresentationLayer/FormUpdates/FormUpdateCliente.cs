@@ -21,12 +21,12 @@ namespace WFPresentationLayer
         ClienteValidator clienteValidator = new ClienteValidator();
         GeneroBLL generoBLL = new GeneroBLL();
         DateTimeValidator dateTimeValidator = new DateTimeValidator();
-
-        public FormUpdateCliente()
+        Cliente cliente = new Cliente();
+        public FormUpdateCliente(Cliente _cliente)
         {
+            cliente = _cliente;
             InitializeComponent();
         }
-        Cliente cliente = (Cliente)StaticItem.item;
         private void FormUpdateCliente_Load(object sender, EventArgs e)
         {
             cmbTipoCliente.DataSource = tipoClienteBLL.GetAll().Dados;

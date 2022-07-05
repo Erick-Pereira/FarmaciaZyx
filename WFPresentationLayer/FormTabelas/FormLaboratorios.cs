@@ -100,9 +100,7 @@ namespace WFPresentationLayer
                 btnDeleteLaboratorio.Visible = false;
                 btnUpdateLaboratorio.Visible = false;
                 int rowindex = dgvLaboratorios.CurrentCell.RowIndex;
-                int columnindex = dgvLaboratorios.CurrentCell.ColumnIndex;
-                StaticItem.item = laboratorioBLL.GetByID(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[0].Value)).Item;
-                OpenChildForm(new FormUpdateLaboratorio());
+                OpenChildForm(new FormUpdateLaboratorio(laboratorioBLL.GetByID(Convert.ToInt32(dgvLaboratorios.Rows[rowindex].Cells[0].Value)).Item));
             }
         }
 

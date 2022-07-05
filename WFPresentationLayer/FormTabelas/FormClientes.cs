@@ -16,7 +16,6 @@ namespace WFPresentationLayer
     public partial class FormClientes : Form
     {
         private Form currentChildForm;
-        TipoClienteBLL tipoClienteBLL = new TipoClienteBLL();
         List<ClienteView> clientes = new List<ClienteView>();
         ClienteBLL clienteBLL = new ClienteBLL();
         public FormClientes()
@@ -38,7 +37,7 @@ namespace WFPresentationLayer
             childForm.BringToFront();
             childForm.Show();
         }
-
+        
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
             btnCadastroCliente.Enabled = false;
@@ -113,9 +112,7 @@ namespace WFPresentationLayer
                 btnUpdateCliente.Visible = false;
                 panelDesktopClientes.BringToFront();
                 int rowindex = dgvClientes.CurrentCell.RowIndex;
-                int columnindex = dgvClientes.CurrentCell.ColumnIndex;
-                StaticItem.item = clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[0].Value)).Item;
-                OpenChildForm(new FormUpdateCliente());
+                OpenChildForm(new FormUpdateCliente(clienteBLL.GetByID(Convert.ToInt32(dgvClientes.Rows[rowindex].Cells[0].Value)).Item));
             }
         }
 

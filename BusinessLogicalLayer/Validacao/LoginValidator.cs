@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
@@ -37,22 +38,24 @@ namespace BusinessLogicalLayer
             return "";
         }
         /// <summary>
-        /// Faz as validações
+        /// Recebe um login e faz as validação
         /// </summary>
         /// <param name="email"></param>
         /// <param name="senha"></param>
-        /// <returns>string contendo os erros, "" se não houver erros</returns>
+        /// <returns>Retorna um response com uma string vazia e boolean true caso tudo esteja certo</returns>
         public Response Validate(Login login)
         {
             StringBuilder erros = new StringBuilder();
             StringValidator stringValidator = new StringValidator();
             erros.AppendLine(ValidateEmail(login.Email));
             erros.AppendLine(ValidateSenha(login.Senha));
-            if (string.IsNullOrWhiteSpace(erros.ToString().Trim()))
+            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+
+            if (string.IsNullOrWhiteSpace(erro))
             {
-                return new Response(erros.ToString(), true);
+                return new Response(erro, true);
             }
-            return new Response(erros.ToString().Trim(), false);
+            return new Response(erro, false);
         }
     }
 }

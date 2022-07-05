@@ -15,16 +15,14 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateLaboratorio : Form
     {
-        public FormUpdateLaboratorio()
-        {
-            InitializeComponent();
-        }
-
-        Laboratorio laboratorio = (Laboratorio)StaticItem.item;
         LaboratorioValidator laboratorioValidator = new LaboratorioValidator();
         LaboratorioBLL laboratorioBLL = new LaboratorioBLL();
-
-
+        Laboratorio laboratorio = new Laboratorio();
+        public FormUpdateLaboratorio(Laboratorio _laboratorio)
+        {
+            laboratorio = _laboratorio;
+            InitializeComponent();
+        }
 
         private void btnUpdateLaboratorio_Click(object sender, EventArgs e)
         {

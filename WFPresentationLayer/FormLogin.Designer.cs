@@ -158,6 +158,7 @@
             this.MinimumSize = new System.Drawing.Size(476, 300);
             this.Name = "FormLogin";
             this.Text = "Zyx";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormLogin_MouseDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

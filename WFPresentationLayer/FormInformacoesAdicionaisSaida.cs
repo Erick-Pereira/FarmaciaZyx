@@ -15,14 +15,15 @@ namespace WFPresentationLayer
 {
     public partial class FormInformacoesAdicionaisSaida : Form
     {
-        public FormInformacoesAdicionaisSaida()
+        SaidaView saida = new SaidaView();
+        public FormInformacoesAdicionaisSaida(SaidaView _saida)
         {
+            saida = _saida;
             InitializeComponent();
         }
         SaidaBLL saidaBLL = new SaidaBLL();
         private void FormInformacoesAdicionaisSaida_Load(object sender, EventArgs e)
         {
-            SaidaView saida = (SaidaView)StaticItem.item;
             saida.produtosSaidas = saidaBLL.GetAllProdutosSaidaViewBySaidaID(saida.ID).Dados;
             txtCliente.Text = saida.Cliente;
             txtData.Text = saida.DataSaida.ToString();

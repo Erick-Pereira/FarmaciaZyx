@@ -15,14 +15,15 @@ namespace WFPresentationLayer
 {
     public partial class FormInformacoesAdicionaisEntrada : Form
     {
-        public FormInformacoesAdicionaisEntrada()
+        EntradaView entrada= new EntradaView();
+        public FormInformacoesAdicionaisEntrada(EntradaView _entradaView)
         {
+            entrada = _entradaView;
             InitializeComponent();
         }
         EntradaBLL entradaBLL = new EntradaBLL();
         private void FormInformacoesAdicionaisEntrada_Load(object sender, EventArgs e)
         {
-            EntradaView entrada = (EntradaView)StaticItem.item;
             entrada.produtosEntradas = entradaBLL.GetAllBySaidaID(entrada.ID).Dados;
             txtFornecedor.Text = entrada.Fornecedor;
             txtData.Text = entrada.DataEntrada.ToString();

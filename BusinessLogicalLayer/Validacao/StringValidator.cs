@@ -215,6 +215,12 @@ namespace BusinessLogicalLayer
             }
             return "";
         }
+        /// <summary>
+        /// Recebe duas strings e verifica se uma é igual a outra
+        /// </summary>
+        /// <param name="senha1"></param>
+        /// <param name="senha2"></param>
+        /// <returns>Retorna vazio "" caso sejam iguais</returns>
         public string ValidateIfSenha1EqualsToSenha2(string senha1, string senha2)
         {
             if (senha1 != senha2)

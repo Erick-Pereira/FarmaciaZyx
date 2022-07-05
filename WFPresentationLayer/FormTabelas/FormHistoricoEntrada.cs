@@ -90,9 +90,8 @@ namespace WFPresentationLayer
                 int index = Convert.ToInt32(dgvEntradas.Rows[rowindex].Cells[0].Value);
                 btnInformacoesEntrada.Enabled = false;
                 btnInformacoesEntrada.Visible = false;
-                StaticItem.item = entradaBLL.GetByID(index).Item;
                 panelDesktopEntradas.BringToFront();
-                OpenChildForm(new FormInformacoesAdicionaisEntrada());
+                OpenChildForm(new FormInformacoesAdicionaisEntrada(entradaBLL.GetByID(index).Item));
             }
         }
     }

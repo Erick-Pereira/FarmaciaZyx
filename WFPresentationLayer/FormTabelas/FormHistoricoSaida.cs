@@ -96,9 +96,8 @@ namespace WFPresentationLayer
                 int index = Convert.ToInt32(dgvSaidas.Rows[rowindex].Cells[0].Value);
                 btnInformacoesSaida.Enabled = false;
                 btnInformacoesSaida.Visible = false;
-                StaticItem.item = saidaBLL.GetByID(index).Item;
                 panelDesktopEntradas.BringToFront();
-                OpenChildForm(new FormInformacoesAdicionaisSaida());
+                OpenChildForm(new FormInformacoesAdicionaisSaida(saidaBLL.GetByID(index).Item));
             }
         }
     }

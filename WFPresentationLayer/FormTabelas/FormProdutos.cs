@@ -116,8 +116,7 @@ namespace WFPresentationLayer
                 btnUpdateProduto.Visible = false;
                 int rowindex = dgvProdutos.CurrentCell.RowIndex;
                 panelDesktopProdutos.BringToFront();
-                StaticItem.item = produtoBLL.GetByID(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[0].Value)).Item;
-                OpenChildForm(new FormUpdateProduto());
+                OpenChildForm(new FormUpdateProduto(produtoBLL.GetByID(Convert.ToInt32(dgvProdutos.Rows[rowindex].Cells[0].Value)).Item));
             }
         }
 

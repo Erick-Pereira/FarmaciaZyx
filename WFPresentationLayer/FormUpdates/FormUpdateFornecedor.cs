@@ -15,16 +15,14 @@ namespace WFPresentationLayer
 {
     public partial class FormUpdateFornecedor : Form
     {
-        public FormUpdateFornecedor()
-        {
-            InitializeComponent();
-        }
         FornecedorValidator fornecedorValidator = new FornecedorValidator();
         FornecedorBLL fornecedorBLL = new FornecedorBLL();
-
-
-        Fornecedor fornecedor = (Fornecedor)StaticItem.item;
-
+        Fornecedor fornecedor = new Fornecedor();
+        public FormUpdateFornecedor(Fornecedor _fornecedor)
+        {
+            fornecedor = _fornecedor;
+            InitializeComponent();
+        }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             Fornecedor update = new Fornecedor();
