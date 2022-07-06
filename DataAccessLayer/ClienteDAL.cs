@@ -9,6 +9,11 @@ namespace DataAccessLayer
 
         string connectionString = ConnectionString._connectionString;
 
+        /// <summary>
+        /// Recebe um Cliente e insere no banco de dados
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Cliente cliente)
         {
             string sql = $"INSERT INTO CLIENTES (NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID,DATA_NASCIMENTO) VALUES (@NOME,@RG,@CPF,@TELEFONE1,@TELEFONE2,@EMAIL,@PONTOS,@TIPO_CLIENTE_ID,@GENEROS_ID,@DATA_NASCIMENTO)";
@@ -47,7 +52,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Cliente e faz o update no banco de dados
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Update(Cliente cliente)
         {
             string sql = $"UPDATE CLIENTES SET NOME = @NOME, RG = @RG, CPF = @CPF,EMAIL = @EMAIL, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2,PONTOS = @PONTOS,TIPO_CLIENTE_ID = @TIPO_CLIENTE_ID,GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
@@ -91,7 +100,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Cliente e faz o update dos pontos
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response UpdatePontos(Cliente cliente)
         {
             string sql = $"UPDATE CLIENTES SET PONTOS = @PONTOS WHERE ID = @ID";
@@ -118,6 +131,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta um Cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CLIENTES WHERE ID = @ID";
@@ -147,7 +165,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Cliente cadastrados no banco de dados</returns>
         public DataResponse<ClienteView> GetAllClienteView()
         {
             string sql = $"SELECT C.ID,C.NOME,C.RG,C.CPF,C.TELEFONE1,C.TELEFONE2,C.EMAIL,C.PONTOS,C.DATA_NASCIMENTO,TP.NOME AS TIPOS_CLIENTES,G.NOME AS GENEROS FROM CLIENTES C INNER JOIN TIPOS_CLIENTES TP ON C.TIPO_CLIENTE_ID = TP.ID INNER JOIN GENEROS G ON C.GENEROS_ID = G.ID";
@@ -185,7 +206,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Cliente cadastrados no banco de dados</returns>
         public DataResponse<Cliente> GetAll()
         {
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID, GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES";
@@ -223,6 +247,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo o Cliente referente ao ID informado</returns>
         public SingleResponse<Cliente> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE ID = @ID";
@@ -260,6 +289,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe uma string com o CPF e retorna um SingleResponse
+        /// </summary>
+        /// <param name="cPF"></param>
+        /// <returns>Retorna um SingleResponse contendo o Cliente referente ao CPF informado</returns>
         public SingleResponse<Cliente> GetByCPF(string cPF)
         {
             string sql = $"SELECT ID,NOME,RG,CPF,TELEFONE1,TELEFONE2,EMAIL,PONTOS,TIPO_CLIENTE_ID,GENEROS_ID, DATA_NASCIMENTO FROM CLIENTES WHERE CPF = @CPF";

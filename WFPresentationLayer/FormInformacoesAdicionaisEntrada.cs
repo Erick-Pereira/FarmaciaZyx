@@ -24,7 +24,7 @@ namespace WFPresentationLayer
         EntradaBLL entradaBLL = new EntradaBLL();
         private void FormInformacoesAdicionaisEntrada_Load(object sender, EventArgs e)
         {
-            entrada.produtosEntradas = entradaBLL.GetAllBySaidaID(entrada.ID).Dados;
+            entrada.produtosEntradas = entradaBLL.GetAllByEntraID(entrada.ID).Dados;
             txtFornecedor.Text = entrada.Fornecedor;
             txtData.Text = entrada.DataEntrada.ToString();
             txtFuncionario.Text = entrada.Funcionario;

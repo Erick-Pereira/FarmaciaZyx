@@ -47,7 +47,7 @@ namespace DataAccessLayer
         /// <summary>
         /// Acessa o banco de dados e retorna um DataResponse
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna um Data Response contendo todas as Saidas cadastradas no banco de dados</returns>
         public DataResponse<SaidaView> GetAll()
         {
             string sql = $"SELECT S.ID,S.VALOR,S.DATA_SAIDA,S.VALOR_TOTAL,S.DESCONTO,C.NOME AS CLIENTES,FU.NOME AS FUNCIONARIOS,FP.NOME AS FORMAS_PAGAMENTOS FROM SAIDAS S INNER JOIN CLIENTES C ON S.CLIENTE_ID = C.ID INNER JOIN FUNCIONARIOS FU ON S.FUNCIONARIO_ID = FU.ID INNER JOIN FORMAS_PAGAMENTO FP ON S.FORMA_PAGAMENTO_ID = FP.ID";
@@ -83,6 +83,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo uma Saida referente ao ID informado</returns>
         public SingleResponse<SaidaView> GetSaidaViewByID(int id)
         {
             string sql = $"SELECT S.ID,S.VALOR,S.DATA_SAIDA,S.VALOR_TOTAL,S.DESCONTO,C.NOME AS CLIENTES,FU.NOME AS FUNCIONARIOS,FP.NOME AS FORMAS_PAGAMENTOS FROM SAIDAS S INNER JOIN CLIENTES C ON S.CLIENTE_ID = C.ID INNER JOIN FUNCIONARIOS FU ON S.FUNCIONARIO_ID = FU.ID INNER JOIN FORMAS_PAGAMENTO FP ON S.FORMA_PAGAMENTO_ID = FP.ID WHERE S.ID = @ID";
@@ -117,6 +122,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse com uma Saida referente ao ID informado</returns>
         public SingleResponse<Saida> GetByID(int id)
         {
             string sql = $"SELECT ID,VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,DESCONTO,VALOR_TOTAL FROM SAIDAS WHERE ID = @ID";

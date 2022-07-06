@@ -24,7 +24,7 @@ namespace WFPresentationLayer
         SaidaBLL saidaBLL = new SaidaBLL();
         private void FormInformacoesAdicionaisSaida_Load(object sender, EventArgs e)
         {
-            saida.produtosSaidas = saidaBLL.GetAllProdutosSaidaViewBySaidaID(saida.ID).Dados;
+            saida.produtosSaidas = saidaBLL.GetAllBySaidaID(saida.ID).Dados;
             txtCliente.Text = saida.Cliente;
             txtData.Text = saida.DataSaida.ToString();
             txtDesconto.Text = saida.Desconto.ToString();

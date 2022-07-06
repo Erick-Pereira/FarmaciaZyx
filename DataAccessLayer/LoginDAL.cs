@@ -8,6 +8,11 @@ namespace DataAccessLayer
     {
         string connectionString = ConnectionString._connectionString;
 
+        /// <summary>
+        /// Recebe um email e retorna um SingleResponse
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Retorna um SingleReponse contendo um Funcionario</returns>
         public SingleResponse<Funcionario> GetByEmail(string email)
         {
             string sql = $"SELECT ID,EMAIL,SENHA,TIPO_FUNCIONARIO_ID FROM FUNCIONARIOS WHERE EMAIL = @EMAIL";

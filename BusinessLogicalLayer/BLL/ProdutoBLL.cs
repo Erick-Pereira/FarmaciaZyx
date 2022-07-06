@@ -13,11 +13,15 @@ namespace BusinessLogicalLayer
     {
         ProdutoDAL produtoDAL = new ProdutoDAL();
 
+
         public Response Delete(int id)
         {
             return produtoDAL.Delete(id);
         }
-
+        /// <summary>
+        /// Instancia o metodo GetAll do ProdutoDAL
+        /// </summary>
+        /// <returns>Retorna um DataResponse </returns>
         public DataResponse<Produto> GetAll()
         {
             return produtoDAL.GetAll();
@@ -37,10 +41,6 @@ namespace BusinessLogicalLayer
                 return produtoDAL.Insert(item);
             }
             return new Response(response.Message, false);
-        }
-        public SingleResponse<Produto> GetByNome(string nome)
-        {
-            return produtoDAL.GetByName(nome);
         }
         public Response Update(Produto item)
         {

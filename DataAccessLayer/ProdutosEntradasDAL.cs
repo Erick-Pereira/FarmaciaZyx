@@ -12,9 +12,12 @@ namespace DataAccessLayer
     public class ProdutosEntradasDAL
     {
         string connectionString = ConnectionString._connectionString;
-
-
-        public DataResponse<ProdutosEntradaView> GetAllBySaidaID(int id)
+        /// <summary>
+        /// Recebe um ID e retorna um DataResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um DataResponse contendo todos os ProdutosEntrada referente ao ID informado</returns>
+        public DataResponse<ProdutosEntradaView> GetAllByEntradaID(int id)
         {
             string sql = $"SELECT PE.ENTRADA_ID,PE.QUANTIDADE,PE.VALOR_UNITARIO,P.NOME AS PRODUTO,P.DESCRICAO,P.VALOR,L.NOME AS LABORATORIOS,TU.NOME AS TIPOS_UNIDADES FROM PRODUTOS_ENTRADAS PE INNER JOIN PRODUTOS P ON PE.PRODUTO_ID = P.ID INNER JOIN LABORATORIOS L ON P.LABORATORIO_ID = L.ID INNER JOIN TIPOS_UNIDADES TU ON P.TIPO_UNIDADE_ID = TU.ID WHERE PE.ENTRADA_ID = @ENTRADA_ID";
             SqlConnection connection = new SqlConnection(connectionString);
@@ -51,6 +54,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ProdutosEntrada e insere no banco de dados
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(ProdutosEntrada item)
         {
             string sql = $"INSERT INTO PRODUTOS_ENTRADAS (ENTRADA_ID,PRODUTO_ID,QUANTIDADE,VALOR_UNITARIO) VALUES (@ENTRADA_ID,@PRODUTO_ID,@QUANTIDADE,@VALOR_UNITARIO) ";

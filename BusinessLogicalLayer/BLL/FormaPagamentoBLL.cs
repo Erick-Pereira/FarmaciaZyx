@@ -12,6 +12,10 @@ namespace BusinessLogicalLayer
     public class FormaPagamentoBLL
     {
         FormaPagamentoDAL formaPagamentoDAL = new FormaPagamentoDAL();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public DataResponse<FormaPagamento> GetAll()
         {
             DataResponse<FormaPagamento> dataResponse = formaPagamentoDAL.GetAll();
@@ -24,7 +28,11 @@ namespace BusinessLogicalLayer
                 return new DataResponse<FormaPagamento>(dataResponse.Message, dataResponse.HasSuccess, null);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public SingleResponse<FormaPagamento> GetById(int id)
         {
             SingleResponse<FormaPagamento> singleResponse = formaPagamentoDAL.GetByID(id);

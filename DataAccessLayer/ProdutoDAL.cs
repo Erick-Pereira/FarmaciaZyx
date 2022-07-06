@@ -13,6 +13,11 @@ namespace DataAccessLayer
     {
         string connectionString = ConnectionString._connectionString;
 
+        /// <summary>
+        /// Recebe um Produto e insere no banco de dados
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Produto produto)
         {
             string sql = $"INSERT INTO PRODUTOS (NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR) VALUES (@NOME,@DESCRICAO,@LABORATORIO_ID,@QTD_ESTOQUE,@TIPO_UNIDADE_ID,@VALOR)";
@@ -39,7 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Produto e faz o update no banco de dados
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Update(Produto produto)
         {
             string sql = $"UPDATE PRODUTOS SET NOME = @NOME, DESCRICAO = @DESCRICAO, LABORATORIO_ID = @LABORATORIO_ID, QTD_ESTOQUE = @QTD_ESTOQUE, TIPO_UNIDADE_ID = @TIPO_UNIDADE_ID, VALOR = @VALOR WHERE ID = @ID";
@@ -71,6 +80,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um Produto e faz o update do valor e do estoque
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response UpdateValueAndInventory(Produto produto)
         {
             string sql = $"UPDATE PRODUTOS SET VALOR = @VALOR, QTD_ESTOQUE = @QTD_ESTOQUE WHERE ID = @ID";
@@ -98,6 +112,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e deleta um Produto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Reponse informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM PRODUTOS WHERE ID = @ID";
@@ -131,7 +150,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Produtos cadastrados no banco de dados</returns>
         public DataResponse<Produto> GetAll()
         {
             string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR FROM PRODUTOS";
@@ -166,6 +188,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo o Produto referente ao ID informado</returns>
         public SingleResponse<Produto> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID,VALOR FROM PRODUTOS WHERE ID = @ID";
@@ -187,39 +214,6 @@ namespace DataAccessLayer
                     produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
                     produto.Valor = Convert.ToDouble(reader["VALOR"]);
 
-                    return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
-                }
-                return new SingleResponse<Produto>("Produto não encontrado!", false, null);
-            }
-            catch (Exception ex)
-            {
-                return new SingleResponse<Produto>("Erro no banco de dados, contate o administrador.", false, null);
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-        }
-        public SingleResponse<Produto> GetByName(string nome)
-        {
-            string sql = $"SELECT ID,NOME,DESCRICAO,LABORATORIO_ID,QTD_ESTOQUE,TIPO_UNIDADE_ID FROM PRODUTOS WHERE NOME = @NOME";
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@NOME", nome);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                //Enquanto houver registros, o loop será executado!
-                if (reader.Read())
-                {
-                    Produto produto = new Produto();
-                    produto.ID = Convert.ToInt32(reader["ID"]);
-                    produto.Nome = Convert.ToString(reader["NOME"]);
-                    produto.Descricao = Convert.ToString(reader["DESCRICAO"]);
-                    produto.LaboratorioId = Convert.ToInt32(reader["LABORATORIO_ID"]);
-                    produto.QtdEstoque = Convert.ToDouble(reader["QTD_ESTOQUE"]);
-                    produto.TipoUnidadeId = Convert.ToInt32(reader["TIPO_UNIDADE_ID"]);
                     return new SingleResponse<Produto>("Produto selecionado com sucesso!", true, produto);
                 }
                 return new SingleResponse<Produto>("Produto não encontrado!", false, null);

@@ -7,6 +7,11 @@ namespace DataAccessLayer
     public class FuncionarioDAL : ICRUD<Funcionario>
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Recebe um Funcionario e retorna um Response
+        /// </summary>
+        /// <param name="funcionario"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Funcionario funcionario)
         {
             string sql = $"INSERT INTO FUNCIONARIOS (NOME,CPF,RG,TELEFONE,EMAIL,SENHA,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO) VALUES (@NOME,@CPF,@RG,@TELEFONE,@EMAIL,@SENHA,@ENDERECO_ID,@TIPO_FUNCIONARIO_ID,@GENEROS_ID,@DATA_NASCIMENTO)";
@@ -45,7 +50,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Funcionario e faz o update no banco de dados
+        /// </summary>
+        /// <param name="funcionario"></param>
+        /// <returns>Retorna um response informando se teve sucesso</returns>
         public Response Update(Funcionario funcionario)
         {
             string sql = $"UPDATE FUNCIONARIOS SET NOME = @NOME,RG = @RG ,  CPF = @CPF, TELEFONE = @TELEFONE,EMAIL = @EMAIL, ENDERECO_ID = @ENDERECO_ID, TIPO_FUNCIONARIO_ID = @TIPO_FUNCIONARIO_ID, GENEROS_ID = @GENEROS_ID,DATA_NASCIMENTO = @DATA_NASCIMENTO WHERE ID = @ID";
@@ -89,6 +98,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um Funcionario e faz o update da senha no banco de dados
+        /// </summary>
+        /// <param name="funcionario"></param>
+        /// <returns>Retorna um response informando se teve sucesso</returns>
         public Response UpdateSenha(Funcionario funcionario)
         {
             string sql = $"UPDATE FUNCIONARIOS SET SENHA = @SENHA WHERE ID = @ID";
@@ -115,6 +129,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta um Funcionario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM FUNCIONARIOS WHERE ID = @ID";
@@ -148,6 +167,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um Dataresponse contendo todos os Funcionarios cadastrados no banco de dados</returns>
         public DataResponse<FuncionarioView> GetAllFuncionarioView()
         {
             string sql = $"SELECT F.ID,F.NOME,F.CPF,F.RG,F.EMAIL,F.TELEFONE,F.DATA_NASCIMENTO, TF.NOME AS TIPOS_FUNCIONARIOS, G.NOME AS GENEROS FROM FUNCIONARIOS F INNER JOIN TIPOS_FUNCIONARIOS TF ON F.TIPO_FUNCIONARIO_ID = TF.ID INNER JOIN GENEROS G ON F.GENEROS_ID = G.ID";
@@ -183,6 +206,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um Dataresponse contendo todos os Funcionarios cadastrados no banco de dados</returns>
         public DataResponse<Funcionario> GetAll()
         {
             string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID,DATA_NASCIMENTO FROM FUNCIONARIOS";
@@ -219,6 +246,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um Funcionario referente ao ID informado</returns>
         public SingleResponse<Funcionario> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME,RG,CPF,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO FROM FUNCIONARIOS WHERE ID = @ID";
@@ -256,6 +288,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um Funcionario apenas com ID e Senha</returns>
         public SingleResponse<Funcionario> GetSenhaByID(int id)
         {
             string sql = $"SELECT ID,SENHA FROM FUNCIONARIOS WHERE ID = @ID";
@@ -284,6 +321,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um DataResponse
+        /// </summary>
+        /// <param name="idEndereco"></param>
+        /// <returns>Retorna um DataResponse contendo todos os funcionarios relacionados ao ID informado</returns>
         public DataResponse<Funcionario> GetAllByEnderecoId(int idEndereco)
         {
             string sql = $"SELECT ID,NOME,CPF,RG,EMAIL,TELEFONE,ENDERECO_ID,TIPO_FUNCIONARIO_ID,GENEROS_ID, DATA_NASCIMENTO FROM FUNCIONARIOS WHERE ENDERECO_ID = @ENDERECO_ID";

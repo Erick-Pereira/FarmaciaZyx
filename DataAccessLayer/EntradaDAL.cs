@@ -12,6 +12,11 @@ namespace DataAccessLayer
     public class EntradaDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Recebe uma Entrada e insere no banco de dados
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Entrada item)
         {
             string sql = $"INSERT INTO ENTRADAS (PRECO,FORNECEDOR_ID,FUNCIONARIO_ID,DATA_ENTRADA) VALUES (@PRECO,@FORNECEDOR_ID,@FUNCIONARIO_ID,@DATA_ENTRADA); SELECT SCOPE_IDENTITY()";
@@ -36,6 +41,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todas as entradas cadastradas no banco de dados</returns>
         public DataResponse<EntradaView> GetAll()
         {
             string sql = $"SELECT E.ID,E.PRECO,E.DATA_ENTRADA,FO.RAZAO_SOCIAL AS FORNECEDORES,FU.NOME AS FUNCIONARIOS FROM ENTRADAS E INNER JOIN FORNECEDORES FO ON E.FORNECEDOR_ID = FO.ID INNER JOIN FUNCIONARIOS FU ON E.FUNCIONARIO_ID = FU.ID";
@@ -68,6 +77,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo uma EntradaView referente ao ID informado</returns>
         public SingleResponse<EntradaView> GetByID(int id)
         {
             string sql = $"SELECT E.ID,E.PRECO,E.DATA_ENTRADA,FO.RAZAO_SOCIAL AS FORNECEDORES,FU.NOME AS FUNCIONARIOS FROM ENTRADAS E INNER JOIN FORNECEDORES FO ON E.FORNECEDOR_ID = FO.ID INNER JOIN FUNCIONARIOS FU ON E.FUNCIONARIO_ID = FU.ID WHERE E.ID = @ID";

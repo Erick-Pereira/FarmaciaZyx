@@ -19,9 +19,9 @@ namespace BusinessLogicalLayer
         {
             return saidaDAL.GetAll();
         }
-        public DataResponse<ProdutosSaidaView> GetAllProdutosSaidaViewBySaidaID(int id)
+        public DataResponse<ProdutosSaidaView> GetAllBySaidaID(int id)
         {
-            return produtosSaidasDAL.GetAllProdutosSaidaViewBySaidaID(id);
+            return produtosSaidasDAL.GetAllBySaidaID(id);
         }
         public SingleResponse<SaidaView> GetByID(int id)
         {

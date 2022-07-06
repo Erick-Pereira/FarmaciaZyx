@@ -170,7 +170,6 @@ namespace WFPresentationLayer
                     entrada.FornecedorID = Convert.ToInt32(cmbFornecedor.SelectedValue);
                     entrada.FuncionarioId = FuncionarioLogin.id;
                     EntradaBLL entradabll = new EntradaBLL();
-                    StringBuilder stringbuilder = new StringBuilder();
                     for (int i = 0; i < produtos.Count; i++)
                     {
                         produtosWithValorAndEstoque.Add(produtoBLL.GetByID(produtos[i].ID).Item);

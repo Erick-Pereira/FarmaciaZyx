@@ -7,7 +7,11 @@ namespace DataAccessLayer
     public class CidadeDAL : ICRUD<Cidade>
     {
         string connectionString = ConnectionString._connectionString;
-
+        /// <summary>
+        /// Recebe uma Cidade e insere no banco de dados
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Cidade item)
         {
             string sql = $"INSERT INTO CIDADES (NOME_CIDADE,ESTADO_ID) VALUES (@NOME_CIDADE,@ESTADO_ID); SELECT SCOPE_IDENTITY()";
@@ -30,7 +34,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe uma Cidade e faz o update no banco de dados
+        /// </summary>
+        /// <param name="cidade"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Update(Cidade cidade)
         {
             string sql = $"UPDATE CIDADES SET NOME_CIDADE = @NOME_CIDADE, ESTADO_ID = @ESTADO_ID WHERE ID = @ID";
@@ -58,7 +66,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta uma Cidade
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM CIDADES WHERE ID = @ID";
@@ -88,7 +100,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse </returns>
         public DataResponse<Cidade> GetAll()
         {
             string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES";
@@ -118,6 +133,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo uma Cidade referente ao ID informado</returns>
         public SingleResponse<Cidade> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE ID = @ID"; 
@@ -147,6 +167,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe uma Cidade e retorna um SingleResponse
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um SingleResponse contendo uma Cidade com mesmo nome e ID do Estado</returns>
         public SingleResponse<Cidade> GetByNameAndEstadoId(Cidade item)
         {
             string sql = $"SELECT ID,NOME_CIDADE,ESTADO_ID FROM CIDADES WHERE NOME_CIDADE = @NOME_CIDADE AND ESTADO_ID = @ESTADO_ID";

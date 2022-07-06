@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class FormaPagamentoDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todas as Formas de Pagamento cadastradas no banco de dados</returns>
         public DataResponse<FormaPagamento> GetAll()
         {
             string sql = $"SELECT ID,NOME FROM FORMAS_PAGAMENTO";
@@ -40,6 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo uma Forma de Pagamento referente ao ID informado</returns>
         public SingleResponse<FormaPagamento> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME FROM FORMAS_PAGAMENTO WHERE ID = @ID";

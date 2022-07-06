@@ -14,20 +14,37 @@ namespace BusinessLogicalLayer
     {
         EntradaDAL entradaDAL = new EntradaDAL();
         ProdutosEntradasDAL produtosEntradasDAL = new ProdutosEntradasDAL();
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public DataResponse<EntradaView> GetAll()
         {
             return entradaDAL.GetAll();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public SingleResponse<EntradaView> GetByID(int id)
         {
             return entradaDAL.GetByID(id);
         }
-        public DataResponse<ProdutosEntradaView> GetAllBySaidaID(int id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DataResponse<ProdutosEntradaView> GetAllByEntraID(int id)
         {
-            return produtosEntradasDAL.GetAllBySaidaID(id);
+            return produtosEntradasDAL.GetAllByEntradaID(id);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public Response Insert(Entrada item)
         {
             Response response = new Response();

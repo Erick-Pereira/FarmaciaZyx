@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class LaboratorioDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Laboratorios cadastrados no banco</returns>
         public DataResponse<Laboratorio> GetAll()
         {
             string sql = $"SELECT ID,NOME,CNPJ FROM LABORATORIOS";
@@ -41,6 +45,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um Laboratorio e insere no banco de dados
+        /// </summary>
+        /// <param name="laboratorio"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Laboratorio laboratorio)
         {
             string sql = $"INSERT INTO LABORATORIOS (NOME,CNPJ) VALUES (@NOME,@CNPJ)";
@@ -67,6 +76,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e Retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleReponse contendo o Laboratorio referente ao ID informado</returns>
         public SingleResponse<Laboratorio> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME,CNPJ FROM LABORATORIOS WHERE ID = @ID";
@@ -97,6 +111,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta um Laboratorio
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Reponse informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM LABORATORIOS WHERE ID = @ID";
@@ -126,7 +145,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Laboratorio e faz o update no banco de dados
+        /// </summary>
+        /// <param name="laboratorio"></param>
+        /// <returns>Retorna Reponse informando se teve sucesso</returns>
         public Response Update(Laboratorio laboratorio)
         {
             string sql = $"UPDATE LABORATORIOS SET NOME = @NOME CNPJ = @CNPJ WHERE ID = @ID";

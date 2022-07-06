@@ -9,6 +9,11 @@ namespace BusinessLogicalLayer
 {
     public class Hash
     {
+        /// <summary>
+        /// Recebe uma string contendo uma senha e hasheia ela
+        /// </summary>
+        /// <param name="rawData"></param>
+        /// <returns>Retorna um string hasheada</returns>
         public string ComputeSha256Hash(string rawData)
         {
             rawData = "Q342SSGQQWERTD" + rawData + "U7RGJ786EFGQ2";

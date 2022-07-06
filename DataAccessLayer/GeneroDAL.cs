@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class GeneroDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Generos cadastrados no banco de dado</returns>
         public DataResponse<Generos> GetAll()
         {
             string sql = $"SELECT ID,NOME FROM GENEROS";
@@ -40,6 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleReponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleReponse contendo o Genero referente ao ID info</returns>
         public SingleResponse<Generos> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME FROM GENEROS WHERE ID = @ID";

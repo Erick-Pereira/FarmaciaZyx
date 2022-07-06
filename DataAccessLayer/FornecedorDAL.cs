@@ -7,6 +7,11 @@ namespace DataAccessLayer
     public class FornecedorDAL : ICRUD<Fornecedor>
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Recebe um Fornecedor e insere no banco de dados
+        /// </summary>
+        /// <param name="fornecedor"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Fornecedor fornecedor)
         {
             string sql = $"INSERT INTO FORNECEDORES (RAZAO_SOCIAL,CNPJ,NOME_CONTATO,TELEFONE,EMAIL) VALUES (@RAZAO_SOCIAL,@CNPJ,@NOME_CONTATO,@TELEFONE,@EMAIL)";
@@ -40,7 +45,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Fornecedor e faz o update no banco de dados
+        /// </summary>
+        /// <param name="fornecedor"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Update(Fornecedor fornecedor)
         {
             string sql = $"UPDATE FORNECEDORES SET RAZAO_SOCIAL = @RAZAO_SOCIAL, EMAIL = @EMAIL, TELEFONE = @TELEFONE, NOME_CONTATO = @NOME_CONTATO WHERE ID = @ID";
@@ -78,7 +87,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e Delete o Fornecedor referente a esse ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM FORNECEDORES WHERE ID = @ID";
@@ -108,7 +121,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Fornecedores cadastrados no banco de dados</returns>
         public DataResponse<Fornecedor> GetAll()
         {
             string sql = $"SELECT ID,RAZAO_SOCIAL,CNPJ,NOME_CONTATO,TELEFONE,EMAIL FROM FORNECEDORES";
@@ -142,6 +158,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um Fornecedor referente ao ID informado</returns>
         public SingleResponse<Fornecedor> GetByID(int id)
         {
             string sql = $"SELECT ID,RAZAO_SOCIAL,CNPJ,NOME_CONTATO,TELEFONE,EMAIL FROM FORNECEDORES WHERE ID = @ID";

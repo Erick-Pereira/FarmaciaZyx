@@ -7,7 +7,11 @@ namespace DataAccessLayer
     public class BairroDAL : ICRUD<Bairro>
     {
         string connectionString = ConnectionString._connectionString;
-
+        /// <summary>
+        /// Recebe um Bairro e insere no banco de dados
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Bairro item)
         {
             string sql = $"INSERT INTO BAIRROS (NOME_BAIRRO,CIDADE_ID) VALUES (@NOME_BAIRRO,@CIDADE_ID); SELECT SCOPE_IDENTITY()";
@@ -35,7 +39,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Bairro e faz o update no banco de dados
+        /// </summary>
+        /// <param name="bairro"></param>
+        /// <returns>Retorna um Response se teve sucesso</returns>
         public Response Update(Bairro bairro)
         {
             string sql = $"UPDATE BAIRROS SET NOME_BAIRRO = @NOME_BAIRRO, CIDADE_ID = @CIDADE_ID WHERE ID = @ID";
@@ -62,7 +70,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta um Bairro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM BAIRROS WHERE ID = @ID";
@@ -94,7 +106,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Bairros cadastrados no banco de dados</returns>
         public DataResponse<Bairro> GetAll()
         {
             string sql = $"SELECT ID,NOME_BAIRRO,CIDADE_ID FROM BAIRROS";
@@ -124,6 +139,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo o Bairro referente ao ID informado</returns>
         public SingleResponse<Bairro> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME_BAIRRO,CIDADE_ID FROM BAIRROS WHERE ID = @ID";
@@ -153,6 +173,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um Bairro e retorna um SingleResponse
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um SingleResponse contendo o Bairro com mesmo e com mesmo ID de Cidade</returns>
         public SingleResponse<Bairro> GetByNameAndCidadeId(Bairro item)
         {
             string sql = $"SELECT ID,NOME_BAIRRO,CIDADE_ID FROM BAIRROS WHERE NOME_BAIRRO = @NOME_BAIRRO AND CIDADE_ID = @CIDADE_ID";

@@ -8,6 +8,11 @@ namespace DataAccessLayer
     {
 
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Recebe um Estado e insere no banco de dados
+        /// </summary>
+        /// <param name="estado"></param>
+        /// <returns>Retorna um Response informado se teve sucesso</returns>
         public Response Insert(Estado estado)
         {
             string sql = $"INSERT INTO ESTADOS (NOME_ESTADO,SIGLA) VALUES (@NOME_ESTADO,@SIGLA)";
@@ -34,7 +39,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um Estado e faz o update no banco de dados
+        /// </summary>
+        /// <param name="estado"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Update(Estado estado)
         {
             string sql = $"UPDATE ESTADOS SET NOME_ESTADO = @NOME_ESTADO, SIGLA = @SIGLA WHERE ID = @ID";
@@ -65,7 +74,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e deleta um Estado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Delete(int id)
         {
             string sql = "DELETE FROM ESTADOS WHERE ID = @ID";
@@ -95,7 +108,10 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os estados cadastrados no banco de dados</returns>
         public DataResponse<Estado> GetAll()
         {
             string sql = $"SELECT ID,NOME_ESTADO,SIGLA FROM ESTADOS";
@@ -125,6 +141,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse com o Estado referente ao ID informado</returns>
         public SingleResponse<Estado> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME_ESTADO,SIGLA FROM ESTADOS WHERE ID = @ID";
