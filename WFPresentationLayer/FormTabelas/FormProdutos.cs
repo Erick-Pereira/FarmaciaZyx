@@ -74,7 +74,7 @@ namespace WFPresentationLayer
         {
             if (dgvProdutos.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel deletar um produto não selecionado");
+                MessageBox.Show("Não é possivel deletar um Produto não selecionado");
                 return;
             }
 
@@ -99,10 +99,10 @@ namespace WFPresentationLayer
         {
             if (dgvProdutos.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel fazer o update um Funcionario não selecionado");
+                MessageBox.Show("Não é possivel fazer o update um Produto não selecionado");
                 return;
             }
-            string message = "Você realmente Fazer o update deste Funcionario?";
+            string message = "Você realmente Fazer o update deste Produto?";
             string title = "Close Window";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);

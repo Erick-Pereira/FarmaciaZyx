@@ -32,14 +32,6 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("FK_PRODUTOS_ENTRADAS_PRODUTOS"))
-                {
-                    return new Response("Não é possivel excluir um Produto que tenha uma Entrada cadastrada.", false);
-                }
-                if (ex.Message.Contains("FK_PRODUTOS_SAIDA_PRODUTOS"))
-                {
-                    return new Response("Não é possivel excluir um Produto que tenha uma Venda cadastrada.", false);
-                }
                 return new Response("Erro no banco de dados, contate o administrador.", false);
             }
             finally

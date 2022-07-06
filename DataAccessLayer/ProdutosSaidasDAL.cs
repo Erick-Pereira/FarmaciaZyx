@@ -93,7 +93,7 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 command.ExecuteNonQuery();
-                return new Response("Saida cadastrada com sucesso.", true);
+                return new Response("ProdutosSaidas cadastrada com sucesso.", true);
             }
             catch (Exception ex)
             {

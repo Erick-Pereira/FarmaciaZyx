@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class TipoUnidadeDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna todos os tipos de unidade
+        /// </summary>
+        /// <returns>Retorna todos os tipos de unidades cadastradas no banco de dados</returns>
         public DataResponse<TipoUnidade> GetAll()
         {
             string sql = $"SELECT ID,NOME,CASAS_DECIMAIS FROM TIPOS_UNIDADES";
@@ -41,6 +45,12 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e retorna SingleReponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>retorna um SingleResponse contendo um tipo de unidade cadastrada no banco de dados</returns>
         public SingleResponse<TipoUnidade> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME,CASAS_DECIMAIS FROM TIPOS_UNIDADES WHERE ID = @ID";

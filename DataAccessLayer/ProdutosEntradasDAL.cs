@@ -40,7 +40,7 @@ namespace DataAccessLayer
                     entrada.Produto.Nome = Convert.ToString(reader["PRODUTO"]);
                     produtosEntradas.Add(entrada);
                 }
-                return new DataResponse<ProdutosEntradaView>("Endereço selecionados com sucesso!", true, produtosEntradas);
+                return new DataResponse<ProdutosEntradaView>("ProdutosEntradas selecionados com sucesso!", true, produtosEntradas);
             }
             catch (Exception ex)
             {
@@ -64,7 +64,7 @@ namespace DataAccessLayer
             {
                 connection.Open();
                 command.ExecuteNonQuery();
-                return new Response("Entrada cadastrado com sucesso.", true);
+                return new Response("ProdutosEntrada cadastrada com sucesso.", true);
             }
             catch (Exception ex)
             {

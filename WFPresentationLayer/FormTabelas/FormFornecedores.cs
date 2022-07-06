@@ -73,7 +73,7 @@ namespace WFPresentationLayer
         {
             if (dgvFornecedores.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel deletar um fornecedor não selecionado");
+                MessageBox.Show("Não é possivel deletar um Fornecedor não selecionado");
                 return;
             }
 

@@ -71,7 +71,7 @@ namespace WFPresentationLayer
         {
             if (dgvFuncionarios.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel deletar um funcionario não selecionado");
+                MessageBox.Show("Não é possivel deletar um Funcionario não selecionado");
                 return;
             }
             string message = "Você realmente quer excluir este Funcionario?";

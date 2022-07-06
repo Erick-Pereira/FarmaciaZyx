@@ -112,7 +112,7 @@ namespace BusinessLogicalLayer
             erros.AppendLine(ValidateNomeContato(fornecedor.NomeContato));
             erros.AppendLine(stringValidator.ValidateTelefone(fornecedor.Telefone));
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
-            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+            string erro = erros.ToString();
 
             if (string.IsNullOrWhiteSpace(erros.ToString()))
             {

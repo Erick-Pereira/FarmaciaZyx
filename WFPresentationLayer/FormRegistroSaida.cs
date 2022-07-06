@@ -22,7 +22,6 @@ namespace WFPresentationLayer
         FormaPagamentoBLL formaPagamentoBLL = new FormaPagamentoBLL();
         Cliente cliente = new Cliente();
         double descontoPorcentagem = 0;
-
         public FormRegistroSaida()
         {
             InitializeComponent();
@@ -216,7 +215,8 @@ namespace WFPresentationLayer
 
         private void btnAdicionarCliente_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(mtxtCpf.Text))
+            
+            if (string.IsNullOrWhiteSpace(mtxtCpf.Text.Replace(".","").Replace("-","")))
             {
                 string message = "Você realmente deseja adicionar o Cliente Padrão?";
                 string title = "Close Window";
@@ -234,7 +234,7 @@ namespace WFPresentationLayer
                 SingleResponse<Cliente> singleResponse = clienteBLL.GetByCPF(mtxtCpf.Text);
                 if (!singleResponse.HasSuccess)
                 {
-                    string message = $"{singleResponse.Message} ,Você adicionar o Cliente Padrão?";
+                    string message = $"{singleResponse.Message}, Você deseja adicionar o Cliente Padrão?";
                     string title = "Close Window";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
@@ -247,7 +247,7 @@ namespace WFPresentationLayer
                 }
                 else
                 {
-                    string message = $"Você realmente adicionar o Cliente {singleResponse.Item.Nome}?";
+                    string message = $"Você realmente deseja adicionar o Cliente {singleResponse.Item.Nome}?";
                     string title = "Close Window";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
@@ -277,7 +277,6 @@ namespace WFPresentationLayer
                     }
                 }
             }
-
         }
     }
 }

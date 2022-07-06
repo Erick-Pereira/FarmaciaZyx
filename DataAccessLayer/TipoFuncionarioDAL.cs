@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class TipoFuncionarioDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os tipos de funcionario cadastrados no banco </returns>
         public DataResponse<TipoFuncionario> GetAll()
         {
             string sql = $"SELECT ID,NOME FROM TIPOS_FUNCIONARIOS";
@@ -40,6 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID, acessa o banco de dados e retorna um SingleResponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um tipo de funcionario cadastrada no banco de dados</returns>
         public SingleResponse<TipoFuncionario> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME FROM TIPOS_FUNCIONARIOS WHERE ID = @ID";

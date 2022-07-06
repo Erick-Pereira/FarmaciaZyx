@@ -12,6 +12,10 @@ namespace DataAccessLayer
     public class TipoClienteDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns>Retorna um DataReponse com todos os tipos de cliente registrados no banco de dados</returns>
         public DataResponse<TipoCliente> GetAll()
         {
             string sql = $"SELECT ID,NOME FROM TIPOS_CLIENTES";
@@ -40,6 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um ID,Acessa o banco de dados e retorna um SingleReponse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um tipo de cliente cadastrada no banco de dados</returns>
         public SingleResponse<TipoCliente> GetByID(int id)
         {
             string sql = $"SELECT ID,NOME FROM TIPOS_CLIENTES WHERE ID = @ID";

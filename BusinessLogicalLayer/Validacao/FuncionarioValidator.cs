@@ -59,7 +59,7 @@ namespace BusinessLogicalLayer
             erros.AppendLine(stringValidator.ValidateTelefone(funcionario.Telefone));
             erros.AppendLine(ValidateRG(funcionario.RG));
             erros.AppendLine(ValidateAge(funcionario.DataNascimento));
-            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+            string erro = erros.ToString();
 
             if (string.IsNullOrWhiteSpace(erro))
             {

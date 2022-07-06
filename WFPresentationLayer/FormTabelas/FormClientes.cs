@@ -95,7 +95,7 @@ namespace WFPresentationLayer
         {
             if (dgvClientes.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel fazer o Update um cliente não selecionado");
+                MessageBox.Show("Não é possivel fazer o Update um Cliente não selecionado");
                 return;
             }
             string message = "Você realmente Fazer o Update deste Cliente?";

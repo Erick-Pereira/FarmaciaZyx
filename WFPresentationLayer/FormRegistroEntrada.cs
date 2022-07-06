@@ -20,7 +20,6 @@ namespace WFPresentationLayer
         TipoUnidadeBLL TipoUnidadeBLL = new TipoUnidadeBLL();
         List<Produto> produtos = new List<Produto>();
         List<Produto> produtosWithValorAndEstoque = new List<Produto>();
-
         public FormRegistroEntrada()
         {
             InitializeComponent();

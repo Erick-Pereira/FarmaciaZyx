@@ -66,7 +66,7 @@ namespace BusinessLogicalLayer
             erros.AppendLine(ValidateNome(produto.Nome));
             erros.AppendLine(ValidateDescricao(produto.Descricao));
             erros.AppendLine(ValidateUnidade(produto));
-            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+            string erro = erros.ToString();
 
             //erros.AppendLine(ValidateLaboratorio(produto.LaboratorioId));
             if (string.IsNullOrWhiteSpace(erro))

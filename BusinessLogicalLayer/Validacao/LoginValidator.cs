@@ -49,7 +49,7 @@ namespace BusinessLogicalLayer
             StringValidator stringValidator = new StringValidator();
             erros.AppendLine(ValidateEmail(login.Email));
             erros.AppendLine(ValidateSenha(login.Senha));
-            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+            string erro = erros.ToString();
 
             if (string.IsNullOrWhiteSpace(erro))
             {

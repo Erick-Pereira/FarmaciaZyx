@@ -82,7 +82,7 @@ namespace BusinessLogicalLayer
             StringValidator stringValidator = new StringValidator();
             erros.AppendLine(ValidateLaboratorio(laboratorio.Nome));
             erros.AppendLine(ValidateCNPJ(laboratorio.CNPJ));
-            string erro = Regex.Replace(erros.ToString(), @"\s+", "");
+            string erro = erros.ToString();
 
             if (string.IsNullOrWhiteSpace(erro))
             {

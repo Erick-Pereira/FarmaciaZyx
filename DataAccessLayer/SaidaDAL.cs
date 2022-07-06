@@ -12,6 +12,11 @@ namespace DataAccessLayer
     public class SaidaDAL
     {
         string connectionString = ConnectionString._connectionString;
+        /// <summary>
+        /// Recebe uma Saida e insere no banco de dados
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response dizendo se teve sucesso ou não</returns>
         public Response Insert(Saida item)
         {
             string sql = $"INSERT INTO SAIDAS (VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,VALOR_TOTAL,DESCONTO) VALUES (@VALOR,@CLIENTE_ID,@FUNCIONARIO_ID,@DATA_SAIDA,@FORMA_PAGAMENTO_ID,@VALOR_TOTAL,@DESCONTO); SELECT SCOPE_IDENTITY()";
@@ -39,41 +44,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-        public DataResponse<Saida> GetAll()
-        {
-            string sql = $"SELECT ID,VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,DESCONTO,VALOR_TOTAL FROM SAIDAS";
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand(sql, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                List<Saida> saidas = new List<Saida>();
-                while (reader.Read())
-                {
-                    Saida saida = new Saida();
-                    saida.ID = Convert.ToInt32(reader["ID"]);
-                    saida.Valor = Convert.ToDouble(reader["VALOR"]);
-                    saida.ClienteId = Convert.ToInt32(reader["CLIENTE_ID"]);
-                    saida.FuncionarioId = Convert.ToInt32(reader["FUNCIONARIO_ID"]);
-                    saida.DataSaida = Convert.ToDateTime(reader["DATA_SAIDA"]);
-                    saida.FormaPagamentoId = Convert.ToInt32(reader["FORMA_PAGAMENTO_ID"]);
-                    saida.Desconto = Convert.ToDouble(reader["DESCONTO"]);
-                    saida.ValorTotal = Convert.ToDouble(reader["VALOR_TOTAL"]);
-                    saidas.Add(saida);
-                }
-                return new DataResponse<Saida>("Saidas selecionados com sucesso!", true, saidas);
-            }
-            catch (Exception ex)
-            {
-                return new DataResponse<Saida>("Erro no banco de dados, contate o administrador.", false, null);
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-        }
-        public DataResponse<SaidaView> GetAllSaidaView()
+        /// <summary>
+        /// Acessa o banco de dados e retorna um DataResponse
+        /// </summary>
+        /// <returns></returns>
+        public DataResponse<SaidaView> GetAll()
         {
             string sql = $"SELECT S.ID,S.VALOR,S.DATA_SAIDA,S.VALOR_TOTAL,S.DESCONTO,C.NOME AS CLIENTES,FU.NOME AS FUNCIONARIOS,FP.NOME AS FORMAS_PAGAMENTOS FROM SAIDAS S INNER JOIN CLIENTES C ON S.CLIENTE_ID = C.ID INNER JOIN FUNCIONARIOS FU ON S.FUNCIONARIO_ID = FU.ID INNER JOIN FORMAS_PAGAMENTO FP ON S.FORMA_PAGAMENTO_ID = FP.ID";
             SqlConnection connection = new SqlConnection(connectionString);
