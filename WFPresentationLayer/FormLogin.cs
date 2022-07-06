@@ -1,6 +1,7 @@
 using BusinessLogicalLayer;
 using Entities;
 using Shared;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using WFPresentationLayer;
@@ -63,6 +64,8 @@ namespace WfPresentationLayer
         {
             DALValidator dALValidator = new DALValidator();
             dALValidator.Verify();
+            //Process.Start(new ProcessStartInfo { FileName = "https://github.com/TheShelow", UseShellExecute = true });
         }
+
     }
 }

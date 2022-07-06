@@ -11,9 +11,7 @@ namespace BusinessLogicalLayer
 {
     public class DALValidator
     {
-
         FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
-
         /// <summary>
         /// Verifica se há um funcionario no banco de dados, caso não tenha, cria um admin padrão
         /// </summary>
