@@ -332,7 +332,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
-
+        /// <summary>
+        /// Recebe um FilterCPF e retorna um SingleResponse
+        /// </summary>
+        /// <param name="cPF"></param>
+        /// <returns>Retorna um SingleResponse contendo o cliente referente ao CPF informado</returns>
         public SingleResponse<ClienteView> GetOnlyByCpf(FilterCPF cPF)
         {
             string sql = $"SELECT C.ID,C.NOME,C.RG,C.CPF,C.TELEFONE1,C.TELEFONE2,C.EMAIL,C.PONTOS,C.DATA_NASCIMENTO,TP.NOME AS TIPOS_CLIENTES,G.NOME AS GENEROS FROM CLIENTES C INNER JOIN TIPOS_CLIENTES TP ON C.TIPO_CLIENTE_ID = TP.ID INNER JOIN GENEROS G ON C.GENEROS_ID = G.ID WHERE C.CPF = @CPF";

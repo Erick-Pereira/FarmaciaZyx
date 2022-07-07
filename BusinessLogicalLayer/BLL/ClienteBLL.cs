@@ -115,6 +115,11 @@ namespace BusinessLogicalLayer
             }
             return 0;
         }
+        /// <summary>
+        /// Recebe um FilterCPF e instancia o metodo GetOnlyByCpf do ClienteDAL
+        /// </summary>
+        /// <param name="cPF"></param>
+        /// <returns>Retorna um SingleResponse contendo o cliente referente ao CPF informado</returns>
         public SingleResponse<ClienteView> GetOnlyByCpf(FilterCPF cPF)
         {
             return clienteDAL.GetOnlyByCpf(cPF);
