@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUpdateProduto));
             this.btnOpenLaboratorio = new System.Windows.Forms.Button();
             this.cmbUnidade = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -176,7 +177,6 @@
             // 
             // mtxtCNPJ
             // 
-            this.mtxtCNPJ.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCNPJ.Location = new System.Drawing.Point(51, 108);
             this.mtxtCNPJ.Mask = "00.000.000/0000-00";
             this.mtxtCNPJ.Name = "mtxtCNPJ";
@@ -237,6 +237,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.btnUpdateProduto);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpdateProduto";
             this.Text = "FormUpdateProduto";
             this.Load += new System.EventHandler(this.FormUpdateProduto_Load);

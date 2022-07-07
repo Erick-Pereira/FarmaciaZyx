@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProdutos));
             this.panelMenuProdutos = new System.Windows.Forms.Panel();
             this.btnTabelaProdutos = new System.Windows.Forms.Button();
             this.btnUpdateProduto = new System.Windows.Forms.Button();
@@ -216,6 +217,7 @@
             this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopProdutos);
             this.Controls.Add(this.panelMenuProdutos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormProdutos";
             this.Text = "FormProdutos";
             this.Load += new System.EventHandler(this.FormProdutos_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLaboratorios));
             this.panelMenuFuncionarios = new System.Windows.Forms.Panel();
             this.btnTabelaLaboratorios = new System.Windows.Forms.Button();
             this.btnUpdateLaboratorio = new System.Windows.Forms.Button();
@@ -177,6 +178,7 @@
             this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopLaboratorios);
             this.Controls.Add(this.panelMenuFuncionarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLaboratorios";
             this.Text = "FormLaboratorios";
             this.Load += new System.EventHandler(this.FormLaboratorios_Load);

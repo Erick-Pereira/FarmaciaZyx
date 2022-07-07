@@ -46,6 +46,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.dgvProdutosSaida = new System.Windows.Forms.DataGridView();
+            this.ProdutosSaidaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosSaidaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCadastroNovoCliente = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbFormaPamento = new System.Windows.Forms.ComboBox();
@@ -59,12 +65,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.ProdutosSaidaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosSaidaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosSaidaQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosSaidaUn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosSaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdutosSaidaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.SuspendLayout();
@@ -239,6 +239,42 @@
             this.dgvProdutosSaida.Size = new System.Drawing.Size(501, 147);
             this.dgvProdutosSaida.TabIndex = 50;
             // 
+            // ProdutosSaidaID
+            // 
+            this.ProdutosSaidaID.HeaderText = "ID";
+            this.ProdutosSaidaID.Name = "ProdutosSaidaID";
+            this.ProdutosSaidaID.ReadOnly = true;
+            // 
+            // ProdutosSaidaNome
+            // 
+            this.ProdutosSaidaNome.HeaderText = "Nome";
+            this.ProdutosSaidaNome.Name = "ProdutosSaidaNome";
+            this.ProdutosSaidaNome.ReadOnly = true;
+            // 
+            // ProdutosSaidaQtde
+            // 
+            this.ProdutosSaidaQtde.HeaderText = "Qtde";
+            this.ProdutosSaidaQtde.Name = "ProdutosSaidaQtde";
+            this.ProdutosSaidaQtde.ReadOnly = true;
+            // 
+            // ProdutosSaidaUn
+            // 
+            this.ProdutosSaidaUn.HeaderText = "Un";
+            this.ProdutosSaidaUn.Name = "ProdutosSaidaUn";
+            this.ProdutosSaidaUn.ReadOnly = true;
+            // 
+            // ProdutosSaidaValor
+            // 
+            this.ProdutosSaidaValor.HeaderText = "Valor Un";
+            this.ProdutosSaidaValor.Name = "ProdutosSaidaValor";
+            this.ProdutosSaidaValor.ReadOnly = true;
+            // 
+            // ProdutosSaidaTotal
+            // 
+            this.ProdutosSaidaTotal.HeaderText = "Total";
+            this.ProdutosSaidaTotal.Name = "ProdutosSaidaTotal";
+            this.ProdutosSaidaTotal.ReadOnly = true;
+            // 
             // btnCadastroNovoCliente
             // 
             this.btnCadastroNovoCliente.Location = new System.Drawing.Point(537, 415);
@@ -351,42 +387,6 @@
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(119, 23);
             this.txtCliente.TabIndex = 63;
-            // 
-            // ProdutosSaidaID
-            // 
-            this.ProdutosSaidaID.HeaderText = "ID";
-            this.ProdutosSaidaID.Name = "ProdutosSaidaID";
-            this.ProdutosSaidaID.ReadOnly = true;
-            // 
-            // ProdutosSaidaNome
-            // 
-            this.ProdutosSaidaNome.HeaderText = "Nome";
-            this.ProdutosSaidaNome.Name = "ProdutosSaidaNome";
-            this.ProdutosSaidaNome.ReadOnly = true;
-            // 
-            // ProdutosSaidaQtde
-            // 
-            this.ProdutosSaidaQtde.HeaderText = "Qtde";
-            this.ProdutosSaidaQtde.Name = "ProdutosSaidaQtde";
-            this.ProdutosSaidaQtde.ReadOnly = true;
-            // 
-            // ProdutosSaidaUn
-            // 
-            this.ProdutosSaidaUn.HeaderText = "Un";
-            this.ProdutosSaidaUn.Name = "ProdutosSaidaUn";
-            this.ProdutosSaidaUn.ReadOnly = true;
-            // 
-            // ProdutosSaidaValor
-            // 
-            this.ProdutosSaidaValor.HeaderText = "Valor Un";
-            this.ProdutosSaidaValor.Name = "ProdutosSaidaValor";
-            this.ProdutosSaidaValor.ReadOnly = true;
-            // 
-            // ProdutosSaidaTotal
-            // 
-            this.ProdutosSaidaTotal.HeaderText = "Total";
-            this.ProdutosSaidaTotal.Name = "ProdutosSaidaTotal";
-            this.ProdutosSaidaTotal.ReadOnly = true;
             // 
             // FormRegistroSaida
             // 

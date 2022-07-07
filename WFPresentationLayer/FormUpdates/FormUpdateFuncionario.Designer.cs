@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUpdateFuncionario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabFuncionario = new System.Windows.Forms.TabPage();
             this.btnTrocarSenha = new System.Windows.Forms.Button();
@@ -236,7 +237,6 @@
             // mtxtCpf
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
-            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCpf.Location = new System.Drawing.Point(333, 56);
             this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";
@@ -452,6 +452,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelUpdateSenha);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpdateFuncionario";
             this.Text = "FormUpdateFuncionario";
             this.Load += new System.EventHandler(this.FormUpdateFuncionario_Load);

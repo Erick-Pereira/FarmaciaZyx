@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoricoSaida));
             this.panelMenuFuncionarios = new System.Windows.Forms.Panel();
+            this.btnFiltrarDatas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpDataSaída = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.btnTabelaSaida = new System.Windows.Forms.Button();
             this.btnInformacoesSaida = new System.Windows.Forms.Button();
             this.panelDesktopEntradas = new System.Windows.Forms.Panel();
@@ -41,11 +47,6 @@
             this.SaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaidaDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaidaValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnFiltrarDatas = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpDataSaída = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.panelMenuFuncionarios.SuspendLayout();
             this.panelDesktopEntradas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaidas)).BeginInit();
@@ -66,6 +67,48 @@
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
             this.panelMenuFuncionarios.Size = new System.Drawing.Size(144, 456);
             this.panelMenuFuncionarios.TabIndex = 7;
+            // 
+            // btnFiltrarDatas
+            // 
+            this.btnFiltrarDatas.Location = new System.Drawing.Point(9, 279);
+            this.btnFiltrarDatas.Name = "btnFiltrarDatas";
+            this.btnFiltrarDatas.Size = new System.Drawing.Size(120, 23);
+            this.btnFiltrarDatas.TabIndex = 47;
+            this.btnFiltrarDatas.Text = "Filtrar Datas";
+            this.btnFiltrarDatas.UseVisualStyleBackColor = true;
+            this.btnFiltrarDatas.Click += new System.EventHandler(this.btnFiltrarDatas_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Data Fim";
+            // 
+            // dtpDataSaída
+            // 
+            this.dtpDataSaída.Location = new System.Drawing.Point(9, 230);
+            this.dtpDataSaída.Name = "dtpDataSaída";
+            this.dtpDataSaída.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataSaída.TabIndex = 45;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 15);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Data inico";
+            // 
+            // dtpDataEntrada
+            // 
+            this.dtpDataEntrada.Location = new System.Drawing.Point(6, 175);
+            this.dtpDataEntrada.Name = "dtpDataEntrada";
+            this.dtpDataEntrada.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataEntrada.TabIndex = 43;
             // 
             // btnTabelaSaida
             // 
@@ -187,48 +230,6 @@
             this.SaidaValorTotal.Name = "SaidaValorTotal";
             this.SaidaValorTotal.ReadOnly = true;
             // 
-            // btnFiltrarDatas
-            // 
-            this.btnFiltrarDatas.Location = new System.Drawing.Point(9, 279);
-            this.btnFiltrarDatas.Name = "btnFiltrarDatas";
-            this.btnFiltrarDatas.Size = new System.Drawing.Size(120, 23);
-            this.btnFiltrarDatas.TabIndex = 47;
-            this.btnFiltrarDatas.Text = "Filtrar Datas";
-            this.btnFiltrarDatas.UseVisualStyleBackColor = true;
-            this.btnFiltrarDatas.Click += new System.EventHandler(this.btnFiltrarDatas_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 212);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Data Fim";
-            // 
-            // dtpDataSaída
-            // 
-            this.dtpDataSaída.Location = new System.Drawing.Point(9, 230);
-            this.dtpDataSaída.Name = "dtpDataSaída";
-            this.dtpDataSaída.Size = new System.Drawing.Size(129, 23);
-            this.dtpDataSaída.TabIndex = 45;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 157);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 15);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Data inico";
-            // 
-            // dtpDataEntrada
-            // 
-            this.dtpDataEntrada.Location = new System.Drawing.Point(6, 175);
-            this.dtpDataEntrada.Name = "dtpDataEntrada";
-            this.dtpDataEntrada.Size = new System.Drawing.Size(129, 23);
-            this.dtpDataEntrada.TabIndex = 43;
-            // 
             // FormHistoricoSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -236,6 +237,7 @@
             this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopEntradas);
             this.Controls.Add(this.panelMenuFuncionarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHistoricoSaida";
             this.Text = "FormHistoricoSaida";
             this.Load += new System.EventHandler(this.FormHistoricoSaida_Load);

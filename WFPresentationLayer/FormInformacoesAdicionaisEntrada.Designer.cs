@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformacoesAdicionaisEntrada));
             this.dgvProdutosSaida = new System.Windows.Forms.DataGridView();
             this.EntradaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EntradaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -210,6 +211,7 @@
             this.Controls.Add(this.dgvProdutosSaida);
             this.Controls.Add(this.panelSaidaInfo);
             this.Controls.Add(this.panelPagamentoInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInformacoesAdicionaisEntrada";
             this.Text = "FormInformacoesAdicionaisEntrada";
             this.Load += new System.EventHandler(this.FormInformacoesAdicionaisEntrada_Load);

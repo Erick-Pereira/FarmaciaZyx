@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUpdateCliente));
             this.btnUpdateCliente = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.mtxtTelefone2 = new System.Windows.Forms.MaskedTextBox();
@@ -116,7 +117,6 @@
             // mtxtCpf
             // 
             this.mtxtCpf.BackColor = System.Drawing.Color.White;
-            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCpf.Location = new System.Drawing.Point(271, 223);
             this.mtxtCpf.Mask = "000.000.000-00";
             this.mtxtCpf.Name = "mtxtCpf";
@@ -245,6 +245,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbTipoCliente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpdateCliente";
             this.Text = "FormUpdateCliente";
             this.Load += new System.EventHandler(this.FormUpdateCliente_Load);

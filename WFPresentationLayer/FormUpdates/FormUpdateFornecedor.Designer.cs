@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUpdateFornecedor));
             this.btnUpdateFornecedor = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.mtxtTelefone = new System.Windows.Forms.MaskedTextBox();
@@ -79,7 +80,6 @@
             // 
             // mtxtCnpj
             // 
-            this.mtxtCnpj.Culture = new System.Globalization.CultureInfo("en-US");
             this.mtxtCnpj.Location = new System.Drawing.Point(412, 142);
             this.mtxtCnpj.Mask = "00.000.000/0000-00";
             this.mtxtCnpj.Name = "mtxtCnpj";
@@ -151,6 +151,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtRazaoSocial);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpdateFornecedor";
             this.Text = "UpdateFornecedor";
             this.Load += new System.EventHandler(this.FormUpdateFornecedor_Load);

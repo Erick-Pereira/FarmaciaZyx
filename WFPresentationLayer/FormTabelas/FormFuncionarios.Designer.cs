@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionarios));
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
             this.FuncionariosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FuncionariosNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -277,6 +278,7 @@
             this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopFuncionarios);
             this.Controls.Add(this.panelMenuFuncionarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormFuncionarios";
             this.Text = "FormFuncionarios";
             this.Load += new System.EventHandler(this.FormFuncionarios_Load);

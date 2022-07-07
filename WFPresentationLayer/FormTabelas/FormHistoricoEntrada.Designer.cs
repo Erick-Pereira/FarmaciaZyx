@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoricoEntrada));
             this.panelMenuFuncionarios = new System.Windows.Forms.Panel();
             this.btnFiltrarDatas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -218,6 +219,7 @@
             this.ClientSize = new System.Drawing.Size(796, 456);
             this.Controls.Add(this.panelDesktopEntradas);
             this.Controls.Add(this.panelMenuFuncionarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHistoricoEntrada";
             this.Text = "FormHistoricoEntrada";
             this.Load += new System.EventHandler(this.FormHistoricoEntrada_Load);

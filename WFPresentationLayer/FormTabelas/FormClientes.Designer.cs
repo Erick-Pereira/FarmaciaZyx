@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             this.panelMenuClientes = new System.Windows.Forms.Panel();
+            this.btnFiltrarCPF = new System.Windows.Forms.Button();
+            this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnTabelaClientes = new System.Windows.Forms.Button();
             this.btnUpdateCliente = new System.Windows.Forms.Button();
             this.btnDeleteCliente = new System.Windows.Forms.Button();
@@ -44,9 +48,6 @@
             this.ClientesEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientesTipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDesktopClientes = new System.Windows.Forms.Panel();
-            this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnFiltrarCPF = new System.Windows.Forms.Button();
             this.panelMenuClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.panelDesktopClientes.SuspendLayout();
@@ -67,6 +68,34 @@
             this.panelMenuClientes.Name = "panelMenuClientes";
             this.panelMenuClientes.Size = new System.Drawing.Size(98, 456);
             this.panelMenuClientes.TabIndex = 3;
+            // 
+            // btnFiltrarCPF
+            // 
+            this.btnFiltrarCPF.Location = new System.Drawing.Point(11, 286);
+            this.btnFiltrarCPF.Name = "btnFiltrarCPF";
+            this.btnFiltrarCPF.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrarCPF.TabIndex = 45;
+            this.btnFiltrarCPF.Text = "Filtrar CPF";
+            this.btnFiltrarCPF.UseVisualStyleBackColor = true;
+            this.btnFiltrarCPF.Click += new System.EventHandler(this.btnFiltrarCPF_Click);
+            // 
+            // mtxtCpf
+            // 
+            this.mtxtCpf.BackColor = System.Drawing.Color.White;
+            this.mtxtCpf.Location = new System.Drawing.Point(6, 257);
+            this.mtxtCpf.Mask = "000.000.000-00";
+            this.mtxtCpf.Name = "mtxtCpf";
+            this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
+            this.mtxtCpf.TabIndex = 44;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 15);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "CPF";
             // 
             // btnTabelaClientes
             // 
@@ -231,35 +260,6 @@
             this.panelDesktopClientes.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopClientes.TabIndex = 4;
             // 
-            // mtxtCpf
-            // 
-            this.mtxtCpf.BackColor = System.Drawing.Color.White;
-            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
-            this.mtxtCpf.Location = new System.Drawing.Point(6, 257);
-            this.mtxtCpf.Mask = "000.000.000-00";
-            this.mtxtCpf.Name = "mtxtCpf";
-            this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
-            this.mtxtCpf.TabIndex = 44;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 242);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 15);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "CPF";
-            // 
-            // btnFiltrarCPF
-            // 
-            this.btnFiltrarCPF.Location = new System.Drawing.Point(11, 286);
-            this.btnFiltrarCPF.Name = "btnFiltrarCPF";
-            this.btnFiltrarCPF.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrarCPF.TabIndex = 45;
-            this.btnFiltrarCPF.Text = "Filtrar CPF";
-            this.btnFiltrarCPF.UseVisualStyleBackColor = true;
-            this.btnFiltrarCPF.Click += new System.EventHandler(this.btnFiltrarCPF_Click);
-            // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,6 +268,7 @@
             this.ClientSize = new System.Drawing.Size(779, 456);
             this.Controls.Add(this.panelDesktopClientes);
             this.Controls.Add(this.panelMenuClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClientes";
             this.Text = "FormClientes";
             this.Load += new System.EventHandler(this.FormClientes_Load);
