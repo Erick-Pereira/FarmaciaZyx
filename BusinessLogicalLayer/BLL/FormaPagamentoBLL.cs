@@ -13,37 +13,21 @@ namespace BusinessLogicalLayer
     {
         FormaPagamentoDAL formaPagamentoDAL = new FormaPagamentoDAL();
         /// <summary>
-        /// 
+        /// Instancia o metodo GetAll do FormaPagamentoDAL
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna um DataResponse contendo todas as Formas de Pagamento cadastradas no banco de dados</returns>
         public DataResponse<FormaPagamento> GetAll()
         {
-            DataResponse<FormaPagamento> dataResponse = formaPagamentoDAL.GetAll();
-            if (dataResponse.HasSuccess)
-            {
-                return new DataResponse<FormaPagamento>(dataResponse.Message, true, dataResponse.Dados);
-            }
-            else
-            {
-                return new DataResponse<FormaPagamento>(dataResponse.Message, dataResponse.HasSuccess, null);
-            }
+            return formaPagamentoDAL.GetAll();
         }
         /// <summary>
-        /// 
+        /// Recebe um ID e instancia o metodo GetById
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um SingleResponse contendo uma Forma de pagamento referente ao ID informado</returns>
         public SingleResponse<FormaPagamento> GetById(int id)
         {
-            SingleResponse<FormaPagamento> singleResponse = formaPagamentoDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                return new SingleResponse<FormaPagamento>(singleResponse.Message, true, singleResponse.Item);
-            }
-            else
-            {
-                return new SingleResponse<FormaPagamento>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+            return formaPagamentoDAL.GetByID(id);
         }
     }
 }

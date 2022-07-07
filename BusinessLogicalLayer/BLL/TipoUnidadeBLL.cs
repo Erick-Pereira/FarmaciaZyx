@@ -11,31 +11,23 @@ namespace BusinessLogicalLayer
 {
     public class TipoUnidadeBLL
     {
+        TipoUnidadeDAL tipoUnidadeDAL = new TipoUnidadeDAL();
+        /// <summary>
+        /// Instancia o metodo GetAll do TipoUnidadeDAL
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Tipos de Unidade cadastrados no banco de dados</returns>
         public DataResponse<TipoUnidade> GetAll()
         {
-            TipoUnidadeDAL tipoUnidadeDAL = new TipoUnidadeDAL();
-            DataResponse<TipoUnidade> dataResponse = tipoUnidadeDAL.GetAll();
-            if (dataResponse.HasSuccess)
-            {
-                return new DataResponse<TipoUnidade>(dataResponse.Message, true, dataResponse.Dados);
-            }
-            else
-            {
-                return new DataResponse<TipoUnidade>(dataResponse.Message, dataResponse.HasSuccess, null);
-            }
+            return tipoUnidadeDAL.GetAll();
         }
+        /// <summary>
+        /// Recebe um ID e instancia o metodo GetByID do TipoUnidadeDAL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um Tipo de Unidade referente ao ID informado</returns>
         public SingleResponse<TipoUnidade> GetById(int id)
         {
-            TipoUnidadeDAL tipoUnidadeDAL = new TipoUnidadeDAL();
-            SingleResponse<TipoUnidade> singleResponse = tipoUnidadeDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                return new SingleResponse<TipoUnidade>(singleResponse.Message, true, singleResponse.Item);
-            }
-            else
-            {
-                return new SingleResponse<TipoUnidade>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+            return tipoUnidadeDAL.GetByID(id);
         }
     }
 }

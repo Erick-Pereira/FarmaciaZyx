@@ -33,16 +33,7 @@ namespace BusinessLogicalLayer
         /// <returns>Retorna um DataResponse contendo todos os Laboratorios cadastrados no banco de dados</returns>
         public DataResponse<Laboratorio> GetAll()
         {
-           
-            DataResponse<Laboratorio> dataResponse = laboratorioDAL.GetAll();
-            if (dataResponse.HasSuccess)
-            {
-                return new DataResponse<Laboratorio>(dataResponse.Message, true, dataResponse.Dados);
-            }
-            else
-            {
-                return new DataResponse<Laboratorio>(dataResponse.Message, dataResponse.HasSuccess, null);
-            }
+            return laboratorioDAL.GetAll();
         }
         /// <summary>
         /// Recebe um ID e instancia o metodo GetByID do LaboratorioDAL
@@ -51,16 +42,7 @@ namespace BusinessLogicalLayer
         /// <returns>Retorna um SingleResponse contendo o Laboratorio referente ao Id informado</returns>
         public SingleResponse<Laboratorio> GetByID(int id)
         {
-            
-            SingleResponse<Laboratorio> singleResponse = laboratorioDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                return new SingleResponse<Laboratorio>(singleResponse.Message, true, singleResponse.Item);
-            }
-            else
-            {
-                return new SingleResponse<Laboratorio>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+            return laboratorioDAL.GetByID(id);
         }
         /// <summary>
         /// Recebe um Laboratorio e instancia o metodo Update do LaboratorioDAL

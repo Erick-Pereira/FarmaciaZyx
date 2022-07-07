@@ -15,36 +15,36 @@ namespace BusinessLogicalLayer
         EntradaDAL entradaDAL = new EntradaDAL();
         ProdutosEntradasDAL produtosEntradasDAL = new ProdutosEntradasDAL();
         /// <summary>
-        /// 
+        /// Instancia o metodo GetAll do entradaDAL
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna um DataResponse contendo todas as Entradas registradas no banco de dados</returns>
         public DataResponse<EntradaView> GetAll()
         {
             return entradaDAL.GetAll();
         }
         /// <summary>
-        /// 
+        /// Recebe um ID e instancia o metodo GetByID do entradaDAL
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Retorna uma Entrada referente ao ID informado</returns>
         public SingleResponse<EntradaView> GetByID(int id)
         {
             return entradaDAL.GetByID(id);
         }
         /// <summary>
-        /// 
+        ///  Recebe um ID e instancia o metodo GetAllByEntraID do ProdutosEntradasDAL
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um dal com todos os Produtos registrados na entrada</returns>
         public DataResponse<ProdutosEntradaView> GetAllByEntraID(int id)
         {
             return produtosEntradasDAL.GetAllByEntradaID(id);
         }
         /// <summary>
-        /// 
+        /// Recebe uma Entrada e instancia o metodo Insert do entradaDAL e ProdutosEntradasDAL
         /// </summary>
         /// <param name="item"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Entrada item)
         {
             Response response = new Response();

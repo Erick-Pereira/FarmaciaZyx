@@ -94,7 +94,7 @@ namespace BusinessLogicalLayer
         /// </summary>
         /// <param name="item"></param>
         /// <param name="Valor"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response GivePontos(Cliente item, double Valor)
         {
             int pontos = (int)Valor / 10;

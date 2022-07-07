@@ -19,16 +19,7 @@ namespace BusinessLogicalLayer
         /// <returns>Retorna DataResponse contendo todos os Generos cadastrados no banco de dados</returns>
         public DataResponse<Generos> GetAll()
         {
-
-            DataResponse<Generos> dataResponse = generoDAL.GetAll();
-            if (dataResponse.HasSuccess)
-            {
-                return new DataResponse<Generos>(dataResponse.Message, true, dataResponse.Dados);
-            }
-            else
-            {
-                return new DataResponse<Generos>(dataResponse.Message, dataResponse.HasSuccess, null);
-            }
+            return generoDAL.GetAll();
         }
         /// <summary>
         /// Recebe um ID e instancia o metodo GetByID do GeneroDAL
@@ -38,15 +29,7 @@ namespace BusinessLogicalLayer
         public SingleResponse<Generos> GetByID(int id)
         {
 
-            SingleResponse<Generos> singleResponse = generoDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                return new SingleResponse<Generos>(singleResponse.Message, true, singleResponse.Item);
-            }
-            else
-            {
-                return new SingleResponse<Generos>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+            return generoDAL.GetByID(id);
         }
     }
 }

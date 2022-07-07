@@ -80,7 +80,6 @@ namespace BusinessLogicalLayer
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    bool HasFound = false;
                     Cidade cidade = new Cidade();
                     Bairro bairro = new Bairro();
                     FuncionarioDAL funcionarioDAL = new FuncionarioDAL();
@@ -161,21 +160,15 @@ namespace BusinessLogicalLayer
             }//scope.Dispose();
             return response;
         }
-        /// <summary>
-        /// Recebe um FuncionarioComEndereco,Faz validações e insere e faz updates no banco de dados
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns>Retorna um Result informando se teve sucesso</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public Response Insert(Funcionario item)
         {
             throw new NotImplementedException();
         }
         /// <summary>
-        /// 
+        /// Recebe um FuncionarioComEndereco,Faz validações e faz o update no banco de dados
         /// </summary>
         /// <param name="funcionarioComEndereco"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response UpdateFuncionarioComEndereco(FuncionarioComEndereco funcionarioComEndereco)
         {
             Response response = new Response();
@@ -188,10 +181,8 @@ namespace BusinessLogicalLayer
             if (string.IsNullOrWhiteSpace(erros))
             {
                 //Se ele passou por todas as validações e não tem nada de irregular, ele entra if
-
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    bool HasFound = false;
                     Cidade cidade = new Cidade();
                     Bairro bairro = new Bairro();
                     FuncionarioDAL funcionarioDAL = new FuncionarioDAL();

@@ -25,7 +25,7 @@ namespace BusinessLogicalLayer
         /// <summary>
         /// Instancia o metodo GetAll do BairroDAL
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna um DataResponse contendo todos os Bairros cadastrados no banco de dados</returns>
         public DataResponse<Bairro> GetAll()
         {
             return bairroDAL.GetAll();
@@ -34,7 +34,7 @@ namespace BusinessLogicalLayer
         /// Recebe um ID e instancia o metodo GetByID do BairroDAL
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Retorna um SingleResponse contendo um Bairro referente ao ID informado</returns>
         public SingleResponse<Bairro> GetByID(int id)
         {
             return bairroDAL.GetByID(id);

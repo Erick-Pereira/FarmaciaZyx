@@ -14,20 +14,37 @@ namespace BusinessLogicalLayer
     {
         SaidaDAL saidaDAL = new SaidaDAL();
         ProdutosSaidasDAL produtosSaidasDAL = new ProdutosSaidasDAL();
-
+        /// <summary>
+        /// Instancia o metodo GetAll do SaidaDAL
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todas as Saidas cadastradas no banco de dados</returns>
         public DataResponse<SaidaView> GetAll()
         {
             return saidaDAL.GetAll();
         }
+        /// <summary>
+        /// Recebe um ID e instancia o metodo GetAllBySaidaID do ProdutosSaidasDAL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um DataResponse contendo ProdutosSaidas referentes ao ID informado </returns>
         public DataResponse<ProdutosSaidaView> GetAllBySaidaID(int id)
         {
             return produtosSaidasDAL.GetAllBySaidaID(id);
         }
+        /// <summary>
+        /// Recebe um ID e instancia o metodo GetByID do SaidaDAL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SIngleResponse contendo uma Saida referente ao ID informado</returns>
         public SingleResponse<SaidaView> GetByID(int id)
         {
             return saidaDAL.GetSaidaViewByID(id);
         }
-
+        /// <summary>
+        /// Recebe uma Saida e instancia o metodo Insert do SaidaDAL e ProdutosSaidasDAL
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Retorna um Response informando se teve sucesso</returns>
         public Response Insert(Saida item)
         {
             Response response = new Response();

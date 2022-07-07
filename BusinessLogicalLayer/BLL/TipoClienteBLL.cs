@@ -12,31 +12,22 @@ namespace BusinessLogicalLayer
     public class TipoClienteBLL
     {
         TipoClienteDAL tipoClienteDAL = new TipoClienteDAL();
+        /// <summary>
+        /// Instancia o metodo GetAll do TipoClienteDAL
+        /// </summary>
+        /// <returns>Retorna um DataResponse contendo todos os Tipos de Cliente cadastrados no banco de dados</returns>
         public DataResponse<TipoCliente> GetAll()
         {
-           
-            DataResponse<TipoCliente> dataResponse = tipoClienteDAL.GetAll();
-            if (dataResponse.HasSuccess)
-            {
-                return new DataResponse<TipoCliente>(dataResponse.Message, true, dataResponse.Dados);
-            }
-            else
-            {
-                return new DataResponse<TipoCliente>(dataResponse.Message, dataResponse.HasSuccess, null);
-            }
+            return tipoClienteDAL.GetAll();
         }
+        /// <summary>
+        /// Recebe um ID e instancia o metodo GetByID do TipoClienteDAL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna um SingleResponse contendo um Tipo de Cliente referente ao ID informado</returns>
         public SingleResponse<TipoCliente> GetByID(int id)
         {
-            
-            SingleResponse<TipoCliente> singleResponse = tipoClienteDAL.GetByID(id);
-            if (singleResponse.HasSuccess)
-            {
-                return new SingleResponse<TipoCliente>(singleResponse.Message, true, singleResponse.Item);
-            }
-            else
-            {
-                return new SingleResponse<TipoCliente>(singleResponse.Message, singleResponse.HasSuccess, null);
-            }
+            return tipoClienteDAL.GetByID(id);
         }
 
     }
