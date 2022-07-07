@@ -65,6 +65,11 @@ namespace BusinessLogicalLayer
             }
             return response;
         }
+        /// <summary>
+        /// Recebe um FiltersSaida e instancia o GetByDate do SaidaDAL
+        /// </summary>
+        /// <param name="filtersSaida"></param>
+        /// <returns>Retorna um DataResponse contendo todas as Saidas que foram efetuadas entre duas datas</returns>
         public DataResponse<SaidaView> GetByDate(FiltersSaida filtersSaida)
         {
             return saidaDAL.GetByDate(filtersSaida);

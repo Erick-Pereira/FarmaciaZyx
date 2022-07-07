@@ -162,6 +162,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um FiltersSaida e retorna um DataResponse
+        /// </summary>
+        /// <param name="dataSaida"></param>
+        /// <returns>Retorna um DataResponse contendo todas as Saidas que foram efetuadas entre duas datas</returns>
         public DataResponse<SaidaView> GetByDate(FiltersSaida dataSaida)
         {
             string sql = $"SELECT ID,VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,DESCONTO,VALOR_TOTAL FROM SAIDAS WHERE 1 = 1 AND DATA_SAIDA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
