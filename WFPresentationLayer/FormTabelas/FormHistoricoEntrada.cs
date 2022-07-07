@@ -1,5 +1,7 @@
 ﻿using BusinessLogicalLayer;
+using DataAccessLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -92,6 +94,26 @@ namespace WFPresentationLayer
                 btnInformacoesEntrada.Visible = false;
                 panelDesktopEntradas.BringToFront();
                 OpenChildForm(new FormInformacoesAdicionaisEntrada(entradaBLL.GetByID(index).Item));
+            }
+        }
+
+        private void btnFiltrarDatas_Click(object sender, EventArgs e)
+        {
+            dgvEntradas.Rows.Clear();
+            FiltersEntrada filtersEntrada = new FiltersEntrada();
+            string inicio= dtpDataEntrada.Value.ToString("MM/dd/yyyy 12:00");
+            filtersEntrada.Inicio = DateTime.Parse(inicio);
+            string fim =dtpDataSaída.Value.ToString("MM/dd/yyyy 23:59");
+            filtersEntrada.Fim = DateTime.Parse(fim);
+            DataResponse<EntradaView> dataResponse = entradaBLL.GetByDate(filtersEntrada);
+            for (int i = 0; i < dataResponse.Dados.Count; i++)
+            {
+                dgvEntradas.Rows.Add();
+                dgvEntradas.Rows[i].Cells["EntradaID"].Value = dataResponse.Dados[i].ID;
+                dgvEntradas.Rows[i].Cells["EntradaFornecedor"].Value = dataResponse.Dados[i].Fornecedor;
+                dgvEntradas.Rows[i].Cells["EntradaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
+                dgvEntradas.Rows[i].Cells["EntradaData"].Value = dataResponse.Dados[i].DataEntrada;
+                dgvEntradas.Rows[i].Cells["EntradaValor"].Value = dataResponse.Dados[i].Valor;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Entities.Filters;
 using Shared;
 using System.Data.SqlClient;
 
@@ -325,6 +326,45 @@ namespace DataAccessLayer
             catch (Exception ex)
             {
                 return new SingleResponse<Cliente>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+        }
+
+        public SingleResponse<ClienteView> GetOnlyByCpf(FilterCPF cPF)
+        {
+            string sql = $"SELECT C.ID,C.NOME,C.RG,C.CPF,C.TELEFONE1,C.TELEFONE2,C.EMAIL,C.PONTOS,C.DATA_NASCIMENTO,TP.NOME AS TIPOS_CLIENTES,G.NOME AS GENEROS FROM CLIENTES C INNER JOIN TIPOS_CLIENTES TP ON C.TIPO_CLIENTE_ID = TP.ID INNER JOIN GENEROS G ON C.GENEROS_ID = G.ID WHERE C.CPF = @CPF";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@CPF", cPF.CPF);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                ClienteView cliente = new ClienteView();
+
+                if (reader.Read())
+                {
+                    cliente.ID = Convert.ToInt32(reader["ID"]);
+                    cliente.Nome = Convert.ToString(reader["NOME"]);
+                    cliente.RG = Convert.ToString(reader["RG"]);
+                    cliente.CPF = Convert.ToString(reader["CPF"]);
+                    cliente.Telefone1 = Convert.ToString(reader["TELEFONE1"]);
+                    cliente.Telefone2 = Convert.ToString(reader["TELEFONE2"]);
+                    cliente.Email = Convert.ToString(reader["EMAIL"]);
+                    cliente.Pontos = Convert.ToInt32(reader["PONTOS"]);
+                    cliente.TipoCliente = Convert.ToString(reader["TIPOS_CLIENTES"]);
+                    cliente.Genero = Convert.ToString(reader["GENEROS"]);
+                    cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
+                }
+                return new SingleResponse<ClienteView>("Clientes selecionados com sucesso!", true, cliente);
+
+            }
+            catch (Exception ex)
+            {
+                return new SingleResponse<ClienteView>("Erro no banco de dados, contate o administrador.", false, null);
             }
             finally
             {

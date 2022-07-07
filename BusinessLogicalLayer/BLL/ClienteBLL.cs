@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 
 namespace BusinessLogicalLayer
@@ -113,6 +114,10 @@ namespace BusinessLogicalLayer
                 return 10;
             }
             return 0;
+        }
+        public SingleResponse<ClienteView> GetOnlyByCpf(FilterCPF cPF)
+        {
+            return clienteDAL.GetOnlyByCpf(cPF);
         }
     }
 }

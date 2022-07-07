@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.panelMenuFuncionarios = new System.Windows.Forms.Panel();
+            this.btnFiltrarDatas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpDataSaída = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnTabelaEntrada = new System.Windows.Forms.Button();
+            this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.btnInformacoesEntrada = new System.Windows.Forms.Button();
             this.panelDesktopEntradas = new System.Windows.Forms.Panel();
             this.dgvEntradas = new System.Windows.Forms.DataGridView();
@@ -46,13 +51,53 @@
             // panelMenuFuncionarios
             // 
             this.panelMenuFuncionarios.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuFuncionarios.Controls.Add(this.btnFiltrarDatas);
+            this.panelMenuFuncionarios.Controls.Add(this.label1);
+            this.panelMenuFuncionarios.Controls.Add(this.dtpDataSaída);
+            this.panelMenuFuncionarios.Controls.Add(this.label2);
             this.panelMenuFuncionarios.Controls.Add(this.btnTabelaEntrada);
+            this.panelMenuFuncionarios.Controls.Add(this.dtpDataEntrada);
             this.panelMenuFuncionarios.Controls.Add(this.btnInformacoesEntrada);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(652, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(144, 456);
             this.panelMenuFuncionarios.TabIndex = 4;
+            // 
+            // btnFiltrarDatas
+            // 
+            this.btnFiltrarDatas.Location = new System.Drawing.Point(8, 276);
+            this.btnFiltrarDatas.Name = "btnFiltrarDatas";
+            this.btnFiltrarDatas.Size = new System.Drawing.Size(120, 23);
+            this.btnFiltrarDatas.TabIndex = 42;
+            this.btnFiltrarDatas.Text = "Filtrar Datas";
+            this.btnFiltrarDatas.UseVisualStyleBackColor = true;
+            this.btnFiltrarDatas.Click += new System.EventHandler(this.btnFiltrarDatas_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 209);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Data Fim";
+            // 
+            // dtpDataSaída
+            // 
+            this.dtpDataSaída.Location = new System.Drawing.Point(8, 227);
+            this.dtpDataSaída.Name = "dtpDataSaída";
+            this.dtpDataSaída.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataSaída.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Data Inicio";
             // 
             // btnTabelaEntrada
             // 
@@ -71,6 +116,13 @@
             this.btnTabelaEntrada.UseMnemonic = false;
             this.btnTabelaEntrada.UseVisualStyleBackColor = false;
             this.btnTabelaEntrada.Click += new System.EventHandler(this.btnTabelaFuncionarios_Click);
+            // 
+            // dtpDataEntrada
+            // 
+            this.dtpDataEntrada.Location = new System.Drawing.Point(5, 172);
+            this.dtpDataEntrada.Name = "dtpDataEntrada";
+            this.dtpDataEntrada.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataEntrada.TabIndex = 6;
             // 
             // btnInformacoesEntrada
             // 
@@ -96,7 +148,7 @@
             this.panelDesktopEntradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopEntradas.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopEntradas.Name = "panelDesktopEntradas";
-            this.panelDesktopEntradas.Size = new System.Drawing.Size(681, 456);
+            this.panelDesktopEntradas.Size = new System.Drawing.Size(652, 456);
             this.panelDesktopEntradas.TabIndex = 5;
             // 
             // dgvEntradas
@@ -118,38 +170,44 @@
             this.dgvEntradas.Name = "dgvEntradas";
             this.dgvEntradas.ReadOnly = true;
             this.dgvEntradas.RowHeadersVisible = false;
+            this.dgvEntradas.RowHeadersWidth = 51;
             this.dgvEntradas.RowTemplate.Height = 25;
             this.dgvEntradas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEntradas.Size = new System.Drawing.Size(681, 456);
+            this.dgvEntradas.Size = new System.Drawing.Size(652, 456);
             this.dgvEntradas.TabIndex = 7;
             // 
             // EntradaID
             // 
             this.EntradaID.HeaderText = "ID";
+            this.EntradaID.MinimumWidth = 6;
             this.EntradaID.Name = "EntradaID";
             this.EntradaID.ReadOnly = true;
             // 
             // EntradaFornecedor
             // 
             this.EntradaFornecedor.HeaderText = "Fornecedor";
+            this.EntradaFornecedor.MinimumWidth = 6;
             this.EntradaFornecedor.Name = "EntradaFornecedor";
             this.EntradaFornecedor.ReadOnly = true;
             // 
             // EntradaFuncionario
             // 
             this.EntradaFuncionario.HeaderText = "Funcionario";
+            this.EntradaFuncionario.MinimumWidth = 6;
             this.EntradaFuncionario.Name = "EntradaFuncionario";
             this.EntradaFuncionario.ReadOnly = true;
             // 
             // EntradaData
             // 
             this.EntradaData.HeaderText = "Data";
+            this.EntradaData.MinimumWidth = 6;
             this.EntradaData.Name = "EntradaData";
             this.EntradaData.ReadOnly = true;
             // 
             // EntradaValor
             // 
             this.EntradaValor.HeaderText = "Valor";
+            this.EntradaValor.MinimumWidth = 6;
             this.EntradaValor.Name = "EntradaValor";
             this.EntradaValor.ReadOnly = true;
             // 
@@ -157,13 +215,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 456);
+            this.ClientSize = new System.Drawing.Size(796, 456);
             this.Controls.Add(this.panelDesktopEntradas);
             this.Controls.Add(this.panelMenuFuncionarios);
             this.Name = "FormHistoricoEntrada";
             this.Text = "FormHistoricoEntrada";
             this.Load += new System.EventHandler(this.FormHistoricoEntrada_Load);
             this.panelMenuFuncionarios.ResumeLayout(false);
+            this.panelMenuFuncionarios.PerformLayout();
             this.panelDesktopEntradas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntradas)).EndInit();
             this.ResumeLayout(false);
@@ -182,5 +241,10 @@
         private DataGridViewTextBoxColumn EntradaFuncionario;
         private DataGridViewTextBoxColumn EntradaData;
         private DataGridViewTextBoxColumn EntradaValor;
+        private Label label1;
+        private DateTimePicker dtpDataSaída;
+        private Label label2;
+        private DateTimePicker dtpDataEntrada;
+        private Button btnFiltrarDatas;
     }
 }

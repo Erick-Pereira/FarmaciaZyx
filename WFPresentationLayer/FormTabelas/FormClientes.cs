@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace WFPresentationLayer
     public partial class FormClientes : Form
     {
         private Form currentChildForm;
+        TipoClienteBLL tipoClienteBLL = new TipoClienteBLL();
         List<ClienteView> clientes = new List<ClienteView>();
         ClienteBLL clienteBLL = new ClienteBLL();
         public FormClientes()
@@ -37,7 +39,7 @@ namespace WFPresentationLayer
             childForm.BringToFront();
             childForm.Show();
         }
-        
+
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
             btnCadastroCliente.Enabled = false;
@@ -95,7 +97,7 @@ namespace WFPresentationLayer
         {
             if (dgvClientes.CurrentCell == null)
             {
-                MessageBox.Show("Não é possivel fazer o Update um Cliente não selecionado");
+                MessageBox.Show("Não é possivel fazer o Update um cliente não selecionado");
                 return;
             }
             string message = "Você realmente Fazer o Update deste Cliente?";
@@ -144,6 +146,31 @@ namespace WFPresentationLayer
                     dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
                     dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
                 }
+            }
+        }
+
+        private void btnFiltrarCPF_Click(object sender, EventArgs e)
+        {
+            dgvClientes.Rows.Clear();
+            FilterCPF filterCPF = new FilterCPF();
+            filterCPF.CPF = mtxtCpf.Text;
+            List<ClienteView> clientes = new List<ClienteView>();
+            SingleResponse<ClienteView> singleResponseCPF = clienteBLL.GetOnlyByCpf(filterCPF);
+
+            clientes.Add(singleResponseCPF.Item);
+
+            for (int i = 0; i < clientes.Count; i++)
+            {
+                dgvClientes.Rows.Add();
+                dgvClientes.Rows[i].Cells["ClientesID"].Value = clientes[i].ID;
+                dgvClientes.Rows[i].Cells["ClientesNome"].Value = clientes[i].Nome;
+                dgvClientes.Rows[i].Cells["ClientesCPF"].Value = clientes[i].CPF;
+                dgvClientes.Rows[i].Cells["ClientesRG"].Value = clientes[i].RG;
+                dgvClientes.Rows[i].Cells["ClientesTelefone1"].Value = clientes[i].Telefone1;
+                dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
+                dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
+                dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
+                dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
             }
         }
     }

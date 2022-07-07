@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -155,6 +156,43 @@ namespace DataAccessLayer
             catch (Exception ex)
             {
                 return new SingleResponse<Saida>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+        }
+        public DataResponse<SaidaView> GetByDate(FiltersSaida dataSaida)
+        {
+            string sql = $"SELECT ID,VALOR,CLIENTE_ID,FUNCIONARIO_ID,DATA_SAIDA,FORMA_PAGAMENTO_ID,DESCONTO,VALOR_TOTAL FROM SAIDAS WHERE 1 = 1 AND DATA_SAIDA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@DATA_INICIAL", dataSaida.Inicio);
+            command.Parameters.AddWithValue("@DATA_FINAL", dataSaida.Fim);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                List<SaidaView> saidasView = new List<SaidaView>();
+                while (reader.Read())
+                {
+                    SaidaView saida = new SaidaView();
+                    saida.ID = Convert.ToInt32(reader["ID"]);
+                    saida.Valor = Convert.ToDouble(reader["VALOR"]);
+                    saida.Cliente = Convert.ToString(reader["CLIENTE_ID"]);
+                    saida.Funcionario = Convert.ToString(reader["FUNCIONARIO_ID"]);
+                    saida.DataSaida = Convert.ToDateTime(reader["DATA_SAIDA"]);
+                    saida.FormaPagamento = Convert.ToString(reader["FORMA_PAGAMENTO_ID"]);
+                    saida.Desconto = Convert.ToDouble(reader["DESCONTO"]);
+                    saida.ValorTotal = Convert.ToDouble(reader["VALOR_TOTAL"]);
+                    saidasView.Add(saida);
+                }
+                return new DataResponse<SaidaView>("Saidas selecionados com sucesso!", true, saidasView);
+            }
+            catch (Exception ex)
+            {
+                return new DataResponse<SaidaView>("Erro no banco de dados, contate o administrador.", false, null);
             }
             finally
             {

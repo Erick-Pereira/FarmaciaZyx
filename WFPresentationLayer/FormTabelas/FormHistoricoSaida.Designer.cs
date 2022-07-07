@@ -41,6 +41,11 @@
             this.SaidaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaidaDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaidaValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFiltrarDatas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpDataSaída = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.panelMenuFuncionarios.SuspendLayout();
             this.panelDesktopEntradas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaidas)).BeginInit();
@@ -49,12 +54,17 @@
             // panelMenuFuncionarios
             // 
             this.panelMenuFuncionarios.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuFuncionarios.Controls.Add(this.btnFiltrarDatas);
+            this.panelMenuFuncionarios.Controls.Add(this.label1);
+            this.panelMenuFuncionarios.Controls.Add(this.dtpDataSaída);
+            this.panelMenuFuncionarios.Controls.Add(this.label2);
+            this.panelMenuFuncionarios.Controls.Add(this.dtpDataEntrada);
             this.panelMenuFuncionarios.Controls.Add(this.btnTabelaSaida);
             this.panelMenuFuncionarios.Controls.Add(this.btnInformacoesSaida);
             this.panelMenuFuncionarios.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenuFuncionarios.Location = new System.Drawing.Point(681, 0);
+            this.panelMenuFuncionarios.Location = new System.Drawing.Point(635, 0);
             this.panelMenuFuncionarios.Name = "panelMenuFuncionarios";
-            this.panelMenuFuncionarios.Size = new System.Drawing.Size(98, 456);
+            this.panelMenuFuncionarios.Size = new System.Drawing.Size(144, 456);
             this.panelMenuFuncionarios.TabIndex = 7;
             // 
             // btnTabelaSaida
@@ -99,7 +109,7 @@
             this.panelDesktopEntradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopEntradas.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopEntradas.Name = "panelDesktopEntradas";
-            this.panelDesktopEntradas.Size = new System.Drawing.Size(681, 456);
+            this.panelDesktopEntradas.Size = new System.Drawing.Size(635, 456);
             this.panelDesktopEntradas.TabIndex = 8;
             // 
             // dgvSaidas
@@ -126,7 +136,7 @@
             this.dgvSaidas.RowHeadersVisible = false;
             this.dgvSaidas.RowTemplate.Height = 25;
             this.dgvSaidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSaidas.Size = new System.Drawing.Size(681, 456);
+            this.dgvSaidas.Size = new System.Drawing.Size(635, 456);
             this.dgvSaidas.TabIndex = 9;
             // 
             // SaidaId
@@ -177,6 +187,48 @@
             this.SaidaValorTotal.Name = "SaidaValorTotal";
             this.SaidaValorTotal.ReadOnly = true;
             // 
+            // btnFiltrarDatas
+            // 
+            this.btnFiltrarDatas.Location = new System.Drawing.Point(9, 279);
+            this.btnFiltrarDatas.Name = "btnFiltrarDatas";
+            this.btnFiltrarDatas.Size = new System.Drawing.Size(120, 23);
+            this.btnFiltrarDatas.TabIndex = 47;
+            this.btnFiltrarDatas.Text = "Filtrar Datas";
+            this.btnFiltrarDatas.UseVisualStyleBackColor = true;
+            this.btnFiltrarDatas.Click += new System.EventHandler(this.btnFiltrarDatas_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Data Fim";
+            // 
+            // dtpDataSaída
+            // 
+            this.dtpDataSaída.Location = new System.Drawing.Point(9, 230);
+            this.dtpDataSaída.Name = "dtpDataSaída";
+            this.dtpDataSaída.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataSaída.TabIndex = 45;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 15);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Data inico";
+            // 
+            // dtpDataEntrada
+            // 
+            this.dtpDataEntrada.Location = new System.Drawing.Point(6, 175);
+            this.dtpDataEntrada.Name = "dtpDataEntrada";
+            this.dtpDataEntrada.Size = new System.Drawing.Size(129, 23);
+            this.dtpDataEntrada.TabIndex = 43;
+            // 
             // FormHistoricoSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -188,6 +240,7 @@
             this.Text = "FormHistoricoSaida";
             this.Load += new System.EventHandler(this.FormHistoricoSaida_Load);
             this.panelMenuFuncionarios.ResumeLayout(false);
+            this.panelMenuFuncionarios.PerformLayout();
             this.panelDesktopEntradas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaidas)).EndInit();
             this.ResumeLayout(false);
@@ -209,5 +262,10 @@
         private DataGridViewTextBoxColumn SaidaValor;
         private DataGridViewTextBoxColumn SaidaDesconto;
         private DataGridViewTextBoxColumn SaidaValorTotal;
+        private Button btnFiltrarDatas;
+        private Label label1;
+        private DateTimePicker dtpDataSaída;
+        private Label label2;
+        private DateTimePicker dtpDataEntrada;
     }
 }

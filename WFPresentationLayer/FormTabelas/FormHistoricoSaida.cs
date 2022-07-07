@@ -1,5 +1,6 @@
 ﻿using BusinessLogicalLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,27 @@ namespace WFPresentationLayer
                 btnInformacoesSaida.Visible = false;
                 panelDesktopEntradas.BringToFront();
                 OpenChildForm(new FormInformacoesAdicionaisSaida(saidaBLL.GetByID(index).Item));
+            }
+        }
+
+        private void btnFiltrarDatas_Click(object sender, EventArgs e)
+        {
+            dgvSaidas.Rows.Clear();
+            FiltersSaida filtersSaida = new FiltersSaida();
+            filtersSaida.Inicio = dtpDataEntrada.Value;
+            filtersSaida.Fim = dtpDataSaída.Value;
+            DataResponse<SaidaView> dataResponse = saidaBLL.GetByDate(filtersSaida);
+            for (int i = 0; i < dataResponse.Dados.Count; i++)
+            {
+                dgvSaidas.Rows.Add();
+                dgvSaidas.Rows[i].Cells["SaidaID"].Value = dataResponse.Dados[i].ID;
+                dgvSaidas.Rows[i].Cells["SaidaCliente"].Value = dataResponse.Dados[i].Cliente;
+                dgvSaidas.Rows[i].Cells["SaidaFuncionario"].Value = dataResponse.Dados[i].Funcionario;
+                dgvSaidas.Rows[i].Cells["SaidaData"].Value = dataResponse.Dados[i].DataSaida;
+                dgvSaidas.Rows[i].Cells["SaidaValor"].Value = dataResponse.Dados[i].Valor;
+                dgvSaidas.Rows[i].Cells["SaidaFormaPagamento"].Value = dataResponse.Dados[i].FormaPagamento;
+                dgvSaidas.Rows[i].Cells["SaidaValorTotal"].Value = dataResponse.Dados[i].ValorTotal;
+                dgvSaidas.Rows[i].Cells["SaidaDesconto"].Value = dataResponse.Dados[i].Desconto;
             }
         }
     }

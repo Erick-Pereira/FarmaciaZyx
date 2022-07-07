@@ -44,6 +44,9 @@
             this.ClientesEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientesTipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDesktopClientes = new System.Windows.Forms.Panel();
+            this.mtxtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnFiltrarCPF = new System.Windows.Forms.Button();
             this.panelMenuClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.panelDesktopClientes.SuspendLayout();
@@ -52,6 +55,9 @@
             // panelMenuClientes
             // 
             this.panelMenuClientes.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelMenuClientes.Controls.Add(this.btnFiltrarCPF);
+            this.panelMenuClientes.Controls.Add(this.mtxtCpf);
+            this.panelMenuClientes.Controls.Add(this.label3);
             this.panelMenuClientes.Controls.Add(this.btnTabelaClientes);
             this.panelMenuClientes.Controls.Add(this.btnUpdateCliente);
             this.panelMenuClientes.Controls.Add(this.btnDeleteCliente);
@@ -225,6 +231,35 @@
             this.panelDesktopClientes.Size = new System.Drawing.Size(681, 456);
             this.panelDesktopClientes.TabIndex = 4;
             // 
+            // mtxtCpf
+            // 
+            this.mtxtCpf.BackColor = System.Drawing.Color.White;
+            this.mtxtCpf.Culture = new System.Globalization.CultureInfo("en-US");
+            this.mtxtCpf.Location = new System.Drawing.Point(6, 257);
+            this.mtxtCpf.Mask = "000.000.000-00";
+            this.mtxtCpf.Name = "mtxtCpf";
+            this.mtxtCpf.Size = new System.Drawing.Size(90, 23);
+            this.mtxtCpf.TabIndex = 44;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 15);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "CPF";
+            // 
+            // btnFiltrarCPF
+            // 
+            this.btnFiltrarCPF.Location = new System.Drawing.Point(11, 286);
+            this.btnFiltrarCPF.Name = "btnFiltrarCPF";
+            this.btnFiltrarCPF.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrarCPF.TabIndex = 45;
+            this.btnFiltrarCPF.Text = "Filtrar CPF";
+            this.btnFiltrarCPF.UseVisualStyleBackColor = true;
+            this.btnFiltrarCPF.Click += new System.EventHandler(this.btnFiltrarCPF_Click);
+            // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -237,6 +272,7 @@
             this.Text = "FormClientes";
             this.Load += new System.EventHandler(this.FormClientes_Load);
             this.panelMenuClientes.ResumeLayout(false);
+            this.panelMenuClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.panelDesktopClientes.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -261,5 +297,8 @@
         private DataGridViewTextBoxColumn ClientesTipoCliente;
         private Panel panelDesktopClientes;
         private Button btnTabelaClientes;
+        private Button btnFiltrarCPF;
+        private MaskedTextBox mtxtCpf;
+        private Label label3;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -107,6 +108,40 @@ namespace DataAccessLayer
             catch (Exception ex)
             {
                 return new SingleResponse<EntradaView>("Erro no banco de dados, contate o administrador.", false, null);
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+        }
+        public DataResponse<EntradaView> GetByDate(FiltersEntrada dataEntrada)
+        {
+            string sql = $"SELECT E.ID,E.PRECO,E.DATA_ENTRADA,FO.RAZAO_SOCIAL AS FORNECEDORES, FU.NOME AS FUNCIONARIOS FROM ENTRADAS E INNER JOIN FORNECEDORES FO ON E.FORNECEDOR_ID = FO.ID INNER JOIN FUNCIONARIOS FU ON E.FUNCIONARIO_ID = FU.ID WHERE 1 = 1 AND DATA_ENTRADA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@DATA_INICIAL", dataEntrada.Inicio);
+            command.Parameters.AddWithValue("@DATA_FINAL", dataEntrada.Fim);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                List<EntradaView> entradas = new List<EntradaView>();
+                //Enquanto houver registros, o loop será executado!
+                while (reader.Read())
+                {
+                    EntradaView entrada = new EntradaView();
+                    entrada.ID = Convert.ToInt32(reader["ID"]);
+                    entrada.Valor = Convert.ToDouble(reader["PRECO"]);
+                    entrada.Fornecedor = Convert.ToString(reader["FORNECEDORES"]);
+                    entrada.Funcionario = Convert.ToString(reader["FUNCIONARIOS"]);
+                    entrada.DataEntrada = Convert.ToDateTime(reader["DATA_ENTRADA"]);
+                    entradas.Add(entrada);
+                }
+                return new DataResponse<EntradaView>("Dados Encontrados!", true, entradas);
+            }
+            catch (Exception ex)
+            {
+                return new DataResponse<EntradaView>("Erro no banco de dados, contate o administrador.", false, null);
             }
             finally
             {

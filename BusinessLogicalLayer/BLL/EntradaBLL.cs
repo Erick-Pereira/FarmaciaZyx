@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -64,5 +65,10 @@ namespace BusinessLogicalLayer
             }
             return response;
         }
-}
+
+        public DataResponse<EntradaView> GetByDate(FiltersEntrada filtersEntrada)
+        {
+            return entradaDAL.GetByDate(filtersEntrada);
+        }
+    }
 }

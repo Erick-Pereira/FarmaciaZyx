@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using Entities.Filters;
 using Shared;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,10 @@ namespace BusinessLogicalLayer
                 scope.Complete();
             }
             return response;
+        }
+        public DataResponse<SaidaView> GetByDate(FiltersSaida filtersSaida)
+        {
+            return saidaDAL.GetByDate(filtersSaida);
         }
     }
 }
