@@ -151,26 +151,32 @@ namespace WFPresentationLayer
 
         private void btnFiltrarCPF_Click(object sender, EventArgs e)
         {
-            dgvClientes.Rows.Clear();
+            
             FilterCPF filterCPF = new FilterCPF();
             filterCPF.CPF = mtxtCpf.Text;
             List<ClienteView> clientes = new List<ClienteView>();
             SingleResponse<ClienteView> singleResponseCPF = clienteBLL.GetOnlyByCpf(filterCPF);
-
-            clientes.Add(singleResponseCPF.Item);
-
-            for (int i = 0; i < clientes.Count; i++)
+            if (singleResponseCPF.HasSuccess)
             {
-                dgvClientes.Rows.Add();
-                dgvClientes.Rows[i].Cells["ClientesID"].Value = clientes[i].ID;
-                dgvClientes.Rows[i].Cells["ClientesNome"].Value = clientes[i].Nome;
-                dgvClientes.Rows[i].Cells["ClientesCPF"].Value = clientes[i].CPF;
-                dgvClientes.Rows[i].Cells["ClientesRG"].Value = clientes[i].RG;
-                dgvClientes.Rows[i].Cells["ClientesTelefone1"].Value = clientes[i].Telefone1;
-                dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
-                dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
-                dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
-                dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
+                clientes.Add(singleResponseCPF.Item);
+                dgvClientes.Rows.Clear();
+                for (int i = 0; i < clientes.Count; i++)
+                {
+                    dgvClientes.Rows.Add();
+                    dgvClientes.Rows[i].Cells["ClientesID"].Value = clientes[i].ID;
+                    dgvClientes.Rows[i].Cells["ClientesNome"].Value = clientes[i].Nome;
+                    dgvClientes.Rows[i].Cells["ClientesCPF"].Value = clientes[i].CPF;
+                    dgvClientes.Rows[i].Cells["ClientesRG"].Value = clientes[i].RG;
+                    dgvClientes.Rows[i].Cells["ClientesTelefone1"].Value = clientes[i].Telefone1;
+                    dgvClientes.Rows[i].Cells["ClientesTelefone2"].Value = clientes[i].Telefone2;
+                    dgvClientes.Rows[i].Cells["ClientesPontos"].Value = clientes[i].Pontos;
+                    dgvClientes.Rows[i].Cells["ClientesEmail"].Value = clientes[i].Email;
+                    dgvClientes.Rows[i].Cells["ClientesTipoCliente"].Value = clientes[i].TipoCliente;
+                }
+            }
+            else
+            {
+                MessageBox.Show(singleResponseCPF.Message);
             }
         }
     }

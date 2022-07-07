@@ -362,9 +362,9 @@ namespace DataAccessLayer
                     cliente.TipoCliente = Convert.ToString(reader["TIPOS_CLIENTES"]);
                     cliente.Genero = Convert.ToString(reader["GENEROS"]);
                     cliente.DataNascimento = Convert.ToDateTime(reader["DATA_NASCIMENTO"]);
+                    return new SingleResponse<ClienteView>("Clientes selecionados com sucesso!", true, cliente);
                 }
-                return new SingleResponse<ClienteView>("Clientes selecionados com sucesso!", true, cliente);
-
+                return new SingleResponse<ClienteView>("Cliente não encontrado!", false, null);
             }
             catch (Exception ex)
             {
