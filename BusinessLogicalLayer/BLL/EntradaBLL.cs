@@ -65,7 +65,11 @@ namespace BusinessLogicalLayer
             }
             return response;
         }
-
+        /// <summary>
+        /// Recebe um FiltersEntrada e instancia o metodo GetByDate do EntradaDAL
+        /// </summary>
+        /// <param name="filtersEntrada"></param>
+        /// <returns>Retorna um DataResponse contendo todas as entradas que foram efetuadas entre duas datas</returns>
         public DataResponse<EntradaView> GetByDate(FiltersEntrada filtersEntrada)
         {
             return entradaDAL.GetByDate(filtersEntrada);

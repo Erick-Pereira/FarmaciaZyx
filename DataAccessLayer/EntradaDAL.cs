@@ -114,6 +114,11 @@ namespace DataAccessLayer
                 connection.Dispose();
             }
         }
+        /// <summary>
+        /// Recebe um FiltersEntrada e retorna um DataResponse
+        /// </summary>
+        /// <param name="dataEntrada"></param>
+        /// <returns>Retorna um DataResponse contendo todas as entradas que foram efetuadas entre duas datas</returns>
         public DataResponse<EntradaView> GetByDate(FiltersEntrada dataEntrada)
         {
             string sql = $"SELECT E.ID,E.PRECO,E.DATA_ENTRADA,FO.RAZAO_SOCIAL AS FORNECEDORES, FU.NOME AS FUNCIONARIOS FROM ENTRADAS E INNER JOIN FORNECEDORES FO ON E.FORNECEDOR_ID = FO.ID INNER JOIN FUNCIONARIOS FU ON E.FUNCIONARIO_ID = FU.ID WHERE 1 = 1 AND DATA_ENTRADA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
