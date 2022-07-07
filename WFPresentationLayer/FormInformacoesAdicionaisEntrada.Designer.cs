@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformacoesAdicionaisEntrada));
             this.dgvProdutosSaida = new System.Windows.Forms.DataGridView();
-            this.EntradaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EntradaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EntradaValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSaidaInfo = new System.Windows.Forms.Panel();
             this.txtData = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,6 +42,9 @@
             this.panelPagamentoInfo = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.EntradaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntradaValorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosSaida)).BeginInit();
             this.panelSaidaInfo.SuspendLayout();
             this.panelPagamentoInfo.SuspendLayout();
@@ -68,24 +68,6 @@
             this.dgvProdutosSaida.RowTemplate.Height = 25;
             this.dgvProdutosSaida.Size = new System.Drawing.Size(688, 373);
             this.dgvProdutosSaida.TabIndex = 22;
-            // 
-            // EntradaProduto
-            // 
-            this.EntradaProduto.HeaderText = "Produto";
-            this.EntradaProduto.Name = "EntradaProduto";
-            this.EntradaProduto.ReadOnly = true;
-            // 
-            // EntradaQuantidade
-            // 
-            this.EntradaQuantidade.HeaderText = "Quantidade";
-            this.EntradaQuantidade.Name = "EntradaQuantidade";
-            this.EntradaQuantidade.ReadOnly = true;
-            // 
-            // EntradaValorUnitario
-            // 
-            this.EntradaValorUnitario.HeaderText = "ValorUnitario";
-            this.EntradaValorUnitario.Name = "EntradaValorUnitario";
-            this.EntradaValorUnitario.ReadOnly = true;
             // 
             // panelSaidaInfo
             // 
@@ -202,6 +184,24 @@
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(100, 23);
             this.txtValorTotal.TabIndex = 14;
+            // 
+            // EntradaProduto
+            // 
+            this.EntradaProduto.HeaderText = "Produto";
+            this.EntradaProduto.Name = "EntradaProduto";
+            this.EntradaProduto.ReadOnly = true;
+            // 
+            // EntradaQuantidade
+            // 
+            this.EntradaQuantidade.HeaderText = "Quantidade";
+            this.EntradaQuantidade.Name = "EntradaQuantidade";
+            this.EntradaQuantidade.ReadOnly = true;
+            // 
+            // EntradaValorUnitario
+            // 
+            this.EntradaValorUnitario.HeaderText = "Valor Unitario";
+            this.EntradaValorUnitario.Name = "EntradaValorUnitario";
+            this.EntradaValorUnitario.ReadOnly = true;
             // 
             // FormInformacoesAdicionaisEntrada
             // 
