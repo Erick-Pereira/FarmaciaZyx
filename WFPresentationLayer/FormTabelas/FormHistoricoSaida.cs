@@ -106,8 +106,10 @@ namespace WFPresentationLayer
         {
             dgvSaidas.Rows.Clear();
             FiltersSaida filtersSaida = new FiltersSaida();
-            filtersSaida.Inicio = dtpDataEntrada.Value;
-            filtersSaida.Fim = dtpDataSaída.Value;
+            string inicio = dtpDataEntrada.Value.ToString("MM/dd/yyyy 12:00");
+            filtersSaida.Inicio = DateTime.Parse(inicio);
+            string fim = dtpDataSaída.Value.ToString("MM/dd/yyyy 23:59");
+            filtersSaida.Fim = DateTime.Parse(fim);
             DataResponse<SaidaView> dataResponse = saidaBLL.GetByDate(filtersSaida);
             for (int i = 0; i < dataResponse.Dados.Count; i++)
             {

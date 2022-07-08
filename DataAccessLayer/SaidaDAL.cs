@@ -169,7 +169,7 @@ namespace DataAccessLayer
         /// <returns>Retorna um DataResponse contendo todas as Saidas que foram efetuadas entre duas datas</returns>
         public DataResponse<SaidaView> GetByDate(FiltersSaida dataSaida)
         {
-            string sql = $"SELECT  S.ID, S.VALOR,C.NOME 'CLIENTE',F.NOME 'FUNCIONARIO',S.DATA_SAIDA,FP.NOME 'FORMA_DE_PAGAMENTO',S.VALOR_TOTAL,S.DESCONTO FROM SAIDAS S INNER JOIN CLIENTES C ON S.CLIENTE_ID = C.ID INNER JOIN FUNCIONARIOS F ON S.FUNCIONARIO_ID = F.ID INNER JOIN FORMAS_PAGAMENTO FP ON S.FORMA_PAGAMENTO_ID = FP.ID WHERE 1 = 1 AND DATA_SAIDA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
+            string sql = $"SELECT  S.ID, S.VALOR,C.NOME 'CLIENTE',F.NOME 'FUNCIONARIO',S.DATA_SAIDA,FP.NOME 'FORMA_DE_PAGAMENTO',S.VALOR_TOTAL,S.DESCONTO FROM SAIDAS S INNER JOIN CLIENTES C ON S.CLIENTE_ID = C.ID INNER JOIN FUNCIONARIOS F ON S.FUNCIONARIO_ID = F.ID INNER JOIN FORMAS_PAGAMENTO FP ON S.FORMA_PAGAMENTO_ID = FP.ID AND DATA_SAIDA BETWEEN @DATA_INICIAL AND @DATA_FINAL";
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@DATA_INICIAL", dataSaida.Inicio);
