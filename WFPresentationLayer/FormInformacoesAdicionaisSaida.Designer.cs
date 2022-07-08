@@ -262,7 +262,7 @@
             // 
             // SaidaValorUnitario
             // 
-            this.SaidaValorUnitario.HeaderText = "ValorUnitario";
+            this.SaidaValorUnitario.HeaderText = "Valor Unitario";
             this.SaidaValorUnitario.Name = "SaidaValorUnitario";
             this.SaidaValorUnitario.ReadOnly = true;
             // 
