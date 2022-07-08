@@ -106,7 +106,7 @@ namespace WFPresentationLayer
         {
             dgvSaidas.Rows.Clear();
             FiltersSaida filtersSaida = new FiltersSaida();
-            string inicio = dtpDataEntrada.Value.ToString("MM/dd/yyyy 12:00");
+            string inicio = dtpDataEntrada.Value.ToString("MM/dd/yyyy 00:00");
             filtersSaida.Inicio = DateTime.Parse(inicio);
             string fim = dtpDataSaída.Value.ToString("MM/dd/yyyy 23:59");
             filtersSaida.Fim = DateTime.Parse(fim);

@@ -185,10 +185,10 @@ namespace DataAccessLayer
                     SaidaView saida = new SaidaView();
                     saida.ID = Convert.ToInt32(reader["ID"]);
                     saida.Valor = Convert.ToDouble(reader["VALOR"]);
-                    saida.Cliente = Convert.ToString(reader["CLIENTE_ID"]);
-                    saida.Funcionario = Convert.ToString(reader["FUNCIONARIO_ID"]);
+                    saida.Cliente = Convert.ToString(reader["CLIENTE"]);
+                    saida.Funcionario = Convert.ToString(reader["FUNCIONARIO"]);
                     saida.DataSaida = Convert.ToDateTime(reader["DATA_SAIDA"]);
-                    saida.FormaPagamento = Convert.ToString(reader["FORMA_PAGAMENTO_ID"]);
+                    saida.FormaPagamento = Convert.ToString(reader["FORMA_DE_PAGAMENTO"]);
                     saida.Desconto = Convert.ToDouble(reader["DESCONTO"]);
                     saida.ValorTotal = Convert.ToDouble(reader["VALOR_TOTAL"]);
                     saidasView.Add(saida);
